@@ -1,0 +1,171 @@
+/* ================================================================
+   SENDIT – SELECT SITUATION PAGE
+   ================================================================ */
+
+/* ── 페이지 배경 ── */
+body.page-select {
+  background: #F2F3F6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 네비게이션 로고 링크 ── */
+.nav__logo {
+  text-decoration: none;
+}
+
+/* ── 하단 고정 바 ── */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #E7E9EB;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* ── 메인 콘텐츠 영역 ── */
+.situation-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  padding: 176px 20px 120px;
+}
+
+/* ── 제목 영역 ── */
+.situation-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.situation-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 44px;
+  text-align: center;
+}
+
+.situation-sub {
+  font-size: 22px;
+  font-weight: 400;
+  color: #47494C;
+  line-height: 38px;
+  text-align: center;
+}
+
+/* ── 카드 그리드 ── */
+.situation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 320px);
+  gap: 20px;
+}
+
+/* ── 개별 카드 ── */
+.sit-select-card {
+  width: 320px;
+  height: 180px;
+  padding: 25px 35px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #D7DBDF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.sit-select-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.10);
+  border-color: #B0B5BC;
+}
+
+/* ── 카드 아이콘 ── */
+.sit-select-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ── 카드 텍스트 ── */
+.sit-select-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sit-select-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 32px;
+}
+
+.sit-select-desc {
+  font-size: 18px;
+  font-weight: 400;
+  color: #494B4D;
+  line-height: 24px;
+}
+
+/* ── 이전 버튼 ── */
+.btn-prev {
+  width: 320px;
+  height: 60px;
+  background: #E7E9EB;
+  border: none;
+  border-radius: 10px;
+  color: #696B6D;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-prev:hover {
+  background: #D1D5D9;
+  color: #47494C;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 1060px) {
+  .situation-grid {
+    grid-template-columns: repeat(2, 320px);
+  }
+}
+
+@media (max-width: 700px) {
+  .situation-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .sit-select-card {
+    width: 100%;
+  }
+
+  .situation-title {
+    font-size: 30px;
+  }
+
+  .situation-sub {
+    font-size: 18px;
+  }
+}

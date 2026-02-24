@@ -1,0 +1,439 @@
+/* ================================================================
+   SENDIT – STYLESHEET
+   ================================================================ */
+
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:    #172230;
+  --darker:  #111418;
+  --navy:    #0B1D49;
+  --accent:  #FE9D3C;
+  --orange:  #FFB163;
+  --peach:   #FCE8D5;
+  --bg-gray: #F8F9FA;
+  --bg-card: #F2F3F6;
+  --border:  #E7E9EB;
+  --text:    #1C1E21;
+  --muted:   #696B6D;
+  --radius:  12px;
+  --shadow:  0 4px 24px rgba(0,0,0,.08);
+  --font-main: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-myeongjo: 'Nanum Myeongjo', serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-main);
+  color: var(--text);
+  background: #fff;
+  overflow-x: hidden;
+}
+
+/* ── Shared ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: none; cursor: pointer; font-family: inherit;
+  border-radius: 8px; font-weight: 600; text-decoration: none;
+}
+.btn--dark  { background: var(--dark);   color: #fff; padding: 10px 24px; font-size: 13px; }
+.btn--accent{ background: var(--accent); color: var(--text); }
+.btn--lg    { padding: 15px 28px; font-size: 18px; border-radius: 10px; }
+.btn__arrow { font-size: 18px; }
+
+.section-title { font-size: 40px; font-weight: 700; text-align: center; }
+.section-desc  { font-size: 24px; color: var(--text); text-align: center; line-height: 1.6; font-weight: 400; }
+
+
+/* ================================================================
+   NAV
+   ================================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff; border-bottom: 1px solid var(--border);
+  height: 60px;
+}
+.nav__inner {
+  max-width: 1110px; margin: 0 auto; padding: 0 20px;
+  height: 100%; display: flex; align-items: center; justify-content: space-between;
+}
+.nav__left   { display: flex; align-items: center; gap: 35px; }
+.nav__logo   { font-size: 22px; font-weight: 700; color: #2B3347; letter-spacing: -.5px; }
+.nav__links  { display: flex; gap: 28px; }
+.nav__link   { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--muted); transition: color .15s; }
+.nav__link--active { color: var(--text); font-weight: 600; }
+.nav__link:hover   { color: var(--text); }
+.nav__right  { display: flex; align-items: center; gap: 20px; }
+.nav__contact{ font-size: 15px; color: var(--muted); text-decoration: none; }
+
+
+/* ================================================================
+   HERO
+   ================================================================ */
+.hero {
+  background: linear-gradient(180deg, rgba(255,196,138,.35) 0%, #fff 60%);
+  display: flex; flex-direction: column; align-items: center;
+  padding: 100px 20px 0;
+  gap: 48px;
+}
+.hero__text {
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+.hero__title  { font-size: 50px; font-weight: 700; line-height: 1.35; }
+.hero__sub    { font-size: 22px; color: var(--muted); line-height: 1.6; font-weight: 500; }
+.hero__desc   { font-size: 18px; color: var(--muted); }
+
+/* Mockup */
+.hero__mockup {
+  width: min(1000px, 95vw);
+  line-height: 0;
+  font-size: 0;
+}
+.hero__mockup-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: bottom;
+}
+
+
+/* ================================================================
+   SITUATIONS
+   ================================================================ */
+.situations {
+  padding: 100px 20px;
+  background: var(--bg-gray);
+  display: flex; flex-direction: column; align-items: center; gap: 40px;
+}
+.situations__grid {
+  display: grid; grid-template-columns: repeat(3, 320px); gap: 20px;
+}
+.sit-card {
+  background: #fff; border-radius: 12px; border: 1px solid var(--border);
+  padding: 25px 35px; display: flex; flex-direction: column; gap: 10px;
+  min-height: 180px; justify-content: center;
+}
+.sit-card strong { font-size: 24px; font-weight: 700; }
+.sit-card span   { font-size: 18px; color: #494B4D; }
+.sit-icon { width: 40px; height: 40px; object-fit: contain; }
+
+
+/* ================================================================
+   HOW IT WORKS
+   ================================================================ */
+.how {
+  background: var(--dark);
+  padding: 80px 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 64px;
+}
+.how__header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 32px; }
+.badge {
+  background: var(--accent); color: #16233C;
+  font-size: 18px; font-weight: 700;
+  padding: 12px 28px; border-radius: 100px;
+  border: 1px solid rgba(0,0,0,.07);
+  display: inline-block;
+}
+.how__title { font-size: 46px; font-weight: 700; color: #fff; line-height: 1.4; text-align: center; }
+.how__title--accent { color: var(--accent); }
+.how__desc  { font-size: 22px; color: #E3E3E3; line-height: 1.7; font-weight: 500; text-align: center; }
+
+.how__steps { display: flex; flex-direction: column; gap: 28px; width: min(1110px,95vw); }
+
+/* Step cards */
+.step-card {
+  border-radius: 16px; overflow: hidden; padding: 48px;
+  display: flex; flex-direction: column; gap: 32px; position: relative;
+}
+.step-card--orange { background: var(--orange); }
+.step-card--row    { flex-direction: row; align-items: center; justify-content: space-between; }
+
+.step-card h3 { font-size: 38px; font-weight: 700; color: var(--text); }
+.step-card p  { font-size: 19px; color: var(--text); line-height: 1.6; margin-top: 12px; }
+
+/* ── Step card 레이아웃 ── */
+
+/* STEP 1: 세로 배치 (텍스트 상단 중앙 / 이미지 하단) */
+.step-card--col {
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0;        /* 이미지가 카드 끝까지 붙도록 */
+  gap: 36px;
+}
+
+/* STEP 2·3: 가로 배치 (텍스트 왼쪽 중앙 / 이미지 오른쪽 하단) */
+.step-card--row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  padding-bottom: 0;
+}
+
+/* 텍스트 영역 */
+.step-card__text { display: flex; flex-direction: column; gap: 14px; }
+
+/* STEP 1 텍스트: 중앙 정렬 */
+.step-card__text--center { text-align: center; align-items: center; }
+
+/* STEP 2·3 텍스트: 왼쪽 중앙 */
+.step-card__text--bottom { }
+
+/* 이미지 래퍼 */
+.step-card__img-wrap { display: flex; align-items: flex-end; flex-shrink: 0; }
+
+/* STEP 1: 이미지 카드 너비 꽉 채움 */
+.step-card__img-wrap--bottom { width: 100%; }
+
+/* STEP 2·3: 이미지 오른쪽 배치 */
+.step-card__img-wrap--right { }
+
+/* 이미지 공통 */
+.step-card__img { display: block; max-width: 100%; height: auto; }
+
+/* STEP 1 이미지: 전체 너비, 하단 radius */
+.step-card__img--full {
+  width: 100%;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+/* STEP 2·3 이미지: 적절한 크기 */
+.step-card__img--side {
+  max-width: 460px;
+  max-height: 380px;
+  object-fit: contain;
+}
+
+
+/* ================================================================
+   PRICING
+   ================================================================ */
+.pricing {
+  padding: 100px 20px;
+  background: #fff;
+  display: flex; flex-direction: column; align-items: center; gap: 32px;
+}
+.pricing__banner {
+  background: var(--peach); border-radius: 20px;
+  padding: 28px 40px; font-size: 26px; color: var(--text); text-align: center;
+  width: min(1110px, 95vw);
+}
+.pricing__banner strong { color: var(--accent); }
+
+.pricing__cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+.pricing-card {
+  border: 1px solid var(--navy); border-radius: 16px;
+  padding: 40px 50px; display: flex; flex-direction: column; gap: 18px;
+  width: 530px;
+}
+.pricing-card h3 { font-size: 20px; font-weight: 700; }
+.pricing-card__price { display: flex; align-items: flex-end; gap: 6px; }
+.pricing-card__price span { font-size: 44px; font-weight: 700; color: var(--navy); line-height: 1; }
+.pricing-card__price small{ font-size: 18px; color: var(--muted); font-weight: 500; }
+.pricing-card__desc { font-size: 16px; color: #4D4D4D; line-height: 1.5; }
+.pricing-card__note { font-size: 13px; color: #4D4D4D; }
+.pricing-card__features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.pricing-card__features li { font-size: 15px; color: var(--text); font-weight: 500; }
+
+/* FAQ 독립 섹션 */
+.faq-section {
+  padding: 100px 20px;
+  background: var(--bg-gray);
+  display: flex; flex-direction: column; align-items: center; gap: 40px;
+}
+.faq-section__title {
+  font-size: 40px; font-weight: 700; text-align: center;
+}
+.faq { width: min(1110px,95vw); display: flex; flex-direction: column; gap: 12px; }
+.faq__item { background: var(--bg-card); border-radius: 10px; overflow: hidden; }
+.faq__q {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 24px; font-size: 19px; font-weight: 700; color: var(--text);
+  background: transparent; border: none; cursor: pointer; text-align: left; font-family: inherit;
+}
+.faq__icon {
+  width: 24px; height: 24px; flex-shrink: 0;
+  transition: transform .25s ease;
+}
+.faq__item--open .faq__icon {
+  transform: rotate(45deg);  /* + → × 효과로 닫힘 표시 */
+}
+.faq__a { padding: 0 24px 20px; font-size: 17px; color: var(--muted); line-height: 1.7; }
+
+
+/* ================================================================
+   TRUST
+   ================================================================ */
+.trust {
+  padding: 100px 20px;
+  background: var(--darker);
+  display: flex; flex-direction: column; align-items: center; gap: 56px;
+}
+.trust__header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.trust__header h2 { font-size: 38px; font-weight: 700; color: #fff; }
+.trust__header p  { font-size: 19px; color: #fff; line-height: 1.7; }
+.trust__header strong { font-weight: 600; }
+
+.trust__cards { display: flex; flex-direction: column; gap: 20px; width: min(1110px,95vw); }
+
+.trust-card {
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  overflow: hidden;
+  min-height: 280px;
+}
+.trust-card--white  { background: #fff; }
+.trust-card--peach  { background: var(--peach); }
+.trust-card--salmon { background: #FFD5AD; }
+.trust-card--orange { background: #FFBA78; }
+
+/* 텍스트 영역 */
+.trust-card__body {
+  padding: 48px 50px;
+  max-width: 550px;
+  flex-shrink: 0;
+}
+.trust-card__body h3 { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 16px; }
+.trust-card__body p  { font-size: 18px; color: rgba(28,30,33,.7); line-height: 1.6; }
+
+/* 이미지 공통 */
+.trust-card__img {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* TSA: 작은 원형 스탬프 */
+.trust-card__img--stamp {
+  width: 160px;
+  height: 160px;
+  margin-right: 50px;
+}
+
+/* 감사추적·유통 */
+.trust-card__img--large {
+  height: auto;
+  max-height: 320px;
+  width: auto;
+  object-fit: contain;
+  align-self: flex-end;
+}
+
+/* 감사추적·전자문서증명서: 상단 50px 띄우고 하단 넘침 */
+.trust-card__img--top-offset {
+  margin-top: 50px;
+  height: auto;
+  max-height: 340px;
+  width: auto;
+  object-fit: contain;
+  align-self: flex-start;
+}
+
+/* 전자문서 증명서: 우측 여백 있게 */
+.trust-card__img--doc {
+  margin-top: 50px;
+  height: auto;
+  max-height: 320px;
+  width: auto;
+  margin-right: 40px;
+  object-fit: contain;
+  align-self: flex-start;
+}
+
+
+/* ================================================================
+   LAW
+   ================================================================ */
+.law {
+  padding: 100px 20px;
+  background: #fff;
+  display: flex; flex-direction: column; align-items: center; gap: 60px;
+}
+.law h2 { font-size: 50px; font-weight: 700; text-align: center; line-height: 1.36; }
+.law__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  width: min(1110px,95vw);
+}
+.law-card {
+  padding: 0;
+  display: flex; flex-direction: column; gap: 0;
+  width: 390px;
+}
+.law-card__tag {
+  background: #F2F3F6;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  display: block;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.law-card h4 {
+  font-size: 20px; font-weight: 600; color: var(--text);
+  line-height: 1.5; margin-bottom: 16px;
+}
+.law-card p {
+  font-size: 18px; color: var(--muted); line-height: 1.5;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.law-card-sub{
+  padding: 16px 20px;
+}
+
+
+/* ================================================================
+   CTA
+   ================================================================ */
+.cta {
+  background: rgba(254,157,60,.28);
+  padding: 100px 20px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 28px;
+}
+.cta h2 { font-size: 48px; font-weight: 700; }
+.cta p  { font-size: 24px; color: var(--muted); }
+.cta__btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+.footer { background: #fff; border-top: 1px solid var(--border); padding: 40px 20px 60px; }
+.footer__inner { max-width: 1110px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+.footer__top {
+  display: flex; align-items: center; gap: 24px;
+  border-bottom: 1px solid var(--border); padding-bottom: 20px;
+}
+.footer__links { display: flex; gap: 16px; }
+.footer__links a, .footer__social a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 600; }
+.footer__social { margin-left: auto; display: flex; gap: 12px; font-size: 18px; }
+.footer__info p { font-size: 14px; color: #77787A; line-height: 1.8; }
+.footer__info a  { color: #77787A; }
+
+
+/* ================================================================
+   RESPONSIVE (simple breakpoint)
+   ================================================================ */
+@media (max-width: 900px) {
+  .situations__grid { grid-template-columns: repeat(2, 1fr); }
+  .law__grid { grid-template-columns: 1fr; }
+  .hero__title { font-size: 34px; }
+  .step-card--row { flex-direction: column; }
+  .mock-grid { grid-template-columns: repeat(2,1fr); }
+  .pricing__cards { flex-direction: column; align-items: center; }
+  .pricing-card { width: 100%; max-width: 540px; }
+  .nav__links { display: none; }
+}
+@media (max-width: 600px) {
+  .situations__grid { grid-template-columns: 1fr; }
+  .hero__title  { font-size: 28px; }
+  .section-title{ font-size: 28px; }
+  .how__title   { font-size: 30px; }
+}

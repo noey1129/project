@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sendit – 중요한 내용은, 기록으로 남기세요</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ───────────────────────────── NAV ───────────────────────────── -->
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <span class="nav__logo">Sendit</span>
+        <nav class="nav__links">
+          <a href="#hero"    class="nav__link nav__link--active">이용 상황</a>
+          <a href="#how"     class="nav__link">이용 방법</a>
+          <a href="#pricing" class="nav__link">가격</a>
+          <a href="#faq"     class="nav__link">자주 묻는 질문</a>
+          <a href="#trust"   class="nav__link">인증 및 문서</a>
+          <a href="#law"     class="nav__link">법 조항</a>
+        </nav>
+      </div>
+      <div class="nav__right">
+        <a href="#" class="nav__contact">서비스문의</a>
+        <button class="btn btn--dark">로그인</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ───────────────────────────── HERO ───────────────────────────── -->
+  <section class="hero" id="hero">
+    <div class="hero__text">
+      <h1 class="hero__title">중요한 내용은,<br />기록으로 남기세요</h1>
+      <p class="hero__sub">
+        상대방에게 내용을 전달하고<br />나중에 확인할 수 있도록 기록을 남깁니다.
+      </p>
+      <p class="hero__desc">복잡한 법률 지식이나 회원가입 없이 즉시 작성 가능합니다.</p>
+      <a href="select-situation.html" class="btn btn--dark btn--lg">
+        내용증명 작성하기 <span class="btn__arrow">→</span>
+      </a>
+    </div>
+
+    <!-- 모의 화면 -->
+    <div class="hero__mockup">
+      <img src="assets/main.svg" alt="Sendit 메인 화면" class="hero__mockup-img" />
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── SITUATIONS ───────────────────────────── -->
+  <section class="situations">
+    <h2 class="section-title">이런 순간에 기록이 필요합니다</h2>
+    <p class="section-desc">
+      계약서, 동의서, 통지서, 안내문 등 다양한 문서를 보내보세요.<br />
+      수신자의 문서 수령과 열람 여부까지 확인할 수 있어 모바일로<br />
+      등기우편과 원본증명문서도 간편하게 보낼 수 있답니다.
+    </p>
+    <div class="situations__grid">
+      <div class="sit-card"><img class="sit-icon" src="assets/home.svg" alt="임대차" /><strong>임대차</strong><span>보증금 반환, 계약 해지 요청</span></div>
+      <div class="sit-card"><img class="sit-icon" src="assets/money.svg" alt="대여금" /><strong>대여금</strong><span>빌려준 돈 회수 요청</span></div>
+      <div class="sit-card"><img class="sit-icon" src="assets/file.svg" alt="계약관련" /><strong>계약관련</strong><span>계약 해지, 위반 통보</span></div>
+      <div class="sit-card"><img class="sit-icon" src="assets/sound.svg" alt="층간소음" /><strong>층간소음</strong><span>층간소음 시정 요청</span></div>
+      <div class="sit-card"><img class="sit-icon" src="assets/arrow_reset.svg" alt="회원권 환불" /><strong>회원권 환불</strong><span>헬스장, 학원 등 회원권 환불</span></div>
+      <div class="sit-card"><img class="sit-icon" src="assets/edit.svg" alt="직접 작성" /><strong>직접 작성</strong><span>위에 해당하지 않는 경우</span></div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── HOW IT WORKS ───────────────────────────── -->
+  <section class="how" id="how">
+    <div class="how__header">
+      <span class="badge">온라인 내용증명</span>
+      <h2 class="how__title">
+        <span class="how__title--accent">한번의 전달</span>로<br />법적 효력을 갖춘 내용증명을
+      </h2>
+      <p class="how__desc">
+        내용증명 작성부터 전달, 열람 여부와 기록 보관까지<br />모든 과정을 하나의 플랫폼에서 처리하세요.
+      </p>
+    </div>
+
+    <div class="how__steps">
+      <!-- STEP 1: 제목 중앙 상단 / 이미지 하단 full width -->
+      <div class="step-card step-card--orange step-card--col">
+        <div class="step-card__text step-card__text--center">
+          <h3>내용증명 작성</h3>
+          <p>법적 요건에 맞는 내용증명을<br />템플릿또는 직접 작성으로 간편하게 준비하세요.</p>
+        </div>
+        <div class="step-card__img-wrap step-card__img-wrap--bottom">
+          <img src="assets/online_1.svg" alt="내용증명 작성 화면" class="step-card__img step-card__img--full" />
+        </div>
+      </div>
+
+      <!-- STEP 2: 텍스트 좌하단 / 이미지 우측 -->
+      <div class="step-card step-card--orange step-card--row">
+        <div class="step-card__text step-card__text--bottom">
+          <h3>내용증명 전달</h3>
+          <p>전자 방식으로 신속하게 전달되며,<br />전달 시점과 수신 여부가 자동으로 기록됩니다.</p>
+        </div>
+        <div class="step-card__img-wrap step-card__img-wrap--right">
+          <img src="assets/online_2.svg" alt="내용증명 전달 화면" class="step-card__img step-card__img--side" />
+        </div>
+      </div>
+
+      <!-- STEP 3: 텍스트 좌하단 / 이미지 우측 -->
+      <div class="step-card step-card--orange step-card--row">
+        <div class="step-card__text step-card__text--bottom">
+          <h3>열람 확인 및 기록 보관</h3>
+          <p>상대방의 열람 여부까지 확인하고<br />모든 이력은 위·변조 불가능한 기록으로 보관됩니다.</p>
+        </div>
+        <div class="step-card__img-wrap step-card__img-wrap--right">
+          <img src="assets/online_3.svg" alt="열람 확인 및 기록 보관 화면" class="step-card__img step-card__img--side" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── PRICING ───────────────────────────── -->
+  <section class="pricing" id="pricing">
+    <div class="pricing__banner">
+      <strong>전달 방식</strong>에 따라, 기록되는 정보의 범위가 달라집니다.
+    </div>
+    <div class="pricing__cards">
+      <div class="pricing-card">
+        <h3>기본 전달</h3>
+        <div class="pricing-card__price"><span>9,900</span><small>원</small></div>
+        <p class="pricing-card__desc">상대방에게 내용증명을 전달하고 발송 기록을 남기는 기본 방식입니다.</p>
+        <ul class="pricing-card__features">
+          <li>✔ 전자 방식으로 내용증명 전달</li>
+          <li>✔ 발송 시점 기록 보관</li>
+          <li>✔ 열람 안내 제공</li>
+        </ul>
+      </div>
+      <div class="pricing-card">
+        <h3>본인 확인 전달</h3>
+        <div class="pricing-card__price"><span>19,800</span><small>원</small></div>
+        <p class="pricing-card__desc">수신자가 본인 확인 후 내용증명을 열람하도록 하는 전달 방식입니다.</p>
+        <p class="pricing-card__note">※ 수신자의 이름, 연락처 등 기본 정보가 필요합니다.</p>
+        <ul class="pricing-card__features">
+          <li>✔ 본인 확인 후 내용증명 전달</li>
+          <li>✔ 열람 여부 확인 가능</li>
+          <li>✔ 발송 · 열람 기록 보관</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ───────────────────────────── FAQ ───────────────────────────── -->
+  <section class="faq-section" id="faq">
+    <h2 class="faq-section__title">자주 묻는 질문</h2>
+    <div class="faq">
+      <div class="faq__item faq__item--open">
+        <button class="faq__q" onclick="toggleFaq(this)">
+          샌드잇은 법률 서비스 인가요?
+          <img class="faq__icon" src="assets/add.svg" alt="toggle" />
+        </button>
+        <div class="faq__a">페이싸인은 충전형 요금제로 운영됩니다. 원하는 금액만큼 포인트를 충전하고, 사용하는 문서 유형 및 방식에 따라 포인트가 차감되는 방식입니다.</div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" onclick="toggleFaq(this)">
+          상대방이 내용 증명을 확인하지 않으면 어떻게 되나요?
+          <img class="faq__icon" src="assets/add.svg" alt="toggle" />
+        </button>
+        <div class="faq__a" hidden>
+          문서 유형과 사용 기능에 따라 포인트 차감액이 달라집니다.<br />
+          - 카카오 문서 알림: 500p<br />
+          - 카카오톡 전자문서: 900p<br />
+          - 공인전자문서 센터 보관: 1,000p<br />
+          - 전자문서 유통증명서: 500p<br />
+          - 전자문서 원본증명서: 1,000p
+        </div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" onclick="toggleFaq(this)">
+          우체국 내용증명과 동일한가요?
+          <img class="faq__icon" src="assets/add.svg" alt="toggle" />
+        </button>
+        <div class="faq__a" hidden>일반적으로 충전 포인트는 유효기간 없이 사용 가능합니다. 단, 이벤트성 포인트 등은 별도 유효기간이 설정될 수 있습니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── TRUST ───────────────────────────── -->
+  <section class="trust" id="trust">
+    <div class="trust__header">
+      <h2>기록을 넘어, 법적 증명으로 남습니다</h2>
+      <p>
+        샌드잇은 단순한 발송 서비스가 아닙니다.<br />
+        작성부터 열람까지 모든 과정이 위·변조 불가능한 기록으로 남습니다.<br /><br />
+        <strong>내용증명이 필요한 순간, 말이 아닌 문서와 기록으로 증명하세요.</strong>
+      </p>
+    </div>
+    <div class="trust__cards">
+      <!-- TSA: 텍스트 좌측 / 이미지 우측 작게 -->
+      <div class="trust-card trust-card--white">
+        <div class="trust-card__body">
+          <h3>위변조 여부 육안식별 스탬프 (TSA)</h3>
+          <p>발송 문서에 공인인증기관에서 발급한 진본마크가<br> 삽입되어 문서의 위변조 및 진본 여부를 판단할 수 있어요.</p>
+        </div>
+        <img src="assets/TSA.svg" alt="TSA 스탬프" class="trust-card__img trust-card__img--stamp" />
+      </div>
+
+      <!-- 감사 추적: 텍스트 좌측 / 이미지 우측 크게 -->
+      <div class="trust-card trust-card--peach">
+        <div class="trust-card__body">
+          <h3>감사 추적 증명서</h3>
+          <p>서명 완료시 체결 문서와 함께 발급 및 전송되는 인증서로<br> 서명 진행의 모든 중요 시점과 정보 (서명 날짜, 시간, 수신인의 IP주소 및 인증 정보 등)를 기록하고 보존해요.</p>
+        </div>
+        <img src="assets/cert-audit-trail.svg" alt="감사 추적 증명서" class="trust-card__img trust-card__img--top-offset" />
+      </div>
+
+      <!-- 전자문서 유통: 텍스트 좌측 / 이미지 우측 크게 -->
+      <div class="trust-card trust-card--salmon">
+        <div class="trust-card__body">
+          <h3>전자문서 유통 증명서</h3>
+          <p>공인인증기관(한국인터넷진흥원)에서 발급한 증명서로<br> 전자문서의 발송, 수신, 열람 사실이 포함된 정보를<br> 확인할 수 있어요.</p>
+        </div>
+        <img src="assets/cert-distribution.svg" alt="전자문서 유통 증명서" class="trust-card__img trust-card__img--large" />
+      </div>
+
+      <!-- 전자문서 증명서: 텍스트 좌측 / 이미지 우측 크게 -->
+      <div class="trust-card trust-card--orange">
+        <div class="trust-card__body">
+          <h3>전자문서 증명서</h3>
+          <p>전자문서의 보관 사실, 작성자, 수신자 및 송신·수신 일시 등에<br> 관한 사항을 "전자문서 및 전자거래기본법 시행령" 제15조의9, 제31조의7 2항에서 정한 방법과 절차에 따라 발급한 증명서</p>
+        </div>
+        <img src="assets/cert-document.svg" alt="전자문서 증명서" class="trust-card__img trust-card__img--doc" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── LAW ───────────────────────────── -->
+  <section class="law" id="law">
+    <h2>참고할만한 전자문서 관련 법 조항</h2>
+    <div class="law__grid">
+      <div class="law-card">
+        <div class="law-card__tag">전자서명의 효력</div>
+        
+        <div class="law-card-sub">
+            <h4>전자서명법 제 3조</h4>
+            <p>전자서명은 전자적 형태라는 이유만으로<br>
+            서명, 서명날인 또는 기명날인으로서의
+            효력이 부인되지 아니한다.</p>
+           <div style="height: 20px"></div>
+            <p>법령의 규정 또는 당사자 간의 약정에 따라 서명,
+            서명날인 또는 기명날인의 방식으로
+            전자서명을 선택한 경우 그 전자서명은 서명, 서명날인 또는 기명날인으로서의 효력을 가진다.</p>
+        </div>
+      </div>
+      <div class="law-card">
+        <div class="law-card__tag">전자문서의 효력</div>
+        <div class="law-card-sub">
+            <h4>전자문서 및 전자거래 기본법 제 4조</h4>
+            <p>전자문서는 전자적 형태로 되어 있다는 이유만으로 법적 효력이 부인되지 아니한다.</p>
+            <p>(개정 2020. 6. 9.)</p>
+        </div>
+      </div>
+      <div class="law-card">
+        <div class="law-card__tag">전자문서의 서면 요건</div>
+        <div class="law-card-sub">
+            <h4>전자문서 및 전자거래 기본법 제 4조의2</h4>
+            <p>
+                전자문서가 다음 각 호의 요건을 모두 갖춘<br>
+                경우에는 그 전자문서를 서면으로 본다.<br>
+                다만, 다른 법령에 특별한 규정이 있거나<br>
+                성질상 전자적 형태가 허용되지 아니하는 <br>
+                경우에는 서면으로 보지 아니한다.
+            </p>
+            <div style="height: 20px"></div>
+            <p>1. 전자문서의 내용을 열람할 수 있을 것</p>
+            <p>
+                2. 전자문서가 작성·변환되거나 송신·수신<br>
+                또는 저장된 때의 형태 또는 그와 같이 재현될 수 있는 형태로 보존되어 있을 것
+            </p>
+            <p>(본조신설 2020. 6. 9.)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── CTA ───────────────────────────── -->
+  <section class="cta">
+    <h2>지금, 샌드잇으로 기록을 남겨보세요</h2>
+    <p>법적 효력을 갖춘 내용증명을 온라인으로 간편하게 시작해보세요.</p>
+    <div class="cta__btns">
+      <button class="btn btn--accent btn--lg">시작하기</button>
+      <button class="btn btn--dark btn--lg">서비스 문의</button>
+    </div>
+  </section>
+
+  <!-- ───────────────────────────── FOOTER ───────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <span class="nav__logo">Sendit</span>
+        <div class="footer__links">
+          <a href="#">개인정보 처리방침</a>
+          <a href="#">이용약관</a>
+        </div>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="Blog">📝</a>
+        </div>
+      </div>
+      <div class="footer__info">
+        <p>(주)와이더랩 ㅣ 대표 : 정용수 &nbsp; 서울특별시 마포구 성미산로 120 8층 (주)와이더랩</p>
+        <p>TEL : 1644-9265 ㅣ MAIL : cs@widerlab.co.kr</p>
+        <p>통신판매업 신고번호 : 제2022-서울마포-0526호 ㅣ 사업자 등록번호 : 298-81-01172 <a href="#">사업자정보확인</a></p>
+        <p>© 2020. Widerlab. All rights reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+/* ================================================================
+   SENDIT – LEASE QUESTION (공용)
+   임대차 질문 플로우 전 페이지에서 공유
+   ================================================================ */
+
+/* ── 페이지 배경 ── */
+body.page-question {
+  background: #F2F3F6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 네비게이션 로고 링크 ── */
+.nav__logo {
+  text-decoration: none;
+}
+
+/* ── 메인 콘텐츠 영역 ── */
+.question-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 100px 20px 120px;
+}
+
+/* ── 콘텐츠 래퍼 ── */
+.question-wrap {
+  width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ── 제목 영역 ── */
+.question-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.question-title {
+  width: 100%;
+  font-size: 40px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 44px;
+  text-align: center;
+}
+
+.question-sub {
+  width: 100%;
+  font-size: 22px;
+  font-weight: 400;
+  color: #47494C;
+  line-height: 38px;
+  text-align: center;
+}
+
+/* ── 진행 바 + 카드 래퍼 ── */
+.question-body {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ── 프로그레스 행 ── */
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ── 프로그레스 바 ── */
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(23, 34, 48, 0.10);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: #172230;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* ── 프로그레스 카운터 ── */
+.progress-counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.progress-counter__current {
+  font-size: 20px;
+  font-weight: 700;
+  color: #172230;
+}
+
+.progress-counter__sep,
+.progress-counter__total {
+  font-size: 20px;
+  font-weight: 400;
+  color: #5A5F63;
+}
+
+/* ── 선택지 카드 목록 ── */
+.answer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── 개별 선택지 카드 ── */
+.answer-card {
+  min-height: 90px;
+  padding: 25px 35px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #D7DBDF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.answer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-color: #B0B5BC;
+}
+
+.answer-card.selected {
+  border: 2px solid #172230;
+  background: #FFFAF5;
+}
+
+.answer-card--md {
+  min-height: 120px;
+}
+
+.answer-card--lg {
+  min-height: 150px;
+}
+
+/* ── 카드 텍스트 ── */
+.answer-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answer-card__name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 32px;
+}
+
+.answer-card__desc {
+  font-size: 18px;
+  font-weight: 400;
+  color: #494B4D;
+  line-height: 24px;
+}
+
+/* ── 하단 고정 바 ── */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #E7E9EB;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.bottom-bar__inner {
+  width: 760px;
+  display: flex;
+  gap: 20px;
+}
+
+/* ── 이전 버튼 ── */
+.btn-prev {
+  flex: 1;
+  height: 60px;
+  background: #E7E9EB;
+  border: none;
+  border-radius: 10px;
+  color: #696B6D;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-prev:hover {
+  background: #D1D5D9;
+  color: #47494C;
+}
+
+/* ── 다음 버튼 ── */
+.btn-next {
+  flex: 1;
+  height: 60px;
+  background: #8A9097;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: not-allowed;
+  transition: background 0.2s ease;
+}
+
+.btn-next:not([disabled]) {
+  background: #172230;
+  cursor: pointer;
+}
+
+.btn-next:not([disabled]):hover {
+  background: #243447;
+}
+
+/* ── 주소 입력 행 ── */
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ── 텍스트 입력 필드 공통 ── */
+.input-field {
+  height: 70px;
+  padding: 12px 20px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #D7DBDF;
+  font-size: 20px;
+  font-family: inherit;
+  color: #1C1E21;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-field::placeholder {
+  color: #8C8C8C;
+}
+
+.input-field:focus {
+  border-color: #172230;
+}
+
+.input-field--main {
+  flex: 1;
+  min-width: 0;
+}
+
+.input-field--detail {
+  width: 150px;
+  flex-shrink: 0;
+}
+
+/* ── 금액 입력 래퍼 ── */
+.input-amount-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field--amount {
+  flex: 1;
+  min-width: 0;
+  padding-right: 60px;
+}
+
+.input-amount-suffix {
+  position: absolute;
+  right: 20px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #444444;
+  pointer-events: none;
+}
+
+/* ── 날짜 그룹 (라벨 + 입력행) ── */
+.input-date-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-group-label {
+  font-size: 22px;
+  font-weight: 400;
+  color: #47494C;
+  line-height: 38px;
+}
+
+/* ── 텍스트에어리어 ── */
+.textarea-field {
+  width: 100%;
+  padding: 23px 20px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #D7DBDF;
+  font-size: 20px;
+  font-family: inherit;
+  color: #1C1E21;
+  line-height: 24px;
+  outline: none;
+  resize: none;
+  height: 130px;
+  min-height: 70px;
+  transition: border-color 0.2s ease;
+}
+
+.textarea-field::placeholder {
+  color: #8C8C8C;
+}
+
+.textarea-field:focus {
+  border-color: #172230;
+}
+
+/* ── 조건부 섹션 (기본 숨김, JS로 표시) ── */
+.conditional-section {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* ── 건너뛰기 링크 ── */
+.skip-link {
+  display: block;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 400;
+  color: #8C8C8C;
+  line-height: 38px;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+.skip-link:hover {
+  color: #5A5F63;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 800px) {
+  .question-wrap,
+  .bottom-bar__inner {
+    width: 100%;
+  }
+
+  .question-title {
+    font-size: 28px;
+  }
+
+  .question-sub {
+    font-size: 18px;
+  }
+}

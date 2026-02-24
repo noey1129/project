@@ -1,0 +1,57 @@
+/* ================================================================
+   SENDIT – FLOW COMMON
+   작성 플로우 전 페이지에서 공유하는 스타일
+   ================================================================ */
+
+/* ── 페이지 배경 · 레이아웃 ── */
+body.page-flow {
+  background: #F2F3F6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 네비게이션 로고 링크 ── */
+.nav__logo {
+  text-decoration: none;
+}
+
+/* ── 하단 고정 바 ── */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #E7E9EB;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* ── 이전 버튼 (공통 기반) ── */
+.btn-prev {
+  height: 60px;
+  background: #E7E9EB;
+  border: none;
+  border-radius: 10px;
+  color: #696B6D;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-prev:hover {
+  background: #D1D5D9;
+  color: #47494C;
+}
+
+/* ── 선택 상태 (카드 공통) ── */
+.flow-card.selected {
+  border: 2px solid #172230;
+  background: #FFFAF5;
+}

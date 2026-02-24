@@ -1,0 +1,198 @@
+/* ================================================================
+   SENDIT – LEASE QUESTION PAGE
+   공통 스타일: flow-common.css 참조
+   ================================================================ */
+
+/* ── 메인 콘텐츠 영역 ── */
+.question-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 100px 20px 120px;
+}
+
+/* ── 콘텐츠 래퍼 (660px 고정) ── */
+.question-wrap {
+  width: 660px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ── 제목 영역 ── */
+.question-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.question-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 44px;
+  text-align: center;
+}
+
+.question-sub {
+  font-size: 22px;
+  font-weight: 400;
+  color: #47494C;
+  line-height: 38px;
+  text-align: center;
+}
+
+/* ── 진행 바 + 카드 래퍼 ── */
+.question-body {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ── 프로그레스 행 ── */
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* ── 프로그레스 바 ── */
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(23, 34, 48, 0.10);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: #172230;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* ── 프로그레스 카운터 ── */
+.progress-counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.progress-counter__current {
+  font-size: 20px;
+  font-weight: 700;
+  color: #172230;
+}
+
+.progress-counter__sep,
+.progress-counter__total {
+  font-size: 20px;
+  font-weight: 400;
+  color: #5A5F63;
+}
+
+/* ── 선택지 카드 목록 ── */
+.answer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── 개별 선택지 카드 ── */
+.answer-card {
+  height: 150px;
+  padding: 25px 35px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #D7DBDF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.answer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-color: #B0B5BC;
+}
+
+/* ── 카드 텍스트 ── */
+.answer-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.answer-card__name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 32px;
+}
+
+.answer-card__desc {
+  font-size: 18px;
+  font-weight: 400;
+  color: #494B4D;
+  line-height: 24px;
+}
+
+/* ── 하단 버튼 컨테이너 (이전+다음 2개) ── */
+.bottom-bar__inner {
+  width: 660px;
+  display: flex;
+  gap: 20px;
+}
+
+/* ── 이전 버튼 (2버튼 레이아웃에서 flex) ── */
+.btn-prev {
+  flex: 1;
+}
+
+/* ── 다음 버튼 ── */
+.btn-next {
+  flex: 1;
+  height: 60px;
+  background: #8A9097;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: not-allowed;
+  transition: background 0.2s ease;
+}
+
+.btn-next:not([disabled]) {
+  background: #172230;
+  cursor: pointer;
+}
+
+.btn-next:not([disabled]):hover {
+  background: #243447;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 720px) {
+  .question-wrap,
+  .bottom-bar__inner {
+    width: 100%;
+  }
+
+  .question-title {
+    font-size: 28px;
+  }
+
+  .question-sub {
+    font-size: 18px;
+  }
+}

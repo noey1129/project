@@ -1,0 +1,384 @@
+/* ================================================================
+   SENDIT – LEASE PREVIEW CSS
+   ================================================================ */
+
+/* ── 페이지 배경 ── */
+body.page-preview {
+  background: #F2F3F6;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 메인 영역 (뷰포트 고정) ── */
+.preview-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 40px 100px;
+  padding-bottom: 120px; /* bottom-bar 높이 확보 */
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+/* ── 페이지 헤더 ── */
+.preview-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.preview-title {
+  font-size: 40px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 44px;
+  text-align: center;
+}
+
+.preview-sub {
+  font-size: 22px;
+  font-weight: 400;
+  color: #47494C;
+  text-align: center;
+}
+
+/* ── 에디터 카드 ── */
+.preview-card {
+  flex: 1;
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── 툴바 ── */
+.doc-toolbar {
+  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── 탭 스위처 (가운데 정렬) ── */
+.doc-tabs {
+  grid-column: 2;
+  display: flex;
+  background: #F2F3F6;
+  border-radius: 12px;
+  padding: 6px;
+  gap: 0;
+  width: 600px;
+  height: 50px;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+
+.doc-tab {
+  flex: 1;
+  padding: 0 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #77787A;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  transition: background 0.15s, box-shadow 0.15s, color 0.15s, flex 0.2s;
+  white-space: nowrap;
+}
+
+.doc-tab.active {
+  flex: 1.5;
+  background: white;
+  color: #1C1E21;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.10);
+}
+
+/* ── 액션 버튼 그룹 (오른쪽 끝) ── */
+.doc-actions {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.doc-action-btn {
+  height: 50px;
+  padding: 0 15px;
+  background: white;
+  border: 1px solid #D7DBDF;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1C1E21;
+  cursor: pointer;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.doc-action-btn:hover {
+  background: #F8F9FA;
+  border-color: #B0B5BC;
+}
+
+.doc-action-btn--icon {
+  width: 50px;
+  padding: 0;
+  justify-content: center;
+}
+
+.doc-action-btn--save {
+  background: #172230;
+  color: white;
+  border: none;
+}
+
+.doc-action-btn--save:hover {
+  background: #243447;
+  border: none;
+}
+
+.doc-action-btn--save:disabled {
+  background: #8A9097;
+  border: none;
+  cursor: not-allowed;
+}
+
+/* ── 문서 뷰어 (회색 스크롤 영역) ── */
+.doc-viewer {
+  flex: 1;
+  background: #EFEFEF;
+  border-radius: 7px;
+  border: 1px solid #D7DBDF;
+  overflow: auto;
+  min-height: 0;
+}
+
+/* ── 흰색 문서 용지 ── */
+.doc-paper {
+  width: 749px;
+  background: white;
+  border-radius: 5px;
+  padding: 35px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 29px;
+}
+
+/* ── 내용증명 문서 제목 ── */
+.doc-heading {
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 600;
+  color: #1C1E21;
+  line-height: 44px;
+}
+
+/* ── 발신인/수신인 테이블 ── */
+.doc-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.col-role     { width: 101px; }
+.col-sublabel { width: 100px; }
+.col-content  { }
+
+/* ── 역할 레이블 셀 (발신인 / 수신인) ── */
+.doc-role-label {
+  background: #F9F9F9;
+  border: 1px solid #D4D4D4;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px 8px;
+  font-size: 14px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.doc-role-sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Nanum Myeongjo', serif;
+  color: #1C1E21;
+  margin-top: 4px;
+}
+
+/* ── 세부 레이블 (성명 / 전화번호 / 주소) ── */
+.doc-sublabel {
+  background: #F9F9F9;
+  border: 1px solid #D4D4D4;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 14px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 600;
+  color: #1C1E21;
+  vertical-align: middle;
+}
+
+/* ── 입력 필드 셀 ── */
+.doc-field-cell {
+  background: white;
+  border: 1px solid #D4D4D4;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+/* ── 주소 입력 래퍼 ── */
+.doc-addr-wrap {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ── 내용 헤더 ── */
+.doc-content-label {
+  background: #F9F9F9;
+  border: 1px solid #D4D4D4;
+  text-align: center;
+  padding: 10px;
+  height: 40px;
+  font-size: 14px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+/* ── 내용 본문 셀 ── */
+.doc-content-body {
+  background: white;
+  border: 1px solid #D4D4D4;
+  padding: 10px;
+}
+
+/* ── 문서 내 인풋 ── */
+.doc-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #D7DBDF;
+  font-size: 13px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 400;
+  color: #1C1E21;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.doc-input::placeholder {
+  color: #8C8C8C;
+}
+
+.doc-input:focus {
+  border-color: #172230;
+}
+
+.doc-input--addr {
+  flex: 0 0 58%;
+  cursor: pointer;
+}
+
+.doc-input--detail {
+  flex: 1;
+  min-width: 0;
+}
+
+
+/* ── 내용 텍스트에리어 ── */
+.doc-textarea {
+  width: 100%;
+  padding: 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #D7DBDF;
+  font-size: 14px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-weight: 400;
+  color: #1C1E21;
+  line-height: 22px;
+  outline: none;
+  resize: none;
+  min-height: 400px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.doc-textarea:focus {
+  border-color: #172230;
+}
+
+/* ── view-mode: 수정완료 후 읽기 전용 스타일 ── */
+.doc-paper.view-mode .doc-input {
+  border: none;
+  background: transparent;
+  padding: 0;
+  pointer-events: none;
+  border-radius: 0;
+}
+
+.doc-paper.view-mode .doc-input::placeholder {
+  color: transparent;
+}
+
+.doc-paper.view-mode .doc-addr-wrap {
+  gap: 4px;
+}
+
+.doc-paper.view-mode .doc-field-cell {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.doc-paper.view-mode .doc-textarea {
+  border: none;
+  background: transparent;
+  padding: 0;
+  pointer-events: none;
+  resize: none;
+}
+
+/* ── bottom-bar 오버라이드: 프리뷰 페이지 ── */
+body.page-preview .bottom-bar {
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ── 반응형 ── */
+@media (max-width: 1100px) {
+  .preview-main {
+    padding: 20px 30px 120px;
+  }
+  .doc-paper {
+    width: 100%;
+    margin: 30px auto;
+  }
+  .doc-tabs {
+    width: auto;
+    flex: 1;
+  }
+}
