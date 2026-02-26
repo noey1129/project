@@ -366,6 +366,76 @@ body.page-question {
   color: #5A5F63;
 }
 
+/* ── 폼 입력 레이아웃 (대여금·층간소음·계약 등) ── */
+.answer-list--form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.answer-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.answer-form-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #47494C;
+}
+
+.answer-form-input {
+  width: 100%;
+  height: 54px;
+  padding: 0 16px;
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #1C1E21;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.answer-form-input::placeholder { color: #AFAFAF; }
+.answer-form-input:focus { border-color: #172230; }
+
+.answer-form-textarea {
+  width: 100%;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #1C1E21;
+  line-height: 1.6;
+  outline: none;
+  resize: vertical;
+  min-height: 160px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.answer-form-textarea::placeholder { color: #AFAFAF; }
+.answer-form-textarea:focus { border-color: #172230; }
+
+/* ── 다중 선택 카드 ── */
+.answer-list--multi {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.answer-card--multi.selected,
+.answer-card--exclusive.selected {
+  border: 2px solid #172230;
+  background: #FFFAF5;
+}
+
 /* ── 반응형 ── */
 @media (max-width: 800px) {
   .question-wrap,

@@ -15,19 +15,31 @@ document.getElementById('btnPrev').addEventListener('click', function () {
 (function initCardSelect() {
   const cards = document.querySelectorAll('.sit-select-card');
 
+  const routeMap = {
+    '임대차':    'lease-q1.html',
+    '대여금':    'loan-q1.html',
+    '계약관련':  'contract-q1.html',
+    '층간소음':  'noise-q1.html',
+    '회원권환불': 'membership-q1.html',
+    '직접작성':  'custom-q1.html',
+  };
+
+  const typeKeyMap = {
+    '임대차':    'rent',
+    '대여금':    'loan',
+    '계약관련':  'contract',
+    '층간소음':  'noise',
+    '회원권환불': 'membership',
+    '직접작성':  'custom',
+  };
+
   cards.forEach(function (card) {
     card.addEventListener('click', function () {
-      // 기존 선택 해제
       cards.forEach(function (c) { c.classList.remove('selected'); });
-      // 클릭 카드 선택
       card.classList.add('selected');
 
       const type = card.dataset.type;
-
-      // 유형별 다음 페이지 이동
-      const routeMap = {
-        '임대차': 'lease-q1.html',
-      };
+      sessionStorage.setItem('wizard_type', typeKeyMap[type] || type);
 
       const next = routeMap[type];
       if (next) {

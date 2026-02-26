@@ -1,0 +1,351 @@
+/* ================================================================
+   SENDIT – WIZARD CSS
+   ================================================================ */
+
+/* ── 페이지 배경 ── */
+body.page-wizard {
+  background: #F2F3F6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 메인 콘텐츠 영역 ── */
+.wizard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px 140px;
+  gap: 32px;
+}
+
+/* ── 제목 영역 ── */
+.wizard-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.wizard-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 1.3;
+}
+
+.wizard-sub {
+  font-size: 17px;
+  font-weight: 400;
+  color: #696B6D;
+}
+
+/* ── 컨텐츠 래퍼 ── */
+.wizard-wrap {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── 방법 선택 카드 ── */
+.method-card {
+  background: #fff;
+  border: 2px solid #D7DBDF;
+  border-radius: 14px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.method-card:hover {
+  border-color: #B0B5BC;
+  box-shadow: 0 4px 16px rgba(0,0,0,.07);
+}
+
+.method-card.selected {
+  border-color: #172230;
+  background: #FFFAF5;
+}
+
+.method-card__badge {
+  background: #F2F3F6;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #696B6D;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.method-card.selected .method-card__badge {
+  background: #FE9D3C;
+  color: #fff;
+}
+
+.method-card__info {
+  flex: 1;
+}
+
+.method-card__name {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1C1E21;
+  margin-bottom: 6px;
+}
+
+.method-card__desc {
+  display: block;
+  font-size: 14px;
+  color: #696B6D;
+  line-height: 1.5;
+}
+
+.method-card__price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #172230;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── 정보 박스 ── */
+.info-box {
+  background: #fff;
+  border: 1px solid #E7E9EB;
+  border-radius: 12px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info-box__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1C1E21;
+  margin-bottom: 4px;
+}
+
+/* ── 폼 그룹 ── */
+.wizard-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wizard-form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #47494C;
+}
+
+.wizard-form-label span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8C8C8C;
+  margin-left: 6px;
+}
+
+.wizard-input {
+  width: 100%;
+  height: 50px;
+  padding: 0 16px;
+  background: #F8F9FA;
+  border: 1px solid #D7DBDF;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #1C1E21;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+.wizard-input::placeholder {
+  color: #AFAFAF;
+}
+
+.wizard-input:focus {
+  border-color: #172230;
+  background: #fff;
+}
+
+/* ── 요약 카드 ── */
+.summary-card {
+  background: #fff;
+  border: 1px solid #E7E9EB;
+  border-radius: 14px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  color: #47494C;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F2F3F6;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.summary-row__label {
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.summary-row__value {
+  color: #47494C;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 2px solid #172230;
+}
+
+.summary-total__label {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.summary-total__price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #172230;
+}
+
+/* ── 완료 화면 ── */
+.complete-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.complete-screen.visible {
+  display: flex;
+}
+
+.complete-icon {
+  width: 72px;
+  height: 72px;
+  background: #172230;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.complete-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.complete-desc {
+  font-size: 16px;
+  color: #696B6D;
+  line-height: 1.6;
+}
+
+.complete-list {
+  background: #F8F9FA;
+  border-radius: 12px;
+  padding: 20px 28px;
+  text-align: left;
+  width: 100%;
+  max-width: 480px;
+}
+
+.complete-list li {
+  font-size: 15px;
+  color: #47494C;
+  padding: 6px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.complete-list li::before {
+  content: '✓';
+  color: #FE9D3C;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── 하단 바 (wizard 전용) ── */
+body.page-wizard .bottom-bar {
+  box-shadow: 0 -4px 20px rgba(0,0,0,.08);
+}
+
+body.page-wizard .bottom-bar__inner {
+  max-width: 720px;
+  width: 100%;
+  display: flex;
+  gap: 12px;
+}
+
+body.page-wizard .btn-prev {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+body.page-wizard .btn-next {
+  flex: 1;
+}
+
+/* ── 결제 버튼 ── */
+.btn-pay {
+  width: 100%;
+  height: 60px;
+  background: #FE9D3C;
+  border: none;
+  border-radius: 10px;
+  color: #1C1E21;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-pay:hover {
+  background: #F08C2A;
+}
+
+.btn-pay:disabled {
+  background: #D7DBDF;
+  color: #8C8C8C;
+  cursor: not-allowed;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 760px) {
+  .wizard-main { padding: 40px 16px 140px; }
+  .wizard-title { font-size: 26px; }
+  .method-card { padding: 20px; }
+  .method-card__price { font-size: 18px; }
+}

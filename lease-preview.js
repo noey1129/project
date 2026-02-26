@@ -346,8 +346,7 @@ document.getElementById('btnPrev').addEventListener('click', function () {
 
 /* ── 발송 버튼 ── */
 document.getElementById('btnSend').addEventListener('click', function () {
-  // TODO: 발송 처리
-  alert('발송 기능은 준비 중입니다.');
+  window.location.href = 'wizard/send-method.html';
 });
 
 /* ── NAV 스크롤 그림자 ── */
