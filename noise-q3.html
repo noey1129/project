@@ -67,10 +67,13 @@
           </div>
         </div>
 
-        <div class="conditional-section" id="dateSection" style="display:none; margin-top:16px;">
-          <div class="answer-form-group">
-            <label class="answer-form-label">가장 최근 항의 날짜</label>
-            <input type="date" class="answer-form-input" id="requestDate" />
+        <!-- 조건부: '있어요' 선택 시 -->
+        <div class="conditional-section" id="dateSection">
+          <span class="input-group-label">가장 최근 항의 날짜</span>
+          <div class="input-row">
+            <input type="text" id="reqYear"  class="input-field input-field--main" placeholder="년도" inputmode="numeric" maxlength="4" />
+            <input type="text" id="reqMonth" class="input-field input-field--main" placeholder="월"  inputmode="numeric" maxlength="2" />
+            <input type="text" id="reqDay"   class="input-field input-field--main" placeholder="일"  inputmode="numeric" maxlength="2" />
           </div>
         </div>
 

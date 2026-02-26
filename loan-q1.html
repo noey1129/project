@@ -52,14 +52,28 @@
           </div>
         </div>
 
-        <div class="answer-list answer-list--form">
-          <div class="answer-form-group">
-            <label class="answer-form-label">대여 금액 (원)</label>
-            <input type="number" class="answer-form-input" id="loanAmount" placeholder="예: 5000000" min="0" />
+        <!-- 금액 입력 -->
+        <div class="input-date-group">
+          <span class="input-group-label">대여 금액</span>
+          <div class="input-amount-wrap">
+            <input
+              type="text"
+              id="loanAmount"
+              class="input-field input-field--amount"
+              placeholder="금액을 입력해주세요."
+              inputmode="numeric"
+            />
+            <span class="input-amount-suffix">원</span>
           </div>
-          <div class="answer-form-group">
-            <label class="answer-form-label">대여 날짜</label>
-            <input type="date" class="answer-form-input" id="loanDate" />
+        </div>
+
+        <!-- 날짜 입력 (년 / 월 / 일) -->
+        <div class="input-date-group">
+          <span class="input-group-label">대여 날짜</span>
+          <div class="input-row">
+            <input type="text" id="loanYear"  class="input-field input-field--main" placeholder="년도" inputmode="numeric" maxlength="4" />
+            <input type="text" id="loanMonth" class="input-field input-field--main" placeholder="월"  inputmode="numeric" maxlength="2" />
+            <input type="text" id="loanDay"   class="input-field input-field--main" placeholder="일"  inputmode="numeric" maxlength="2" />
           </div>
         </div>
 

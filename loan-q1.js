@@ -3,42 +3,62 @@
    ================================================================ */
 
 const STORE_AMOUNT = 'loan_q1_amount';
-const STORE_DATE   = 'loan_q1_date';
+const STORE_YEAR   = 'loan_q1_year';
+const STORE_MONTH  = 'loan_q1_month';
+const STORE_DAY    = 'loan_q1_day';
 
-const amountInput = document.getElementById('loanAmount');
-const dateInput   = document.getElementById('loanDate');
-const btnNext     = document.getElementById('btnNext');
-const btnPrev     = document.getElementById('btnPrev');
+const loanAmount = document.getElementById('loanAmount');
+const loanYear   = document.getElementById('loanYear');
+const loanMonth  = document.getElementById('loanMonth');
+const loanDay    = document.getElementById('loanDay');
+const btnNext    = document.getElementById('btnNext');
+const btnPrev    = document.getElementById('btnPrev');
 
 function checkReady() {
-  btnNext.disabled = !(amountInput.value.trim() && dateInput.value);
+  const raw = loanAmount.value.replace(/[^0-9]/g, '');
+  btnNext.disabled = !(raw && loanYear.value.trim() && loanMonth.value.trim() && loanDay.value.trim());
 }
 
 /* ── 페이지 로드 시 복원 ── */
 (function restoreState() {
-  const savedAmount = sessionStorage.getItem(STORE_AMOUNT);
-  const savedDate   = sessionStorage.getItem(STORE_DATE);
-  if (savedAmount) amountInput.value = savedAmount;
-  if (savedDate)   dateInput.value   = savedDate;
+  const savedAmt = sessionStorage.getItem(STORE_AMOUNT);
+  const savedY   = sessionStorage.getItem(STORE_YEAR);
+  const savedM   = sessionStorage.getItem(STORE_MONTH);
+  const savedD   = sessionStorage.getItem(STORE_DAY);
+  if (savedAmt) loanAmount.value = Number(savedAmt).toLocaleString('ko-KR');
+  if (savedY)   loanYear.value   = savedY;
+  if (savedM)   loanMonth.value  = savedM;
+  if (savedD)   loanDay.value    = savedD;
   checkReady();
 })();
 
-amountInput.addEventListener('input', checkReady);
-dateInput.addEventListener('change', checkReady);
+/* ── 금액: 숫자만 + 천단위 콤마 ── */
+loanAmount.addEventListener('input', function () {
+  const raw = this.value.replace(/[^0-9]/g, '');
+  this.value = raw ? Number(raw).toLocaleString('ko-KR') : '';
+  checkReady();
+});
+
+/* ── 날짜: 숫자만 ── */
+[loanYear, loanMonth, loanDay].forEach(function (el) {
+  el.addEventListener('input', function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+    checkReady();
+  });
+});
 
 /* ── 이전 버튼 ── */
 btnPrev.addEventListener('click', function () {
-  if (history.length > 1) {
-    history.back();
-  } else {
-    window.location.href = 'select-situation.html';
-  }
+  if (history.length > 1) { history.back(); } else { window.location.href = 'select-situation.html'; }
 });
 
 /* ── 다음 버튼 ── */
 btnNext.addEventListener('click', function () {
-  sessionStorage.setItem(STORE_AMOUNT, amountInput.value.trim());
-  sessionStorage.setItem(STORE_DATE, dateInput.value);
+  const raw = loanAmount.value.replace(/[^0-9]/g, '');
+  sessionStorage.setItem(STORE_AMOUNT, raw);
+  sessionStorage.setItem(STORE_YEAR,  loanYear.value.trim());
+  sessionStorage.setItem(STORE_MONTH, loanMonth.value.trim());
+  sessionStorage.setItem(STORE_DAY,   loanDay.value.trim());
   window.location.href = 'loan-q2.html';
 });
 

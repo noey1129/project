@@ -2,38 +2,44 @@
    SENDIT – NOISE Q3 JS
    ================================================================ */
 
-const STORE_KEY  = 'noise_q3';
-const STORE_DATE = 'noise_q3_date';
+const STORE_KEY   = 'noise_q3';
+const STORE_YEAR  = 'noise_q3_year';
+const STORE_MONTH = 'noise_q3_month';
+const STORE_DAY   = 'noise_q3_day';
 
 const cards       = document.querySelectorAll('.answer-card');
 const btnNext     = document.getElementById('btnNext');
 const btnPrev     = document.getElementById('btnPrev');
 const dateSection = document.getElementById('dateSection');
-const requestDate = document.getElementById('requestDate');
+const reqYear     = document.getElementById('reqYear');
+const reqMonth    = document.getElementById('reqMonth');
+const reqDay      = document.getElementById('reqDay');
 
 let selectedValue = null;
 
 function checkReady() {
   if (!selectedValue) { btnNext.disabled = true; return; }
   if (selectedValue === 'yes') {
-    btnNext.disabled = !requestDate.value;
+    btnNext.disabled = !(reqYear.value.trim() && reqMonth.value.trim() && reqDay.value.trim());
   } else {
     btnNext.disabled = false;
   }
 }
 
-/* ── 페이지 로드 시 복원 ── */
+/* ── 복원 ── */
 (function restoreState() {
-  const saved     = sessionStorage.getItem(STORE_KEY);
-  const savedDate = sessionStorage.getItem(STORE_DATE);
+  const saved = sessionStorage.getItem(STORE_KEY);
+  const savedY = sessionStorage.getItem(STORE_YEAR);
+  const savedM = sessionStorage.getItem(STORE_MONTH);
+  const savedD = sessionStorage.getItem(STORE_DAY);
   if (!saved) return;
   selectedValue = saved;
-  cards.forEach(function (card) {
-    if (card.dataset.value === saved) card.classList.add('selected');
-  });
+  cards.forEach(function (c) { if (c.dataset.value === saved) c.classList.add('selected'); });
   if (saved === 'yes') {
-    dateSection.style.display = 'block';
-    if (savedDate) requestDate.value = savedDate;
+    dateSection.style.display = 'flex';
+    if (savedY) reqYear.value  = savedY;
+    if (savedM) reqMonth.value = savedM;
+    if (savedD) reqDay.value   = savedD;
   }
   checkReady();
 })();
@@ -44,31 +50,35 @@ cards.forEach(function (card) {
     cards.forEach(function (c) { c.classList.remove('selected'); });
     card.classList.add('selected');
     selectedValue = card.dataset.value;
-    dateSection.style.display = selectedValue === 'yes' ? 'block' : 'none';
-    if (selectedValue === 'no') requestDate.value = '';
+    dateSection.style.display = selectedValue === 'yes' ? 'flex' : 'none';
+    if (selectedValue === 'no') { reqYear.value = ''; reqMonth.value = ''; reqDay.value = ''; }
     checkReady();
   });
 });
 
-requestDate.addEventListener('change', checkReady);
-
-/* ── 이전 버튼 ── */
-btnPrev.addEventListener('click', function () {
-  window.location.href = 'noise-q2.html';
+[reqYear, reqMonth, reqDay].forEach(function (el) {
+  el.addEventListener('input', function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+    checkReady();
+  });
 });
 
-/* ── 다음 버튼 ── */
+btnPrev.addEventListener('click', function () { window.location.href = 'noise-q2.html'; });
+
 btnNext.addEventListener('click', function () {
   sessionStorage.setItem(STORE_KEY, selectedValue);
   if (selectedValue === 'yes') {
-    sessionStorage.setItem(STORE_DATE, requestDate.value);
+    sessionStorage.setItem(STORE_YEAR,  reqYear.value.trim());
+    sessionStorage.setItem(STORE_MONTH, reqMonth.value.trim());
+    sessionStorage.setItem(STORE_DAY,   reqDay.value.trim());
   } else {
-    sessionStorage.removeItem(STORE_DATE);
+    sessionStorage.removeItem(STORE_YEAR);
+    sessionStorage.removeItem(STORE_MONTH);
+    sessionStorage.removeItem(STORE_DAY);
   }
   window.location.href = 'noise-q4.html';
 });
 
-/* ── NAV 스크롤 그림자 ── */
 (function initNavShadow() {
   const nav = document.querySelector('.nav');
   if (!nav) return;

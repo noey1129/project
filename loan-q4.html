@@ -67,10 +67,18 @@
           </div>
         </div>
 
-        <div class="conditional-section" id="amountSection" style="display:none; margin-top:16px;">
-          <div class="answer-form-group">
-            <label class="answer-form-label">상환받은 금액 (원)</label>
-            <input type="number" class="answer-form-input" id="repaidAmount" placeholder="예: 1000000" min="0" />
+        <!-- 조건부: '있어요' 선택 시 -->
+        <div class="conditional-section" id="amountSection">
+          <span class="input-group-label">상환받은 금액</span>
+          <div class="input-amount-wrap">
+            <input
+              type="text"
+              id="repaidAmount"
+              class="input-field input-field--amount"
+              placeholder="금액을 입력해주세요."
+              inputmode="numeric"
+            />
+            <span class="input-amount-suffix">원</span>
           </div>
         </div>
 

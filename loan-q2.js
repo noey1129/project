@@ -2,38 +2,44 @@
    SENDIT – LOAN Q2 JS
    ================================================================ */
 
-const STORE_KEY  = 'loan_q2';
-const STORE_DATE = 'loan_q2_date';
+const STORE_KEY   = 'loan_q2';
+const STORE_YEAR  = 'loan_q2_year';
+const STORE_MONTH = 'loan_q2_month';
+const STORE_DAY   = 'loan_q2_day';
 
-const cards      = document.querySelectorAll('.answer-card');
-const btnNext    = document.getElementById('btnNext');
-const btnPrev    = document.getElementById('btnPrev');
+const cards       = document.querySelectorAll('.answer-card');
+const btnNext     = document.getElementById('btnNext');
+const btnPrev     = document.getElementById('btnPrev');
 const dateSection = document.getElementById('dateSection');
-const repayDate   = document.getElementById('repayDate');
+const repayYear   = document.getElementById('repayYear');
+const repayMonth  = document.getElementById('repayMonth');
+const repayDay    = document.getElementById('repayDay');
 
 let selectedValue = null;
 
 function checkReady() {
   if (!selectedValue) { btnNext.disabled = true; return; }
   if (selectedValue === 'yes') {
-    btnNext.disabled = !repayDate.value;
+    btnNext.disabled = !(repayYear.value.trim() && repayMonth.value.trim() && repayDay.value.trim());
   } else {
     btnNext.disabled = false;
   }
 }
 
-/* ── 페이지 로드 시 복원 ── */
+/* ── 복원 ── */
 (function restoreState() {
-  const saved     = sessionStorage.getItem(STORE_KEY);
-  const savedDate = sessionStorage.getItem(STORE_DATE);
+  const saved = sessionStorage.getItem(STORE_KEY);
+  const savedY = sessionStorage.getItem(STORE_YEAR);
+  const savedM = sessionStorage.getItem(STORE_MONTH);
+  const savedD = sessionStorage.getItem(STORE_DAY);
   if (!saved) return;
   selectedValue = saved;
-  cards.forEach(function (card) {
-    if (card.dataset.value === saved) card.classList.add('selected');
-  });
+  cards.forEach(function (c) { if (c.dataset.value === saved) c.classList.add('selected'); });
   if (saved === 'yes') {
-    dateSection.style.display = 'block';
-    if (savedDate) repayDate.value = savedDate;
+    dateSection.style.display = 'flex';
+    if (savedY) repayYear.value  = savedY;
+    if (savedM) repayMonth.value = savedM;
+    if (savedD) repayDay.value   = savedD;
   }
   checkReady();
 })();
@@ -44,31 +50,35 @@ cards.forEach(function (card) {
     cards.forEach(function (c) { c.classList.remove('selected'); });
     card.classList.add('selected');
     selectedValue = card.dataset.value;
-    dateSection.style.display = selectedValue === 'yes' ? 'block' : 'none';
-    if (selectedValue === 'no') repayDate.value = '';
+    dateSection.style.display = selectedValue === 'yes' ? 'flex' : 'none';
+    if (selectedValue === 'no') { repayYear.value = ''; repayMonth.value = ''; repayDay.value = ''; }
     checkReady();
   });
 });
 
-repayDate.addEventListener('change', checkReady);
-
-/* ── 이전 버튼 ── */
-btnPrev.addEventListener('click', function () {
-  window.location.href = 'loan-q1.html';
+[repayYear, repayMonth, repayDay].forEach(function (el) {
+  el.addEventListener('input', function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+    checkReady();
+  });
 });
 
-/* ── 다음 버튼 ── */
+btnPrev.addEventListener('click', function () { window.location.href = 'loan-q1.html'; });
+
 btnNext.addEventListener('click', function () {
   sessionStorage.setItem(STORE_KEY, selectedValue);
   if (selectedValue === 'yes') {
-    sessionStorage.setItem(STORE_DATE, repayDate.value);
+    sessionStorage.setItem(STORE_YEAR,  repayYear.value.trim());
+    sessionStorage.setItem(STORE_MONTH, repayMonth.value.trim());
+    sessionStorage.setItem(STORE_DAY,   repayDay.value.trim());
   } else {
-    sessionStorage.removeItem(STORE_DATE);
+    sessionStorage.removeItem(STORE_YEAR);
+    sessionStorage.removeItem(STORE_MONTH);
+    sessionStorage.removeItem(STORE_DAY);
   }
   window.location.href = 'loan-q3.html';
 });
 
-/* ── NAV 스크롤 그림자 ── */
 (function initNavShadow() {
   const nav = document.querySelector('.nav');
   if (!nav) return;

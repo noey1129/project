@@ -17,9 +17,15 @@ function generateContent(type) {
 
     case 'loan': {
       var amount  = sessionStorage.getItem('loan_q1_amount') || '';
-      var ldate   = sessionStorage.getItem('loan_q1_date')   || '';
+      var ldY = sessionStorage.getItem('loan_q1_year') || '';
+      var ldM = sessionStorage.getItem('loan_q1_month') || '';
+      var ldD = sessionStorage.getItem('loan_q1_day') || '';
+      var ldate = (ldY && ldM && ldD) ? ldY + '년 ' + ldM + '월 ' + ldD + '일' : '';
       var hasDue  = sessionStorage.getItem('loan_q2') === 'yes';
-      var dueDate = sessionStorage.getItem('loan_q2_date')   || '';
+      var ddY = sessionStorage.getItem('loan_q2_year') || '';
+      var ddM = sessionStorage.getItem('loan_q2_month') || '';
+      var ddD = sessionStorage.getItem('loan_q2_day') || '';
+      var dueDate = (ddY && ddM && ddD) ? ddY + '년 ' + ddM + '월 ' + ddD + '일' : '';
       var evidence;
       try { evidence = JSON.parse(sessionStorage.getItem('loan_q3') || '[]'); } catch(e) { evidence = []; }
       var hasRepaid  = sessionStorage.getItem('loan_q4') === 'yes';
@@ -54,7 +60,10 @@ function generateContent(type) {
       var noiseType = sessionStorage.getItem('noise_q1') || '소음';
       var desc      = sessionStorage.getItem('noise_q2') || '';
       var hasPrior  = sessionStorage.getItem('noise_q3') === 'yes';
-      var priorDate = sessionStorage.getItem('noise_q3_date') || '';
+      var pdY = sessionStorage.getItem('noise_q3_year') || '';
+      var pdM = sessionStorage.getItem('noise_q3_month') || '';
+      var pdD = sessionStorage.getItem('noise_q3_day') || '';
+      var priorDate = (pdY && pdM && pdD) ? pdY + '년 ' + pdM + '월 ' + pdD + '일' : '';
       var reported  = sessionStorage.getItem('noise_q4') === 'yes';
       var deadline  = sessionStorage.getItem('noise_q5') || '14';
 
@@ -74,7 +83,10 @@ function generateContent(type) {
 
     case 'contract': {
       var situation = sessionStorage.getItem('contract_q1') || '';
-      var eventDate = sessionStorage.getItem('contract_q2') || '';
+      var cY = sessionStorage.getItem('contract_q2_year') || '';
+      var cM = sessionStorage.getItem('contract_q2_month') || '';
+      var cD = sessionStorage.getItem('contract_q2_day') || '';
+      var eventDate = (cY && cM && cD) ? cY + '년 ' + cM + '월 ' + cD + '일' : '';
       var demand    = sessionStorage.getItem('contract_q3') || '';
       var deadline  = sessionStorage.getItem('contract_q4') || '14';
 
@@ -89,7 +101,10 @@ function generateContent(type) {
 
     case 'membership': {
       var situation = sessionStorage.getItem('membership_q1') || '';
-      var eventDate = sessionStorage.getItem('membership_q2') || '';
+      var mY = sessionStorage.getItem('membership_q2_year') || '';
+      var mM = sessionStorage.getItem('membership_q2_month') || '';
+      var mD = sessionStorage.getItem('membership_q2_day') || '';
+      var eventDate = (mY && mM && mD) ? mY + '년 ' + mM + '월 ' + mD + '일' : '';
       var demand    = sessionStorage.getItem('membership_q3') || '';
       var deadline  = sessionStorage.getItem('membership_q4') || '14';
 
@@ -105,7 +120,10 @@ function generateContent(type) {
     case 'custom':
     default: {
       var situation = sessionStorage.getItem('custom_q1') || '';
-      var eventDate = sessionStorage.getItem('custom_q2') || '';
+      var cuY = sessionStorage.getItem('custom_q2_year') || '';
+      var cuM = sessionStorage.getItem('custom_q2_month') || '';
+      var cuD = sessionStorage.getItem('custom_q2_day') || '';
+      var eventDate = (cuY && cuM && cuD) ? cuY + '년 ' + cuM + '월 ' + cuD + '일' : '';
       var demand    = sessionStorage.getItem('custom_q3') || '';
       var deadline  = sessionStorage.getItem('custom_q4') || '14';
 
