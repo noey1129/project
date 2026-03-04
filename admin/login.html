@@ -53,8 +53,15 @@
     idInput.addEventListener('input', checkReady);
     pwInput.addEventListener('input', checkReady);
 
+    var ADMIN_ID = 'admin';
+    var ADMIN_PW = 'admin1234';
+
     btn.addEventListener('click', function () {
-      window.location.href = 'dashboard.html';
+      if (idInput.value.trim() === ADMIN_ID && pwInput.value === ADMIN_PW) {
+        window.location.href = 'dashboard.html';
+      } else {
+        alert('관리자 ID 또는 비밀번호가 올바르지 않습니다.');
+      }
     });
   </script>
 

@@ -14,9 +14,20 @@ function checkReady() {
   el.addEventListener('input', checkReady);
 });
 
+/* ── 더미 계정 ── */
+var DUMMY_USERS = [
+  { email: 'test@sendit.kr', password: '1234' },
+];
+
 document.getElementById('loginForm').addEventListener('submit', function () {
-  /* 실제 API 연동 전 더미 처리 */
-  alert('로그인 기능은 준비 중입니다.');
+  var email = emailInput.value.trim();
+  var pw    = pwInput.value;
+  var match = DUMMY_USERS.find(function (u) { return u.email === email && u.password === pw; });
+  if (match) {
+    window.location.href = 'mypage.html';
+  } else {
+    alert('이메일 또는 비밀번호가 올바르지 않습니다.');
+  }
 });
 
 ['btnKakao', 'btnNaver', 'btnGoogle'].forEach(function (id) {
