@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>발송 상세 – Sendit</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mypage.css" />
+</head>
+<body class="page-mypage">
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="index.html" class="nav__logo">Sendit</a>
+        <nav class="nav__links">
+          <a href="index.html#hero"    class="nav__link">이용 상황</a>
+          <a href="index.html#how"     class="nav__link">이용 방법</a>
+          <a href="index.html#pricing" class="nav__link">가격</a>
+          <a href="index.html#faq"     class="nav__link">자주 묻는 질문</a>
+          <a href="index.html#trust"   class="nav__link">인증 및 문서</a>
+          <a href="index.html#law"     class="nav__link">법 조항</a>
+        </nav>
+      </div>
+      <div class="nav__right">
+        <a href="contact.html" class="nav__contact">서비스문의</a>
+        <button class="btn btn--dark" onclick="window.location.href='login.html'">로그인</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mypage-layout">
+
+    <!-- ── 사이드바 ── -->
+    <aside class="mypage-sidebar">
+      <div class="mypage-sidebar__profile">
+        <span class="mypage-sidebar__name">홍길동</span>
+        <span class="mypage-sidebar__email">user@example.com</span>
+      </div>
+      <nav class="mypage-sidebar__nav">
+        <a href="mypage.html" class="mypage-nav-item active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          </svg>
+          발송 내역
+        </a>
+        <a href="mypage-profile.html" class="mypage-nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          내 정보
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ── 메인 콘텐츠 ── -->
+    <main class="mypage-content">
+
+      <a href="mypage.html" class="mypage-back">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        발송 내역으로
+      </a>
+
+      <h1 class="mypage-section-title">발송 상세</h1>
+
+      <!-- 발송 정보 그리드 -->
+      <div class="mypage-detail-grid">
+
+        <div class="mypage-info-card">
+          <div class="mypage-info-card__title">발송 정보</div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">발송일</span>
+            <span class="mypage-info-row__value">2026년 2월 28일</span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">문서 유형</span>
+            <span class="mypage-info-row__value">임대차 내용증명</span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">발송 방식</span>
+            <span class="mypage-info-row__value">
+              <span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span>
+            </span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">상태</span>
+            <span class="mypage-info-row__value">
+              <span class="status-badge status-badge--read">열람완료</span>
+            </span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">열람일</span>
+            <span class="mypage-info-row__value">2026년 3월 1일</span>
+          </div>
+        </div>
+
+        <div class="mypage-info-card">
+          <div class="mypage-info-card__title">수신인 정보</div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">이름</span>
+            <span class="mypage-info-row__value">김철수</span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">전화번호</span>
+            <span class="mypage-info-row__value">010-1234-5678</span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">생년월일</span>
+            <span class="mypage-info-row__value">1990.01.01</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 증명서 다운로드 -->
+      <div>
+        <h2 class="mypage-section-title" style="font-size:17px; margin-bottom:12px;">증명서 다운로드</h2>
+        <div class="cert-list">
+
+          <div class="cert-item">
+            <div class="cert-item__info">
+              <span class="cert-item__name">감사추적증명서</span>
+              <span class="cert-item__validity">만료 없음</span>
+            </div>
+            <button class="cert-download-btn">다운로드</button>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-item__info">
+              <span class="cert-item__name">전자문서증명서</span>
+              <span class="cert-item__validity">유효기간: 2026.08.28까지 (6개월)</span>
+            </div>
+            <button class="cert-download-btn">다운로드</button>
+          </div>
+
+          <div class="cert-item">
+            <div class="cert-item__info">
+              <span class="cert-item__name">유통증명서</span>
+              <span class="cert-item__validity cert-item__validity--expired">유효기간 만료 (2026.05.28)</span>
+            </div>
+            <button class="cert-download-btn" disabled>재발급 필요</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 재발송 -->
+      <div style="padding-top: 8px;">
+        <button class="mypage-empty__btn" onclick="window.location.href='select-situation.html'">이 문서로 재발송</button>
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

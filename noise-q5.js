@@ -39,7 +39,7 @@ btnNext.addEventListener('click', function () {
   const selected = document.querySelector('.answer-card.selected');
   if (!selected) return;
   sessionStorage.setItem(STORE_KEY, selected.dataset.value);
-  window.location.href = 'preview.html';
+  window.location.href = 'wizard/send-method.html';
 });
 
 /* ── NAV 스크롤 그림자 ── */

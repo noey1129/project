@@ -17,11 +17,11 @@ const btnPrev       = document.getElementById('btnPrev');
 /* ── 방식에 따라 UI 분기 ── */
 (function setupUI() {
   if (isCertified) {
-    methodDesc.textContent  = '본인인증 발송은 수신인의 이름과 생년월일이 필요합니다.';
-    nameHint.textContent    = '(본인인증 발송 필수)';
+    methodDesc.textContent  = '전자문서+공전소 발송은 수신인의 이름과 생년월일이 필요합니다.';
+    nameHint.textContent    = '(전자문서+공전소 필수)';
     birthGroup.style.display = 'flex';
   } else {
-    methodDesc.textContent  = '일반 발송은 전화번호만 입력하셔도 됩니다.';
+    methodDesc.textContent  = '알림톡+공전소 발송은 전화번호만 입력하셔도 됩니다.';
     nameHint.textContent    = '(미입력 시 "수신인"으로 발송)';
     birthGroup.style.display = 'none';
   }
@@ -45,7 +45,7 @@ function checkReady() {
   var phone = receiverPhone.value.trim();
   if (!phone) { btnNext.disabled = true; return; }
   if (isCertified) {
-    btnNext.disabled = !(receiverName.value.trim() && receiverBirth.value);
+    btnNext.disabled = !(receiverName.value.trim() && receiverBirth.value.replace(/\D/g,'').length === 8);
   } else {
     btnNext.disabled = false;
   }
@@ -67,7 +67,10 @@ receiverPhone.addEventListener('input', function () {
   checkReady();
 });
 receiverName.addEventListener('input', checkReady);
-receiverBirth.addEventListener('change', checkReady);
+receiverBirth.addEventListener('input', function () {
+  receiverBirth.value = receiverBirth.value.replace(/\D/g, '').slice(0, 8);
+  checkReady();
+});
 
 btnPrev.addEventListener('click', function () {
   window.location.href = 'send-method.html';

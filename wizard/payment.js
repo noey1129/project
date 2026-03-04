@@ -22,7 +22,7 @@ var typeLabel  = typeMap[wizardType] || wizardType;
 (function buildSummary() {
   var receiverPhone = sessionStorage.getItem('receiver_phone') || '-';
   var receiverName  = sessionStorage.getItem('receiver_name')  || '수신인';
-  var methodLabel   = isCertified ? '본인인증 발송' : '일반 발송';
+  var methodLabel   = isCertified ? '전자문서 + 공전소' : '알림톡 + 공전소';
 
   var rows = [
     { label: '문서 유형',    value: typeLabel + ' 내용증명' },
@@ -50,20 +50,21 @@ var typeLabel  = typeMap[wizardType] || wizardType;
 /* ── 완료 화면 구성 ── */
 function buildCompleteScreen() {
   var certifiedItems = [
-    '등기 우편 발송',
-    '전자문서 인증 완료',
-    '발송 확인증 이메일 발송',
-    '보관 기간 5년',
+    '감사추적증명서 발급',
+    '전자문서증명서 (유효기간 6개월)',
+    '유통증명서 (유효기간 3개월)',
+    '우체국 내용증명과 동일 법적 효력',
   ];
   var simpleItems = [
-    '등기 우편 발송',
-    '발송 확인증 이메일 발송',
-    '보관 기간 1년',
+    '감사추적증명서 발급',
+    '전자문서증명서 (유효기간 6개월)',
+    '카카오 알림톡으로 즉시 발송',
   ];
   var items = isCertified ? certifiedItems : simpleItems;
 
+  var methodLabel = isCertified ? '전자문서 + 공전소' : '알림톡 + 공전소';
   document.getElementById('completeDesc').textContent =
-    typeLabel + ' 내용증명이 접수되었습니다. 영업일 기준 1~2일 내에 발송됩니다.';
+    typeLabel + ' 내용증명 (' + methodLabel + ') 이 접수되었습니다.';
 
   var list = document.getElementById('completeList');
   list.innerHTML = items.map(function (item) {

@@ -26,8 +26,8 @@
         </nav>
       </div>
       <div class="nav__right">
-        <a href="#" class="nav__contact">서비스문의</a>
-        <button class="btn btn--dark">로그인</button>
+        <a href="../contact.html" class="nav__contact">서비스문의</a>
+        <button class="btn btn--dark" onclick="window.location.href='../login.html'">로그인</button>
       </div>
     </div>
   </header>
@@ -59,9 +59,9 @@
 
         <div class="wizard-form-group" id="birthGroup" style="display:none;">
           <label class="wizard-form-label">
-            생년월일 <span>(본인인증 발송 필수)</span>
+            생년월일 <span>(전자문서+공전소 필수)</span>
           </label>
-          <input type="date" class="wizard-input" id="receiverBirth" />
+          <input type="text" class="wizard-input" id="receiverBirth" placeholder="8자리 (예: 19900101)" maxlength="8" />
         </div>
 
       </div>

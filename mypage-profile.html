@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>내 정보 – Sendit</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mypage.css" />
+</head>
+<body class="page-mypage">
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="index.html" class="nav__logo">Sendit</a>
+        <nav class="nav__links">
+          <a href="index.html#hero"    class="nav__link">이용 상황</a>
+          <a href="index.html#how"     class="nav__link">이용 방법</a>
+          <a href="index.html#pricing" class="nav__link">가격</a>
+          <a href="index.html#faq"     class="nav__link">자주 묻는 질문</a>
+          <a href="index.html#trust"   class="nav__link">인증 및 문서</a>
+          <a href="index.html#law"     class="nav__link">법 조항</a>
+        </nav>
+      </div>
+      <div class="nav__right">
+        <a href="contact.html" class="nav__contact">서비스문의</a>
+        <button class="btn btn--dark" onclick="window.location.href='login.html'">로그인</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mypage-layout">
+
+    <!-- ── 사이드바 ── -->
+    <aside class="mypage-sidebar">
+      <div class="mypage-sidebar__profile">
+        <span class="mypage-sidebar__name">홍길동</span>
+        <span class="mypage-sidebar__email">user@example.com</span>
+      </div>
+      <nav class="mypage-sidebar__nav">
+        <a href="mypage.html" class="mypage-nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          </svg>
+          발송 내역
+        </a>
+        <a href="mypage-profile.html" class="mypage-nav-item active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          내 정보
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ── 메인 콘텐츠 ── -->
+    <main class="mypage-content">
+
+      <h1 class="mypage-section-title">내 정보 수정</h1>
+
+      <!-- 정보 수정 폼 -->
+      <form class="mypage-form" onsubmit="return false;" id="profileForm">
+
+        <div class="mypage-form-group">
+          <label class="mypage-form-label">이름</label>
+          <input type="text" class="mypage-form-input" id="profileName" value="홍길동" placeholder="이름" />
+        </div>
+
+        <div class="mypage-form-group">
+          <label class="mypage-form-label">이메일</label>
+          <input type="email" class="mypage-form-input" id="profileEmail" value="user@example.com" placeholder="이메일" />
+        </div>
+
+        <div class="mypage-form-group">
+          <label class="mypage-form-label">전화번호</label>
+          <input type="tel" class="mypage-form-input" id="profilePhone" value="010-1234-5678" placeholder="전화번호" maxlength="13" />
+        </div>
+
+        <div class="mypage-form-group">
+          <label class="mypage-form-label">현재 비밀번호</label>
+          <input type="password" class="mypage-form-input" id="currentPw" placeholder="현재 비밀번호" autocomplete="current-password" />
+        </div>
+
+        <div class="mypage-form-group">
+          <label class="mypage-form-label">새 비밀번호 <span style="font-size:12px; font-weight:400; color:#8C8C8C;">(변경 시에만 입력)</span></label>
+          <input type="password" class="mypage-form-input" id="newPw" placeholder="새 비밀번호 (8자 이상)" autocomplete="new-password" />
+        </div>
+
+        <div class="mypage-form-group">
+          <label class="mypage-form-label">새 비밀번호 확인</label>
+          <input type="password" class="mypage-form-input" id="newPwConfirm" placeholder="새 비밀번호 확인" autocomplete="new-password" />
+          <p style="font-size:12px; color:#E53E3E; display:none;" id="pwMatchError">비밀번호가 일치하지 않습니다.</p>
+        </div>
+
+        <button type="button" class="mypage-form-save-btn" id="btnSaveProfile">변경 사항 저장</button>
+
+      </form>
+
+      <!-- 회원 탈퇴 -->
+      <div class="mypage-withdraw-zone">
+        <div class="mypage-withdraw-text">
+          <span class="mypage-withdraw-title">회원 탈퇴</span>
+          <span class="mypage-withdraw-desc">탈퇴 시 모든 발송 내역 및 증명서가 삭제됩니다.</span>
+        </div>
+        <button class="mypage-withdraw-btn" onclick="alert('회원 탈퇴 기능은 준비 중입니다.')">탈퇴하기</button>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    /* 전화번호 자동 하이픈 */
+    document.getElementById('profilePhone').addEventListener('input', function () {
+      var v = this.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length <= 3) { this.value = v; return; }
+      if (v.length <= 7) { this.value = v.slice(0,3) + '-' + v.slice(3); return; }
+      this.value = v.slice(0,3) + '-' + v.slice(3,7) + '-' + v.slice(7);
+    });
+
+    /* 비밀번호 확인 */
+    function checkPwMatch() {
+      var nv = document.getElementById('newPw').value;
+      var nc = document.getElementById('newPwConfirm').value;
+      document.getElementById('pwMatchError').style.display =
+        (nc && nv !== nc) ? 'block' : 'none';
+    }
+    document.getElementById('newPw').addEventListener('input', checkPwMatch);
+    document.getElementById('newPwConfirm').addEventListener('input', checkPwMatch);
+
+    /* 저장 버튼 */
+    document.getElementById('btnSaveProfile').addEventListener('click', function () {
+      alert('정보 수정 기능은 준비 중입니다.');
+    });
+  </script>
+
+</body>
+</html>

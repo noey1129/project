@@ -172,41 +172,66 @@ function autoResize(el) {
   el.style.height = el.scrollHeight + 'px';
 }
 
-/* ── 필수 입력 여부 확인 및 버튼 활성화 ── */
+/* ── 필수 입력 체크 ── */
 var savedOnce = false;
+var sendMethod = 'simple';
 
 function checkRequired() {
-  var senderName    = document.getElementById('senderName').value.trim();
-  var senderPhone   = document.getElementById('senderPhone').value.trim();
-  var recipientName = document.getElementById('recipientName').value.trim();
-  var recipientPhone = document.getElementById('recipientPhone').value.trim();
+  if (savedOnce) return;
+  var senderName   = document.getElementById('senderName').value.trim();
+  var senderPhone  = document.getElementById('senderPhone').value.trim();
+  var recName      = document.getElementById('recipientName').value.trim();
+  var recPhone     = document.getElementById('recipientPhone').value.trim();
+  var recBirth     = document.getElementById('recipientBirth').value.trim();
 
-  var allFilled = senderName && senderPhone && recipientName && recipientPhone;
+  var baseOk = senderName && senderPhone && recName && recPhone;
+  var certOk = sendMethod === 'certified' ? (baseOk && recBirth.length === 8) : baseOk;
 
-  document.getElementById('btnSave').disabled = !allFilled;
-  document.getElementById('btnSend').disabled = !(allFilled && savedOnce);
+  document.getElementById('btnSave').disabled = !certOk;
+}
+
+/* ── 확대/축소 ── */
+var docScale  = 1.0;
+var MIN_SCALE = 0.6;
+var MAX_SCALE = 1.5;
+var SCALE_STEP = 0.1;
+
+function applyScale() {
+  document.querySelector('.doc-paper').style.zoom = docScale;
 }
 
 /* ── 페이지 초기화 ── */
 (function init() {
-  var docContent = document.getElementById('docContent');
+  sendMethod = sessionStorage.getItem('send_method') || 'simple';
 
+  /* 발송 방식 뱃지 + 안내 */
+  var methodBadge  = document.getElementById('methodBadge');
+  var methodNotice = document.getElementById('methodNotice');
+  var birthRow     = document.getElementById('recipientBirthRow');
+
+  if (sendMethod === 'certified') {
+    methodBadge.textContent  = '전자문서 + 공전소';
+    methodBadge.className    = 'doc-method-badge doc-method-badge--certified';
+    methodNotice.textContent = '수신인 생년월일이 있어야 본인 인증 후 발송됩니다.';
+    birthRow.style.display   = '';
+  } else {
+    methodBadge.textContent  = '알림톡 + 공전소';
+    methodBadge.className    = 'doc-method-badge doc-method-badge--simple';
+    methodNotice.textContent = '카카오 알림톡으로 발송됩니다.';
+    birthRow.style.display   = 'none';
+  }
+
+  /* 내용 자동 생성 */
+  var docContent = document.getElementById('docContent');
   var saved = sessionStorage.getItem('sendit_preview_content');
   docContent.value = saved || generateContent();
   autoResize(docContent);
 
-  var fields = [
-    'senderName', 'senderPhone', 'senderAddr', 'senderAddrDetail',
-    'recipientName', 'recipientPhone', 'recipientAddr', 'recipientAddrDetail',
-  ];
-  fields.forEach(function (id) {
+  /* 저장된 발신인 정보 복원 */
+  ['senderName', 'senderPhone', 'senderAddr', 'senderAddrDetail'].forEach(function (id) {
     var val = sessionStorage.getItem('sendit_preview_' + id);
     if (val) document.getElementById(id).value = val;
   });
-
-  /* 탭 상태 복원 */
-  var savedTab = sessionStorage.getItem('sendit_preview_tab') || 'know';
-  setTab(savedTab);
 
   checkRequired();
 })();
@@ -216,68 +241,33 @@ document.getElementById('docContent').addEventListener('input', function () {
   autoResize(this);
 });
 
-/* ── 필수 필드 입력 감지 ── */
-['senderName', 'senderPhone', 'recipientName', 'recipientPhone'].forEach(function (id) {
-  document.getElementById(id).addEventListener('input', checkRequired);
-});
-
 /* ── 전화번호 자동 하이픈 ── */
 ['senderPhone', 'recipientPhone'].forEach(function (id) {
   document.getElementById(id).addEventListener('input', function () {
-    var cursor = this.selectionStart;
     var prev = this.value;
     this.value = formatPhone(prev);
-    var diff = this.value.length - prev.length;
-    this.setSelectionRange(cursor + diff, cursor + diff);
+    checkRequired();
   });
 });
 
-/* ── 주소 인풋 클릭 시 카카오 주소 검색 ── */
-function openKakaoPostcode(addrId, detailId) {
-  if (typeof daum === 'undefined' || !daum.Postcode) return;
-  new daum.Postcode({
-    oncomplete: function (data) {
-      document.getElementById(addrId).value = data.roadAddress || data.jibunAddress;
-      document.getElementById(detailId).focus();
-      checkRequired();
-    }
-  }).open();
-}
-
-document.getElementById('senderAddr').addEventListener('click', function () {
-  openKakaoPostcode('senderAddr', 'senderAddrDetail');
-});
-document.getElementById('recipientAddr').addEventListener('click', function () {
-  openKakaoPostcode('recipientAddr', 'recipientAddrDetail');
+/* ── 생년월일 숫자만 허용 ── */
+document.getElementById('recipientBirth').addEventListener('input', function () {
+  this.value = this.value.replace(/\D/g, '').slice(0, 8);
+  checkRequired();
 });
 
-/* ── 탭 전환 ── */
-function setTab(tabKey) {
-  var tabKnow    = document.getElementById('tabKnow');
-  var tabUnknown = document.getElementById('tabUnknown');
-  var addrRow    = document.getElementById('recipientAddrRow');
-  var roleLabel  = document.getElementById('recipientRoleLabel');
-
-  if (tabKey === 'know') {
-    tabKnow.classList.add('active');
-    tabUnknown.classList.remove('active');
-    addrRow.style.display = '';
-    roleLabel.rowSpan = 2;
-  } else {
-    tabUnknown.classList.add('active');
-    tabKnow.classList.remove('active');
-    addrRow.style.display = 'none';
-    roleLabel.rowSpan = 1;
-  }
-
-  sessionStorage.setItem('sendit_preview_tab', tabKey);
-}
-
-document.getElementById('tabKnow').addEventListener('click', function () {
-  setTab('know');
+/* ── 입력 변경 감지 ── */
+['senderName', 'senderPhone', 'senderAddr', 'senderAddrDetail',
+ 'recipientName', 'recipientPhone', 'docContent'].forEach(function (id) {
+  document.getElementById(id).addEventListener('input', checkRequired);
 });
-document.getElementById('tabUnknown').addEventListener('click', function () {
-  setTab('unknown');
+
+/* ── 확대/축소 버튼 ── */
+document.getElementById('btnPlus').addEventListener('click', function () {
+  if (docScale < MAX_SCALE) { docScale = Math.round((docScale + SCALE_STEP) * 10) / 10; applyScale(); }
+});
+document.getElementById('btnMinus').addEventListener('click', function () {
+  if (docScale > MIN_SCALE) { docScale = Math.round((docScale - SCALE_STEP) * 10) / 10; applyScale(); }
 });
 
 /* ── 수정완료 버튼 ── */
@@ -285,24 +275,28 @@ document.getElementById('btnSave').addEventListener('click', function () {
   var docContent = document.getElementById('docContent');
   sessionStorage.setItem('sendit_preview_content', docContent.value);
 
-  var fields = [
-    'senderName', 'senderPhone', 'senderAddr', 'senderAddrDetail',
-    'recipientName', 'recipientPhone', 'recipientAddr', 'recipientAddrDetail',
-  ];
-  fields.forEach(function (id) {
+  /* 발신인 정보 저장 */
+  ['senderName', 'senderPhone', 'senderAddr', 'senderAddrDetail'].forEach(function (id) {
     sessionStorage.setItem('sendit_preview_' + id, document.getElementById(id).value);
   });
 
+  /* 수신인 정보 저장 */
+  sessionStorage.setItem('receiver_name',  document.getElementById('recipientName').value.trim());
+  sessionStorage.setItem('receiver_phone', document.getElementById('recipientPhone').value.trim());
+  if (sendMethod === 'certified') {
+    sessionStorage.setItem('receiver_birth', document.getElementById('recipientBirth').value.trim());
+  } else {
+    sessionStorage.removeItem('receiver_birth');
+  }
+
   /* view-mode 전환 */
-  var paper = document.querySelector('.doc-paper');
-  paper.classList.add('view-mode');
-  document.querySelectorAll('.doc-input').forEach(function (el) {
-    el.readOnly = true;
-  });
+  document.querySelector('.doc-paper').classList.add('view-mode');
+  document.querySelectorAll('.doc-input').forEach(function (el) { el.readOnly = true; });
   docContent.readOnly = true;
 
   savedOnce = true;
-  checkRequired();
+  document.getElementById('btnSave').disabled = true;
+  document.getElementById('btnSend').disabled = false;
 });
 
 /* ── PDF 다운로드 버튼 ── */
@@ -310,43 +304,14 @@ document.getElementById('btnPdf').addEventListener('click', function () {
   window.print();
 });
 
-/* ── 문서 전체 확대/축소 ── */
-var docScale = 1.0;
-var MIN_SCALE = 0.6;
-var MAX_SCALE = 1.5;
-var SCALE_STEP = 0.1;
-
-function applyScale() {
-  var paper = document.querySelector('.doc-paper');
-  paper.style.zoom = docScale;
-}
-
-document.getElementById('btnPlus').addEventListener('click', function () {
-  if (docScale < MAX_SCALE) {
-    docScale = Math.round((docScale + SCALE_STEP) * 10) / 10;
-    applyScale();
-  }
-});
-
-document.getElementById('btnMinus').addEventListener('click', function () {
-  if (docScale > MIN_SCALE) {
-    docScale = Math.round((docScale - SCALE_STEP) * 10) / 10;
-    applyScale();
-  }
-});
-
-/* ── 이전 버튼 ── */
+/* ── 이전 버튼: 발송 방식 선택으로 ── */
 document.getElementById('btnPrev').addEventListener('click', function () {
-  if (history.length > 1) {
-    history.back();
-  } else {
-    window.location.href = 'lease-q12.html';
-  }
+  window.location.href = 'wizard/send-method.html';
 });
 
-/* ── 발송 버튼 ── */
+/* ── 발송 버튼: 수신인 상세로 ── */
 document.getElementById('btnSend').addEventListener('click', function () {
-  window.location.href = 'wizard/send-method.html';
+  window.location.href = 'wizard/receiver-detail.html';
 });
 
 /* ── NAV 스크롤 그림자 ── */

@@ -1,0 +1,629 @@
+/* ================================================================
+   SENDIT – MYPAGE CSS
+   마이페이지 전용 스타일
+   ================================================================ */
+
+/* ── 페이지 레이아웃 ── */
+body.page-mypage {
+  background: #F2F3F6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mypage-layout {
+  flex: 1;
+  display: flex;
+  gap: 0;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+/* ── 사이드바 ── */
+.mypage-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: sticky;
+  top: 88px;
+}
+
+.mypage-sidebar__profile {
+  background: #fff;
+  border: 1px solid #E7E9EB;
+  border-radius: 14px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.mypage-sidebar__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.mypage-sidebar__email {
+  font-size: 13px;
+  color: #696B6D;
+}
+
+.mypage-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mypage-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #47494C;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mypage-nav-item:hover {
+  background: #F2F3F6;
+  color: #1C1E21;
+}
+
+.mypage-nav-item.active {
+  background: #172230;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ── 메인 콘텐츠 ── */
+.mypage-content {
+  flex: 1;
+  min-width: 0;
+  padding-left: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mypage-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+/* ── 통계 카드 ── */
+.mypage-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.mypage-stat-card {
+  background: #fff;
+  border: 1px solid #E7E9EB;
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mypage-stat-card__label {
+  font-size: 13px;
+  color: #696B6D;
+}
+
+.mypage-stat-card__value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #172230;
+}
+
+.mypage-stat-card__unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: #696B6D;
+  margin-left: 4px;
+}
+
+/* ── 필터 영역 ── */
+.mypage-filter {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.mypage-filter-select {
+  height: 40px;
+  padding: 0 14px;
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1C1E21;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23696B6D' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+/* ── 테이블 ── */
+.mypage-table-wrap {
+  background: #fff;
+  border: 1px solid #E7E9EB;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.mypage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.mypage-table th {
+  background: #F8F9FA;
+  font-weight: 600;
+  color: #696B6D;
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #E7E9EB;
+  white-space: nowrap;
+}
+
+.mypage-table td {
+  padding: 16px 16px;
+  color: #1C1E21;
+  border-bottom: 1px solid #F2F3F6;
+  vertical-align: middle;
+}
+
+.mypage-table tr:last-child td {
+  border-bottom: none;
+}
+
+.mypage-table tr:hover td {
+  background: #FAFBFC;
+}
+
+/* ── 상태 뱃지 ── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-badge--sent {
+  background: #EBF3FF;
+  color: #1A6DC2;
+}
+
+.status-badge--read {
+  background: #EDFAF1;
+  color: #197A45;
+}
+
+.status-badge--pending {
+  background: #F2F3F6;
+  color: #696B6D;
+}
+
+.status-badge--failed {
+  background: #FFF0F0;
+  color: #C62828;
+}
+
+/* ── 방식 뱃지 ── */
+.method-badge-sm {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.method-badge-sm--certified {
+  background: #172230;
+  color: #fff;
+}
+
+.method-badge-sm--simple {
+  background: #F2F3F6;
+  color: #696B6D;
+  border: 1px solid #D7DBDF;
+}
+
+/* ── 테이블 링크 버튼 ── */
+.tbl-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: #F2F3F6;
+  border: 1px solid #D7DBDF;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1C1E21;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.tbl-btn:hover {
+  background: #E7E9EB;
+}
+
+/* ── 빈 상태 ── */
+.mypage-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 64px 20px;
+  text-align: center;
+}
+
+.mypage-empty__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.mypage-empty__desc {
+  font-size: 14px;
+  color: #696B6D;
+}
+
+.mypage-empty__btn {
+  margin-top: 8px;
+  padding: 12px 28px;
+  background: #172230;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.mypage-empty__btn:hover {
+  background: #243447;
+}
+
+/* ── 페이지네이션 ── */
+.mypage-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding-top: 8px;
+}
+
+.page-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid #D7DBDF;
+  background: #fff;
+  font-size: 14px;
+  color: #47494C;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.page-btn.active {
+  background: #172230;
+  color: #fff;
+  border-color: #172230;
+  font-weight: 700;
+}
+
+.page-btn:hover:not(.active) {
+  background: #F2F3F6;
+}
+
+/* ── 상세 뷰 ── */
+.mypage-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.mypage-info-card {
+  background: #fff;
+  border: 1px solid #E7E9EB;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mypage-info-card__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1C1E21;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F2F3F6;
+}
+
+.mypage-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.mypage-info-row__label {
+  color: #696B6D;
+  flex-shrink: 0;
+}
+
+.mypage-info-row__value {
+  color: #1C1E21;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* ── 증명서 다운로드 섹션 ── */
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cert-item {
+  background: #fff;
+  border: 1px solid #E7E9EB;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cert-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cert-item__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.cert-item__validity {
+  font-size: 12px;
+  color: #696B6D;
+}
+
+.cert-item__validity--expired {
+  color: #C62828;
+}
+
+.cert-download-btn {
+  padding: 8px 18px;
+  background: #172230;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cert-download-btn:hover {
+  background: #243447;
+}
+
+.cert-download-btn:disabled {
+  background: #D7DBDF;
+  color: #8C8C8C;
+  cursor: not-allowed;
+}
+
+/* ── 프로필 폼 ── */
+.mypage-form {
+  background: #fff;
+  border: 1px solid #E7E9EB;
+  border-radius: 14px;
+  padding: 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 520px;
+}
+
+.mypage-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mypage-form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #47494C;
+}
+
+.mypage-form-input {
+  height: 48px;
+  padding: 0 14px;
+  background: #F8F9FA;
+  border: 1px solid #D7DBDF;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #1C1E21;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+
+.mypage-form-input::placeholder {
+  color: #AFAFAF;
+}
+
+.mypage-form-input:focus {
+  border-color: #172230;
+  background: #fff;
+}
+
+.mypage-form-save-btn {
+  height: 50px;
+  background: #172230;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+  margin-top: 4px;
+}
+
+.mypage-form-save-btn:hover {
+  background: #243447;
+}
+
+.mypage-withdraw-zone {
+  background: #fff;
+  border: 1px solid #FFD7D7;
+  border-radius: 14px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 520px;
+}
+
+.mypage-withdraw-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mypage-withdraw-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.mypage-withdraw-desc {
+  font-size: 13px;
+  color: #696B6D;
+}
+
+.mypage-withdraw-btn {
+  padding: 10px 18px;
+  background: #fff;
+  border: 1px solid #E53E3E;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #C62828;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mypage-withdraw-btn:hover {
+  background: #FFF0F0;
+}
+
+/* ── 뒤로가기 링크 ── */
+.mypage-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #696B6D;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.mypage-back:hover {
+  color: #1C1E21;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 900px) {
+  .mypage-layout {
+    flex-direction: column;
+    padding: 20px 16px 40px;
+  }
+  .mypage-sidebar {
+    width: 100%;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .mypage-sidebar__profile {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .mypage-sidebar__nav {
+    flex-direction: row;
+    gap: 8px;
+  }
+  .mypage-content {
+    padding-left: 0;
+  }
+  .mypage-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .mypage-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .mypage-stats {
+    grid-template-columns: 1fr;
+  }
+  .mypage-table th:nth-child(n+5),
+  .mypage-table td:nth-child(n+5) {
+    display: none;
+  }
+}

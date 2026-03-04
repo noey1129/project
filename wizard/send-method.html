@@ -26,8 +26,8 @@
         </nav>
       </div>
       <div class="nav__right">
-        <a href="#" class="nav__contact">서비스문의</a>
-        <button class="btn btn--dark">로그인</button>
+        <a href="../contact.html" class="nav__contact">서비스문의</a>
+        <button class="btn btn--dark" onclick="window.location.href='../login.html'">로그인</button>
       </div>
     </div>
   </header>
@@ -36,27 +36,44 @@
 
     <div class="wizard-header">
       <h1 class="wizard-title">발송 방식을 선택해 주세요.</h1>
-      <p class="wizard-sub">내용증명 발송 방식에 따라 비용과 효력이 달라집니다.</p>
+      <p class="wizard-sub">내용증명 발송 방식에 따라 비용과 증명서 종류가 달라집니다.</p>
     </div>
 
     <div class="wizard-wrap">
 
+      <!-- 전자문서 + 공전소 -->
       <div class="method-card" id="cardCertified" data-value="certified">
-        <div class="method-card__badge">추천</div>
-        <div class="method-card__info">
-          <strong class="method-card__name">본인인증 발송</strong>
-          <span class="method-card__desc">발신인 신원을 인증하여 법적 효력을 강화합니다.<br />등기 우편 발송 + 전자문서 인증 포함</span>
+        <div class="method-card__top">
+          <div class="method-card__badge method-card__badge--rec">추천</div>
+          <span class="method-card__price">19,800원</span>
         </div>
-        <span class="method-card__price">19,800원</span>
+        <strong class="method-card__name">전자문서 + 공전소 등록</strong>
+        <span class="method-card__tagline">우체국 내용증명과 동일한 법적 효력</span>
+        <ul class="method-card__certs">
+          <li>감사추적증명서</li>
+          <li>전자문서증명서 <em>(6개월)</em></li>
+          <li>유통증명서 <em>(3개월)</em></li>
+        </ul>
+        <div class="method-card__required">
+          필요 정보: 이름 · 전화번호 · 생년월일
+        </div>
       </div>
 
+      <!-- 알림톡 + 공전소 -->
       <div class="method-card" id="cardSimple" data-value="simple">
-        <div class="method-card__badge">일반</div>
-        <div class="method-card__info">
-          <strong class="method-card__name">일반 발송</strong>
-          <span class="method-card__desc">간편하게 내용증명을 발송합니다.<br />등기 우편 발송 포함</span>
+        <div class="method-card__top">
+          <div class="method-card__badge">일반</div>
+          <span class="method-card__price">9,900원</span>
         </div>
-        <span class="method-card__price">9,900원</span>
+        <strong class="method-card__name">알림톡 + 공전소 등록</strong>
+        <span class="method-card__tagline">카카오 알림톡으로 간편하게 발송</span>
+        <ul class="method-card__certs">
+          <li>감사추적증명서</li>
+          <li>전자문서증명서 <em>(6개월)</em></li>
+        </ul>
+        <div class="method-card__required">
+          필요 정보: 이름 · 전화번호
+        </div>
       </div>
 
     </div>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원 상세 – Sendit 관리자</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="page-admin">
+
+  <div class="admin-wrap">
+
+    <!-- ── 사이드바 ── -->
+    <aside class="admin-sidebar">
+      <a href="dashboard.html" class="admin-sidebar__logo">Sendit<span class="admin-sidebar__badge">ADMIN</span></a>
+      <nav class="admin-nav">
+        <a href="dashboard.html" class="admin-nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          대시보드
+        </a>
+        <a href="members.html" class="admin-nav-item active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          회원 관리
+        </a>
+        <a href="sends.html" class="admin-nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          발송 내역
+        </a>
+        <a href="templates.html" class="admin-nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          템플릿 관리
+        </a>
+      </nav>
+      <div class="admin-sidebar__footer">
+        <button class="admin-logout-btn" onclick="window.location.href='login.html'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          로그아웃
+        </button>
+      </div>
+    </aside>
+
+    <!-- ── 메인 ── -->
+    <div class="admin-main">
+
+      <header class="admin-header">
+        <span class="admin-header__title">회원 상세</span>
+        <span class="admin-header__admin">관리자: <strong>admin</strong></span>
+      </header>
+
+      <div class="admin-content">
+
+        <a href="members.html" class="admin-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          회원 목록으로
+        </a>
+
+        <!-- 회원 기본 정보 -->
+        <div class="admin-detail-grid">
+          <div class="admin-info-card">
+            <div class="admin-info-card__title">기본 정보</div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">이름</span>
+              <span class="admin-info-row__value">홍길동</span>
+            </div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">이메일</span>
+              <span class="admin-info-row__value">hong@example.com</span>
+            </div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">전화번호</span>
+              <span class="admin-info-row__value">010-1234-5678</span>
+            </div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">가입 방법</span>
+              <span class="admin-info-row__value">이메일</span>
+            </div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">가입일</span>
+              <span class="admin-info-row__value">2026.01.15</span>
+            </div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">상태</span>
+              <span class="admin-info-row__value"><span class="status-badge status-badge--active">활성</span></span>
+            </div>
+          </div>
+
+          <div class="admin-info-card">
+            <div class="admin-info-card__title">발송 통계</div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">총 발송 건수</span>
+              <span class="admin-info-row__value">12건</span>
+            </div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">전자문서+공전소</span>
+              <span class="admin-info-row__value">8건</span>
+            </div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">알림톡+공전소</span>
+              <span class="admin-info-row__value">4건</span>
+            </div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">총 결제 금액</span>
+              <span class="admin-info-row__value">198,000원</span>
+            </div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">마지막 발송일</span>
+              <span class="admin-info-row__value">2026.02.28</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 발송 내역 -->
+        <div>
+          <div class="admin-section-header" style="margin-bottom:16px;">
+            <span class="admin-section-title" style="font-size:16px;">발송 내역</span>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>날짜</th>
+                  <th>유형</th>
+                  <th>수신인</th>
+                  <th>발송 방식</th>
+                  <th>금액</th>
+                  <th>상태</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2026.02.28</td>
+                  <td>임대차</td>
+                  <td>김철수</td>
+                  <td><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></td>
+                  <td>19,800원</td>
+                  <td><span class="status-badge status-badge--read">열람완료</span></td>
+                  <td><a href="sends-detail.html" class="tbl-btn">보기</a></td>
+                </tr>
+                <tr>
+                  <td>2026.02.10</td>
+                  <td>대여금</td>
+                  <td>이민수</td>
+                  <td><span class="method-badge-sm method-badge-sm--simple">알림톡+공전소</span></td>
+                  <td>9,900원</td>
+                  <td><span class="status-badge status-badge--sent">발송완료</span></td>
+                  <td><a href="sends-detail.html" class="tbl-btn">보기</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 계정 관리 버튼 -->
+        <div style="display:flex; gap:10px;">
+          <button class="admin-save-btn" onclick="alert('준비 중입니다.')">상태 변경</button>
+          <button class="admin-reset-btn" onclick="alert('준비 중입니다.')">회원 삭제</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

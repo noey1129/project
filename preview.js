@@ -2,15 +2,6 @@
    SENDIT – PREVIEW JS (공통: loan / noise / contract / membership / custom)
    ================================================================ */
 
-/* ── 유형별 이전 페이지 맵 ── */
-var prevPageMap = {
-  loan:       'loan-q5.html',
-  noise:      'noise-q5.html',
-  contract:   'contract-q4.html',
-  membership: 'membership-q4.html',
-  custom:     'custom-q4.html',
-};
-
 /* ── 유형별 내용 자동 생성 ── */
 function generateContent(type) {
   switch (type) {
@@ -152,27 +143,23 @@ function formatPhone(value) {
   return digits.slice(0, 3) + '-' + digits.slice(3, 7) + '-' + digits.slice(7, 11);
 }
 
-/* ── Kakao 주소 검색 ── */
-function openKakaoPostcode(addrId, detailId) {
-  if (typeof daum === 'undefined' || !daum.Postcode) return;
-  new daum.Postcode({
-    oncomplete: function (data) {
-      document.getElementById(addrId).value = data.roadAddress || data.jibunAddress;
-      document.getElementById(detailId).focus();
-      checkRequired();
-    }
-  }).open();
-}
-
 /* ── 필수 입력 체크 ── */
 var savedOnce = false;
+var sendMethod = 'simple';
 
 function checkRequired() {
   if (savedOnce) return;
-  var name  = document.getElementById('senderName').value.trim();
-  var phone = document.getElementById('senderPhone').value.trim();
-  var addr  = document.getElementById('senderAddr').value.trim();
-  document.getElementById('btnSave').disabled = !(name && phone && addr);
+  var name     = document.getElementById('senderName').value.trim();
+  var phone    = document.getElementById('senderPhone').value.trim();
+  var addr     = document.getElementById('senderAddr').value.trim();
+  var recName  = document.getElementById('recipientName').value.trim();
+  var recPhone = document.getElementById('recipientPhone').value.trim();
+  var recBirth = document.getElementById('recipientBirth').value.trim();
+
+  var baseOk = name && phone && addr && recName && recPhone;
+  var certOk = sendMethod === 'certified' ? (baseOk && recBirth.length === 8) : baseOk;
+
+  document.getElementById('btnSave').disabled = !certOk;
 }
 
 /* ── 문서 확대/축소 ── */
@@ -185,37 +172,32 @@ function applyScale() {
   document.querySelector('.doc-paper').style.zoom = docScale;
 }
 
-/* ── 탭 전환 ── */
-var currentTab = 'know';
-
-function switchTab(tab) {
-  currentTab = tab;
-  document.getElementById('tabKnow').classList.toggle('active', tab === 'know');
-  document.getElementById('tabUnknown').classList.toggle('active', tab === 'unknown');
-
-  var recipientAddrRow   = document.getElementById('recipientAddrRow');
-  var recipientRoleLabel = document.getElementById('recipientRoleLabel');
-
-  if (tab === 'unknown') {
-    recipientAddrRow.style.display = 'none';
-    recipientRoleLabel.rowSpan = 1;
-  } else {
-    recipientAddrRow.style.display = '';
-    recipientRoleLabel.rowSpan = 2;
-  }
-}
-
 /* ── 초기화 ── */
 (function init() {
   var type = sessionStorage.getItem('wizard_type') || 'custom';
+  sendMethod = sessionStorage.getItem('send_method') || 'simple';
+
+  /* 발송 방식 뱃지 + 안내 */
+  var methodBadge  = document.getElementById('methodBadge');
+  var methodNotice = document.getElementById('methodNotice');
+  var birthRow     = document.getElementById('recipientBirthRow');
+
+  if (sendMethod === 'certified') {
+    methodBadge.textContent  = '전자문서 + 공전소';
+    methodBadge.className    = 'doc-method-badge doc-method-badge--certified';
+    methodNotice.textContent = '수신인 생년월일이 있어야 본인 인증 후 발송됩니다.';
+    birthRow.style.display   = '';
+  } else {
+    methodBadge.textContent  = '알림톡 + 공전소';
+    methodBadge.className    = 'doc-method-badge doc-method-badge--simple';
+    methodNotice.textContent = '카카오 알림톡으로 발송됩니다.';
+    birthRow.style.display   = 'none';
+  }
 
   /* 내용 자동 생성 */
   document.getElementById('docContent').value = generateContent(type);
 
-  /* 이벤트 */
-  document.getElementById('tabKnow').addEventListener('click', function () { switchTab('know'); });
-  document.getElementById('tabUnknown').addEventListener('click', function () { switchTab('unknown'); });
-
+  /* 확대/축소 */
   document.getElementById('btnPlus').addEventListener('click', function () {
     if (docScale < MAX_SCALE) { docScale = Math.round((docScale + SCALE_STEP) * 10) / 10; applyScale(); }
   });
@@ -227,30 +209,34 @@ function switchTab(tab) {
   ['senderPhone', 'recipientPhone'].forEach(function (id) {
     var el = document.getElementById(id);
     el.addEventListener('input', function () {
-      var pos = el.selectionStart;
       el.value = formatPhone(el.value);
       checkRequired();
     });
   });
 
-  /* 주소 Kakao */
-  document.getElementById('senderAddr').addEventListener('click', function () {
-    openKakaoPostcode('senderAddr', 'senderAddrDetail');
-  });
-  document.getElementById('recipientAddr').addEventListener('click', function () {
-    openKakaoPostcode('recipientAddr', 'recipientAddrDetail');
+  /* 생년월일 숫자만 허용 */
+  document.getElementById('recipientBirth').addEventListener('input', function () {
+    this.value = this.value.replace(/\D/g, '').slice(0, 8);
+    checkRequired();
   });
 
   /* 입력 변경 시 버튼 활성화 체크 */
   ['senderName', 'senderPhone', 'senderAddr', 'senderAddrDetail',
-   'recipientName', 'recipientPhone', 'recipientAddr', 'recipientAddrDetail',
-   'docContent'].forEach(function (id) {
+   'recipientName', 'recipientPhone', 'docContent'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', checkRequired);
   });
 
   /* 수정완료 버튼 */
   document.getElementById('btnSave').addEventListener('click', function () {
     savedOnce = true;
+    /* sessionStorage에 수신인 정보 저장 */
+    sessionStorage.setItem('receiver_name',  document.getElementById('recipientName').value.trim());
+    sessionStorage.setItem('receiver_phone', document.getElementById('recipientPhone').value.trim());
+    if (sendMethod === 'certified') {
+      sessionStorage.setItem('receiver_birth', document.getElementById('recipientBirth').value.trim());
+    } else {
+      sessionStorage.removeItem('receiver_birth');
+    }
     document.querySelector('.doc-paper').classList.add('view-mode');
     document.querySelectorAll('.doc-input, .doc-textarea').forEach(function (el) {
       el.readOnly = true;
@@ -264,15 +250,14 @@ function switchTab(tab) {
     alert('PDF 다운로드 기능은 준비 중입니다.');
   });
 
-  /* 이전 버튼 */
+  /* 이전 버튼: 발송 방식 선택으로 돌아가기 */
   document.getElementById('btnPrev').addEventListener('click', function () {
-    var prev = prevPageMap[type] || 'select-situation.html';
-    window.location.href = prev;
+    window.location.href = 'wizard/send-method.html';
   });
 
-  /* 발송 버튼 */
+  /* 발송 버튼: 수신인 상세 입력으로 이동 */
   document.getElementById('btnSend').addEventListener('click', function () {
-    window.location.href = 'wizard/send-method.html';
+    window.location.href = 'wizard/receiver-detail.html';
   });
 })();
 

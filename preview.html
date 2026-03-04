@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="lease-preview.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </head>
 <body class="page-preview">
 
@@ -28,8 +28,8 @@
         </nav>
       </div>
       <div class="nav__right">
-        <a href="#" class="nav__contact">서비스문의</a>
-        <button class="btn btn--dark">로그인</button>
+        <a href="contact.html" class="nav__contact">서비스문의</a>
+        <button class="btn btn--dark" onclick="window.location.href='login.html'">로그인</button>
       </div>
     </div>
   </header>
@@ -48,10 +48,10 @@
       <!-- 툴바 -->
       <div class="doc-toolbar">
 
-        <!-- 탭: 상대방 주소 알아요 / 몰라요 -->
-        <div class="doc-tabs" role="tablist">
-          <button class="doc-tab active" id="tabKnow" data-tab="know">상대방 주소를 알아요</button>
-          <button class="doc-tab" id="tabUnknown" data-tab="unknown">상대방 주소를 몰라요</button>
+        <!-- 발송 방식 뱃지 -->
+        <div class="doc-method-wrap">
+          <span class="doc-method-badge" id="methodBadge"></span>
+          <span class="doc-method-notice" id="methodNotice"></span>
         </div>
 
         <!-- 액션 버튼 -->
@@ -110,7 +110,7 @@
                 <td class="doc-sublabel">주소</td>
                 <td class="doc-field-cell doc-field-cell--addr" colspan="3">
                   <div class="doc-addr-wrap">
-                    <input type="text" id="senderAddr" class="doc-input doc-input--addr" placeholder="주소를 입력해주세요." readonly />
+                    <input type="text" id="senderAddr" class="doc-input doc-input--addr" placeholder="주소를 입력해주세요." />
                     <input type="text" id="senderAddrDetail" class="doc-input doc-input--detail" placeholder="상세주소" />
                   </div>
                 </td>
@@ -118,7 +118,7 @@
 
               <!-- 수신인 -->
               <tr>
-                <td class="doc-role-label" rowspan="2" id="recipientRoleLabel">
+                <td class="doc-role-label" rowspan="2">
                   수신인
                   <span class="doc-role-sub">(받는 사람)</span>
                 </td>
@@ -131,13 +131,10 @@
                   <input type="text" id="recipientPhone" class="doc-input" placeholder="전화번호를 입력해주세요." />
                 </td>
               </tr>
-              <tr id="recipientAddrRow">
-                <td class="doc-sublabel">주소</td>
-                <td class="doc-field-cell doc-field-cell--addr" colspan="3">
-                  <div class="doc-addr-wrap">
-                    <input type="text" id="recipientAddr" class="doc-input doc-input--addr" placeholder="주소를 입력해주세요." readonly />
-                    <input type="text" id="recipientAddrDetail" class="doc-input doc-input--detail" placeholder="상세주소" />
-                  </div>
+              <tr id="recipientBirthRow" style="display:none;">
+                <td class="doc-sublabel">생년월일</td>
+                <td class="doc-field-cell" colspan="3">
+                  <input type="text" id="recipientBirth" class="doc-input" placeholder="8자리 (예: 19900101)" maxlength="8" />
                 </td>
               </tr>
 

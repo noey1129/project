@@ -85,7 +85,7 @@ btnNext.addEventListener('click', function () {
   }
 
   // TODO: 문서 미리보기 페이지로 이동
-  window.location.href = 'lease-preview.html';
+  window.location.href = 'wizard/send-method.html';
 });
 
 /* ── NAV 스크롤 그림자 ── */

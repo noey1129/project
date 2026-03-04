@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마이페이지 – Sendit</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mypage.css" />
+</head>
+<body class="page-mypage">
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="index.html" class="nav__logo">Sendit</a>
+        <nav class="nav__links">
+          <a href="index.html#hero"    class="nav__link">이용 상황</a>
+          <a href="index.html#how"     class="nav__link">이용 방법</a>
+          <a href="index.html#pricing" class="nav__link">가격</a>
+          <a href="index.html#faq"     class="nav__link">자주 묻는 질문</a>
+          <a href="index.html#trust"   class="nav__link">인증 및 문서</a>
+          <a href="index.html#law"     class="nav__link">법 조항</a>
+        </nav>
+      </div>
+      <div class="nav__right">
+        <a href="contact.html" class="nav__contact">서비스문의</a>
+        <button class="btn btn--dark" onclick="window.location.href='login.html'">로그인</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mypage-layout">
+
+    <!-- ── 사이드바 ── -->
+    <aside class="mypage-sidebar">
+      <div class="mypage-sidebar__profile">
+        <span class="mypage-sidebar__name">홍길동</span>
+        <span class="mypage-sidebar__email">user@example.com</span>
+      </div>
+      <nav class="mypage-sidebar__nav">
+        <a href="mypage.html" class="mypage-nav-item active">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          </svg>
+          발송 내역
+        </a>
+        <a href="mypage-profile.html" class="mypage-nav-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          내 정보
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ── 메인 콘텐츠 ── -->
+    <main class="mypage-content">
+
+      <h1 class="mypage-section-title">발송 내역</h1>
+
+      <!-- 통계 카드 -->
+      <div class="mypage-stats">
+        <div class="mypage-stat-card">
+          <span class="mypage-stat-card__label">총 발송</span>
+          <span class="mypage-stat-card__value">12<span class="mypage-stat-card__unit">건</span></span>
+        </div>
+        <div class="mypage-stat-card">
+          <span class="mypage-stat-card__label">열람 완료</span>
+          <span class="mypage-stat-card__value">9<span class="mypage-stat-card__unit">건</span></span>
+        </div>
+        <div class="mypage-stat-card">
+          <span class="mypage-stat-card__label">열람 미확인</span>
+          <span class="mypage-stat-card__value">3<span class="mypage-stat-card__unit">건</span></span>
+        </div>
+      </div>
+
+      <!-- 필터 -->
+      <div class="mypage-filter">
+        <select class="mypage-filter-select">
+          <option value="all">기간: 전체</option>
+          <option value="1m">최근 1개월</option>
+          <option value="3m">최근 3개월</option>
+          <option value="6m">최근 6개월</option>
+        </select>
+        <select class="mypage-filter-select">
+          <option value="all">방식: 전체</option>
+          <option value="certified">전자문서+공전소</option>
+          <option value="simple">알림톡+공전소</option>
+        </select>
+        <select class="mypage-filter-select">
+          <option value="all">상태: 전체</option>
+          <option value="sent">발송완료</option>
+          <option value="read">열람완료</option>
+          <option value="pending">열람미확인</option>
+          <option value="failed">발송실패</option>
+        </select>
+      </div>
+
+      <!-- 발송 내역 테이블 -->
+      <div class="mypage-table-wrap">
+        <table class="mypage-table">
+          <thead>
+            <tr>
+              <th>날짜</th>
+              <th>유형</th>
+              <th>수신인</th>
+              <th>발송 방식</th>
+              <th>상태</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026.02.28</td>
+              <td>임대차</td>
+              <td>김철수</td>
+              <td><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></td>
+              <td><span class="status-badge status-badge--read">열람완료</span></td>
+              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
+            </tr>
+            <tr>
+              <td>2026.02.15</td>
+              <td>대여금</td>
+              <td>이영희</td>
+              <td><span class="method-badge-sm method-badge-sm--simple">알림톡+공전소</span></td>
+              <td><span class="status-badge status-badge--sent">발송완료</span></td>
+              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
+            </tr>
+            <tr>
+              <td>2026.01.30</td>
+              <td>층간소음</td>
+              <td>박민준</td>
+              <td><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></td>
+              <td><span class="status-badge status-badge--pending">열람미확인</span></td>
+              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
+            </tr>
+            <tr>
+              <td>2026.01.10</td>
+              <td>계약관련</td>
+              <td>최지수</td>
+              <td><span class="method-badge-sm method-badge-sm--simple">알림톡+공전소</span></td>
+              <td><span class="status-badge status-badge--failed">발송실패</span></td>
+              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 페이지네이션 -->
+      <div class="mypage-pagination">
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

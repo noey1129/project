@@ -27,20 +27,30 @@ function selectCard(value) {
 cardCertified.addEventListener('click', function () { selectCard('certified'); });
 cardSimple.addEventListener('click', function () { selectCard('simple'); });
 
+/* ── 이전 버튼: wizard_type 기반으로 마지막 질문 페이지로 이동 ── */
 btnPrev.addEventListener('click', function () {
-  // preview.html 또는 lease-preview.html로 돌아가기
-  const type = sessionStorage.getItem('wizard_type');
+  var type = sessionStorage.getItem('wizard_type');
+  var lastPageMap = {
+    'rent':       '../lease-q12.html',
+    'loan':       '../loan-q5.html',
+    'noise':      '../noise-q5.html',
+    'contract':   '../contract-q4.html',
+    'membership': '../membership-q4.html',
+    'custom':     '../custom-q4.html'
+  };
+  window.location.href = lastPageMap[type] || '../select-situation.html';
+});
+
+/* ── 다음 버튼: wizard_type 기반으로 적절한 미리보기 페이지로 이동 ── */
+btnNext.addEventListener('click', function () {
+  if (!selectedValue) return;
+  sessionStorage.setItem(STORE_KEY, selectedValue);
+  var type = sessionStorage.getItem('wizard_type');
   if (type === 'rent') {
     window.location.href = '../lease-preview.html';
   } else {
     window.location.href = '../preview.html';
   }
-});
-
-btnNext.addEventListener('click', function () {
-  if (!selectedValue) return;
-  sessionStorage.setItem(STORE_KEY, selectedValue);
-  window.location.href = 'receiver-detail.html';
 });
 
 /* ── NAV 스크롤 그림자 ── */
