@@ -587,6 +587,162 @@ body.page-mypage {
   color: #1C1E21;
 }
 
+/* ── 로그인 상태 헤더 ── */
+.nav--user .nav__links {
+  display: none;
+}
+
+.nav__user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1C1E21;
+  padding: 7px 14px;
+  background: #F2F3F6;
+  border-radius: 20px;
+}
+
+.btn--outline {
+  padding: 8px 16px;
+  background: #fff;
+  border: 1.5px solid #D7DBDF;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #47494C;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn--outline:hover {
+  border-color: #172230;
+  color: #172230;
+}
+
+/* ── 문서 내용 ── */
+.mypage-doc-paper {
+  background: #fff;
+  border: 1px solid #E7E9EB;
+  border-radius: 14px;
+  padding: 28px 32px;
+}
+
+.mypage-doc-text {
+  font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #1C1E21;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin: 0;
+}
+
+/* ── 재발급 버튼 ── */
+.cert-reissue-btn {
+  padding: 8px 18px;
+  background: #fff;
+  border: 1.5px solid #172230;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #172230;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cert-reissue-btn:hover {
+  background: #F2F3F6;
+}
+
+/* ── 재발급 모달 ── */
+.reissue-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.reissue-modal {
+  background: #fff;
+  border-radius: 18px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 20px;
+}
+
+.reissue-modal__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.reissue-modal__desc {
+  font-size: 14px;
+  color: #696B6D;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.reissue-modal__price {
+  font-size: 15px;
+  color: #1C1E21;
+  background: #F2F3F6;
+  padding: 14px 18px;
+  border-radius: 10px;
+}
+
+.reissue-modal__price strong {
+  font-weight: 700;
+  color: #172230;
+}
+
+.reissue-modal__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.reissue-modal__cancel {
+  flex: 1;
+  height: 48px;
+  background: #F2F3F6;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #47494C;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.reissue-modal__confirm {
+  flex: 2;
+  height: 48px;
+  background: #172230;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.reissue-modal__confirm:hover {
+  background: #243447;
+}
+
 /* ── 반응형 ── */
 @media (max-width: 900px) {
   .mypage-layout {

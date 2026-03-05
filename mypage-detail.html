@@ -9,22 +9,15 @@
 </head>
 <body class="page-mypage">
 
-  <header class="nav">
+  <header class="nav nav--user">
     <div class="nav__inner">
       <div class="nav__left">
         <a href="index.html" class="nav__logo">Sendit</a>
-        <nav class="nav__links">
-          <a href="index.html#hero"    class="nav__link">이용 상황</a>
-          <a href="index.html#how"     class="nav__link">이용 방법</a>
-          <a href="index.html#pricing" class="nav__link">가격</a>
-          <a href="index.html#faq"     class="nav__link">자주 묻는 질문</a>
-          <a href="index.html#trust"   class="nav__link">인증 및 문서</a>
-          <a href="index.html#law"     class="nav__link">법 조항</a>
-        </nav>
       </div>
       <div class="nav__right">
+        <span class="nav__user-name">홍길동</span>
         <a href="contact.html" class="nav__contact">서비스문의</a>
-        <button class="btn btn--dark" onclick="window.location.href='login.html'">로그인</button>
+        <button class="btn--outline" onclick="window.location.href='login.html'">로그아웃</button>
       </div>
     </div>
   </header>
@@ -114,6 +107,30 @@
 
       </div>
 
+      <!-- 발송 문서 내용 -->
+      <div>
+        <h2 class="mypage-section-title" style="font-size:17px; margin-bottom:12px;">발송 문서 내용</h2>
+        <div class="mypage-doc-paper">
+          <pre class="mypage-doc-text">제 목 : 임대차 보증금 반환 촉구
+
+귀측(수신인, 이하 '귀측')의 건승과 무궁한 발전을 기원합니다.
+
+본 발신인은 아래와 같이 귀하와 임대차 계약을 체결하였음을 확인하며, 귀측에게 본 계약에 따른 임대차 보증금 반환의무가 있음을 알려드리는 바, 이에 대해 신속히 이행해 주시기를 촉구합니다.
+
+가. 본 계약의 주요 사항:
+    1) 계약 체결일 : 2024년 3월 1일
+    2) 임대차 대상 : 서울특별시 강남구 테헤란로 123, 101호
+    3) 임대차 기간 : 2024년 3월 1일 ~ 2026년 2월 28일
+    4) 임대차 보증금 : 50,000,000원
+
+본 내용증명 수령일로부터 7일 이내에 위 보증금 전액을 반환하여 주시기 바랍니다.
+
+기한 내 이행이 없을 경우 법적 조치를 취할 것임을 통보합니다.
+
+발신인: 홍길동</pre>
+        </div>
+      </div>
+
       <!-- 증명서 다운로드 -->
       <div>
         <h2 class="mypage-section-title" style="font-size:17px; margin-bottom:12px;">증명서 다운로드</h2>
@@ -124,7 +141,7 @@
               <span class="cert-item__name">감사추적증명서</span>
               <span class="cert-item__validity">만료 없음</span>
             </div>
-            <button class="cert-download-btn">다운로드</button>
+            <button class="cert-download-btn" onclick="alert('다운로드 기능은 준비 중입니다.')">다운로드</button>
           </div>
 
           <div class="cert-item">
@@ -132,7 +149,7 @@
               <span class="cert-item__name">전자문서증명서</span>
               <span class="cert-item__validity">유효기간: 2026.08.28까지 (6개월)</span>
             </div>
-            <button class="cert-download-btn">다운로드</button>
+            <button class="cert-download-btn" onclick="alert('다운로드 기능은 준비 중입니다.')">다운로드</button>
           </div>
 
           <div class="cert-item">
@@ -140,7 +157,7 @@
               <span class="cert-item__name">유통증명서</span>
               <span class="cert-item__validity cert-item__validity--expired">유효기간 만료 (2026.05.28)</span>
             </div>
-            <button class="cert-download-btn" disabled>재발급 필요</button>
+            <button class="cert-reissue-btn" onclick="openReissueModal()">재발급 신청</button>
           </div>
 
         </div>
@@ -150,6 +167,35 @@
       <div style="padding-top: 8px;">
         <button class="mypage-empty__btn" onclick="window.location.href='select-situation.html'">이 문서로 재발송</button>
       </div>
+
+  <!-- 재발급 모달 -->
+  <div class="reissue-modal-overlay" id="reissueModal" style="display:none;">
+    <div class="reissue-modal">
+      <div class="reissue-modal__title">유통증명서 재발급</div>
+      <p class="reissue-modal__desc">유효기간이 만료된 유통증명서를 재발급합니다.<br>재발급 후 3개월간 유효합니다.</p>
+      <div class="reissue-modal__price">재발급 비용: <strong>2,200원</strong></div>
+      <div class="reissue-modal__actions">
+        <button class="reissue-modal__cancel" onclick="closeReissueModal()">취소</button>
+        <button class="reissue-modal__confirm" onclick="confirmReissue()">결제 후 재발급</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openReissueModal() {
+      document.getElementById('reissueModal').style.display = 'flex';
+    }
+    function closeReissueModal() {
+      document.getElementById('reissueModal').style.display = 'none';
+    }
+    function confirmReissue() {
+      closeReissueModal();
+      alert('재발급 결제 기능은 준비 중입니다.');
+    }
+    document.getElementById('reissueModal').addEventListener('click', function (e) {
+      if (e.target === this) closeReissueModal();
+    });
+  </script>
 
     </main>
 
