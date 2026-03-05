@@ -31,11 +31,7 @@ cards.forEach(function (card) {
 
 /* ── 이전 버튼 ── */
 btnPrev.addEventListener('click', function () {
-  if (history.length > 1) {
-    history.back();
-  } else {
-    window.location.href = 'select-situation.html';
-  }
+  window.location.href = 'select-situation.html';
 });
 
 /* ── 다음 버튼 ── */

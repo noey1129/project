@@ -18,7 +18,7 @@ textarea.addEventListener('input', function () {
 });
 
 btnPrev.addEventListener('click', function () {
-  if (history.length > 1) { history.back(); } else { window.location.href = 'select-situation.html'; }
+  window.location.href = 'select-situation.html';
 });
 
 btnNext.addEventListener('click', function () {
