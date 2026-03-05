@@ -93,23 +93,15 @@ document.getElementById('btnPay').addEventListener('click', function () {
   }
 
   /* 하단 바 숨기기 */
-  var bottomBar = document.querySelector('.bottom-bar');
-  if (bottomBar) bottomBar.style.display = 'none';
+  var payBottomBar = document.getElementById('payBottomBar');
+  if (payBottomBar) payBottomBar.style.display = 'none';
 });
 
-/* ── 이전/다음 버튼은 없지만 하단 바는 유지 ── */
-var bottomBar = document.querySelector('.bottom-bar');
-if (bottomBar) {
-  var inner = bottomBar.querySelector('.bottom-bar__inner') || bottomBar;
-  var prevBtn = document.createElement('button');
-  prevBtn.className = 'btn-prev';
-  prevBtn.textContent = '이전';
-  prevBtn.addEventListener('click', function () {
-    var type = sessionStorage.getItem('wizard_type');
-    window.location.href = type === 'rent' ? '../lease-preview.html' : '../preview.html';
-  });
-  inner.prepend(prevBtn);
-}
+/* ── 이전 버튼 ── */
+document.getElementById('btnPrev').addEventListener('click', function () {
+  var type = sessionStorage.getItem('wizard_type');
+  window.location.href = type === 'rent' ? '../lease-preview.html' : '../preview.html';
+});
 
 /* ── NAV 스크롤 그림자 ── */
 (function initNavShadow() {
