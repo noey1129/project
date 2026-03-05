@@ -1,115 +1,355 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>템플릿 관리 – Sendit 관리자</title>
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="admin.css" />
 </head>
-<body class="page-admin">
+<body class="antialiased">
+<div class="wrapper">
 
-  <div class="admin-wrap">
-
-    <!-- ── 사이드바 ── -->
-    <aside class="admin-sidebar">
-      <a href="dashboard.html" class="admin-sidebar__logo">Sendit<span class="admin-sidebar__badge">ADMIN</span></a>
-      <nav class="admin-nav">
-        <a href="dashboard.html" class="admin-nav-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          대시보드
+  <!-- Vertical sidebar nav -->
+  <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <h1 class="navbar-brand navbar-brand-autodark">
+        <a href="dashboard.html" class="text-decoration-none d-flex align-items-center">
+          <span style="font-size:20px;font-weight:800;letter-spacing:-0.5px;color:#fff;">Sendit</span>
+          <span class="badge bg-azure-lt ms-2" style="font-size:9px;vertical-align:middle;">ADMIN</span>
         </a>
-        <a href="members.html" class="admin-nav-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          회원 관리
-        </a>
-        <a href="sends.html" class="admin-nav-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          발송 내역
-        </a>
-        <a href="templates.html" class="admin-nav-item active">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          템플릿 관리
-        </a>
-      </nav>
-      <div class="admin-sidebar__footer">
-        <button class="admin-logout-btn" onclick="window.location.href='login.html'">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-          로그아웃
-        </button>
-      </div>
-    </aside>
-
-    <!-- ── 메인 ── -->
-    <div class="admin-main">
-
-      <header class="admin-header">
-        <span class="admin-header__title">템플릿 관리</span>
-        <span class="admin-header__admin">관리자: <strong>admin</strong></span>
-      </header>
-
-      <div class="admin-content">
-
-        <!-- 유형 탭 -->
-        <div class="admin-type-tabs" id="typeTabs">
-          <button class="admin-type-tab active" data-type="rent" onclick="switchType(this)">임대차</button>
-          <button class="admin-type-tab" data-type="loan" onclick="switchType(this)">대여금</button>
-          <button class="admin-type-tab" data-type="noise" onclick="switchType(this)">층간소음</button>
-          <button class="admin-type-tab" data-type="contract" onclick="switchType(this)">계약관련</button>
-          <button class="admin-type-tab" data-type="membership" onclick="switchType(this)">회원권환불</button>
-          <button class="admin-type-tab" data-type="custom" onclick="switchType(this)">직접작성</button>
+      </h1>
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="navbar-nav pt-lg-3">
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/></svg>
+              </span>
+              <span class="nav-link-title">대시보드</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="members.html">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+              </span>
+              <span class="nav-link-title">회원 관리</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sends.html">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="10" y1="14" x2="21" y2="3"/><path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5-7l-7-3.5a0.55 .55 0 0 1 0-1l18-6.5"/></svg>
+              </span>
+              <span class="nav-link-title">발송 내역</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="templates.html">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><line x1="9" y1="9" x2="10" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+              </span>
+              <span class="nav-link-title">템플릿 관리</span>
+            </a>
+          </li>
+        </ul>
+        <div class="mt-auto pb-3">
+          <div class="navbar-nav">
+            <div class="nav-item">
+              <a href="login.html" class="nav-link text-danger" onclick="sessionStorage.removeItem('admin_logged_in')">
+                <span class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"/><path d="M9 12h12l-3 -3"/><path d="M18 15l3 -3"/></svg>
+                </span>
+                <span class="nav-link-title">로그아웃</span>
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </aside>
 
-        <!-- 템플릿 편집 -->
-        <div class="admin-chart-card" style="max-width: 800px;">
-          <div class="admin-chart-card__title" id="templateTitle">임대차 기본 문구</div>
-          <p style="font-size:13px; color:#696B6D; margin:0;">
-            이 문구는 사용자가 미리보기 화면에서 보게 되는 자동 생성 내용의 기반입니다.
-            <code style="background:#F2F3F6; padding:2px 6px; border-radius:4px; font-size:12px;">{변수명}</code> 형식으로 질문 답변이 삽입됩니다.
-          </p>
-          <textarea class="admin-template-textarea" id="templateContent"></textarea>
-          <div class="admin-template-actions">
-            <button class="admin-save-btn" onclick="alert('저장 기능은 준비 중입니다.')">저장</button>
-            <button class="admin-reset-btn" onclick="resetTemplate()">기본값으로 되돌리기</button>
+  <!-- Main page wrapper -->
+  <div class="page-wrapper">
+    <div class="page-header d-print-none">
+      <div class="container-xl">
+        <div class="row g-2 align-items-center">
+          <div class="col">
+            <h2 class="page-title">템플릿 관리</h2>
+          </div>
+          <div class="col-auto">
+            <span class="text-muted">관리자: <strong>admin</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="container-xl">
+
+        <div class="card">
+          <div class="card-header">
+            <div class="col-12">
+              <ul class="nav nav-tabs card-header-tabs" id="templateTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="tab-rent" data-bs-toggle="tab" data-bs-target="#panel-rent" type="button" role="tab" aria-controls="panel-rent" aria-selected="true">임대차</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tab-loan" data-bs-toggle="tab" data-bs-target="#panel-loan" type="button" role="tab" aria-controls="panel-loan" aria-selected="false">대여금</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tab-noise" data-bs-toggle="tab" data-bs-target="#panel-noise" type="button" role="tab" aria-controls="panel-noise" aria-selected="false">층간소음</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tab-contract" data-bs-toggle="tab" data-bs-target="#panel-contract" type="button" role="tab" aria-controls="panel-contract" aria-selected="false">계약관련</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tab-membership" data-bs-toggle="tab" data-bs-target="#panel-membership" type="button" role="tab" aria-controls="panel-membership" aria-selected="false">회원권환불</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tab-custom" data-bs-toggle="tab" data-bs-target="#panel-custom" type="button" role="tab" aria-controls="panel-custom" aria-selected="false">직접작성</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="alert alert-info mb-4" role="alert">
+              <div class="d-flex align-items-start gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sm mt-1 flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12.01" y2="8"/><polyline points="11 12 12 12 12 16 13 16"/></svg>
+                <div>
+                  이 문구는 사용자가 질문 답변을 완료한 후 미리보기 화면에서 보게 되는 자동 생성 내용의 기반입니다.
+                  <code class="ms-1">{변수명}</code> 형식으로 사용자의 답변이 삽입됩니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="templateTabContent">
+
+              <!-- 임대차 -->
+              <div class="tab-pane fade show active" id="panel-rent" role="tabpanel" aria-labelledby="tab-rent">
+                <div class="mb-3">
+                  <label class="form-label fw-medium">임대차 기본 문구</label>
+                  <textarea class="form-control font-monospace" rows="8" id="tpl-rent" style="font-size:13px;line-height:1.8;">본인은 귀하와 임대차 계약을 체결하였으나, 계약 기간 만료 후 보증금 반환이 이루어지지 않고 있습니다.
+
+[계약 내용]
+- 계약 체결일: {contractDate}
+- 임대차 대상: {address}
+- 임대차 기간: {leaseStart} ~ {leaseEnd}
+- 임대차 보증금: {deposit}원
+
+이에 본 내용증명 수령일로부터 {deadline}일 이내에 위 보증금 전액을 반환하실 것을 강력히 촉구합니다.
+
+만약 위 기한 내에 이행하지 않을 경우, 보증금반환청구소송 등 법적 절차를 진행할 것임을 통보합니다.</textarea>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-primary" onclick="saveTemplate('임대차')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"/><circle cx="12" cy="14" r="2"/><polyline points="14 4 14 8 8 8 8 4"/></svg>
+                    저장
+                  </button>
+                  <button class="btn btn-outline-secondary" onclick="resetTemplate('rent')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7a1 1 0 0 1 1 -1"/></svg>
+                    기본값으로
+                  </button>
+                </div>
+              </div>
+
+              <!-- 대여금 -->
+              <div class="tab-pane fade" id="panel-loan" role="tabpanel" aria-labelledby="tab-loan">
+                <div class="mb-3">
+                  <label class="form-label fw-medium">대여금 기본 문구</label>
+                  <textarea class="form-control font-monospace" rows="8" id="tpl-loan" style="font-size:13px;line-height:1.8;">본인은 귀하에게 금액을 대여하였으나 변제가 이루어지지 않고 있습니다.
+
+[대여 내용]
+- 대여일: {ldate}
+- 대여 금액: {amount}원
+- 변제 기한: {dueDate}
+
+이에 본 내용증명 수령일로부터 {deadline}일 이내에 위 대여금 전액을 변제할 것을 촉구합니다.
+
+만약 위 기한 내에 변제하지 않을 경우, 대여금반환청구소송 등 법적 절차를 진행할 것임을 통보합니다.</textarea>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-primary" onclick="saveTemplate('대여금')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"/><circle cx="12" cy="14" r="2"/><polyline points="14 4 14 8 8 8 8 4"/></svg>
+                    저장
+                  </button>
+                  <button class="btn btn-outline-secondary" onclick="resetTemplate('loan')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7a1 1 0 0 1 1 -1"/></svg>
+                    기본값으로
+                  </button>
+                </div>
+              </div>
+
+              <!-- 층간소음 -->
+              <div class="tab-pane fade" id="panel-noise" role="tabpanel" aria-labelledby="tab-noise">
+                <div class="mb-3">
+                  <label class="form-label fw-medium">층간소음 기본 문구</label>
+                  <textarea class="form-control font-monospace" rows="8" id="tpl-noise" style="font-size:13px;line-height:1.8;">본인은 귀하로 인한 층간소음 피해로 인하여 본 내용증명을 발송합니다.
+
+[소음 피해 내용]
+- 소음 유형: {noiseType}
+- 피해 기간: {noisePeriod}
+- 상세 내용: {desc}
+
+이에 본 내용증명 수령일로부터 {deadline}일 이내에 소음 발생 행위를 중단할 것을 강력히 요구합니다.
+
+위 기한 내에 시정되지 않을 경우, 층간소음이웃사이센터 신고 및 손해배상청구 등 관련 법적 조치를 취할 것임을 통보합니다.</textarea>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-primary" onclick="saveTemplate('층간소음')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"/><circle cx="12" cy="14" r="2"/><polyline points="14 4 14 8 8 8 8 4"/></svg>
+                    저장
+                  </button>
+                  <button class="btn btn-outline-secondary" onclick="resetTemplate('noise')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7a1 1 0 0 1 1 -1"/></svg>
+                    기본값으로
+                  </button>
+                </div>
+              </div>
+
+              <!-- 계약관련 -->
+              <div class="tab-pane fade" id="panel-contract" role="tabpanel" aria-labelledby="tab-contract">
+                <div class="mb-3">
+                  <label class="form-label fw-medium">계약관련 기본 문구</label>
+                  <textarea class="form-control font-monospace" rows="8" id="tpl-contract" style="font-size:13px;line-height:1.8;">본인은 귀하와 체결한 계약에 관하여 아래와 같이 통보합니다.
+
+[계약 위반 내용]
+- 계약 체결일: {contractDate}
+- 위반 사항: {situation}
+- 발생일: {eventDate}
+
+귀하의 위 행위는 계약 위반에 해당하며, 이에 본 내용증명 수령일로부터 {deadline}일 이내에 {demand}를 이행하실 것을 요구합니다.
+
+기한 내 이행이 없을 경우, 계약해제 및 손해배상청구 등 법적 조치를 취할 것임을 통보합니다.</textarea>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-primary" onclick="saveTemplate('계약관련')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"/><circle cx="12" cy="14" r="2"/><polyline points="14 4 14 8 8 8 8 4"/></svg>
+                    저장
+                  </button>
+                  <button class="btn btn-outline-secondary" onclick="resetTemplate('contract')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7a1 1 0 0 1 1 -1"/></svg>
+                    기본값으로
+                  </button>
+                </div>
+              </div>
+
+              <!-- 회원권환불 -->
+              <div class="tab-pane fade" id="panel-membership" role="tabpanel" aria-labelledby="tab-membership">
+                <div class="mb-3">
+                  <label class="form-label fw-medium">회원권환불 기본 문구</label>
+                  <textarea class="form-control font-monospace" rows="8" id="tpl-membership" style="font-size:13px;line-height:1.8;">본인은 귀 시설의 회원권을 구매하였으나, 계약 해지 요청 후 환불이 이루어지지 않고 있습니다.
+
+[회원권 계약 내용]
+- 계약일: {contractDate}
+- 회원권 종류: {membershipType}
+- 결제 금액: {amount}원
+- 해지 요청일: {cancelDate}
+
+소비자분쟁해결기준에 따라 계약 해지 시 환불받을 권리가 있으며, 이에 본 내용증명 수령일로부터 {deadline}일 이내에 위 금액을 환불해 주실 것을 요구합니다.
+
+기한 내 이행이 없을 경우, 소비자원 신고 및 환불청구소송 등 법적 조치를 취할 것임을 통보합니다.</textarea>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-primary" onclick="saveTemplate('회원권환불')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"/><circle cx="12" cy="14" r="2"/><polyline points="14 4 14 8 8 8 8 4"/></svg>
+                    저장
+                  </button>
+                  <button class="btn btn-outline-secondary" onclick="resetTemplate('membership')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7a1 1 0 0 1 1 -1"/></svg>
+                    기본값으로
+                  </button>
+                </div>
+              </div>
+
+              <!-- 직접작성 -->
+              <div class="tab-pane fade" id="panel-custom" role="tabpanel" aria-labelledby="tab-custom">
+                <div class="mb-3">
+                  <label class="form-label fw-medium">직접작성 기본 안내 문구</label>
+                  <textarea class="form-control font-monospace" rows="8" id="tpl-custom" style="font-size:13px;line-height:1.8;">본인은 귀하에 대하여 아래와 같이 통보합니다.
+
+[사건 개요]
+- 발생일: {eventDate}
+- 내용: {situation}
+
+이에 본 내용증명 수령일로부터 {deadline}일 이내에 {demand}를 이행해 주시기 바랍니다.
+
+기한 내 이행이 없을 경우, 관련 법령에 따른 법적 조치를 취할 것임을 통보합니다.</textarea>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-primary" onclick="saveTemplate('직접작성')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"/><circle cx="12" cy="14" r="2"/><polyline points="14 4 14 8 8 8 8 4"/></svg>
+                    저장
+                  </button>
+                  <button class="btn btn-outline-secondary" onclick="resetTemplate('custom')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7a1 1 0 0 1 1 -1"/></svg>
+                    기본값으로
+                  </button>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
       </div>
     </div>
-
   </div>
 
-  <script>
-    var templates = {
-      rent: '제 목 : {subject}\n\n귀측(수신인, 이하 \'귀측\')의 건승과 무궁한 발전을 기원합니다.\n\n본 발신인은 아래와 같이 귀하와 임대차 계약을 체결하였음을 확인하며, 귀측에게 본 계약에 따른 임대차 보증금 반환의무가 있음을 알려드리는 바, 이에 대해 신속히 이행해 주시기를 촉구합니다.\n\n가. 본 계약의 주요 사항:\n    1) 계약 체결일 : {contractDate}\n    2) 임대차 대상 : {address}\n    3) 임대차 기간 : {leaseStart} ~ {leaseEnd}\n    4) 임대차 보증금 : {deposit}원',
-      loan: '본인은 귀하에게 {ldate} 금 {amount}을 대여하였습니다.\n\n{dueDateClause}\n\n이에 본 내용증명 수령일로부터 {deadline}일 이내에 위 대여금 전액을 변제할 것을 촉구합니다.\n\n만약 위 기한 내에 변제하지 않을 경우, 법적 절차를 진행할 것임을 통보합니다.',
-      noise: '본인은 귀하로 인한 층간소음({noiseType}) 피해로 인하여 본 내용증명을 발송합니다.\n\n{desc}\n\n이에 본 내용증명 수령일로부터 {deadline}일 이내에 소음 발생 행위를 중단할 것을 강력히 요구합니다.\n\n위 기한 내에 시정되지 않을 경우, 관련 법규에 따른 법적 조치를 취할 것임을 통보합니다.',
-      contract: '{situation}\n\n위 사실은 {eventDate}에 발생하였습니다.\n\n{demand}\n\n본 내용증명 수령일로부터 {deadline}일 이내에 위 사항을 이행해 주시기 바랍니다.\n\n기한 내 이행이 없을 경우 법적 조치를 취할 것임을 통보합니다.',
-      membership: '{situation}\n\n위 사실은 {eventDate}에 발생하였습니다.\n\n{demand}\n\n본 내용증명 수령일로부터 {deadline}일 이내에 환불을 이행해 주시기 바랍니다.\n\n기한 내 이행이 없을 경우 법적 조치를 취할 것임을 통보합니다.',
-      custom: '{situation}\n\n위 사실은 {eventDate}에 발생하였습니다.\n\n{demand}\n\n본 내용증명 수령일로부터 {deadline}일 이내에 위 사항을 이행해 주시기 바랍니다.\n\n기한 내 이행이 없을 경우 법적 조치를 취할 것임을 통보합니다.',
-    };
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+<script>
+  if (!sessionStorage.getItem('admin_logged_in')) {
+    window.location.href = 'login.html';
+  }
 
-    var typeNames = {
-      rent: '임대차', loan: '대여금', noise: '층간소음',
-      contract: '계약관련', membership: '회원권환불', custom: '직접작성'
-    };
+  var defaults = {
+    rent: '본인은 귀하와 임대차 계약을 체결하였으나, 계약 기간 만료 후 보증금 반환이 이루어지지 않고 있습니다.\n\n[계약 내용]\n- 계약 체결일: {contractDate}\n- 임대차 대상: {address}\n- 임대차 기간: {leaseStart} ~ {leaseEnd}\n- 임대차 보증금: {deposit}원\n\n이에 본 내용증명 수령일로부터 {deadline}일 이내에 위 보증금 전액을 반환하실 것을 강력히 촉구합니다.\n\n만약 위 기한 내에 이행하지 않을 경우, 보증금반환청구소송 등 법적 절차를 진행할 것임을 통보합니다.',
+    loan: '본인은 귀하에게 금액을 대여하였으나 변제가 이루어지지 않고 있습니다.\n\n[대여 내용]\n- 대여일: {ldate}\n- 대여 금액: {amount}원\n- 변제 기한: {dueDate}\n\n이에 본 내용증명 수령일로부터 {deadline}일 이내에 위 대여금 전액을 변제할 것을 촉구합니다.\n\n만약 위 기한 내에 변제하지 않을 경우, 대여금반환청구소송 등 법적 절차를 진행할 것임을 통보합니다.',
+    noise: '본인은 귀하로 인한 층간소음 피해로 인하여 본 내용증명을 발송합니다.\n\n[소음 피해 내용]\n- 소음 유형: {noiseType}\n- 피해 기간: {noisePeriod}\n- 상세 내용: {desc}\n\n이에 본 내용증명 수령일로부터 {deadline}일 이내에 소음 발생 행위를 중단할 것을 강력히 요구합니다.\n\n위 기한 내에 시정되지 않을 경우, 층간소음이웃사이센터 신고 및 손해배상청구 등 관련 법적 조치를 취할 것임을 통보합니다.',
+    contract: '본인은 귀하와 체결한 계약에 관하여 아래와 같이 통보합니다.\n\n[계약 위반 내용]\n- 계약 체결일: {contractDate}\n- 위반 사항: {situation}\n- 발생일: {eventDate}\n\n귀하의 위 행위는 계약 위반에 해당하며, 이에 본 내용증명 수령일로부터 {deadline}일 이내에 {demand}를 이행하실 것을 요구합니다.\n\n기한 내 이행이 없을 경우, 계약해제 및 손해배상청구 등 법적 조치를 취할 것임을 통보합니다.',
+    membership: '본인은 귀 시설의 회원권을 구매하였으나, 계약 해지 요청 후 환불이 이루어지지 않고 있습니다.\n\n[회원권 계약 내용]\n- 계약일: {contractDate}\n- 회원권 종류: {membershipType}\n- 결제 금액: {amount}원\n- 해지 요청일: {cancelDate}\n\n소비자분쟁해결기준에 따라 계약 해지 시 환불받을 권리가 있으며, 이에 본 내용증명 수령일로부터 {deadline}일 이내에 위 금액을 환불해 주실 것을 요구합니다.\n\n기한 내 이행이 없을 경우, 소비자원 신고 및 환불청구소송 등 법적 조치를 취할 것임을 통보합니다.',
+    custom: '본인은 귀하에 대하여 아래와 같이 통보합니다.\n\n[사건 개요]\n- 발생일: {eventDate}\n- 내용: {situation}\n\n이에 본 내용증명 수령일로부터 {deadline}일 이내에 {demand}를 이행해 주시기 바랍니다.\n\n기한 내 이행이 없을 경우, 관련 법령에 따른 법적 조치를 취할 것임을 통보합니다.'
+  };
 
-    var currentType = 'rent';
-
-    function switchType(el) {
-      document.querySelectorAll('.admin-type-tab').forEach(function (t) { t.classList.remove('active'); });
-      el.classList.add('active');
-      currentType = el.dataset.type;
-      document.getElementById('templateTitle').textContent = typeNames[currentType] + ' 기본 문구';
-      document.getElementById('templateContent').value = templates[currentType];
+  function saveTemplate(typeName) {
+    // Show success toast via Tabler toast or alert
+    var toast = document.getElementById('saveToast');
+    if (toast) {
+      document.getElementById('toastMessage').textContent = typeName + ' 템플릿이 저장되었습니다.';
+      var bsToast = new bootstrap.Toast(toast);
+      bsToast.show();
+    } else {
+      alert(typeName + ' 템플릿이 저장되었습니다.');
     }
+  }
 
-    function resetTemplate() {
-      document.getElementById('templateContent').value = templates[currentType];
+  function resetTemplate(key) {
+    if (confirm('기본값으로 되돌리겠습니까? 현재 내용이 사라집니다.')) {
+      var el = document.getElementById('tpl-' + key);
+      if (el && defaults[key]) {
+        el.value = defaults[key];
+      }
     }
+  }
+</script>
 
-    /* 초기화 */
-    document.getElementById('templateContent').value = templates[currentType];
-  </script>
+<!-- Save Toast -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="saveToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMessage">
+        템플릿이 저장되었습니다.
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

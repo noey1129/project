@@ -1,166 +1,265 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>회원 상세 – Sendit 관리자</title>
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="admin.css" />
 </head>
-<body class="page-admin">
+<body class="antialiased">
+<div class="wrapper">
 
-  <div class="admin-wrap">
-
-    <!-- ── 사이드바 ── -->
-    <aside class="admin-sidebar">
-      <a href="dashboard.html" class="admin-sidebar__logo">Sendit<span class="admin-sidebar__badge">ADMIN</span></a>
-      <nav class="admin-nav">
-        <a href="dashboard.html" class="admin-nav-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          대시보드
+  <!-- Vertical sidebar nav -->
+  <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <h1 class="navbar-brand navbar-brand-autodark">
+        <a href="dashboard.html" class="text-decoration-none d-flex align-items-center">
+          <span style="font-size:20px;font-weight:800;letter-spacing:-0.5px;color:#fff;">Sendit</span>
+          <span class="badge bg-azure-lt ms-2" style="font-size:9px;vertical-align:middle;">ADMIN</span>
         </a>
-        <a href="members.html" class="admin-nav-item active">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          회원 관리
-        </a>
-        <a href="sends.html" class="admin-nav-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          발송 내역
-        </a>
-        <a href="templates.html" class="admin-nav-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          템플릿 관리
-        </a>
-      </nav>
-      <div class="admin-sidebar__footer">
-        <button class="admin-logout-btn" onclick="window.location.href='login.html'">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-          로그아웃
-        </button>
+      </h1>
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="navbar-nav pt-lg-3">
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.html">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/></svg>
+              </span>
+              <span class="nav-link-title">대시보드</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="members.html">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+              </span>
+              <span class="nav-link-title">회원 관리</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sends.html">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="10" y1="14" x2="21" y2="3"/><path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5-7l-7-3.5a0.55 .55 0 0 1 0-1l18-6.5"/></svg>
+              </span>
+              <span class="nav-link-title">발송 내역</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="templates.html">
+              <span class="nav-link-icon d-md-none d-lg-inline-block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><line x1="9" y1="9" x2="10" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+              </span>
+              <span class="nav-link-title">템플릿 관리</span>
+            </a>
+          </li>
+        </ul>
+        <div class="mt-auto pb-3">
+          <div class="navbar-nav">
+            <div class="nav-item">
+              <a href="login.html" class="nav-link text-danger" onclick="sessionStorage.removeItem('admin_logged_in')">
+                <span class="nav-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"/><path d="M9 12h12l-3 -3"/><path d="M18 15l3 -3"/></svg>
+                </span>
+                <span class="nav-link-title">로그아웃</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </aside>
+    </div>
+  </aside>
 
-    <!-- ── 메인 ── -->
-    <div class="admin-main">
+  <!-- Main page wrapper -->
+  <div class="page-wrapper">
+    <div class="page-header d-print-none">
+      <div class="container-xl">
+        <div class="row g-2 align-items-center">
+          <div class="col-auto">
+            <a href="members.html" class="btn btn-outline-secondary btn-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sm" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18"/></svg>
+              회원 목록으로
+            </a>
+          </div>
+          <div class="col">
+            <h2 class="page-title">회원 상세</h2>
+          </div>
+          <div class="col-auto">
+            <span class="text-muted">관리자: <strong>admin</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <header class="admin-header">
-        <span class="admin-header__title">회원 상세</span>
-        <span class="admin-header__admin">관리자: <strong>admin</strong></span>
-      </header>
+    <div class="page-body">
+      <div class="container-xl">
 
-      <div class="admin-content">
+        <!-- Info Cards Row -->
+        <div class="row row-deck row-cards mb-4">
 
-        <a href="members.html" class="admin-back">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-          회원 목록으로
-        </a>
+          <!-- 회원 정보 -->
+          <div class="col-lg-6">
+            <div class="card h-100">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+                  회원 정보
+                </h3>
+              </div>
+              <div class="card-body">
+                <dl class="row">
+                  <dt class="col-5 text-muted fw-normal">이름</dt>
+                  <dd class="col-7 fw-medium">홍길동</dd>
 
-        <!-- 회원 기본 정보 -->
-        <div class="admin-detail-grid">
-          <div class="admin-info-card">
-            <div class="admin-info-card__title">기본 정보</div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">이름</span>
-              <span class="admin-info-row__value">홍길동</span>
-            </div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">이메일</span>
-              <span class="admin-info-row__value">hong@example.com</span>
-            </div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">전화번호</span>
-              <span class="admin-info-row__value">010-1234-5678</span>
-            </div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">가입 방법</span>
-              <span class="admin-info-row__value">이메일</span>
-            </div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">가입일</span>
-              <span class="admin-info-row__value">2026.01.15</span>
-            </div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">상태</span>
-              <span class="admin-info-row__value"><span class="status-badge status-badge--active">활성</span></span>
+                  <dt class="col-5 text-muted fw-normal">이메일</dt>
+                  <dd class="col-7">user@example.com</dd>
+
+                  <dt class="col-5 text-muted fw-normal">전화번호</dt>
+                  <dd class="col-7">010-1111-2222</dd>
+
+                  <dt class="col-5 text-muted fw-normal">가입 방법</dt>
+                  <dd class="col-7"><span class="badge bg-blue-lt text-blue">이메일</span></dd>
+
+                  <dt class="col-5 text-muted fw-normal">가입일</dt>
+                  <dd class="col-7">2025.12.01</dd>
+
+                  <dt class="col-5 text-muted fw-normal">상태</dt>
+                  <dd class="col-7"><span class="badge bg-success text-white">활성</span></dd>
+                </dl>
+              </div>
             </div>
           </div>
 
-          <div class="admin-info-card">
-            <div class="admin-info-card__title">발송 통계</div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">총 발송 건수</span>
-              <span class="admin-info-row__value">12건</span>
+          <!-- 이용 통계 -->
+          <div class="col-lg-6">
+            <div class="card h-100">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="12" width="6" height="8" rx="1"/><rect x="9" y="8" width="6" height="12" rx="1"/><rect x="15" y="4" width="6" height="16" rx="1"/><path d="M4 20h14"/></svg>
+                  이용 통계
+                </h3>
+              </div>
+              <div class="card-body">
+                <div class="row g-3">
+                  <div class="col-6">
+                    <div class="p-3 bg-blue-lt rounded text-center">
+                      <div class="h2 mb-0 text-blue">12건</div>
+                      <div class="small text-muted mt-1">총 발송건</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="p-3 bg-green-lt rounded text-center">
+                      <div class="h2 mb-0 text-green">143,200원</div>
+                      <div class="small text-muted mt-1">총 결제금액</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="p-3 bg-azure-lt rounded text-center">
+                      <div class="h4 mb-0 text-azure">2026.02.28</div>
+                      <div class="small text-muted mt-1">마지막 발송</div>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="p-3 bg-orange-lt rounded text-center">
+                      <div class="h2 mb-0 text-orange">2건</div>
+                      <div class="small text-muted mt-1">미열람건</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">전자문서+공전소</span>
-              <span class="admin-info-row__value">8건</span>
-            </div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">알림톡+공전소</span>
-              <span class="admin-info-row__value">4건</span>
-            </div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">총 결제 금액</span>
-              <span class="admin-info-row__value">198,000원</span>
-            </div>
-            <div class="admin-info-row">
-              <span class="admin-info-row__label">마지막 발송일</span>
-              <span class="admin-info-row__value">2026.02.28</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex gap-2 align-items-center">
+                  <span class="text-muted me-2">계정 관리:</span>
+                  <button class="btn btn-warning" onclick="if(confirm('해당 계정을 정지하시겠습니까?')) alert('계정이 정지되었습니다.')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="9" y2="15"/><line x1="15" y1="9" x2="15" y2="15"/></svg>
+                    계정 정지
+                  </button>
+                  <button class="btn btn-danger" onclick="if(confirm('해당 회원을 강제 탈퇴시키겠습니까? 이 작업은 되돌릴 수 없습니다.')) alert('강제 탈퇴 처리되었습니다.')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    강제 탈퇴
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 발송 내역 -->
-        <div>
-          <div class="admin-section-header" style="margin-bottom:16px;">
-            <span class="admin-section-title" style="font-size:16px;">발송 내역</span>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">발송 내역</h3>
+            <div class="card-options">
+              <span class="text-muted small">최근 3건</span>
+            </div>
           </div>
-          <div class="admin-table-wrap">
-            <table class="admin-table">
+          <div class="table-responsive">
+            <table class="table table-vcenter table-hover card-table">
               <thead>
                 <tr>
                   <th>날짜</th>
                   <th>유형</th>
-                  <th>수신인</th>
                   <th>발송 방식</th>
-                  <th>금액</th>
                   <th>상태</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>2026.02.28</td>
-                  <td>임대차</td>
-                  <td>김철수</td>
-                  <td><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></td>
-                  <td>19,800원</td>
-                  <td><span class="status-badge status-badge--read">열람완료</span></td>
-                  <td><a href="sends-detail.html" class="tbl-btn">보기</a></td>
+                  <td class="text-muted">2026.02.28</td>
+                  <td><span class="badge bg-blue-lt text-blue">임대차</span></td>
+                  <td>
+                    <span class="badge" style="background-color:#7c3aed;color:#fff;">전자문서+공전소</span>
+                  </td>
+                  <td><span class="badge bg-success text-white">열람완료</span></td>
+                  <td><a href="sends-detail.html" class="btn btn-sm btn-outline-secondary">보기</a></td>
                 </tr>
                 <tr>
-                  <td>2026.02.10</td>
-                  <td>대여금</td>
-                  <td>이민수</td>
-                  <td><span class="method-badge-sm method-badge-sm--simple">알림톡+공전소</span></td>
-                  <td>9,900원</td>
-                  <td><span class="status-badge status-badge--sent">발송완료</span></td>
-                  <td><a href="sends-detail.html" class="tbl-btn">보기</a></td>
+                  <td class="text-muted">2026.02.10</td>
+                  <td><span class="badge bg-orange-lt text-orange">대여금</span></td>
+                  <td>
+                    <span class="badge bg-cyan text-white">알림톡+공전소</span>
+                  </td>
+                  <td><span class="badge bg-primary text-white">발송완료</span></td>
+                  <td><a href="sends-detail.html" class="btn btn-sm btn-outline-secondary">보기</a></td>
+                </tr>
+                <tr>
+                  <td class="text-muted">2026.01.18</td>
+                  <td><span class="badge bg-red-lt text-red">층간소음</span></td>
+                  <td>
+                    <span class="badge" style="background-color:#7c3aed;color:#fff;">전자문서+공전소</span>
+                  </td>
+                  <td><span class="badge bg-secondary text-white">열람미확인</span></td>
+                  <td><a href="sends-detail.html" class="btn btn-sm btn-outline-secondary">보기</a></td>
                 </tr>
               </tbody>
             </table>
           </div>
-        </div>
-
-        <!-- 계정 관리 버튼 -->
-        <div style="display:flex; gap:10px;">
-          <button class="admin-save-btn" onclick="alert('준비 중입니다.')">상태 변경</button>
-          <button class="admin-reset-btn" onclick="alert('준비 중입니다.')">회원 삭제</button>
+          <div class="card-footer">
+            <a href="sends.html" class="btn btn-link px-0">전체 발송 내역 보기 →</a>
+          </div>
         </div>
 
       </div>
     </div>
-
   </div>
 
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+<script>
+  if (!sessionStorage.getItem('admin_logged_in')) {
+    window.location.href = 'login.html';
+  }
+</script>
 </body>
 </html>

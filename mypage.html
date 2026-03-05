@@ -4,18 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>마이페이지 – Sendit</title>
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="mypage.css" />
 </head>
 <body class="page-mypage">
 
+  <!-- ── Sendit 상단 네비게이션 ── -->
   <header class="nav nav--user">
     <div class="nav__inner">
       <div class="nav__left">
         <a href="index.html" class="nav__logo">Sendit</a>
       </div>
       <div class="nav__right">
-        <span class="nav__user-name">홍길동</span>
+        <span class="nav__user-name" id="navUserName">홍길동</span>
         <a href="contact.html" class="nav__contact">서비스문의</a>
         <button class="btn--outline" onclick="window.location.href='login.html'">로그아웃</button>
       </div>
@@ -27,8 +29,8 @@
     <!-- ── 사이드바 ── -->
     <aside class="mypage-sidebar">
       <div class="mypage-sidebar__profile">
-        <span class="mypage-sidebar__name">홍길동</span>
-        <span class="mypage-sidebar__email">user@example.com</span>
+        <span class="mypage-sidebar__name" id="sidebarUserName">홍길동</span>
+        <span class="mypage-sidebar__email" id="sidebarUserEmail">user@example.com</span>
       </div>
       <nav class="mypage-sidebar__nav">
         <a href="mypage.html" class="mypage-nav-item active">
@@ -57,36 +59,54 @@
 
       <h1 class="mypage-section-title">발송 내역</h1>
 
-      <!-- 통계 카드 -->
-      <div class="mypage-stats">
-        <div class="mypage-stat-card">
-          <span class="mypage-stat-card__label">총 발송</span>
-          <span class="mypage-stat-card__value">12<span class="mypage-stat-card__unit">건</span></span>
+      <!-- 통계 카드 (Tabler cards) -->
+      <div class="row g-3">
+        <div class="col-4">
+          <div class="card card-sm" style="border-radius:14px; border:1px solid #E7E9EB;">
+            <div class="card-body">
+              <div class="subheader mb-2" style="color:#696B6D; font-size:13px;">총 발송</div>
+              <div style="font-size:28px; font-weight:700; color:#172230; line-height:1;">
+                12<span style="font-size:14px; font-weight:400; color:#696B6D; margin-left:4px;">건</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mypage-stat-card">
-          <span class="mypage-stat-card__label">열람 완료</span>
-          <span class="mypage-stat-card__value">9<span class="mypage-stat-card__unit">건</span></span>
+        <div class="col-4">
+          <div class="card card-sm" style="border-radius:14px; border:1px solid #E7E9EB;">
+            <div class="card-body">
+              <div class="subheader mb-2" style="color:#696B6D; font-size:13px;">열람 완료</div>
+              <div style="font-size:28px; font-weight:700; color:#172230; line-height:1;">
+                9<span style="font-size:14px; font-weight:400; color:#696B6D; margin-left:4px;">건</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mypage-stat-card">
-          <span class="mypage-stat-card__label">열람 미확인</span>
-          <span class="mypage-stat-card__value">3<span class="mypage-stat-card__unit">건</span></span>
+        <div class="col-4">
+          <div class="card card-sm" style="border-radius:14px; border:1px solid #E7E9EB;">
+            <div class="card-body">
+              <div class="subheader mb-2" style="color:#696B6D; font-size:13px;">열람 미확인</div>
+              <div style="font-size:28px; font-weight:700; color:#172230; line-height:1;">
+                3<span style="font-size:14px; font-weight:400; color:#696B6D; margin-left:4px;">건</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- 필터 -->
-      <div class="mypage-filter">
-        <select class="mypage-filter-select">
+      <!-- 필터 (Tabler form-select) -->
+      <div class="d-flex gap-2 flex-wrap">
+        <select class="form-select" style="width:auto; min-width:140px; height:40px; font-size:14px; border-radius:8px;">
           <option value="all">기간: 전체</option>
           <option value="1m">최근 1개월</option>
           <option value="3m">최근 3개월</option>
           <option value="6m">최근 6개월</option>
         </select>
-        <select class="mypage-filter-select">
+        <select class="form-select" style="width:auto; min-width:160px; height:40px; font-size:14px; border-radius:8px;">
           <option value="all">방식: 전체</option>
           <option value="certified">전자문서+공전소</option>
           <option value="simple">알림톡+공전소</option>
         </select>
-        <select class="mypage-filter-select">
+        <select class="form-select" style="width:auto; min-width:150px; height:40px; font-size:14px; border-radius:8px;">
           <option value="all">상태: 전체</option>
           <option value="sent">발송완료</option>
           <option value="read">열람완료</option>
@@ -95,66 +115,110 @@
         </select>
       </div>
 
-      <!-- 발송 내역 테이블 -->
-      <div class="mypage-table-wrap">
-        <table class="mypage-table">
-          <thead>
-            <tr>
-              <th>날짜</th>
-              <th>유형</th>
-              <th>수신인</th>
-              <th>발송 방식</th>
-              <th>상태</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>2026.02.28</td>
-              <td>임대차</td>
-              <td>김철수</td>
-              <td><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></td>
-              <td><span class="status-badge status-badge--read">열람완료</span></td>
-              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
-            </tr>
-            <tr>
-              <td>2026.02.15</td>
-              <td>대여금</td>
-              <td>이영희</td>
-              <td><span class="method-badge-sm method-badge-sm--simple">알림톡+공전소</span></td>
-              <td><span class="status-badge status-badge--sent">발송완료</span></td>
-              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
-            </tr>
-            <tr>
-              <td>2026.01.30</td>
-              <td>층간소음</td>
-              <td>박민준</td>
-              <td><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></td>
-              <td><span class="status-badge status-badge--pending">열람미확인</span></td>
-              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
-            </tr>
-            <tr>
-              <td>2026.01.10</td>
-              <td>계약관련</td>
-              <td>최지수</td>
-              <td><span class="method-badge-sm method-badge-sm--simple">알림톡+공전소</span></td>
-              <td><span class="status-badge status-badge--failed">발송실패</span></td>
-              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- 발송 내역 테이블 (Tabler table) -->
+      <div class="card" style="border-radius:14px; border:1px solid #E7E9EB; overflow:hidden; margin-bottom:0;">
+        <div class="table-responsive">
+          <table class="table table-vcenter card-table" style="font-size:14px; margin-bottom:0;">
+            <thead style="background:#F8F9FA;">
+              <tr>
+                <th style="color:#696B6D; font-weight:600; border-bottom:1px solid #E7E9EB; padding:14px 16px;">날짜</th>
+                <th style="color:#696B6D; font-weight:600; border-bottom:1px solid #E7E9EB; padding:14px 16px;">유형</th>
+                <th style="color:#696B6D; font-weight:600; border-bottom:1px solid #E7E9EB; padding:14px 16px;">수신인</th>
+                <th style="color:#696B6D; font-weight:600; border-bottom:1px solid #E7E9EB; padding:14px 16px;">발송 방식</th>
+                <th style="color:#696B6D; font-weight:600; border-bottom:1px solid #E7E9EB; padding:14px 16px;">상태</th>
+                <th style="border-bottom:1px solid #E7E9EB;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:16px; color:#1C1E21; border-bottom:1px solid #F2F3F6;">2026.02.28</td>
+                <td style="padding:16px; color:#1C1E21; border-bottom:1px solid #F2F3F6;">임대차</td>
+                <td style="padding:16px; color:#1C1E21; border-bottom:1px solid #F2F3F6;">김철수</td>
+                <td style="padding:16px; border-bottom:1px solid #F2F3F6;">
+                  <span class="badge" style="background:#172230; color:#fff; font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px;">전자문서+공전소</span>
+                </td>
+                <td style="padding:16px; border-bottom:1px solid #F2F3F6;">
+                  <span class="badge bg-success-lt" style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px;">열람완료</span>
+                </td>
+                <td style="padding:16px; border-bottom:1px solid #F2F3F6;">
+                  <a href="mypage-detail.html" class="tbl-btn">상세보기</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:16px; color:#1C1E21; border-bottom:1px solid #F2F3F6;">2026.02.15</td>
+                <td style="padding:16px; color:#1C1E21; border-bottom:1px solid #F2F3F6;">대여금</td>
+                <td style="padding:16px; color:#1C1E21; border-bottom:1px solid #F2F3F6;">이영희</td>
+                <td style="padding:16px; border-bottom:1px solid #F2F3F6;">
+                  <span class="badge" style="background:#F2F3F6; color:#696B6D; border:1px solid #D7DBDF; font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px;">알림톡+공전소</span>
+                </td>
+                <td style="padding:16px; border-bottom:1px solid #F2F3F6;">
+                  <span class="badge bg-primary-lt" style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px;">발송완료</span>
+                </td>
+                <td style="padding:16px; border-bottom:1px solid #F2F3F6;">
+                  <a href="mypage-detail.html" class="tbl-btn">상세보기</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:16px; color:#1C1E21; border-bottom:1px solid #F2F3F6;">2026.01.30</td>
+                <td style="padding:16px; color:#1C1E21; border-bottom:1px solid #F2F3F6;">층간소음</td>
+                <td style="padding:16px; color:#1C1E21; border-bottom:1px solid #F2F3F6;">박민준</td>
+                <td style="padding:16px; border-bottom:1px solid #F2F3F6;">
+                  <span class="badge" style="background:#172230; color:#fff; font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px;">전자문서+공전소</span>
+                </td>
+                <td style="padding:16px; border-bottom:1px solid #F2F3F6;">
+                  <span class="badge bg-secondary-lt" style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px; color:#696B6D;">열람미확인</span>
+                </td>
+                <td style="padding:16px; border-bottom:1px solid #F2F3F6;">
+                  <a href="mypage-detail.html" class="tbl-btn">상세보기</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:16px; color:#1C1E21;">2026.01.10</td>
+                <td style="padding:16px; color:#1C1E21;">계약관련</td>
+                <td style="padding:16px; color:#1C1E21;">최지수</td>
+                <td style="padding:16px;">
+                  <span class="badge" style="background:#F2F3F6; color:#696B6D; border:1px solid #D7DBDF; font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px;">알림톡+공전소</span>
+                </td>
+                <td style="padding:16px;">
+                  <span class="badge bg-danger-lt" style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px;">발송실패</span>
+                </td>
+                <td style="padding:16px;">
+                  <a href="mypage-detail.html" class="tbl-btn">상세보기</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <!-- 페이지네이션 -->
-      <div class="mypage-pagination">
-        <button class="page-btn active">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
+      <!-- 페이지네이션 (Tabler pagination) -->
+      <div class="d-flex justify-content-center">
+        <ul class="pagination" style="margin:0;">
+          <li class="page-item active">
+            <a class="page-link" href="#" style="background:#172230; border-color:#172230; color:#fff; border-radius:8px; font-weight:700; width:36px; height:36px; display:flex; align-items:center; justify-content:center;">1</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" style="border-radius:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; color:#47494C;">2</a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" href="#" style="border-radius:8px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; color:#47494C;">3</a>
+          </li>
+        </ul>
       </div>
 
     </main>
 
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+  <script>
+    /* sessionStorage에서 사용자 이름 가져오기 */
+    var userName = sessionStorage.getItem('user_name') || '홍길동';
+    var userEmail = sessionStorage.getItem('user_email') || 'user@example.com';
+    document.getElementById('navUserName').textContent = userName;
+    document.getElementById('sidebarUserName').textContent = userName;
+    document.getElementById('sidebarUserEmail').textContent = userEmail;
+  </script>
 
 </body>
 </html>
