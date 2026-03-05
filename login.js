@@ -19,7 +19,8 @@ var DUMMY_USERS = [
   { email: 'test@sendit.kr', password: '1234' },
 ];
 
-document.getElementById('loginForm').addEventListener('submit', function () {
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault();
   var email = emailInput.value.trim();
   var pw    = pwInput.value;
   var match = DUMMY_USERS.find(function (u) { return u.email === email && u.password === pw; });
