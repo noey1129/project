@@ -111,18 +111,6 @@ if (bottomBar) {
   inner.prepend(prevBtn);
 }
 
-/* ── 로그인 상태 nav 업데이트 ── */
-(function updateNav() {
-  if (sessionStorage.getItem('logged_in') !== 'true') return;
-  var navRight = document.querySelector('.nav__right');
-  if (!navRight) return;
-  var name = sessionStorage.getItem('user_name') || '사용자';
-  navRight.innerHTML =
-    '<a href="../contact.html" class="nav__contact">서비스문의</a>' +
-    '<span class="nav__user-name">' + name + '</span>' +
-    '<button class="btn--outline" onclick="sessionStorage.removeItem(\'logged_in\');window.location.href=\'../login.html\'">로그아웃</button>';
-})();
-
 /* ── NAV 스크롤 그림자 ── */
 (function initNavShadow() {
   var nav = document.querySelector('.nav');
