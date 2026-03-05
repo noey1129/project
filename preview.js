@@ -156,7 +156,7 @@ function checkRequired() {
   var recPhone = document.getElementById('recipientPhone').value.trim();
   var recBirth = document.getElementById('recipientBirth').value.trim();
 
-  var baseOk = name && phone && addr && recName && recPhone;
+  var baseOk = name && phone && recName && recPhone;
   var certOk = sendMethod === 'certified' ? (baseOk && recBirth.length === 8) : baseOk;
 
   document.getElementById('btnSave').disabled = !certOk;
