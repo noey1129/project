@@ -205,6 +205,21 @@ function applyScale() {
     if (docScale > MIN_SCALE) { docScale = Math.round((docScale - SCALE_STEP) * 10) / 10; applyScale(); }
   });
 
+  /* 주소 토글 */
+  var addrToggle    = document.getElementById('addrToggle');
+  var senderAddrWrap = document.getElementById('senderAddrWrap');
+  var addrNoneHint  = document.getElementById('addrNoneHint');
+  addrToggle.addEventListener('change', function () {
+    var on = this.checked;
+    senderAddrWrap.style.display = on ? '' : 'none';
+    addrNoneHint.style.display   = on ? 'none' : '';
+    if (!on) {
+      document.getElementById('senderAddr').value       = '';
+      document.getElementById('senderAddrDetail').value = '';
+    }
+    checkRequired();
+  });
+
   /* 전화번호 하이픈 */
   ['senderPhone', 'recipientPhone'].forEach(function (id) {
     var el = document.getElementById(id);
@@ -241,6 +256,10 @@ function applyScale() {
     document.querySelectorAll('.doc-input, .doc-textarea').forEach(function (el) {
       el.readOnly = true;
     });
+    /* 주소 미입력 시 주소 행 숨기기 */
+    if (!document.getElementById('senderAddr').value.trim()) {
+      document.getElementById('senderAddrRow').style.display = 'none';
+    }
     document.getElementById('btnSave').disabled = true;
     document.getElementById('btnSend').disabled = false;
   });

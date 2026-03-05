@@ -106,16 +106,23 @@
                   <input type="text" id="senderPhone" class="doc-input" placeholder="전화번호를 입력해주세요." />
                 </td>
               </tr>
-              <tr>
-                <td class="doc-sublabel">주소</td>
+              <tr id="senderAddrRow">
+                <td class="doc-sublabel">
+                  주소
+                  <span class="addr-toggle-wrap">
+                    <input type="checkbox" id="addrToggle" class="addr-toggle-input" />
+                    <label for="addrToggle" class="addr-toggle-label"></label>
+                  </span>
+                </td>
                 <td class="doc-field-cell doc-field-cell--addr" colspan="3">
-                  <div class="doc-addr-wrap">
+                  <div class="doc-addr-wrap" id="senderAddrWrap" style="display:none;">
                     <div class="doc-addr-row">
                       <input type="text" id="senderAddr" class="doc-input doc-input--addr" placeholder="주소 검색을 클릭하세요." readonly onclick="openAddrSearch()" />
                       <button type="button" class="doc-addr-btn" onclick="openAddrSearch()">주소 검색</button>
                     </div>
                     <input type="text" id="senderAddrDetail" class="doc-input doc-input--detail" placeholder="상세주소" />
                   </div>
+                  <span class="addr-none-hint" id="addrNoneHint">선택 안 함</span>
                 </td>
               </tr>
 

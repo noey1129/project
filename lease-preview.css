@@ -372,6 +372,42 @@ body.page-preview {
   gap: 4px;
 }
 
+/* ── 주소 토글 스위치 ── */
+.addr-toggle-wrap {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.addr-toggle-input { display: none; }
+.addr-toggle-label {
+  display: inline-block;
+  width: 30px; height: 17px;
+  background: #D7DBDF;
+  border-radius: 9px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+}
+.addr-toggle-label::after {
+  content: '';
+  position: absolute;
+  width: 13px; height: 13px;
+  background: #fff;
+  border-radius: 50%;
+  top: 2px; left: 2px;
+  transition: transform 0.2s;
+}
+.addr-toggle-input:checked + .addr-toggle-label { background: #172230; }
+.addr-toggle-input:checked + .addr-toggle-label::after { transform: translateX(13px); }
+
+.addr-none-hint {
+  font-size: 12px;
+  color: #AFAFAF;
+  font-style: italic;
+}
+.doc-paper.view-mode .addr-toggle-wrap { display: none; }
+
 .doc-paper.view-mode .doc-field-cell {
   padding: 10px;
   vertical-align: middle;

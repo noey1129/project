@@ -233,6 +233,29 @@ function applyScale() {
     if (val) document.getElementById(id).value = val;
   });
 
+  /* 주소 토글 */
+  var addrToggle     = document.getElementById('addrToggle');
+  var senderAddrWrap = document.getElementById('senderAddrWrap');
+  var addrNoneHint   = document.getElementById('addrNoneHint');
+
+  /* 저장된 주소 있으면 토글 ON */
+  if (document.getElementById('senderAddr').value) {
+    addrToggle.checked           = true;
+    senderAddrWrap.style.display = '';
+    addrNoneHint.style.display   = 'none';
+  }
+
+  addrToggle.addEventListener('change', function () {
+    var on = this.checked;
+    senderAddrWrap.style.display = on ? '' : 'none';
+    addrNoneHint.style.display   = on ? 'none' : '';
+    if (!on) {
+      document.getElementById('senderAddr').value       = '';
+      document.getElementById('senderAddrDetail').value = '';
+    }
+    checkRequired();
+  });
+
   checkRequired();
 })();
 
@@ -293,6 +316,11 @@ document.getElementById('btnSave').addEventListener('click', function () {
   document.querySelector('.doc-paper').classList.add('view-mode');
   document.querySelectorAll('.doc-input').forEach(function (el) { el.readOnly = true; });
   docContent.readOnly = true;
+
+  /* 주소 미입력 시 주소 행 숨기기 */
+  if (!document.getElementById('senderAddr').value.trim()) {
+    document.getElementById('senderAddrRow').style.display = 'none';
+  }
 
   savedOnce = true;
   document.getElementById('btnSave').disabled = true;
