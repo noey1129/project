@@ -39,6 +39,13 @@
         일반 사용자는 <a href="../login.html" style="color:#696B6D;">여기</a>에서 로그인하세요.
       </div>
 
+      <!-- TODO: 테스트용 — 출시 전 제거 -->
+      <div style="margin-top:20px; padding-top:16px; border-top:1px dashed #E7E9EB;">
+        <button onclick="quickAdminLogin()" style="width:100%;padding:12px 16px;background:#F8F9FA;border:1px dashed #D7DBDF;border-radius:8px;font-size:13px;color:#696B6D;cursor:pointer;font-family:inherit;text-align:left;">
+          🧪 테스트 관리자로 바로 로그인 &nbsp;<span style="color:#AFAFAF;">admin / admin1234</span>
+        </button>
+      </div>
+
     </div>
   </main>
 
@@ -63,6 +70,13 @@
         alert('관리자 ID 또는 비밀번호가 올바르지 않습니다.');
       }
     });
+
+    function quickAdminLogin() {
+      idInput.value = ADMIN_ID;
+      pwInput.value = ADMIN_PW;
+      btn.disabled = false;
+      btn.click();
+    }
   </script>
 
 </body>

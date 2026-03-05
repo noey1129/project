@@ -249,8 +249,32 @@ body.page-preview {
 /* ── 주소 입력 래퍼 ── */
 .doc-addr-wrap {
   display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.doc-addr-row {
+  display: flex;
   gap: 8px;
   align-items: center;
+}
+
+.doc-addr-btn {
+  flex-shrink: 0;
+  height: 34px;
+  padding: 0 12px;
+  background: #172230;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.doc-paper.view-mode .doc-addr-btn {
+  display: none;
 }
 
 /* ── 내용 헤더 ── */

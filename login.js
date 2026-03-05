@@ -25,6 +25,8 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
   var pw    = pwInput.value;
   var match = DUMMY_USERS.find(function (u) { return u.email === email && u.password === pw; });
   if (match) {
+    sessionStorage.setItem('logged_in', 'true');
+    sessionStorage.setItem('user_name', '홍길동');
     window.location.href = 'mypage.html';
   } else {
     alert('이메일 또는 비밀번호가 올바르지 않습니다.');

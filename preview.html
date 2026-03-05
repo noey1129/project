@@ -110,7 +110,10 @@
                 <td class="doc-sublabel">주소</td>
                 <td class="doc-field-cell doc-field-cell--addr" colspan="3">
                   <div class="doc-addr-wrap">
-                    <input type="text" id="senderAddr" class="doc-input doc-input--addr" placeholder="주소를 입력해주세요." />
+                    <div class="doc-addr-row">
+                      <input type="text" id="senderAddr" class="doc-input doc-input--addr" placeholder="주소 검색을 클릭하세요." readonly onclick="openAddrSearch()" />
+                      <button type="button" class="doc-addr-btn" onclick="openAddrSearch()">주소 검색</button>
+                    </div>
                     <input type="text" id="senderAddrDetail" class="doc-input doc-input--detail" placeholder="상세주소" />
                   </div>
                 </td>
@@ -173,6 +176,7 @@
     </div>
   </div>
 
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script src="preview.js"></script>
 </body>
 </html>

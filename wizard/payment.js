@@ -80,6 +80,18 @@ document.getElementById('btnPay').addEventListener('click', function () {
   document.getElementById('completeScreen').style.display = 'flex';
   document.getElementById('completeScreen').classList.add('visible');
 
+  /* 완료 버튼: 로그인 유저는 마이페이지, 비로그인은 홈 */
+  var homeBtn = document.getElementById('completeHomeBtn');
+  if (homeBtn) {
+    if (sessionStorage.getItem('logged_in') === 'true') {
+      homeBtn.href = '../mypage.html';
+      homeBtn.textContent = '발송 내역 확인하기';
+    } else {
+      homeBtn.href = '../index.html';
+      homeBtn.textContent = '홈으로 돌아가기';
+    }
+  }
+
   /* 하단 바 숨기기 */
   var bottomBar = document.querySelector('.bottom-bar');
   if (bottomBar) bottomBar.style.display = 'none';
@@ -93,10 +105,23 @@ if (bottomBar) {
   prevBtn.className = 'btn-prev';
   prevBtn.textContent = '이전';
   prevBtn.addEventListener('click', function () {
-    window.location.href = 'receiver-detail.html';
+    var type = sessionStorage.getItem('wizard_type');
+    window.location.href = type === 'rent' ? '../lease-preview.html' : '../preview.html';
   });
   inner.prepend(prevBtn);
 }
+
+/* ── 로그인 상태 nav 업데이트 ── */
+(function updateNav() {
+  if (sessionStorage.getItem('logged_in') !== 'true') return;
+  var navRight = document.querySelector('.nav__right');
+  if (!navRight) return;
+  var name = sessionStorage.getItem('user_name') || '사용자';
+  navRight.innerHTML =
+    '<a href="../contact.html" class="nav__contact">서비스문의</a>' +
+    '<span class="nav__user-name">' + name + '</span>' +
+    '<button class="btn--outline" onclick="sessionStorage.removeItem(\'logged_in\');window.location.href=\'../login.html\'">로그아웃</button>';
+})();
 
 /* ── NAV 스크롤 그림자 ── */
 (function initNavShadow() {
