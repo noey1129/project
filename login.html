@@ -107,10 +107,9 @@
   <script src="login.js"></script>
   <script>
     function quickLogin() {
-      document.getElementById('loginEmail').value = 'test@sendit.kr';
-      document.getElementById('loginPassword').value = '1234';
-      document.getElementById('btnLogin').disabled = false;
-      document.getElementById('btnLogin').click();
+      sessionStorage.setItem('logged_in', 'true');
+      sessionStorage.setItem('user_name', '홍길동');
+      window.location.href = 'mypage.html';
     }
   </script>
 </body>
