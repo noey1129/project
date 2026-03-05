@@ -9,7 +9,7 @@ body.page-admin {
   padding: 0;
   background: #F2F3F6;
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
   font-size: 14px;
   color: #1C1E21;
 }
@@ -89,6 +89,8 @@ body.page-admin {
   background: rgba(255,255,255,.15);
   color: #fff;
   font-weight: 700;
+  border-left: 3px solid #FE9D3C;
+  padding-left: 11px;
 }
 
 .admin-nav-item svg {

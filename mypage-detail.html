@@ -44,6 +44,12 @@
           내 정보
         </a>
       </nav>
+      <div class="mypage-sidebar__cta">
+        <a href="select-situation.html" class="mypage-new-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          새 내용증명 작성
+        </a>
+      </div>
     </aside>
 
     <!-- ── 메인 콘텐츠 ── -->
@@ -110,10 +116,26 @@
       <!-- 발송 문서 내용 -->
       <div>
         <h2 class="mypage-section-title" style="font-size:17px; margin-bottom:12px;">발송 문서 내용</h2>
-        <div class="mypage-doc-paper">
-          <pre class="mypage-doc-text">제 목 : 임대차 보증금 반환 촉구
-
-귀측(수신인, 이하 '귀측')의 건승과 무궁한 발전을 기원합니다.
+        <div class="mypage-doc-wrap">
+          <div class="mypage-doc-paper" id="docPaper">
+            <div class="doc-paper__header">
+              <span class="doc-paper__label">내 용 증 명 서</span>
+              <div class="doc-paper__title">임대차 보증금 반환 촉구</div>
+              <span class="doc-paper__date">발송일: 2026년 2월 28일 &nbsp;|&nbsp; 문서번호: SD-20260228-001</span>
+            </div>
+            <hr class="doc-paper__rule">
+            <table class="doc-paper__parties">
+              <tr>
+                <td class="doc-paper__party-label">발 신 인</td>
+                <td>홍길동</td>
+              </tr>
+              <tr>
+                <td class="doc-paper__party-label">수 신 인</td>
+                <td>김철수</td>
+              </tr>
+            </table>
+            <hr class="doc-paper__rule">
+            <pre class="doc-paper__body">귀측(수신인, 이하 '귀측')의 건승과 무궁한 발전을 기원합니다.
 
 본 발신인은 아래와 같이 귀하와 임대차 계약을 체결하였음을 확인하며, 귀측에게 본 계약에 따른 임대차 보증금 반환의무가 있음을 알려드리는 바, 이에 대해 신속히 이행해 주시기를 촉구합니다.
 
@@ -125,9 +147,16 @@
 
 본 내용증명 수령일로부터 7일 이내에 위 보증금 전액을 반환하여 주시기 바랍니다.
 
-기한 내 이행이 없을 경우 법적 조치를 취할 것임을 통보합니다.
-
-발신인: 홍길동</pre>
+기한 내 이행이 없을 경우 법적 조치를 취할 것임을 통보합니다.</pre>
+            <div class="doc-paper__sign">
+              2026년 2월 28일<br>
+              위 발신인 홍길동 (인)
+            </div>
+          </div>
+          <button class="doc-paper-download-btn" onclick="downloadPDF()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            PDF 다운로드
+          </button>
         </div>
       </div>
 
@@ -182,6 +211,28 @@
   </div>
 
   <script>
+    function downloadPDF() {
+      var paper = document.getElementById('docPaper');
+      var win = window.open('', '_blank', 'width=820,height=1100');
+      win.document.write('<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>내용증명서</title><style>'
+        + 'body{margin:0;padding:40px 60px;font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:#1C1E21;background:#fff;}'
+        + '.doc-paper__header{text-align:center;margin-bottom:28px;}'
+        + '.doc-paper__label{font-size:11px;font-weight:700;letter-spacing:3px;color:#696B6D;display:block;margin-bottom:8px;}'
+        + '.doc-paper__title{font-family:"Nanum Myeongjo",serif;font-size:22px;font-weight:700;margin-bottom:8px;}'
+        + '.doc-paper__date{font-size:13px;color:#8C8C8C;}'
+        + 'hr{border:none;border-top:1.5px solid #D7DBDF;margin:20px 0;}'
+        + 'table{width:100%;border-collapse:collapse;}'
+        + 'td{padding:7px 10px;font-size:14px;}'
+        + '.doc-paper__party-label{width:72px;font-weight:700;color:#47494C;letter-spacing:2px;}'
+        + '.doc-paper__body{font-family:"Nanum Myeongjo",serif;font-size:15px;line-height:2;white-space:pre-wrap;word-break:break-all;margin:0;}'
+        + '.doc-paper__sign{margin-top:48px;text-align:right;font-size:14px;color:#47494C;line-height:2;}'
+        + '@page{margin:20mm;}'
+        + '</style></head><body>' + paper.innerHTML + '</body></html>');
+      win.document.close();
+      win.focus();
+      setTimeout(function () { win.print(); }, 400);
+    }
+
     function openReissueModal() {
       document.getElementById('reissueModal').style.display = 'flex';
     }

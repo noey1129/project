@@ -9,6 +9,7 @@ body.page-mypage {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
 }
 
 .mypage-layout {
@@ -85,6 +86,8 @@ body.page-mypage {
   background: #172230;
   color: #fff;
   font-weight: 700;
+  border-left: 3px solid #FE9D3C;
+  padding-left: 13px;
 }
 
 /* ── 메인 콘텐츠 ── */
@@ -619,22 +622,183 @@ body.page-mypage {
   color: #172230;
 }
 
-/* ── 문서 내용 ── */
-.mypage-doc-paper {
-  background: #fff;
-  border: 1px solid #E7E9EB;
-  border-radius: 14px;
-  padding: 28px 32px;
+/* ── 사이드바 새 내용증명 CTA ── */
+.mypage-sidebar__cta {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 8px;
 }
 
-.mypage-doc-text {
-  font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+.mypage-new-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #FE9D3C;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
   font-size: 14px;
-  line-height: 1.9;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.mypage-new-btn:hover {
+  background: #e8873a;
+}
+
+/* ── 문서 미리보기 (종이 형태) ── */
+.mypage-doc-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mypage-doc-paper {
+  background: #FAFAF8;
+  border: 1px solid #D7DBDF;
+  border-radius: 4px;
+  padding: 52px 60px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.08), 0 1px 4px rgba(0,0,0,.05);
+  position: relative;
+}
+
+.doc-paper__header {
+  text-align: center;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.doc-paper__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #696B6D;
+  text-transform: uppercase;
+}
+
+.doc-paper__title {
+  font-family: 'Nanum Myeongjo', 'Apple SD Gothic Neo', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1C1E21;
+  letter-spacing: -0.3px;
+}
+
+.doc-paper__date {
+  font-size: 13px;
+  color: #8C8C8C;
+}
+
+.doc-paper__rule {
+  border: none;
+  border-top: 1.5px solid #D7DBDF;
+  margin: 24px 0;
+}
+
+.doc-paper__rule--thin {
+  border: none;
+  border-top: 1px solid #E7E9EB;
+  margin: 20px 0;
+}
+
+.doc-paper__parties {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 4px;
+}
+
+.doc-paper__parties td {
+  padding: 8px 12px;
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.doc-paper__party-label {
+  width: 72px;
+  font-weight: 700;
+  color: #47494C;
+  white-space: nowrap;
+  letter-spacing: 2px;
+}
+
+.doc-paper__body {
+  font-family: 'Nanum Myeongjo', 'Apple SD Gothic Neo', serif;
+  font-size: 15px;
+  line-height: 2;
   color: #1C1E21;
   white-space: pre-wrap;
   word-break: break-all;
   margin: 0;
+}
+
+.doc-paper__sign {
+  margin-top: 48px;
+  text-align: right;
+  font-size: 14px;
+  color: #47494C;
+  line-height: 2;
+}
+
+.doc-paper-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-end;
+  padding: 10px 22px;
+  background: #172230;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.doc-paper-download-btn:hover {
+  background: #243447;
+}
+
+/* ── 인쇄 스타일 ── */
+@media print {
+  .nav,
+  .mypage-sidebar,
+  .mypage-back,
+  .mypage-section-title,
+  .mypage-detail-grid,
+  .cert-list,
+  .doc-paper-download-btn,
+  [style*="padding-top: 8px"],
+  .reissue-modal-overlay {
+    display: none !important;
+  }
+
+  body.page-mypage {
+    background: #fff !important;
+  }
+
+  .mypage-layout {
+    display: block !important;
+    padding: 0 !important;
+  }
+
+  .mypage-content {
+    padding: 0 !important;
+  }
+
+  .mypage-doc-paper {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
 }
 
 /* ── 재발급 버튼 ── */
