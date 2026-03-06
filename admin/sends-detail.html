@@ -1,216 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>발송 상세 – Sendit 관리자</title>
-  <link href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="admin.css" />
 </head>
-<body class="antialiased">
-<div class="wrapper">
+<body class="page-admin">
 
-  <!-- Vertical sidebar nav -->
-  <aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-        <span class="navbar-toggler-icon"></span>
+<div class="admin-wrap">
+
+  <!-- 사이드바 -->
+  <aside class="admin-sidebar">
+    <a href="dashboard.html" class="admin-sidebar__logo">
+      Sendit<span class="admin-sidebar__badge">ADMIN</span>
+    </a>
+    <nav class="admin-nav">
+      <a href="dashboard.html" class="admin-nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/></svg>
+        대시보드
+      </a>
+      <a href="members.html" class="admin-nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
+        회원 관리
+      </a>
+      <a href="sends.html" class="admin-nav-item active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="14" x2="21" y2="3"/><path d="M21 3l-6.5 18a.55.55 0 0 1-1 0l-3.5-7-7-3.5a.55.55 0 0 1 0-1l18-6.5"/></svg>
+        발송 내역
+      </a>
+      <a href="templates.html" class="admin-nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><line x1="9" y1="9" x2="10" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+        템플릿 관리
+      </a>
+    </nav>
+    <div class="admin-sidebar__footer">
+      <button class="admin-logout-btn" onclick="sessionStorage.removeItem('admin_logged_in'); window.location.href='login.html';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/><path d="M9 12h12l-3-3"/><path d="M18 15l3-3"/></svg>
+        로그아웃
       </button>
-      <h1 class="navbar-brand navbar-brand-autodark">
-        <a href="dashboard.html" class="text-decoration-none d-flex align-items-center">
-          <span style="font-size:20px;font-weight:800;letter-spacing:-0.5px;color:#fff;">Sendit</span>
-          <span class="badge bg-azure-lt ms-2" style="font-size:9px;vertical-align:middle;">ADMIN</span>
-        </a>
-      </h1>
-      <div class="collapse navbar-collapse" id="navbar-menu">
-        <ul class="navbar-nav pt-lg-3">
-          <li class="nav-item">
-            <a class="nav-link" href="dashboard.html">
-              <span class="nav-link-icon d-md-none d-lg-inline-block">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="3" width="6" height="6" rx="1"/><rect x="3" y="15" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/></svg>
-              </span>
-              <span class="nav-link-title">대시보드</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="members.html">
-              <span class="nav-link-icon d-md-none d-lg-inline-block">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
-              </span>
-              <span class="nav-link-title">회원 관리</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="sends.html">
-              <span class="nav-link-icon d-md-none d-lg-inline-block">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="10" y1="14" x2="21" y2="3"/><path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5-7l-7-3.5a0.55 .55 0 0 1 0-1l18-6.5"/></svg>
-              </span>
-              <span class="nav-link-title">발송 내역</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="templates.html">
-              <span class="nav-link-icon d-md-none d-lg-inline-block">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><line x1="9" y1="9" x2="10" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
-              </span>
-              <span class="nav-link-title">템플릿 관리</span>
-            </a>
-          </li>
-        </ul>
-        <div class="mt-auto pb-3">
-          <div class="navbar-nav">
-            <div class="nav-item">
-              <a href="login.html" class="nav-link text-danger" onclick="sessionStorage.removeItem('admin_logged_in')">
-                <span class="nav-link-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"/><path d="M9 12h12l-3 -3"/><path d="M18 15l3 -3"/></svg>
-                </span>
-                <span class="nav-link-title">로그아웃</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </aside>
 
-  <!-- Main page wrapper -->
-  <div class="page-wrapper">
-    <div class="page-header d-print-none">
-      <div class="container-xl">
-        <div class="row g-2 align-items-center">
-          <div class="col-auto">
-            <a href="sends.html" class="btn btn-outline-secondary btn-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-sm" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="15 6 9 12 15 18"/></svg>
-              발송 내역으로
-            </a>
-          </div>
-          <div class="col">
-            <h2 class="page-title">발송 상세</h2>
-          </div>
-          <div class="col-auto">
-            <span class="text-muted">관리자: <strong>admin</strong></span>
-          </div>
-        </div>
+  <!-- 메인 -->
+  <main class="admin-main">
+    <div class="admin-header">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="sends.html" class="admin-back">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg>
+          발송 내역으로
+        </a>
+        <span class="admin-header__title">발송 상세</span>
+      </div>
+      <div class="admin-header__right">
+        <span class="admin-header__admin">관리자: <strong>admin</strong></span>
       </div>
     </div>
 
-    <div class="page-body">
-      <div class="container-xl">
+    <div class="admin-content">
 
-        <!-- Info Cards Row -->
-        <div class="row row-deck row-cards mb-4">
+      <!-- 정보 카드 -->
+      <div class="admin-detail-grid">
 
-          <!-- 발송 정보 -->
-          <div class="col-lg-6">
-            <div class="card h-100">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="10" y1="14" x2="21" y2="3"/><path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5-7l-7-3.5a0.55 .55 0 0 1 0-1l18-6.5"/></svg>
-                  발송정보
-                </h3>
-              </div>
-              <div class="card-body">
-                <dl class="row">
-                  <dt class="col-5 text-muted fw-normal">발송일</dt>
-                  <dd class="col-7 fw-medium">2026.02.28</dd>
-
-                  <dt class="col-5 text-muted fw-normal">문서 유형</dt>
-                  <dd class="col-7">
-                    <span class="badge bg-blue-lt text-blue">임대차</span>
-                  </dd>
-
-                  <dt class="col-5 text-muted fw-normal">발송 방식</dt>
-                  <dd class="col-7">
-                    <span class="badge text-white" style="background:#7c3aed;">전자문서+공��소</span>
-                  </dd>
-
-                  <dt class="col-5 text-muted fw-normal">결제 금액</dt>
-                  <dd class="col-7 fw-medium">19,800원</dd>
-
-                  <dt class="col-5 text-muted fw-normal">상태</dt>
-                  <dd class="col-7">
-                    <span class="badge bg-success text-white">열람완료</span>
-                  </dd>
-                </dl>
-              </div>
-            </div>
+        <!-- 발송 정보 -->
+        <div class="admin-info-card">
+          <div class="admin-info-card__title">발송 정보</div>
+          <div class="admin-info-row">
+            <span class="admin-info-row__label">발송일</span>
+            <span class="admin-info-row__value">2026.02.28</span>
           </div>
-
-          <!-- 수발신인 정보 -->
-          <div class="col-lg-6">
-            <div class="card h-100">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.85"/></svg>
-                  수발신인 정보
-                </h3>
-              </div>
-              <div class="card-body">
-                <div class="mb-3 pb-3 border-bottom">
-                  <div class="d-flex align-items-center gap-2 mb-2">
-                    <span class="avatar avatar-sm rounded-circle text-white fw-bold" style="background:#206bc4;">발</span>
-                    <span class="fw-medium text-blue">발신인</span>
-                  </div>
-                  <dl class="row mb-0">
-                    <dt class="col-5 text-muted fw-normal">이름</dt>
-                    <dd class="col-7 fw-medium">홍길동</dd>
-                    <dt class="col-5 text-muted fw-normal">연락처</dt>
-                    <dd class="col-7">010-1111-2222</dd>
-                  </dl>
-                </div>
-                <div>
-                  <div class="d-flex align-items-center gap-2 mb-2">
-                    <span class="avatar avatar-sm rounded-circle text-white fw-bold" style="background:#2fb344;">수</span>
-                    <span class="fw-medium text-green">수신인</span>
-                  </div>
-                  <dl class="row mb-0">
-                    <dt class="col-5 text-muted fw-normal">이름</dt>
-                    <dd class="col-7 fw-medium">김철수</dd>
-                    <dt class="col-5 text-muted fw-normal">연락처</dt>
-                    <dd class="col-7">010-1234-5678</dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
+          <div class="admin-info-row">
+            <span class="admin-info-row__label">문서 유형</span>
+            <span class="admin-info-row__value"><span class="status-badge status-badge--sent">임대차</span></span>
+          </div>
+          <div class="admin-info-row">
+            <span class="admin-info-row__label">발송 방식</span>
+            <span class="admin-info-row__value"><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></span>
+          </div>
+          <div class="admin-info-row">
+            <span class="admin-info-row__label">결제 금액</span>
+            <span class="admin-info-row__value">19,800원</span>
+          </div>
+          <div class="admin-info-row">
+            <span class="admin-info-row__label">상태</span>
+            <span class="admin-info-row__value"><span class="status-badge status-badge--read">열람완료</span></span>
           </div>
         </div>
 
-        <!-- Document Preview -->
-        <div class="row mb-4">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><line x1="9" y1="9" x2="10" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
-                  문서 미리보기
-                </h3>
-                <div class="card-options">
-                  <span class="badge bg-gray-lt text-muted">읽기 전용</span>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="p-4 rounded border bg-white" style="font-family:'Nanum Myeongjo','Malgun Gothic',serif;line-height:2;font-size:14px;max-width:680px;margin:0 auto;box-shadow:0 1px 4px rgba(0,0,0,0.06);">
-                  <div class="text-center mb-4">
-                    <h4 class="fw-bold" style="letter-spacing:4px;font-size:18px;">내 용 증 명</h4>
-                  </div>
-                  <table class="table table-bordered table-sm mb-4" style="font-size:13px;">
-                    <tbody>
-                      <tr>
-                        <th class="bg-light text-center" style="width:80px;">발신인</th>
-                        <td>홍길동 (010-1111-2222)</td>
-                      </tr>
-                      <tr>
-                        <th class="bg-light text-center">수신인</th>
-                        <td>김철수 (010-1234-5678)</td>
-                      </tr>
-                      <tr>
-                        <th class="bg-light text-center">제목</th>
-                        <td>임대차 보증금 반환 요청의 건</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div style="white-space:pre-line;font-size:13px;">
-본인은 귀하와 아래와 같이 임대차 계약을 체결하였음을 확인하며, 계약 기간 만료 후 보증금 반환이 이루어지지 않고 있습니다.
+        <!-- 수발신인 정보 -->
+        <div class="admin-info-card">
+          <div class="admin-info-card__title">수발신인 정보</div>
+          <div style="padding-bottom:14px;border-bottom:1px solid #F0F0F0;margin-bottom:14px;">
+            <div style="font-size:12px;font-weight:700;color:#30C2C8;margin-bottom:8px;">발신인</div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">이름</span>
+              <span class="admin-info-row__value">홍길동</span>
+            </div>
+            <div class="admin-info-row" style="margin-top:6px;">
+              <span class="admin-info-row__label">연락처</span>
+              <span class="admin-info-row__value">010-1111-2222</span>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#197A45;margin-bottom:8px;">수신인</div>
+            <div class="admin-info-row">
+              <span class="admin-info-row__label">이름</span>
+              <span class="admin-info-row__value">김철수</span>
+            </div>
+            <div class="admin-info-row" style="margin-top:6px;">
+              <span class="admin-info-row__label">연락처</span>
+              <span class="admin-info-row__value">010-1234-5678</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 문서 미리보기 -->
+      <div>
+        <div class="admin-section-header" style="margin-bottom:14px;">
+          <span class="admin-section-title">문서 미리보기</span>
+          <span class="status-badge status-badge--pending">읽기 전용</span>
+        </div>
+        <div class="admin-doc-preview">
+          <h3>내 용 증 명</h3>
+          <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px;">
+            <tbody>
+              <tr>
+                <th style="background:#F7F7F7;padding:10px 14px;border:1px solid #DDDDDD;width:80px;text-align:center;font-weight:600;">발신인</th>
+                <td style="padding:10px 14px;border:1px solid #DDDDDD;">홍길동 (010-1111-2222)</td>
+              </tr>
+              <tr>
+                <th style="background:#F7F7F7;padding:10px 14px;border:1px solid #DDDDDD;text-align:center;font-weight:600;">수신인</th>
+                <td style="padding:10px 14px;border:1px solid #DDDDDD;">김철수 (010-1234-5678)</td>
+              </tr>
+              <tr>
+                <th style="background:#F7F7F7;padding:10px 14px;border:1px solid #DDDDDD;text-align:center;font-weight:600;">제목</th>
+                <td style="padding:10px 14px;border:1px solid #DDDDDD;">임대차 보증금 반환 요청의 건</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="white-space:pre-line;font-size:13px;line-height:2;">본인은 귀하와 아래와 같이 임대차 계약을 체결하였음을 확인하며, 계약 기간 만료 후 보증금 반환이 이루어지지 않고 있습니다.
 
 [계약 내용]
 - 계약 체결일: 2024년 03월 01일
@@ -220,87 +148,74 @@
 
 위 임대차 계약은 계약기간 만료로 종료되었으나, 귀하께서는 현재까지 보증금을 반환하지 않고 있습니다.
 
-이에 본 내용증명 수령일로부터 <strong>7일 이내</strong>에 위 보증금 전액을 반환하실 것을 강력히 촉구합니다.
+이에 본 내용증명 수령일로부터 7일 이내에 위 보증금 전액을 반환하실 것을 강력히 촉구합니다.
 
 만약 위 기한 내에 이행하지 않을 경우, 법적 절차(보증금반환청구소송, 임차권등기명령 신청 등)를 진행할 것임을 통보합니다.
 
 2026년 02월 28일
 
-발신인: 홍길동 (인)
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+발신인: 홍길동 (인)</div>
         </div>
-
-        <!-- 열람 이력 -->
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted me-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="2"/><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7"/></svg>
-                  열람 이력
-                </h3>
-              </div>
-              <div class="table-responsive">
-                <table class="table table-vcenter card-table">
-                  <thead>
-                    <tr>
-                      <th>이벤트</th>
-                      <th>일시</th>
-                      <th>IP 주소</th>
-                      <th>비고</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <span class="d-flex align-items-center gap-2">
-                          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#206bc4;"></span>
-                          발송 완료
-                        </span>
-                      </td>
-                      <td class="text-muted">2026.02.28 14:32:05</td>
-                      <td class="text-muted font-monospace">103.22.44.11</td>
-                      <td class="text-muted small">발신인 발송 처리</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="d-flex align-items-center gap-2">
-                          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#f6a800;"></span>
-                          열람 링크 접속
-                        </span>
-                      </td>
-                      <td class="text-muted">2026.03.01 09:14:22</td>
-                      <td class="text-muted font-monospace">175.45.120.88</td>
-                      <td class="text-muted small">수신인 최초 접속</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="d-flex align-items-center gap-2">
-                          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#2fb344;"></span>
-                          열람 완료
-                        </span>
-                      </td>
-                      <td class="text-muted">2026.03.01 09:15:47</td>
-                      <td class="text-muted font-monospace">175.45.120.88</td>
-                      <td class="text-muted small">문서 전체 확인</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </div>
-  </div>
 
+      <!-- 열람 이력 -->
+      <div>
+        <div class="admin-section-header" style="margin-bottom:14px;">
+          <span class="admin-section-title">열람 이력</span>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>이벤트</th>
+                <th>일시</th>
+                <th>IP 주소</th>
+                <th>비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span style="display:inline-flex;align-items:center;gap:8px;">
+                    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#30C2C8;"></span>
+                    발송 완료
+                  </span>
+                </td>
+                <td style="color:#8C8C8C;">2026.02.28 14:32:05</td>
+                <td style="color:#8C8C8C;font-family:monospace;">103.22.44.11</td>
+                <td style="color:#8C8C8C;font-size:13px;">발신인 발송 처리</td>
+              </tr>
+              <tr>
+                <td>
+                  <span style="display:inline-flex;align-items:center;gap:8px;">
+                    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#D97706;"></span>
+                    열람 링크 접속
+                  </span>
+                </td>
+                <td style="color:#8C8C8C;">2026.03.01 09:14:22</td>
+                <td style="color:#8C8C8C;font-family:monospace;">175.45.120.88</td>
+                <td style="color:#8C8C8C;font-size:13px;">수신인 최초 접속</td>
+              </tr>
+              <tr>
+                <td>
+                  <span style="display:inline-flex;align-items:center;gap:8px;">
+                    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#40C576;"></span>
+                    열람 완료
+                  </span>
+                </td>
+                <td style="color:#8C8C8C;">2026.03.01 09:15:47</td>
+                <td style="color:#8C8C8C;font-family:monospace;">175.45.120.88</td>
+                <td style="color:#8C8C8C;font-size:13px;">문서 전체 확인</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+
 <script>
   if (!sessionStorage.getItem('admin_logged_in')) {
     window.location.href = 'login.html';
