@@ -25,7 +25,7 @@
   sidebar.innerHTML =
     '<a href="mypage.html" class="mypage-sidebar__logo">Sendit</a>' +
     '<div class="mypage-sidebar__profile">' +
-      '<span class="mypage-sidebar__name">'  + name  + '</span>' +
+      '<span class="mypage-sidebar__name">' + name + '</span>' +
       '<span class="mypage-sidebar__email">' + email + '</span>' +
     '</div>' +
     '<div style="padding:12px 12px 0;">' +
@@ -91,9 +91,8 @@
     /* 사이드바: wrap 맨 앞에 삽입 */
     wrap.insertBefore(sidebar, wrap.firstChild);
 
-    /* 헤더: main 맨 앞에 삽입 */
-    var main = wrap.querySelector('.mypage-main');
-    if (main) main.insertBefore(header, main.firstChild);
+    /* 헤더: body에 직접 추가 (position:fixed 이므로 DOM 위치 무관) */
+    document.body.appendChild(header);
   }
 
   if (document.readyState === 'loading') {
