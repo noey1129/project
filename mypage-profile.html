@@ -12,10 +12,16 @@
 
   <!-- ── 사이드바 ── -->
   <aside class="mypage-sidebar">
-    <a href="index.html" class="mypage-sidebar__logo">Sendit</a>
+    <a href="mypage.html" class="mypage-sidebar__logo">Sendit</a>
     <div class="mypage-sidebar__profile">
       <span class="mypage-sidebar__name" id="sidebarUserName">홍길동</span>
       <span class="mypage-sidebar__email" id="sidebarUserEmail">user@example.com</span>
+    </div>
+    <div style="padding:12px 12px 0;">
+      <a href="select-situation.html" class="mypage-new-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        새 내용증명 작성
+      </a>
     </div>
     <nav class="mypage-sidebar__nav">
       <a href="mypage.html" class="mypage-nav-item">
@@ -32,10 +38,6 @@
       </a>
     </nav>
     <div class="mypage-sidebar__footer">
-      <a href="select-situation.html" class="mypage-new-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        새 내용증명 작성
-      </a>
       <button class="mypage-logout-btn" onclick="sessionStorage.removeItem('logged_in'); sessionStorage.removeItem('user_name'); sessionStorage.removeItem('user_email'); window.location.href='login.html';">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/><path d="M9 12h12l-3-3"/><path d="M18 15l3-3"/></svg>
         로그아웃
