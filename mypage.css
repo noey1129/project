@@ -1,107 +1,224 @@
 /* ================================================================
    SENDIT – MYPAGE CSS
-   마이페이지 전용 스타일
+   마이페이지 전용 스타일 (admin 레이아웃 통일)
    ================================================================ */
 
 /* ── 페이지 레이아웃 ── */
 body.page-mypage {
   background: #F8F8F8;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.mypage-layout {
-  flex: 1;
+.mypage-wrap {
   display: flex;
-  gap: 0;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 40px 24px 60px;
-  box-sizing: border-box;
-  align-items: flex-start;
+  min-height: 100vh;
 }
 
 /* ── 사이드바 ── */
 .mypage-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 220px;
-  flex-shrink: 0;
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid #E7E9EB;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  position: sticky;
-  top: 88px;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.mypage-sidebar__logo {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 58px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #172230;
+  text-decoration: none;
+  border-bottom: 1px solid #F2F3F6;
+  flex-shrink: 0;
+  letter-spacing: -0.5px;
 }
 
 .mypage-sidebar__profile {
-  background: #fff;
-  border: 1px solid #E7E9EB;
-  border-radius: 14px;
-  padding: 20px 18px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid #F2F3F6;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 8px;
+  flex-shrink: 0;
 }
 
 .mypage-sidebar__name {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #1C1E21;
 }
 
 .mypage-sidebar__email {
-  font-size: 13px;
+  font-size: 12px;
   color: #696B6D;
 }
 
 .mypage-sidebar__nav {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  padding: 8px 0;
 }
 
 .mypage-nav-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 16px;
-  border-radius: 10px;
-  font-size: 15px;
+  padding: 12px 20px;
+  font-size: 14px;
   font-weight: 500;
-  color: #47494C;
+  color: #696B6D;
   cursor: pointer;
   text-decoration: none;
   transition: background 0.15s, color 0.15s;
 }
 
 .mypage-nav-item:hover {
-  background: #F2F3F6;
+  background: #F8F8F8;
   color: #1C1E21;
 }
 
 .mypage-nav-item.active {
-  background: #172230;
-  color: #fff;
+  background: #FFF4EC;
+  color: #FE9D3C;
   font-weight: 700;
   border-left: 3px solid #FE9D3C;
-  padding-left: 13px;
+  padding-left: 17px;
 }
 
-/* ── 메인 콘텐츠 ── */
+/* ── 사이드바 하단 영역 ── */
+.mypage-sidebar__footer {
+  padding: 12px;
+  border-top: 1px solid #F2F3F6;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── 사이드바 새 내용증명 CTA ── */
+.mypage-new-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 16px;
+  background: #FE9D3C;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.mypage-new-btn:hover {
+  background: #e8873a;
+}
+
+/* ── 로그아웃 버튼 ── */
+.mypage-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: none;
+  border: 1px solid #E7E9EB;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #696B6D;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mypage-logout-btn:hover {
+  background: #F2F3F6;
+}
+
+/* ── 메인 영역 ── */
+.mypage-main {
+  margin-left: 220px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── 상단 헤더 ── */
+.mypage-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #E7E9EB;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.mypage-header__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.mypage-header__right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mypage-header__user {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.mypage-header__contact {
+  font-size: 14px;
+  color: #696B6D;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.mypage-header__contact:hover {
+  color: #1C1E21;
+}
+
+/* ── 콘텐츠 ── */
 .mypage-content {
   flex: 1;
-  min-width: 0;
-  padding-left: 28px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
 .mypage-section-title {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   color: #1C1E21;
 }
@@ -304,7 +421,7 @@ body.page-mypage {
 .mypage-empty__btn {
   margin-top: 8px;
   padding: 12px 28px;
-  background: #172230;
+  background: #FE9D3C;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -318,7 +435,7 @@ body.page-mypage {
 }
 
 .mypage-empty__btn:hover {
-  background: #243447;
+  background: #e8873a;
 }
 
 /* ── 페이지네이션 ── */
@@ -351,6 +468,22 @@ body.page-mypage {
 
 .page-btn:hover:not(.active) {
   background: #F2F3F6;
+}
+
+/* ── 뒤로가기 링크 ── */
+.mypage-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #696B6D;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.mypage-back:hover {
+  color: #1C1E21;
 }
 
 /* ── 상세 뷰 ── */
@@ -438,7 +571,7 @@ body.page-mypage {
 
 .cert-download-btn {
   padding: 8px 18px;
-  background: #172230;
+  background: #FE9D3C;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -452,7 +585,7 @@ body.page-mypage {
 }
 
 .cert-download-btn:hover {
-  background: #243447;
+  background: #e8873a;
 }
 
 .cert-download-btn:disabled {
@@ -461,12 +594,32 @@ body.page-mypage {
   cursor: not-allowed;
 }
 
+/* ── 재발급 버튼 ── */
+.cert-reissue-btn {
+  padding: 8px 18px;
+  background: #fff;
+  border: 1.5px solid #D97706;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #D97706;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cert-reissue-btn:hover {
+  background: #FFF9EC;
+}
+
 /* ── 프로필 폼 ── */
 .mypage-form {
   background: #fff;
   border: 1px solid #E7E9EB;
   border-radius: 14px;
-  padding: 28px 28px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -497,6 +650,7 @@ body.page-mypage {
   outline: none;
   transition: border-color 0.2s, background 0.2s;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .mypage-form-input::placeholder {
@@ -504,13 +658,19 @@ body.page-mypage {
 }
 
 .mypage-form-input:focus {
-  border-color: #172230;
+  border-color: #FE9D3C;
   background: #fff;
+}
+
+.mypage-form-input:disabled {
+  background: #F2F3F6;
+  color: #8C8C8C;
+  cursor: not-allowed;
 }
 
 .mypage-form-save-btn {
   height: 50px;
-  background: #172230;
+  background: #FE9D3C;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -523,7 +683,20 @@ body.page-mypage {
 }
 
 .mypage-form-save-btn:hover {
-  background: #243447;
+  background: #e8873a;
+}
+
+.mypage-form-error {
+  font-size: 12px;
+  color: #E53E3E;
+  margin-top: -4px;
+  display: none;
+}
+
+.mypage-form-divider {
+  border: none;
+  border-top: 1px solid #E7E9EB;
+  margin: 0;
 }
 
 .mypage-withdraw-zone {
@@ -572,83 +745,6 @@ body.page-mypage {
 
 .mypage-withdraw-btn:hover {
   background: #FFF0F0;
-}
-
-/* ── 뒤로가기 링크 ── */
-.mypage-back {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  color: #696B6D;
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.mypage-back:hover {
-  color: #1C1E21;
-}
-
-/* ── 로그인 상태 헤더 ── */
-.nav--user .nav__links {
-  display: none;
-}
-
-.nav__user-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1C1E21;
-  padding: 7px 14px;
-  background: #F2F3F6;
-  border-radius: 20px;
-}
-
-.btn--outline {
-  padding: 8px 16px;
-  background: #fff;
-  border: 1.5px solid #D7DBDF;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #47494C;
-  cursor: pointer;
-  font-family: inherit;
-  transition: border-color 0.15s, color 0.15s;
-}
-
-.btn--outline:hover {
-  border-color: #172230;
-  color: #172230;
-}
-
-/* ── 사이드바 새 내용증명 CTA ── */
-.mypage-sidebar__cta {
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 8px;
-}
-
-.mypage-new-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 16px;
-  background: #FE9D3C;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: inherit;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.mypage-new-btn:hover {
-  background: #e8873a;
 }
 
 /* ── 문서 미리보기 (종이 형태) ── */
@@ -753,7 +849,7 @@ body.page-mypage {
   gap: 8px;
   align-self: flex-end;
   padding: 10px 22px;
-  background: #172230;
+  background: #FE9D3C;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -765,60 +861,7 @@ body.page-mypage {
 }
 
 .doc-paper-download-btn:hover {
-  background: #243447;
-}
-
-/* ── 인쇄 스타일 ── */
-@media print {
-  .nav,
-  .mypage-sidebar,
-  .mypage-back,
-  .mypage-section-title,
-  .mypage-detail-grid,
-  .cert-list,
-  .doc-paper-download-btn,
-  [style*="padding-top: 8px"],
-  .reissue-modal-overlay {
-    display: none !important;
-  }
-
-  body.page-mypage {
-    background: #fff !important;
-  }
-
-  .mypage-layout {
-    display: block !important;
-    padding: 0 !important;
-  }
-
-  .mypage-content {
-    padding: 0 !important;
-  }
-
-  .mypage-doc-paper {
-    box-shadow: none !important;
-    border: 1px solid #ccc !important;
-  }
-}
-
-/* ── 재발급 버튼 ── */
-.cert-reissue-btn {
-  padding: 8px 18px;
-  background: #fff;
-  border: 1.5px solid #172230;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #172230;
-  cursor: pointer;
-  font-family: inherit;
-  transition: background 0.15s;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.cert-reissue-btn:hover {
-  background: #F2F3F6;
+  background: #e8873a;
 }
 
 /* ── 재발급 모달 ── */
@@ -867,7 +910,7 @@ body.page-mypage {
 
 .reissue-modal__price strong {
   font-weight: 700;
-  color: #172230;
+  color: #FE9D3C;
 }
 
 .reissue-modal__actions {
@@ -892,7 +935,7 @@ body.page-mypage {
 .reissue-modal__confirm {
   flex: 2;
   height: 48px;
-  background: #172230;
+  background: #FE9D3C;
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -904,37 +947,66 @@ body.page-mypage {
 }
 
 .reissue-modal__confirm:hover {
-  background: #243447;
+  background: #e8873a;
+}
+
+/* ── 인쇄 스타일 ── */
+@media print {
+  .mypage-sidebar,
+  .mypage-header,
+  .mypage-back,
+  .mypage-detail-grid,
+  .cert-list,
+  .doc-paper-download-btn,
+  .reissue-modal-overlay {
+    display: none !important;
+  }
+
+  body.page-mypage {
+    background: #fff !important;
+  }
+
+  .mypage-main {
+    margin-left: 0 !important;
+  }
+
+  .mypage-content {
+    padding: 0 !important;
+  }
+
+  .mypage-doc-paper {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
 }
 
 /* ── 반응형 ── */
 @media (max-width: 900px) {
-  .mypage-layout {
-    flex-direction: column;
-    padding: 20px 16px 40px;
-  }
   .mypage-sidebar {
-    width: 100%;
     position: static;
+    width: 100%;
+    height: auto;
     flex-direction: row;
     flex-wrap: wrap;
+    border-right: none;
+    border-bottom: 1px solid #E7E9EB;
   }
-  .mypage-sidebar__profile {
-    width: 100%;
-    margin-bottom: 4px;
+
+  .mypage-sidebar__logo {
+    border-bottom: none;
+    border-right: 1px solid #F2F3F6;
   }
-  .mypage-sidebar__nav {
-    flex-direction: row;
-    gap: 8px;
+
+  .mypage-main {
+    margin-left: 0;
   }
-  .mypage-content {
-    padding-left: 0;
-  }
-  .mypage-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
   .mypage-detail-grid {
     grid-template-columns: 1fr;
+  }
+
+  .mypage-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -942,6 +1014,7 @@ body.page-mypage {
   .mypage-stats {
     grid-template-columns: 1fr;
   }
+
   .mypage-table th:nth-child(n+5),
   .mypage-table td:nth-child(n+5) {
     display: none;

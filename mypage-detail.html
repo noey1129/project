@@ -4,133 +4,113 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>발송 상세 – Sendit</title>
-  <link href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="mypage.css" />
 </head>
 <body class="page-mypage">
 
-  <!-- ── Sendit 상단 네비게이션 ── -->
-  <header class="nav nav--user">
-    <div class="nav__inner">
-      <div class="nav__left">
-        <a href="index.html" class="nav__logo">Sendit</a>
+<div class="mypage-wrap">
+
+  <!-- ── 사이드바 ── -->
+  <aside class="mypage-sidebar">
+    <a href="index.html" class="mypage-sidebar__logo">Sendit</a>
+    <div class="mypage-sidebar__profile">
+      <span class="mypage-sidebar__name" id="sidebarUserName">홍길동</span>
+      <span class="mypage-sidebar__email" id="sidebarUserEmail">user@example.com</span>
+    </div>
+    <nav class="mypage-sidebar__nav">
+      <a href="mypage.html" class="mypage-nav-item active">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+        </svg>
+        발송 내역
+      </a>
+      <a href="mypage-profile.html" class="mypage-nav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        내 정보
+      </a>
+    </nav>
+    <div class="mypage-sidebar__footer">
+      <a href="select-situation.html" class="mypage-new-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        새 내용증명 작성
+      </a>
+      <button class="mypage-logout-btn" onclick="sessionStorage.removeItem('logged_in'); sessionStorage.removeItem('user_name'); sessionStorage.removeItem('user_email'); window.location.href='login.html';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/><path d="M9 12h12l-3-3"/><path d="M18 15l3-3"/></svg>
+        로그아웃
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── 메인 ── -->
+  <main class="mypage-main">
+    <div class="mypage-header">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="mypage.html" class="mypage-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          발송 내역으로
+        </a>
+        <span class="mypage-header__title">발송 상세</span>
       </div>
-      <div class="nav__right">
-        <span class="nav__user-name" id="navUserName">홍길동</span>
-        <a href="contact.html" class="nav__contact">서비스문의</a>
-        <button class="btn--outline" onclick="window.location.href='login.html'">로그아웃</button>
+      <div class="mypage-header__right">
+        <a href="contact.html" class="mypage-header__contact">서비스문의</a>
+        <span class="mypage-header__user" id="navUserName">홍길동</span>
       </div>
     </div>
-  </header>
 
-  <div class="mypage-layout">
+    <div class="mypage-content">
 
-    <!-- ── 사이드바 ── -->
-    <aside class="mypage-sidebar">
-      <div class="mypage-sidebar__profile">
-        <span class="mypage-sidebar__name" id="sidebarUserName">홍길동</span>
-        <span class="mypage-sidebar__email" id="sidebarUserEmail">user@example.com</span>
-      </div>
-      <nav class="mypage-sidebar__nav">
-        <a href="mypage.html" class="mypage-nav-item active">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
-          </svg>
-          발송 내역
-        </a>
-        <a href="mypage-profile.html" class="mypage-nav-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-          내 정보
-        </a>
-      </nav>
-      <div class="mypage-sidebar__cta">
-        <a href="select-situation.html" class="mypage-new-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          새 내용증명 작성
-        </a>
-      </div>
-    </aside>
+      <!-- 정보 카드 2열 -->
+      <div class="mypage-detail-grid">
 
-    <!-- ── 메인 콘텐츠 ── -->
-    <main class="mypage-content">
-
-      <!-- 뒤로가기 -->
-      <a href="mypage.html" class="mypage-back">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="15 18 9 12 15 6"/>
-        </svg>
-        발송 내역으로
-      </a>
-
-      <h1 class="mypage-section-title">발송 상세</h1>
-
-      <!-- 발송정보 + 수신인정보 카드 (Tabler cards, side by side) -->
-      <div class="row g-3">
-        <!-- 발송 정보 카드 -->
-        <div class="col-6">
-          <div class="card h-100" style="border-radius:14px; border:1px solid #E7E9EB;">
-            <div class="card-header" style="background:#fff; border-bottom:1px solid #F2F3F6; padding:18px 24px; border-radius:14px 14px 0 0;">
-              <h3 class="card-title" style="font-size:15px; font-weight:700; color:#1C1E21; margin:0;">발송 정보</h3>
-            </div>
-            <div class="card-body" style="padding:20px 24px; display:flex; flex-direction:column; gap:14px;">
-              <div class="d-flex justify-content-between align-items-center" style="font-size:14px;">
-                <span style="color:#696B6D;">발송일</span>
-                <span style="color:#1C1E21; font-weight:600;">2026년 2월 28일</span>
-              </div>
-              <div class="d-flex justify-content-between align-items-center" style="font-size:14px;">
-                <span style="color:#696B6D;">문서 유형</span>
-                <span style="color:#1C1E21; font-weight:600;">임대차 내용증명</span>
-              </div>
-              <div class="d-flex justify-content-between align-items-center" style="font-size:14px;">
-                <span style="color:#696B6D;">발송 방식</span>
-                <span>
-                  <span class="badge" style="background:#172230; color:#fff; font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px;">전자문서+공전소</span>
-                </span>
-              </div>
-              <div class="d-flex justify-content-between align-items-center" style="font-size:14px;">
-                <span style="color:#696B6D;">상태</span>
-                <span>
-                  <span class="badge bg-success-lt" style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px;">열람완료</span>
-                </span>
-              </div>
-              <div class="d-flex justify-content-between align-items-center" style="font-size:14px;">
-                <span style="color:#696B6D;">열람일</span>
-                <span style="color:#1C1E21; font-weight:600;">2026년 3월 1일</span>
-              </div>
-            </div>
+        <!-- 발송 정보 -->
+        <div class="mypage-info-card">
+          <div class="mypage-info-card__title">발송 정보</div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">발송일</span>
+            <span class="mypage-info-row__value">2026년 2월 28일</span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">문서 유형</span>
+            <span class="mypage-info-row__value">임대차 내용증명</span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">발송 방식</span>
+            <span class="mypage-info-row__value"><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">상태</span>
+            <span class="mypage-info-row__value"><span class="status-badge status-badge--read">열람완료</span></span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">열람일</span>
+            <span class="mypage-info-row__value">2026년 3월 1일</span>
           </div>
         </div>
 
-        <!-- 수신인 정보 카드 -->
-        <div class="col-6">
-          <div class="card h-100" style="border-radius:14px; border:1px solid #E7E9EB;">
-            <div class="card-header" style="background:#fff; border-bottom:1px solid #F2F3F6; padding:18px 24px; border-radius:14px 14px 0 0;">
-              <h3 class="card-title" style="font-size:15px; font-weight:700; color:#1C1E21; margin:0;">수신인 정보</h3>
-            </div>
-            <div class="card-body" style="padding:20px 24px; display:flex; flex-direction:column; gap:14px;">
-              <div class="d-flex justify-content-between align-items-center" style="font-size:14px;">
-                <span style="color:#696B6D;">이름</span>
-                <span style="color:#1C1E21; font-weight:600;">김철수</span>
-              </div>
-              <div class="d-flex justify-content-between align-items-center" style="font-size:14px;">
-                <span style="color:#696B6D;">전화번호</span>
-                <span style="color:#1C1E21; font-weight:600;">010-1234-5678</span>
-              </div>
-              <div class="d-flex justify-content-between align-items-center" style="font-size:14px;">
-                <span style="color:#696B6D;">생년월일</span>
-                <span style="color:#1C1E21; font-weight:600;">1990.01.01</span>
-              </div>
-            </div>
+        <!-- 수신인 정보 -->
+        <div class="mypage-info-card">
+          <div class="mypage-info-card__title">수신인 정보</div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">이름</span>
+            <span class="mypage-info-row__value">김철수</span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">전화번호</span>
+            <span class="mypage-info-row__value">010-1234-5678</span>
+          </div>
+          <div class="mypage-info-row">
+            <span class="mypage-info-row__label">생년월일</span>
+            <span class="mypage-info-row__value">1990.01.01</span>
           </div>
         </div>
+
       </div>
 
       <!-- 발송 문서 내용 -->
       <div>
-        <h2 class="mypage-section-title" style="font-size:17px; margin-bottom:12px;">발송 문서 내용</h2>
+        <div style="font-size:16px;font-weight:700;color:#1C1E21;margin-bottom:14px;">발송 문서 내용</div>
         <div class="mypage-doc-wrap">
           <div class="mypage-doc-paper" id="docPaper">
             <div class="doc-paper__header">
@@ -175,112 +155,105 @@
         </div>
       </div>
 
-      <!-- 증명서 다운로드 (Tabler card rows) -->
+      <!-- 증명서 다운로드 -->
       <div>
-        <h2 class="mypage-section-title" style="font-size:17px; margin-bottom:12px;">증명서 다운로드</h2>
-        <div class="card" style="border-radius:14px; border:1px solid #E7E9EB; overflow:hidden;">
-          <!-- 감사추적증명서 -->
-          <div class="d-flex align-items-center justify-content-between p-3" style="border-bottom:1px solid #F2F3F6;">
-            <div>
-              <div style="font-size:15px; font-weight:600; color:#1C1E21; margin-bottom:3px;">감사추적증명서</div>
-              <div style="font-size:12px; color:#696B6D;">만료 없음</div>
+        <div style="font-size:16px;font-weight:700;color:#1C1E21;margin-bottom:14px;">증명서 다운로드</div>
+        <div class="cert-list">
+          <div class="cert-item">
+            <div class="cert-item__info">
+              <span class="cert-item__name">감사추적증명서</span>
+              <span class="cert-item__validity">만료 없음</span>
             </div>
-            <button class="btn btn-sm" style="background:#172230; color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:600; padding:8px 18px; white-space:nowrap; flex-shrink:0;" onclick="alert('다운로드 기능은 준비 중입니다.')">
-              다운로드
-            </button>
+            <button class="cert-download-btn" onclick="alert('다운로드 기능은 준비 중입니다.')">다운로드</button>
           </div>
-          <!-- 전자문서증명서 -->
-          <div class="d-flex align-items-center justify-content-between p-3" style="border-bottom:1px solid #F2F3F6;">
-            <div>
-              <div style="font-size:15px; font-weight:600; color:#1C1E21; margin-bottom:3px;">전자문서증명서</div>
-              <div style="font-size:12px; color:#696B6D;">유효기간: 2026.08.28까지 (6개월)</div>
+          <div class="cert-item">
+            <div class="cert-item__info">
+              <span class="cert-item__name">전자문서증명서</span>
+              <span class="cert-item__validity">유효기간: 2026.08.28까지 (6개월)</span>
             </div>
-            <button class="btn btn-sm" style="background:#172230; color:#fff; border:none; border-radius:8px; font-size:13px; font-weight:600; padding:8px 18px; white-space:nowrap; flex-shrink:0;" onclick="alert('다운로드 기능은 준비 중입니다.')">
-              다운로드
-            </button>
+            <button class="cert-download-btn" onclick="alert('다운로드 기능은 준비 중입니다.')">다운로드</button>
           </div>
-          <!-- 유통증명서 (만료) -->
-          <div class="d-flex align-items-center justify-content-between p-3">
-            <div>
-              <div style="font-size:15px; font-weight:600; color:#1C1E21; margin-bottom:3px;">유통증명서</div>
-              <div style="font-size:12px; color:#C62828;">유효기간 만료 (2026.05.28)</div>
+          <div class="cert-item">
+            <div class="cert-item__info">
+              <span class="cert-item__name">유통증명서</span>
+              <span class="cert-item__validity cert-item__validity--expired">유효기간 만료 (2026.05.28)</span>
             </div>
-            <button class="btn btn-sm btn-warning" style="border-radius:8px; font-size:13px; font-weight:600; padding:8px 18px; white-space:nowrap; flex-shrink:0; color:#fff;" onclick="openReissueModal()">
-              재발급 신청
-            </button>
+            <button class="cert-reissue-btn" onclick="openReissueModal()">재발급 신청</button>
           </div>
         </div>
       </div>
 
       <!-- 재발송 버튼 -->
-      <div style="padding-top: 8px;">
-        <button class="mypage-empty__btn" onclick="window.location.href='select-situation.html'">이 문서로 재발송</button>
+      <div>
+        <a href="select-situation.html" class="mypage-empty__btn">이 문서로 재발송</a>
       </div>
 
-    </main>
+    </div>
+  </main>
 
-  </div>
+</div>
 
-  <!-- 재발급 모달 -->
-  <div class="reissue-modal-overlay" id="reissueModal" style="display:none;">
-    <div class="reissue-modal">
-      <div class="reissue-modal__title">유통증명서 재발급</div>
-      <p class="reissue-modal__desc">유효기간이 만료된 유통증명서를 재발급합니다.<br>재발급 후 3개월간 유효합니다.</p>
-      <div class="reissue-modal__price">재발급 비용: <strong>2,200원</strong></div>
-      <div class="reissue-modal__actions">
-        <button class="reissue-modal__cancel" onclick="closeReissueModal()">취소</button>
-        <button class="reissue-modal__confirm" onclick="confirmReissue()">결제 후 재발급</button>
-      </div>
+<!-- 재발급 모달 -->
+<div class="reissue-modal-overlay" id="reissueModal" style="display:none;">
+  <div class="reissue-modal">
+    <div class="reissue-modal__title">유통증명서 재발급</div>
+    <p class="reissue-modal__desc">유효기간이 만료된 유통증명서를 재발급합니다.<br>재발급 후 3개월간 유효합니다.</p>
+    <div class="reissue-modal__price">재발급 비용: <strong>2,200원</strong></div>
+    <div class="reissue-modal__actions">
+      <button class="reissue-modal__cancel" onclick="closeReissueModal()">취소</button>
+      <button class="reissue-modal__confirm" onclick="confirmReissue()">결제 후 재발급</button>
     </div>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
-  <script>
-    /* sessionStorage에서 사용자 이름 가져오기 */
-    var userName = sessionStorage.getItem('user_name') || '홍길동';
-    var userEmail = sessionStorage.getItem('user_email') || 'user@example.com';
-    document.getElementById('navUserName').textContent = userName;
-    document.getElementById('sidebarUserName').textContent = userName;
-    document.getElementById('sidebarUserEmail').textContent = userEmail;
+<script>
+  if (!sessionStorage.getItem('logged_in')) {
+    window.location.href = 'login.html';
+  }
+  var userName = sessionStorage.getItem('user_name') || '홍길동';
+  var userEmail = sessionStorage.getItem('user_email') || 'user@example.com';
+  document.getElementById('navUserName').textContent = userName;
+  document.getElementById('sidebarUserName').textContent = userName;
+  document.getElementById('sidebarUserEmail').textContent = userEmail;
 
-    /* PDF 다운로드 */
-    function downloadPDF() {
-      var paper = document.getElementById('docPaper');
-      var win = window.open('', '_blank', 'width=820,height=1100');
-      win.document.write('<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>내용증명서</title><style>'
-        + 'body{margin:0;padding:40px 60px;font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:#1C1E21;background:#fff;}'
-        + '.doc-paper__header{text-align:center;margin-bottom:28px;}'
-        + '.doc-paper__label{font-size:11px;font-weight:700;letter-spacing:3px;color:#696B6D;display:block;margin-bottom:8px;}'
-        + '.doc-paper__title{font-family:"Nanum Myeongjo",serif;font-size:22px;font-weight:700;margin-bottom:8px;}'
-        + '.doc-paper__date{font-size:13px;color:#8C8C8C;}'
-        + 'hr{border:none;border-top:1.5px solid #D7DBDF;margin:20px 0;}'
-        + 'table{width:100%;border-collapse:collapse;}'
-        + 'td{padding:7px 10px;font-size:14px;}'
-        + '.doc-paper__party-label{width:72px;font-weight:700;color:#47494C;letter-spacing:2px;}'
-        + '.doc-paper__body{font-family:"Nanum Myeongjo",serif;font-size:15px;line-height:2;white-space:pre-wrap;word-break:break-all;margin:0;}'
-        + '.doc-paper__sign{margin-top:48px;text-align:right;font-size:14px;color:#47494C;line-height:2;}'
-        + '@page{margin:20mm;}'
-        + '</style></head><body>' + paper.innerHTML + '</body></html>');
-      win.document.close();
-      win.focus();
-      setTimeout(function () { win.print(); }, 400);
-    }
+  /* PDF 다운로드 */
+  function downloadPDF() {
+    var paper = document.getElementById('docPaper');
+    var win = window.open('', '_blank', 'width=820,height=1100');
+    win.document.write('<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>내용증명서</title><style>'
+      + 'body{margin:0;padding:40px 60px;font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:#1C1E21;background:#fff;}'
+      + '.doc-paper__header{text-align:center;margin-bottom:28px;}'
+      + '.doc-paper__label{font-size:11px;font-weight:700;letter-spacing:3px;color:#696B6D;display:block;margin-bottom:8px;}'
+      + '.doc-paper__title{font-family:"Nanum Myeongjo",serif;font-size:22px;font-weight:700;margin-bottom:8px;}'
+      + '.doc-paper__date{font-size:13px;color:#8C8C8C;}'
+      + 'hr{border:none;border-top:1.5px solid #D7DBDF;margin:20px 0;}'
+      + 'table{width:100%;border-collapse:collapse;}'
+      + 'td{padding:7px 10px;font-size:14px;}'
+      + '.doc-paper__party-label{width:72px;font-weight:700;color:#47494C;letter-spacing:2px;}'
+      + '.doc-paper__body{font-family:"Nanum Myeongjo",serif;font-size:15px;line-height:2;white-space:pre-wrap;word-break:break-all;margin:0;}'
+      + '.doc-paper__sign{margin-top:48px;text-align:right;font-size:14px;color:#47494C;line-height:2;}'
+      + '@page{margin:20mm;}'
+      + '</style></head><body>' + paper.innerHTML + '</body></html>');
+    win.document.close();
+    win.focus();
+    setTimeout(function () { win.print(); }, 400);
+  }
 
-    /* 재발급 모달 */
-    function openReissueModal() {
-      document.getElementById('reissueModal').style.display = 'flex';
-    }
-    function closeReissueModal() {
-      document.getElementById('reissueModal').style.display = 'none';
-    }
-    function confirmReissue() {
-      closeReissueModal();
-      alert('재발급 결제 기능은 준비 중입니다.');
-    }
-    document.getElementById('reissueModal').addEventListener('click', function (e) {
-      if (e.target === this) closeReissueModal();
-    });
-  </script>
+  /* 재발급 모달 */
+  function openReissueModal() {
+    document.getElementById('reissueModal').style.display = 'flex';
+  }
+  function closeReissueModal() {
+    document.getElementById('reissueModal').style.display = 'none';
+  }
+  function confirmReissue() {
+    closeReissueModal();
+    alert('재발급 결제 기능은 준비 중입니다.');
+  }
+  document.getElementById('reissueModal').addEventListener('click', function (e) {
+    if (e.target === this) closeReissueModal();
+  });
+</script>
 
 </body>
 </html>
