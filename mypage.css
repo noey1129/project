@@ -83,7 +83,7 @@ body.page-mypage {
 }
 
 .mypage-nav-item.active {
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
   font-weight: 700;
   border-left: 3px solid #FE9D3C;
@@ -131,7 +131,7 @@ body.page-mypage {
 .mypage-stat-card__value {
   font-size: 28px;
   font-weight: 700;
-  color: #30C2C8;
+  color: #172230;
 }
 
 .mypage-stat-card__unit {
@@ -250,7 +250,7 @@ body.page-mypage {
 }
 
 .method-badge-sm--certified {
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
 }
 
@@ -304,7 +304,7 @@ body.page-mypage {
 .mypage-empty__btn {
   margin-top: 8px;
   padding: 12px 28px;
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -343,9 +343,9 @@ body.page-mypage {
 }
 
 .page-btn.active {
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
-  border-color: #30C2C8;
+  border-color: #172230;
   font-weight: 700;
 }
 
@@ -438,7 +438,7 @@ body.page-mypage {
 
 .cert-download-btn {
   padding: 8px 18px;
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -504,13 +504,13 @@ body.page-mypage {
 }
 
 .mypage-form-input:focus {
-  border-color: #30C2C8;
+  border-color: #172230;
   background: #fff;
 }
 
 .mypage-form-save-btn {
   height: 50px;
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -618,8 +618,8 @@ body.page-mypage {
 }
 
 .btn--outline:hover {
-  border-color: #30C2C8;
-  color: #30C2C8;
+  border-color: #172230;
+  color: #172230;
 }
 
 /* ── 사이드바 새 내용증명 CTA ── */
@@ -753,7 +753,7 @@ body.page-mypage {
   gap: 8px;
   align-self: flex-end;
   padding: 10px 22px;
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -805,11 +805,11 @@ body.page-mypage {
 .cert-reissue-btn {
   padding: 8px 18px;
   background: #fff;
-  border: 1.5px solid #30C2C8;
+  border: 1.5px solid #172230;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
-  color: #30C2C8;
+  color: #172230;
   cursor: pointer;
   font-family: inherit;
   transition: background 0.15s;
@@ -867,7 +867,7 @@ body.page-mypage {
 
 .reissue-modal__price strong {
   font-weight: 700;
-  color: #30C2C8;
+  color: #172230;
 }
 
 .reissue-modal__actions {
@@ -892,7 +892,7 @@ body.page-mypage {
 .reissue-modal__confirm {
   flex: 2;
   height: 48px;
-  background: #30C2C8;
+  background: #172230;
   border: none;
   border-radius: 8px;
   font-size: 14px;

@@ -49,7 +49,7 @@ body.page-admin {
 
 .admin-sidebar__badge {
   display: inline-block;
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
   font-size: 9px;
   font-weight: 700;
@@ -87,8 +87,8 @@ body.page-admin {
 }
 
 .admin-nav-item.active {
-  background: #EAF9FA;
-  color: #30C2C8;
+  background: #EEF1F5;
+  color: #172230;
   font-weight: 700;
 }
 
@@ -219,7 +219,7 @@ body.page-admin {
   font-weight: 600;
 }
 
-.admin-stat-card__change--up   { color: #30C2C8; }
+.admin-stat-card__change--up   { color: #172230; }
 .admin-stat-card__change--down { color: #C62828; }
 
 /* ── 필터 탭 ── */
@@ -242,8 +242,8 @@ body.page-admin {
 }
 
 .admin-period-tab.active {
-  background: #30C2C8;
-  border-color: #30C2C8;
+  background: #172230;
+  border-color: #172230;
   color: #fff;
 }
 
@@ -320,7 +320,7 @@ body.page-admin {
 }
 
 .admin-tab-btn.active {
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
   font-weight: 700;
 }
@@ -352,13 +352,13 @@ body.page-admin {
 }
 
 .admin-search-input:focus {
-  border-color: #30C2C8;
+  border-color: #172230;
 }
 
 .admin-search-btn {
   height: 44px;
   padding: 0 20px;
-  background: #30C2C8;
+  background: #172230;
   border: none;
   border-radius: 5px;
   font-size: 14px;
@@ -369,7 +369,7 @@ body.page-admin {
   transition: background 0.15s;
 }
 
-.admin-search-btn:hover { background: #26A0A5; }
+.admin-search-btn:hover { background: #243447; }
 
 .admin-filter-select {
   height: 44px;
@@ -464,7 +464,7 @@ body.page-admin {
 .status-badge--read     { background: #EDFAF1; color: #197A45; }
 .status-badge--pending  { background: #F5F5F7; color: #8C8C8C; }
 .status-badge--failed   { background: #FFF0F0; color: #C62828; }
-.status-badge--active   { background: #EAF9FA; color: #30C2C8; }
+.status-badge--active   { background: #EEF1F5; color: #172230; }
 .status-badge--inactive { background: #F5F5F7; color: #8C8C8C; }
 .status-badge--progress { background: #FFF3E0; color: #FFA500; }
 .status-badge--done     { background: #EDFAF1; color: #40C576; }
@@ -480,7 +480,7 @@ body.page-admin {
   white-space: nowrap;
 }
 
-.method-badge-sm--certified { background: #30C2C8; color: #fff; }
+.method-badge-sm--certified { background: #172230; color: #fff; }
 .method-badge-sm--simple { background: #F5F5F7; color: #8C8C8C; border: 1px solid #DDDDDD; }
 
 .tbl-btn {
@@ -522,9 +522,9 @@ body.page-admin {
 }
 
 .page-btn.active {
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
-  border-color: #30C2C8;
+  border-color: #172230;
   font-weight: 700;
 }
 
@@ -553,7 +553,7 @@ body.page-admin {
   flex-shrink: 0;
 }
 
-.admin-activity-dot--send { background: #30C2C8; }
+.admin-activity-dot--send { background: #172230; }
 .admin-activity-dot--join { background: #40C576; }
 
 .admin-activity-text  { flex: 1; font-size: 13px; color: #696B6D; }
@@ -580,8 +580,8 @@ body.page-admin {
 }
 
 .admin-type-tab.active {
-  background: #30C2C8;
-  border-color: #30C2C8;
+  background: #172230;
+  border-color: #172230;
   color: #fff;
 }
 
@@ -603,7 +603,7 @@ body.page-admin {
 }
 
 .admin-template-textarea:focus {
-  border-color: #30C2C8;
+  border-color: #172230;
   background: #fff;
 }
 
@@ -614,7 +614,7 @@ body.page-admin {
 
 .admin-save-btn {
   padding: 10px 24px;
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -625,7 +625,7 @@ body.page-admin {
   transition: background 0.2s;
 }
 
-.admin-save-btn:hover { background: #26A0A5; }
+.admin-save-btn:hover { background: #243447; }
 
 .admin-reset-btn {
   padding: 10px 20px;
@@ -710,12 +710,12 @@ body.page-admin {
 
 /* ── 알림 박스 ── */
 .admin-alert {
-  background: #EAF9FA;
-  border: 1px solid #B2E8EB;
+  background: #EEF1F5;
+  border: 1px solid #C5CDD6;
   border-radius: 5px;
   padding: 14px 18px;
   font-size: 13px;
-  color: #1A8A8E;
+  color: #2B3347;
   line-height: 1.6;
 }
 
@@ -724,7 +724,7 @@ body.page-admin {
   position: fixed;
   bottom: 32px;
   right: 32px;
-  background: #30C2C8;
+  background: #172230;
   color: #fff;
   padding: 14px 22px;
   border-radius: 8px;
