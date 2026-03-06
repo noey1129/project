@@ -75,23 +75,17 @@
 
       <!-- 필터 -->
       <div class="mypage-filter">
-        <select class="mypage-filter-select">
-          <option value="all">기간: 전체</option>
-          <option value="1m">최근 1개월</option>
-          <option value="3m">최근 3개월</option>
-          <option value="6m">최근 6개월</option>
+        <select class="mypage-filter-select" id="filterMethod" onchange="filterMySends()">
+          <option value="">방식: 전체</option>
+          <option value="전자문서">전자문서+공전소</option>
+          <option value="알림톡">알림톡+공전소</option>
         </select>
-        <select class="mypage-filter-select">
-          <option value="all">방식: 전체</option>
-          <option value="certified">전자문서+공전소</option>
-          <option value="simple">알림톡+공전소</option>
-        </select>
-        <select class="mypage-filter-select">
-          <option value="all">상태: 전체</option>
-          <option value="sent">발송완료</option>
-          <option value="read">열람완료</option>
-          <option value="pending">열람미확인</option>
-          <option value="failed">발송실패</option>
+        <select class="mypage-filter-select" id="filterStatus" onchange="filterMySends()">
+          <option value="">상태: 전체</option>
+          <option value="발송완료">발송완료</option>
+          <option value="열람완료">열람완료</option>
+          <option value="열람미확인">열람미확인</option>
+          <option value="발송실패">발송실패</option>
         </select>
       </div>
 
@@ -108,7 +102,7 @@
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="mySendsTableBody">
             <tr>
               <td style="color:#8C8C8C;">2026.02.28</td>
               <td>임대차</td>
@@ -166,6 +160,19 @@
   document.getElementById('navUserName').textContent = userName;
   document.getElementById('sidebarUserName').textContent = userName;
   document.getElementById('sidebarUserEmail').textContent = userEmail;
+
+  function filterMySends() {
+    var method = document.getElementById('filterMethod').value;
+    var status = document.getElementById('filterStatus').value;
+    var rows = document.querySelectorAll('#mySendsTableBody tr');
+    rows.forEach(function (row) {
+      var rowMethod = row.cells[3].textContent.trim();
+      var rowStatus = row.cells[4].textContent.trim();
+      var matchMethod = !method || rowMethod.includes(method);
+      var matchStatus = !status || rowStatus.includes(status);
+      row.style.display = (matchMethod && matchStatus) ? '' : 'none';
+    });
+  }
 </script>
 
 </body>
