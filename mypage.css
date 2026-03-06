@@ -166,8 +166,10 @@ body.page-mypage {
 
 /* ── 상단 헤더 ── */
 .mypage-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 220px;
+  right: 0;
   background: #fff;
   border-bottom: 1px solid #E7E9EB;
   height: 58px;
@@ -176,7 +178,6 @@ body.page-mypage {
   justify-content: space-between;
   padding: 0 28px;
   z-index: 50;
-  flex-shrink: 0;
 }
 
 .mypage-header__title {
@@ -212,6 +213,7 @@ body.page-mypage {
 .mypage-content {
   flex: 1;
   padding: 28px;
+  padding-top: 86px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -997,8 +999,16 @@ body.page-mypage {
     border-right: 1px solid #F2F3F6;
   }
 
+  .mypage-header {
+    left: 0;
+  }
+
   .mypage-main {
     margin-left: 0;
+  }
+
+  .mypage-content {
+    padding-top: 86px;
   }
 
   .mypage-detail-grid {
