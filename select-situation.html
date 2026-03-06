@@ -6,98 +6,188 @@
   <title>상황 선택 – Sendit</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="select-situation.css" />
+  <link rel="stylesheet" href="mypage.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
 </head>
 <body class="page-select">
 
-  <!-- ───────────────────────────── NAV ───────────────────────────── -->
-  <header class="nav">
-    <div class="nav__inner">
-      <div class="nav__left">
-        <a href="index.html" class="nav__logo">Sendit</a>
-        <nav class="nav__links">
-          <a href="index.html#hero"    class="nav__link nav__link--active">이용 상황</a>
-          <a href="index.html#how"     class="nav__link">이용 방법</a>
-          <a href="index.html#pricing" class="nav__link">가격</a>
-          <a href="index.html#faq"     class="nav__link">자주 묻는 질문</a>
-          <a href="index.html#trust"   class="nav__link">인증 및 문서</a>
-          <a href="index.html#law"     class="nav__link">법 조항</a>
-        </nav>
+  <!-- ── 로그인 시 사이드바 ── -->
+  <aside class="mypage-sidebar" id="mySidebar" style="display:none;">
+    <a href="mypage.html" class="mypage-sidebar__logo">Sendit</a>
+    <div class="mypage-sidebar__profile">
+      <span class="mypage-sidebar__name" id="sidebarUserName">홍길동</span>
+      <span class="mypage-sidebar__email" id="sidebarUserEmail">user@example.com</span>
+    </div>
+    <div style="padding:12px 12px 0;">
+      <a href="select-situation.html" class="mypage-new-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        새 내용증명 작성
+      </a>
+    </div>
+    <nav class="mypage-sidebar__nav">
+      <a href="mypage.html" class="mypage-nav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+        </svg>
+        발송 내역
+      </a>
+      <a href="mypage-profile.html" class="mypage-nav-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        내 정보
+      </a>
+    </nav>
+    <div class="mypage-sidebar__footer">
+      <button class="mypage-logout-btn" onclick="sessionStorage.removeItem('logged_in'); sessionStorage.removeItem('user_name'); sessionStorage.removeItem('user_email'); window.location.href='login.html';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/><path d="M9 12h12l-3-3"/><path d="M18 15l3-3"/></svg>
+        로그아웃
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── 우측 메인 영역 ── -->
+  <div id="pageMain">
+
+    <!-- 비로그인: 공용 네비 -->
+    <header class="nav" id="publicNav">
+      <div class="nav__inner">
+        <div class="nav__left">
+          <a href="index.html" class="nav__logo">Sendit</a>
+          <nav class="nav__links">
+            <a href="index.html#hero"    class="nav__link nav__link--active">이용 상황</a>
+            <a href="index.html#how"     class="nav__link">이용 방법</a>
+            <a href="index.html#pricing" class="nav__link">가격</a>
+            <a href="index.html#faq"     class="nav__link">자주 묻는 질문</a>
+            <a href="index.html#trust"   class="nav__link">인증 및 문서</a>
+            <a href="index.html#law"     class="nav__link">법 조항</a>
+          </nav>
+        </div>
+        <div class="nav__right">
+          <a href="contact.html" class="nav__contact">서비스문의</a>
+          <button class="btn btn--dark" onclick="window.location.href='login.html'">로그인</button>
+        </div>
       </div>
-      <div class="nav__right">
-        <a href="contact.html" class="nav__contact">서비스문의</a>
-        <button class="btn btn--dark" onclick="window.location.href='login.html'">로그인</button>
+    </header>
+
+    <!-- 로그인 시: mypage 헤더 -->
+    <div class="mypage-header" id="loggedInHeader" style="display:none;">
+      <span class="mypage-header__title">새 내용증명 작성</span>
+      <div class="mypage-header__right">
+        <a href="contact.html" class="mypage-header__contact">서비스문의</a>
+        <span class="mypage-header__user" id="navUserName">홍길동</span>
       </div>
     </div>
-  </header>
 
-  <!-- ───────────────────────────── MAIN ───────────────────────────── -->
-  <main class="situation-main">
-    <div class="situation-header">
-      <h1 class="situation-title">어떤 상황인가요?</h1>
-      <p class="situation-sub">상황에 맞는 템플릿을 선택해 주세요.</p>
+    <!-- ── MAIN ── -->
+    <main class="situation-main">
+      <div class="situation-header">
+        <h1 class="situation-title">어떤 상황인가요?</h1>
+        <p class="situation-sub">상황에 맞는 템플릿을 선택해 주세요.</p>
+      </div>
+
+      <div class="situation-grid">
+
+        <div class="sit-select-card" data-type="임대차">
+          <img class="sit-select-icon" src="assets/home.svg" alt="임대차" />
+          <div class="sit-select-info">
+            <strong class="sit-select-name">임대차</strong>
+            <span class="sit-select-desc">보증금 반환, 계약 해지 요청</span>
+          </div>
+        </div>
+
+        <div class="sit-select-card" data-type="대여금">
+          <img class="sit-select-icon" src="assets/money.svg" alt="대여금" />
+          <div class="sit-select-info">
+            <strong class="sit-select-name">대여금</strong>
+            <span class="sit-select-desc">빌려준 돈 회수 요청</span>
+          </div>
+        </div>
+
+        <div class="sit-select-card" data-type="계약관련">
+          <img class="sit-select-icon" src="assets/file.svg" alt="계약관련" />
+          <div class="sit-select-info">
+            <strong class="sit-select-name">계약관련</strong>
+            <span class="sit-select-desc">계약 해지, 위반 통보</span>
+          </div>
+        </div>
+
+        <div class="sit-select-card" data-type="층간소음">
+          <img class="sit-select-icon" src="assets/sound.svg" alt="층간소음" />
+          <div class="sit-select-info">
+            <strong class="sit-select-name">층간소음</strong>
+            <span class="sit-select-desc">층간소음 시정 요청</span>
+          </div>
+        </div>
+
+        <div class="sit-select-card" data-type="회원권환불">
+          <img class="sit-select-icon" src="assets/arrow_reset.svg" alt="회원권 환불" />
+          <div class="sit-select-info">
+            <strong class="sit-select-name">회원권 환불</strong>
+            <span class="sit-select-desc">헬스장, 학원 등 회원권 환불</span>
+          </div>
+        </div>
+
+        <div class="sit-select-card" data-type="직접작성">
+          <img class="sit-select-icon" src="assets/edit.svg" alt="직접 작성" />
+          <div class="sit-select-info">
+            <strong class="sit-select-name">직접 작성</strong>
+            <span class="sit-select-desc">위에 해당하지 않는 경우</span>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ── BOTTOM BAR ── -->
+    <div class="bottom-bar" id="bottomBar">
+      <button class="btn-prev" id="btnPrev">이전</button>
     </div>
 
-    <div class="situation-grid">
-
-      <div class="sit-select-card" data-type="임대차">
-        <img class="sit-select-icon" src="assets/home.svg" alt="임대차" />
-        <div class="sit-select-info">
-          <strong class="sit-select-name">임대차</strong>
-          <span class="sit-select-desc">보증금 반환, 계약 해지 요청</span>
-        </div>
-      </div>
-
-      <div class="sit-select-card" data-type="대여금">
-        <img class="sit-select-icon" src="assets/money.svg" alt="대여금" />
-        <div class="sit-select-info">
-          <strong class="sit-select-name">대여금</strong>
-          <span class="sit-select-desc">빌려준 돈 회수 요청</span>
-        </div>
-      </div>
-
-      <div class="sit-select-card" data-type="계약관련">
-        <img class="sit-select-icon" src="assets/file.svg" alt="계약관련" />
-        <div class="sit-select-info">
-          <strong class="sit-select-name">계약관련</strong>
-          <span class="sit-select-desc">계약 해지, 위반 통보</span>
-        </div>
-      </div>
-
-      <div class="sit-select-card" data-type="층간소음">
-        <img class="sit-select-icon" src="assets/sound.svg" alt="층간소음" />
-        <div class="sit-select-info">
-          <strong class="sit-select-name">층간소음</strong>
-          <span class="sit-select-desc">층간소음 시정 요청</span>
-        </div>
-      </div>
-
-      <div class="sit-select-card" data-type="회원권환불">
-        <img class="sit-select-icon" src="assets/arrow_reset.svg" alt="회원권 환불" />
-        <div class="sit-select-info">
-          <strong class="sit-select-name">회원권 환불</strong>
-          <span class="sit-select-desc">헬스장, 학원 등 회원권 환불</span>
-        </div>
-      </div>
-
-      <div class="sit-select-card" data-type="직접작성">
-        <img class="sit-select-icon" src="assets/edit.svg" alt="직접 작성" />
-        <div class="sit-select-info">
-          <strong class="sit-select-name">직접 작성</strong>
-          <span class="sit-select-desc">위에 해당하지 않는 경우</span>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- ───────────────────────────── BOTTOM BAR ───────────────────────────── -->
-  <div class="bottom-bar">
-    <button class="btn-prev" id="btnPrev">이전</button>
-  </div>
+  </div><!-- /#pageMain -->
 
   <script src="select-situation.js"></script>
   <script src="nav-helper.js"></script>
+  <script>
+    if (sessionStorage.getItem('logged_in')) {
+      // 사이드바 표시
+      var sidebar = document.getElementById('mySidebar');
+      sidebar.style.display = 'flex';
+
+      // body flex row
+      document.body.style.display = 'flex';
+      document.body.style.flexDirection = 'row';
+      document.body.style.minHeight = '100vh';
+
+      // pageMain: flex:1
+      var pageMain = document.getElementById('pageMain');
+      pageMain.style.flex = '1';
+      pageMain.style.minWidth = '0';
+      pageMain.style.display = 'flex';
+      pageMain.style.flexDirection = 'column';
+
+      // 공용 nav 숨기기
+      document.getElementById('publicNav').style.display = 'none';
+
+      // 로그인 헤더 표시
+      document.getElementById('loggedInHeader').style.display = 'flex';
+
+      // situation-main 상단 패딩 조정 (nav 없으니 줄임)
+      document.querySelector('.situation-main').style.paddingTop = '60px';
+
+      // bottom-bar left 조정 (사이드바 너비만큼)
+      var bb = document.getElementById('bottomBar');
+      bb.style.left = '220px';
+      bb.style.width = 'calc(100% - 220px)';
+
+      // 사용자 정보
+      var userName = sessionStorage.getItem('user_name') || '홍길동';
+      var userEmail = sessionStorage.getItem('user_email') || 'user@example.com';
+      document.getElementById('navUserName').textContent = userName;
+      document.getElementById('sidebarUserName').textContent = userName;
+      document.getElementById('sidebarUserEmail').textContent = userEmail;
+    }
+  </script>
 </body>
 </html>
