@@ -76,16 +76,39 @@
         </div>
       </div>
 
-      <!-- 차트 플레이스홀더 -->
+      <!-- 차트 -->
       <div class="admin-charts">
+
+        <!-- 도넛 차트: 발송 방식 비율 -->
         <div class="admin-chart-card">
           <div class="admin-chart-card__title">발송 방식 비율</div>
-          <div class="admin-chart-placeholder">도넛 차트 준비중<br><span style="font-size:11px;margin-top:4px;display:block;">전자문서+공전소 / 알림톡+공전소</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+            <canvas id="donutChart" width="180" height="180" style="max-width:180px;"></canvas>
+            <div style="display:flex;flex-direction:column;gap:8px;width:100%;">
+              <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;">
+                <div style="display:flex;align-items:center;gap:7px;">
+                  <span style="display:inline-block;width:11px;height:11px;border-radius:2px;background:#172230;flex-shrink:0;"></span>
+                  <span style="color:#47494C;">전자문서+공전소</span>
+                </div>
+                <span style="font-weight:700;color:#172230;">154건 (62%)</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;">
+                <div style="display:flex;align-items:center;gap:7px;">
+                  <span style="display:inline-block;width:11px;height:11px;border-radius:2px;background:#FE9D3C;flex-shrink:0;"></span>
+                  <span style="color:#47494C;">알림톡+공전소</span>
+                </div>
+                <span style="font-weight:700;color:#FE9D3C;">94건 (38%)</span>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- 막대 차트: 최근 7일 발송 현황 -->
         <div class="admin-chart-card">
           <div class="admin-chart-card__title">최근 7일 발송 현황</div>
-          <div class="admin-chart-placeholder">막대 차트 준비중<br><span style="font-size:11px;margin-top:4px;display:block;">일별 발송 건수 추이</span></div>
+          <canvas id="barChart" style="width:100%;height:200px;"></canvas>
         </div>
+
       </div>
 
       <!-- 최근 활동 -->
@@ -148,6 +171,152 @@
   if (!sessionStorage.getItem('admin_logged_in')) {
     window.location.href = 'login.html';
   }
+
+  /* ── 도넛 차트 ── */
+  (function () {
+    var canvas = document.getElementById('donutChart');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var size = 180;
+    canvas.width  = size * dpr;
+    canvas.height = size * dpr;
+    canvas.style.width  = size + 'px';
+    canvas.style.height = size + 'px';
+    ctx.scale(dpr, dpr);
+
+    var cx = size / 2, cy = size / 2;
+    var outerR = 76, innerR = 44;
+    var data = [
+      { value: 154, color: '#172230' },
+      { value: 94,  color: '#FE9D3C' }
+    ];
+    var total = data.reduce(function (s, d) { return s + d.value; }, 0);
+    var startAngle = -Math.PI / 2;
+    var gap = 0.03;
+
+    data.forEach(function (d) {
+      var sweep = (d.value / total) * Math.PI * 2 - gap;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, outerR, startAngle, startAngle + sweep);
+      ctx.arc(cx, cy, innerR, startAngle + sweep, startAngle, true);
+      ctx.closePath();
+      ctx.fillStyle = d.color;
+      ctx.fill();
+      startAngle += sweep + gap;
+    });
+
+    /* 중앙 텍스트 */
+    ctx.fillStyle = '#1C1E21';
+    ctx.font = 'bold 22px Pretendard, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('248', cx, cy - 8);
+    ctx.font = '12px Pretendard, sans-serif';
+    ctx.fillStyle = '#696B6D';
+    ctx.fillText('총 발송', cx, cy + 12);
+  })();
+
+  /* ── 막대 차트 ── */
+  (function () {
+    var canvas = document.getElementById('barChart');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var W = canvas.offsetWidth  || 460;
+    var H = 200;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+
+    var labels = ['3/5', '3/6', '3/7', '3/8', '3/9', '3/10', '3/11'];
+    var values = [28, 34, 22, 41, 37, 29, 14];
+    var maxVal = Math.max.apply(null, values);
+
+    var padL = 36, padR = 12, padT = 16, padB = 36;
+    var chartW = W - padL - padR;
+    var chartH = H - padT - padB;
+    var barW = Math.floor(chartW / labels.length * 0.5);
+    var barGap = chartW / labels.length;
+
+    /* 그리드 라인 */
+    ctx.strokeStyle = '#F2F3F6';
+    ctx.lineWidth = 1;
+    var gridLines = 4;
+    for (var i = 0; i <= gridLines; i++) {
+      var y = padT + chartH - (chartH / gridLines) * i;
+      ctx.beginPath();
+      ctx.moveTo(padL, y);
+      ctx.lineTo(W - padR, y);
+      ctx.stroke();
+      var label = Math.round(maxVal / gridLines * i);
+      ctx.fillStyle = '#AFAFAF';
+      ctx.font = '10px Pretendard, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(label, padL - 6, y);
+    }
+
+    /* 막대 */
+    values.forEach(function (v, i) {
+      var barH = (v / maxVal) * chartH;
+      var x = padL + barGap * i + (barGap - barW) / 2;
+      var y = padT + chartH - barH;
+
+      /* 둥근 막대 */
+      var r = 4;
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + barW - r, y);
+      ctx.arcTo(x + barW, y, x + barW, y + r, r);
+      ctx.lineTo(x + barW, y + barH);
+      ctx.lineTo(x, y + barH);
+      ctx.lineTo(x, y + r);
+      ctx.arcTo(x, y, x + r, y, r);
+      ctx.closePath();
+      ctx.fillStyle = '#172230';
+      ctx.fill();
+
+      /* 값 라벨 */
+      ctx.fillStyle = '#47494C';
+      ctx.font = 'bold 11px Pretendard, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(v, x + barW / 2, y - 3);
+
+      /* x축 라벨 */
+      ctx.fillStyle = '#AFAFAF';
+      ctx.font = '11px Pretendard, sans-serif';
+      ctx.textBaseline = 'top';
+      ctx.fillText(labels[i], x + barW / 2, padT + chartH + 8);
+    });
+
+    /* 오늘(마지막 막대) 강조 */
+    var lastI = values.length - 1;
+    var lastH = (values[lastI] / maxVal) * chartH;
+    var lastX = padL + barGap * lastI + (barGap - barW) / 2;
+    var lastY = padT + chartH - lastH;
+    var r2 = 4;
+    ctx.beginPath();
+    ctx.moveTo(lastX + r2, lastY);
+    ctx.lineTo(lastX + barW - r2, lastY);
+    ctx.arcTo(lastX + barW, lastY, lastX + barW, lastY + r2, r2);
+    ctx.lineTo(lastX + barW, lastY + lastH);
+    ctx.lineTo(lastX, lastY + lastH);
+    ctx.lineTo(lastX, lastY + r2);
+    ctx.arcTo(lastX, lastY, lastX + r2, lastY, r2);
+    ctx.closePath();
+    ctx.fillStyle = '#FE9D3C';
+    ctx.fill();
+
+    ctx.fillStyle = '#FE9D3C';
+    ctx.font = 'bold 11px Pretendard, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(values[lastI], lastX + barW / 2, lastY - 3);
+  })();
 </script>
 </body>
 </html>
