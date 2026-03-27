@@ -26,7 +26,12 @@
     '<a href="mypage.html" class="mypage-sidebar__logo">Sendit</a>' +
     '<div class="mypage-sidebar__profile">' +
       '<div class="mypage-sidebar__profile-row">' +
-        '<div class="mypage-sidebar__avatar">' + (name ? name.charAt(0) : '?') + '</div>' +
+        '<div class="mypage-sidebar__avatar">' +
+          '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<circle cx="10" cy="7.5" r="3.5" stroke="#9CA3AF" stroke-width="1.4"/>' +
+            '<path d="M3 17c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#9CA3AF" stroke-width="1.4" stroke-linecap="round"/>' +
+          '</svg>' +
+        '</div>' +
         '<div class="mypage-sidebar__user-info">' +
           '<span class="mypage-sidebar__name">' + name + '님</span>' +
           '<span class="mypage-sidebar__email">' + email + '</span>' +

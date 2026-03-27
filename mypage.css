@@ -64,17 +64,12 @@ body.page-mypage {
 .mypage-sidebar__avatar {
   width: 40px;
   height: 40px;
-  background: #172230;
+  background: #EAEFF2;
   border-radius: 50%;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  font-family: 'Pretendard', sans-serif;
-  line-height: 1;
 }
 
 .mypage-sidebar__user-info {
@@ -326,7 +321,7 @@ body.page-mypage {
 .doc-filter__left {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   flex: 1;
 }
 
