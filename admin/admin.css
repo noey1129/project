@@ -37,13 +37,11 @@ body.page-admin {
 }
 
 .admin-sidebar__logo {
-  padding: 24px 20px 18px;
-  font-size: 22px;
-  font-weight: 800;
-  color: #172230;
-  letter-spacing: -0.5px;
+  padding: 18px 20px;
   text-decoration: none;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   border-bottom: 1px solid #E0E2E7;
 }
 

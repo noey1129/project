@@ -35,15 +35,10 @@ body.page-mypage {
 .mypage-sidebar__logo {
   display: flex;
   align-items: center;
-  padding: 0 24px;
-  height: 58px;
-  font-size: 20px;
-  font-weight: 800;
-  color: #172230;
+  padding: 18px 20px;
   text-decoration: none;
   border-bottom: 1px solid #F2F3F6;
   flex-shrink: 0;
-  letter-spacing: -0.5px;
 }
 
 .mypage-sidebar__profile {

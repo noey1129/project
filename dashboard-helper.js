@@ -23,7 +23,7 @@
   var sidebar = document.createElement('aside');
   sidebar.className = 'mypage-sidebar';
   sidebar.innerHTML =
-    '<a href="mypage.html" class="mypage-sidebar__logo">Sendit</a>' +
+    '<a href="mypage.html" class="mypage-sidebar__logo"><img src="assets/Lawsign.svg" alt="Lawsign" height="20"></a>' +
     '<div class="mypage-sidebar__profile">' +
       '<div class="mypage-sidebar__profile-row">' +
         '<div class="mypage-sidebar__avatar">' +
