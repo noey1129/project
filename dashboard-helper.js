@@ -12,7 +12,7 @@
   }
 
   var name  = sessionStorage.getItem('user_name')  || '사용자';
-  var email = sessionStorage.getItem('user_email') || '';
+  var email = sessionStorage.getItem('user_email') || sessionStorage.getItem('logged_email') || '';
 
   /* 현재 페이지 파악 */
   var path      = window.location.pathname;
@@ -34,7 +34,7 @@
         '</div>' +
         '<div class="mypage-sidebar__user-info">' +
           '<span class="mypage-sidebar__name">' + name + '님</span>' +
-          '<span class="mypage-sidebar__email">' + email + '</span>' +
+          (email ? '<span class="mypage-sidebar__email">' + email + '</span>' : '') +
         '</div>' +
       '</div>' +
       '<a href="select-situation.html" class="mypage-new-btn">새 내용증명 작성하기</a>' +

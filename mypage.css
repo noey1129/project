@@ -83,11 +83,13 @@ body.page-mypage {
 }
 
 .mypage-sidebar__email {
-  font-size: 13px;
+  font-size: 12px;
   color: #8C8C8C;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  display: block;
+  max-width: 150px;
 }
 
 .mypage-sidebar__nav {
