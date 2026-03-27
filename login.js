@@ -28,7 +28,7 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     sessionStorage.setItem('logged_in', 'true');
     sessionStorage.setItem('user_name', '홍길동');
     sessionStorage.setItem('user_email', email);
-    window.location.href = 'mypage.html';
+    window.location.href = 'select-situation.html';
   } else {
     alert('이메일 또는 비밀번호가 올바르지 않습니다.');
   }
