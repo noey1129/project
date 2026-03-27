@@ -25,22 +25,28 @@
   sidebar.innerHTML =
     '<a href="mypage.html" class="mypage-sidebar__logo">Sendit</a>' +
     '<div class="mypage-sidebar__profile">' +
-      '<span class="mypage-sidebar__name">' + name + '</span>' +
-      '<span class="mypage-sidebar__email">' + email + '</span>' +
-    '</div>' +
-    '<div style="padding:12px 12px 0;">' +
-      '<a href="select-situation.html" class="mypage-new-btn">' +
-        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
-        '새 내용증명 작성' +
-      '</a>' +
+      '<div class="mypage-sidebar__profile-row">' +
+        '<div class="mypage-sidebar__avatar"></div>' +
+        '<div class="mypage-sidebar__user-info">' +
+          '<span class="mypage-sidebar__name">' + name + '님</span>' +
+          '<span class="mypage-sidebar__email">' + email + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<a href="select-situation.html" class="mypage-new-btn">새 내용증명 작성하기</a>' +
     '</div>' +
     '<nav class="mypage-sidebar__nav">' +
       '<a href="mypage.html" class="mypage-nav-item' + (!isProfile ? ' active' : '') + '">' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>' +
-        '발송 내역' +
+        '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          '<path d="M4 3h10l2 4v10H4V3z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '<path d="M8 3v4h6" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</svg>' +
+        '내 문서함' +
       '</a>' +
       '<a href="mypage-profile.html" class="mypage-nav-item' + (isProfile ? ' active' : '') + '">' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' +
+        '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          '<circle cx="10" cy="7" r="3" stroke="currentColor" stroke-width="1.25"/>' +
+          '<path d="M3.75 17.5c0-3.45 2.8-6.25 6.25-6.25s6.25 2.8 6.25 6.25" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>' +
+        '</svg>' +
         '내 정보' +
       '</a>' +
     '</nav>' +
@@ -51,7 +57,9 @@
         "sessionStorage.removeItem('user_email');" +
         "window.location.href='login.html';" +
       '">' +
-        '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/><path d="M9 12h12l-3-3"/><path d="M18 15l3-3"/></svg>' +
+        '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          '<rect x="3" y="4" width="14" height="16" rx="1" stroke="#B01212" stroke-width="1.33"/>' +
+        '</svg>' +
         '로그아웃' +
       '</button>' +
     '</div>';
@@ -72,7 +80,7 @@
       '</div>';
   } else {
     leftHTML = '<span class="mypage-header__title">' +
-      (isProfile ? '내 정보 수정' : '발송 내역') +
+      (isProfile ? '내 정보 수정' : '내 문서함') +
       '</span>';
   }
 

@@ -15,94 +15,125 @@
 
     <div class="mypage-content">
 
-      <!-- 통계 카드 -->
-      <div class="mypage-stats">
-        <div class="mypage-stat-card">
-          <span class="mypage-stat-card__label">총 발송</span>
-          <div class="mypage-stat-card__value">12<span class="mypage-stat-card__unit">건</span></div>
-        </div>
-        <div class="mypage-stat-card">
-          <span class="mypage-stat-card__label">열람 완료</span>
-          <div class="mypage-stat-card__value">9<span class="mypage-stat-card__unit">건</span></div>
-        </div>
-        <div class="mypage-stat-card">
-          <span class="mypage-stat-card__label">열람 미확인</span>
-          <div class="mypage-stat-card__value">3<span class="mypage-stat-card__unit">건</span></div>
-        </div>
-      </div>
+      <!-- 문서함 카드 -->
+      <div class="doc-box">
 
-      <!-- 필터 -->
-      <div class="mypage-filter">
-        <select class="mypage-filter-select" id="filterMethod" onchange="filterMySends()">
-          <option value="">방식: 전체</option>
-          <option value="전자문서">전자문서+공전소</option>
-          <option value="알림톡">알림톡+공전소</option>
-        </select>
-        <select class="mypage-filter-select" id="filterStatus" onchange="filterMySends()">
-          <option value="">상태: 전체</option>
-          <option value="발송완료">발송완료</option>
-          <option value="열람완료">열람완료</option>
-          <option value="열람미확인">열람미확인</option>
-          <option value="발송실패">발송실패</option>
-        </select>
-      </div>
+        <!-- 탭 -->
+        <div class="doc-tabs">
+          <button class="doc-tab doc-tab--active" data-tab="sent" onclick="switchTab(this)">
+            보낸문서
+          </button>
+          <button class="doc-tab" data-tab="draft" onclick="switchTab(this)">
+            임시보관
+          </button>
+        </div>
 
-      <!-- 발송 내역 테이블 -->
-      <div class="mypage-table-wrap">
-        <table class="mypage-table">
-          <thead>
-            <tr>
-              <th>날짜</th>
-              <th>유형</th>
-              <th>수신인</th>
-              <th>발송 방식</th>
-              <th>상태</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="mySendsTableBody">
-            <tr>
-              <td style="color:#8C8C8C;">2026.02.28</td>
-              <td>임대차</td>
-              <td>김철수</td>
-              <td><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></td>
-              <td><span class="status-badge status-badge--read">열람완료</span></td>
-              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
-            </tr>
-            <tr>
-              <td style="color:#8C8C8C;">2026.02.15</td>
-              <td>대여금</td>
-              <td>이영희</td>
-              <td><span class="method-badge-sm method-badge-sm--simple">알림톡+공전소</span></td>
-              <td><span class="status-badge status-badge--sent">발송완료</span></td>
-              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
-            </tr>
-            <tr>
-              <td style="color:#8C8C8C;">2026.01.30</td>
-              <td>층간소음</td>
-              <td>박민준</td>
-              <td><span class="method-badge-sm method-badge-sm--certified">전자문서+공전소</span></td>
-              <td><span class="status-badge status-badge--pending">열람미확인</span></td>
-              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
-            </tr>
-            <tr>
-              <td style="color:#8C8C8C;">2026.01.10</td>
-              <td>계약관련</td>
-              <td>최지수</td>
-              <td><span class="method-badge-sm method-badge-sm--simple">알림톡+공전소</span></td>
-              <td><span class="status-badge status-badge--failed">발송실패</span></td>
-              <td><a href="mypage-detail.html" class="tbl-btn">상세보기</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <!-- 필터 -->
+        <div class="doc-filter">
+          <div class="doc-filter__left">
+            <span class="doc-filter__label">작성자 / 내용</span>
+            <div class="doc-filter__select-wrap">
+              <select class="doc-filter__select" id="filterType">
+                <option value="">전체</option>
+                <option value="임대차">임대차</option>
+                <option value="대여금">대여금</option>
+                <option value="계약">계약</option>
+                <option value="층간소음">층간소음</option>
+              </select>
+            </div>
+            <span class="doc-filter__label">검색</span>
+            <input
+              type="text"
+              class="doc-filter__input"
+              id="searchInput"
+              placeholder="검색어를 입력해주세요."
+            />
+          </div>
+          <button class="doc-filter__btn" onclick="filterDocs()">검색</button>
+        </div>
 
-      <!-- 페이지네이션 -->
-      <div class="mypage-pagination">
-        <button class="page-btn active">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
-      </div>
+        <!-- 문서 카드 목록 -->
+        <div class="doc-list" id="docList">
+
+          <div class="doc-card" data-type="임대차" data-title="부동산 매매 계약 해체 통보" data-recipient="김영수" data-tab="sent">
+            <div class="doc-card__info">
+              <div class="doc-card__top">
+                <span class="doc-status doc-status--sent">발송완료</span>
+                <span class="doc-card__title">부동산 매매 계약 해체 통보</span>
+              </div>
+              <div class="doc-card__meta">
+                <span>2025. 12. 01</span>
+                <span>수신인 : 김영수</span>
+              </div>
+            </div>
+            <svg class="doc-card__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 5l5 5-5 5" stroke="#8C8C8C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="doc-card" data-type="대여금" data-title="부동산 매매 계약 해체 통보" data-recipient="김영수" data-tab="sent">
+            <div class="doc-card__info">
+              <div class="doc-card__top">
+                <span class="doc-status doc-status--read">열람완료</span>
+                <span class="doc-card__title">부동산 매매 계약 해체 통보</span>
+              </div>
+              <div class="doc-card__meta">
+                <span>2025. 12. 01</span>
+                <span>수신인 : 김영수</span>
+              </div>
+            </div>
+            <svg class="doc-card__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 5l5 5-5 5" stroke="#8C8C8C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="doc-card" data-type="층간소음" data-title="층간소음 중단 요청 통보" data-recipient="박민준" data-tab="sent">
+            <div class="doc-card__info">
+              <div class="doc-card__top">
+                <span class="doc-status doc-status--read">열람완료</span>
+                <span class="doc-card__title">층간소음 중단 요청 통보</span>
+              </div>
+              <div class="doc-card__meta">
+                <span>2026. 01. 30</span>
+                <span>수신인 : 박민준</span>
+              </div>
+            </div>
+            <svg class="doc-card__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 5l5 5-5 5" stroke="#8C8C8C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="doc-card" data-type="계약" data-title="임대차 계약 해지 통보" data-recipient="최지수" data-tab="draft">
+            <div class="doc-card__info">
+              <div class="doc-card__top">
+                <span class="doc-status doc-status--draft">임시저장</span>
+                <span class="doc-card__title">임대차 계약 해지 통보</span>
+              </div>
+              <div class="doc-card__meta">
+                <span>2026. 02. 10</span>
+                <span>수신인 : 최지수</span>
+              </div>
+            </div>
+            <svg class="doc-card__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 5l5 5-5 5" stroke="#8C8C8C" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+        </div>
+
+        <!-- 빈 상태 -->
+        <div class="doc-empty" id="docEmpty" style="display:none;">
+          <span class="doc-empty__text">해당하는 문서가 없습니다.</span>
+        </div>
+
+        <!-- 페이지네이션 -->
+        <div class="mypage-pagination">
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+        </div>
+
+      </div><!-- /.doc-box -->
 
     </div>
   </main>
@@ -111,18 +142,48 @@
 
 <script src="dashboard-helper.js"></script>
 <script>
-  function filterMySends() {
-    var method = document.getElementById('filterMethod').value;
-    var status = document.getElementById('filterStatus').value;
-    var rows = document.querySelectorAll('#mySendsTableBody tr');
-    rows.forEach(function (row) {
-      var rowMethod = row.cells[3].textContent.trim();
-      var rowStatus = row.cells[4].textContent.trim();
-      var matchMethod = !method || rowMethod.includes(method);
-      var matchStatus = !status || rowStatus.includes(status);
-      row.style.display = (matchMethod && matchStatus) ? '' : 'none';
+  var currentTab = 'sent';
+
+  function switchTab(el) {
+    currentTab = el.dataset.tab;
+    document.querySelectorAll('.doc-tab').forEach(function(t) {
+      t.classList.remove('doc-tab--active');
     });
+    el.classList.add('doc-tab--active');
+    filterDocs();
   }
+
+  function filterDocs() {
+    var type   = document.getElementById('filterType').value;
+    var search = document.getElementById('searchInput').value.trim().toLowerCase();
+    var cards  = document.querySelectorAll('.doc-card');
+    var visible = 0;
+
+    cards.forEach(function(card) {
+      var tabMatch    = card.dataset.tab === currentTab;
+      var typeMatch   = !type   || card.dataset.type === type;
+      var searchMatch = !search ||
+        card.dataset.title.toLowerCase().includes(search) ||
+        card.dataset.recipient.toLowerCase().includes(search);
+
+      if (tabMatch && typeMatch && searchMatch) {
+        card.style.display = '';
+        visible++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    document.getElementById('docEmpty').style.display = visible === 0 ? '' : 'none';
+  }
+
+  /* 초기 렌더 */
+  filterDocs();
+
+  /* 엔터키 검색 */
+  document.getElementById('searchInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') filterDocs();
+  });
 </script>
 
 </body>

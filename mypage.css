@@ -22,10 +22,10 @@ body.page-mypage {
   position: fixed;
   top: 0;
   left: 0;
-  width: 220px;
+  width: 250px;
   height: 100vh;
   background: #fff;
-  border-right: 1px solid #E7E9EB;
+  border-right: 1px solid #E0E2E7;
   display: flex;
   flex-direction: column;
   z-index: 100;
@@ -47,23 +47,49 @@ body.page-mypage {
 }
 
 .mypage-sidebar__profile {
-  padding: 18px 20px 14px;
+  padding: 15px;
   border-bottom: 1px solid #F2F3F6;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
   flex-shrink: 0;
+}
+
+.mypage-sidebar__profile-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mypage-sidebar__avatar {
+  width: 40px;
+  height: 40px;
+  background: #EAEFF2;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mypage-sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 
 .mypage-sidebar__name {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   color: #1C1E21;
+  line-height: 1.3;
 }
 
 .mypage-sidebar__email {
-  font-size: 12px;
-  color: #696B6D;
+  font-size: 13px;
+  color: #8C8C8C;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .mypage-sidebar__nav {
@@ -157,7 +183,7 @@ body.page-mypage {
 
 /* ── 메인 영역 ── */
 .mypage-main {
-  margin-left: 220px;
+  margin-left: 250px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -168,22 +194,23 @@ body.page-mypage {
 .mypage-header {
   position: fixed;
   top: 0;
-  left: 220px;
+  left: 250px;
   right: 0;
   background: #fff;
-  border-bottom: 1px solid #E7E9EB;
+  border-bottom: 1px solid #E0E2E7;
   height: 58px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 28px;
+  padding: 0 25px;
   z-index: 50;
 }
 
 .mypage-header__title {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 700;
-  color: #1C1E21;
+  color: #121212;
+  font-family: 'SpoqaHanSans', 'Pretendard', sans-serif;
 }
 
 .mypage-header__right {
@@ -212,17 +239,271 @@ body.page-mypage {
 /* ── 콘텐츠 ── */
 .mypage-content {
   flex: 1;
-  padding: 28px;
-  padding-top: 86px;
+  padding: 25px;
+  padding-top: 83px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  align-items: center;
 }
 
 .mypage-section-title {
   font-size: 18px;
   font-weight: 700;
   color: #1C1E21;
+}
+
+/* ── 문서함 박스 ── */
+.doc-box {
+  width: 100%;
+  max-width: 1180px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+/* ── 탭 ── */
+.doc-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid #E7E9EB;
+}
+
+.doc-tab {
+  position: relative;
+  padding-bottom: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #A4A5A6;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+
+.doc-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.doc-tab--active {
+  color: #1C1E21;
+  font-weight: 700;
+}
+
+.doc-tab--active::after {
+  background: #1C1E21;
+}
+
+/* ── 필터 ── */
+.doc-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 45px;
+}
+
+.doc-filter__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.doc-filter__label {
+  font-size: 16px;
+  color: #333;
+  font-family: 'SpoqaHanSans', 'Pretendard', sans-serif;
+  white-space: nowrap;
+}
+
+.doc-filter__select-wrap {
+  width: 157px;
+  height: 100%;
+  position: relative;
+}
+
+.doc-filter__select {
+  width: 100%;
+  height: 38px;
+  padding: 0 32px 0 15px;
+  background: #fff;
+  border: 1px solid #E0E2E7;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='6' viewBox='0 0 12 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 4 5-4' stroke='%23313131' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  box-sizing: border-box;
+}
+
+.doc-filter__input {
+  width: 360px;
+  height: 38px;
+  padding: 0 15px;
+  background: #fff;
+  border: 1px solid #E0E2E7;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.doc-filter__input::placeholder {
+  color: #8C8C8C;
+}
+
+.doc-filter__input:focus {
+  border-color: #172230;
+}
+
+.doc-filter__btn {
+  padding: 10px 24px;
+  background: #172230;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Pretendard', inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.doc-filter__btn:hover {
+  background: #0f1720;
+}
+
+/* ── 문서 카드 ── */
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.doc-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #E7E9EB;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+
+.doc-card:hover {
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+.doc-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.doc-card__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.doc-card__title {
+  font-size: 20px;
+  color: #333;
+  font-family: 'SpoqaHanSans', 'Pretendard', sans-serif;
+}
+
+.doc-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.doc-card__meta span {
+  font-size: 16px;
+  color: #8C8C8C;
+  font-family: 'SpoqaHanSans', 'Pretendard', sans-serif;
+}
+
+.doc-card__arrow {
+  flex-shrink: 0;
+}
+
+/* ── 문서 상태 뱃지 ── */
+.doc-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.doc-status--sent {
+  background: #EBF2FF;
+  color: #3073F5;
+  border: 1px solid #D1E1FF;
+}
+
+.doc-status--read {
+  background: #DCFFE8;
+  color: #2B794A;
+  border: 1px solid #CBF4D9;
+}
+
+.doc-status--pending {
+  background: #F2F3F6;
+  color: #696B6D;
+  border: 1px solid #E7E9EB;
+}
+
+.doc-status--failed {
+  background: #FFF0F0;
+  color: #C62828;
+  border: 1px solid #FFCDD2;
+}
+
+.doc-status--draft {
+  background: #FFF8EC;
+  color: #D97706;
+  border: 1px solid #FFE0A3;
+}
+
+/* ── 빈 상태 ── */
+.doc-empty {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.doc-empty__text {
+  font-size: 15px;
+  color: #8C8C8C;
 }
 
 /* ── 통계 카드 ── */
@@ -1008,7 +1289,7 @@ body.page-mypage {
   }
 
   .mypage-content {
-    padding-top: 86px;
+    padding-top: 83px;
   }
 
   .mypage-detail-grid {
