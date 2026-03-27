@@ -31,12 +31,12 @@ cardSimple.addEventListener('click', function () { selectCard('simple'); });
 btnPrev.addEventListener('click', function () {
   var type = sessionStorage.getItem('wizard_type');
   var lastPageMap = {
-    'rent':       '../lease-q12.html',
-    'loan':       '../loan-q5.html',
-    'noise':      '../noise-q5.html',
-    'contract':   '../contract-q4.html',
-    'membership': '../membership-q4.html',
-    'custom':     '../custom-q4.html'
+    'rent':       'lease/q12.html',
+    'loan':       'loan/q5.html',
+    'noise':      'noise/q5.html',
+    'contract':   'contract/q4.html',
+    'membership': 'membership/q4.html',
+    'custom':     'custom/q4.html'
   };
   window.location.href = lastPageMap[type] || '../select-situation.html';
 });
@@ -47,9 +47,9 @@ btnNext.addEventListener('click', function () {
   sessionStorage.setItem(STORE_KEY, selectedValue);
   var type = sessionStorage.getItem('wizard_type');
   if (type === 'rent') {
-    window.location.href = '../lease-preview.html';
+    window.location.href = 'lease/preview.html';
   } else {
-    window.location.href = '../preview.html';
+    window.location.href = 'preview.html';
   }
 });
 

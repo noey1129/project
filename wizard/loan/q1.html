@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>대여금 질문 – Sendit</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../lease-question.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="page-question">
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="../../index.html" class="nav__logo"><img src="../../assets/Lawsign.svg" alt="Lawsign" height="22"></a>
+        <nav class="nav__links">
+          <a href="../../index.html#hero"    class="nav__link nav__link--active">이용 상황</a>
+          <a href="../../index.html#how"     class="nav__link">이용 방법</a>
+          <a href="../../index.html#pricing" class="nav__link">가격</a>
+          <a href="../../index.html#faq"     class="nav__link">자주 묻는 질문</a>
+          <a href="../../index.html#trust"   class="nav__link">인증 및 문서</a>
+          <a href="../../index.html#law"     class="nav__link">법 조항</a>
+        </nav>
+      </div>
+      <div class="nav__right">
+        <a href="../../contact.html" class="nav__contact">서비스문의</a>
+        <button class="btn btn--dark" onclick="window.location.href='../../login.html'">로그인</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="question-main">
+    <div class="question-wrap">
+
+      <div class="question-header">
+        <h1 class="question-title">얼마를 빌려주셨나요?</h1>
+        <p class="question-sub">대여 금액과 날짜를 입력해 주세요.</p>
+      </div>
+
+      <div class="question-body">
+
+        <div class="progress-row">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" style="width: calc(1 / 5 * 100%)"></div>
+          </div>
+          <div class="progress-counter">
+            <span class="progress-counter__current">1</span>
+            <span class="progress-counter__sep">/</span>
+            <span class="progress-counter__total">5</span>
+          </div>
+        </div>
+
+        <!-- 금액 입력 -->
+        <div class="input-date-group">
+          <span class="input-group-label">대여 금액</span>
+          <div class="input-amount-wrap">
+            <input
+              type="text"
+              id="loanAmount"
+              class="input-field input-field--amount"
+              placeholder="금액을 입력해주세요."
+              inputmode="numeric"
+            />
+            <span class="input-amount-suffix">원</span>
+          </div>
+        </div>
+
+        <!-- 날짜 입력 (년 / 월 / 일) -->
+        <div class="input-date-group">
+          <span class="input-group-label">대여 날짜</span>
+          <div class="input-row">
+            <input type="text" id="loanYear"  class="input-field input-field--main" placeholder="년도" inputmode="numeric" maxlength="4" />
+            <input type="text" id="loanMonth" class="input-field input-field--main" placeholder="월"  inputmode="numeric" maxlength="2" />
+            <input type="text" id="loanDay"   class="input-field input-field--main" placeholder="일"  inputmode="numeric" maxlength="2" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="bottom-bar">
+    <div class="bottom-bar__inner">
+      <button class="btn-prev" id="btnPrev">이전</button>
+      <button class="btn-next" id="btnNext" disabled>다음</button>
+    </div>
+  </div>
+
+  <script src="q1.js"></script>
+</body>
+</html>

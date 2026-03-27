@@ -84,7 +84,7 @@ document.getElementById('btnPay').addEventListener('click', function () {
   var homeBtn = document.getElementById('completeHomeBtn');
   if (homeBtn) {
     if (sessionStorage.getItem('logged_in') === 'true') {
-      homeBtn.href = '../mypage.html';
+      homeBtn.href = '../index.html';
       homeBtn.textContent = '발송 내역 확인하기';
     } else {
       homeBtn.href = '../index.html';
@@ -100,7 +100,7 @@ document.getElementById('btnPay').addEventListener('click', function () {
 /* ── 이전 버튼 ── */
 document.getElementById('btnPrev').addEventListener('click', function () {
   var type = sessionStorage.getItem('wizard_type');
-  window.location.href = type === 'rent' ? '../lease-preview.html' : '../preview.html';
+  window.location.href = type === 'rent' ? 'lease/preview.html' : 'preview.html';
 });
 
 /* ── NAV 스크롤 그림자 ── */

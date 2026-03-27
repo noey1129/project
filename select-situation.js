@@ -5,7 +5,7 @@
 /* ── 이전 버튼: 로그인 유저는 mypage, 비로그인은 index ── */
 document.getElementById('btnPrev').addEventListener('click', function () {
   if (sessionStorage.getItem('logged_in') === 'true') {
-    window.location.href = 'mypage.html';
+    window.location.href = 'index.html';
   } else if (history.length > 1) {
     history.back();
   } else {
@@ -18,12 +18,12 @@ document.getElementById('btnPrev').addEventListener('click', function () {
   const cards = document.querySelectorAll('.sit-select-card');
 
   const routeMap = {
-    '임대차':    'lease-q1.html',
-    '대여금':    'loan-q1.html',
-    '계약관련':  'contract-q1.html',
-    '층간소음':  'noise-q1.html',
-    '회원권환불': 'membership-q1.html',
-    '직접작성':  'custom-q1.html',
+    '임대차':    'wizard/lease/q1.html',
+    '대여금':    'wizard/loan/q1.html',
+    '계약관련':  'wizard/contract/q1.html',
+    '층간소음':  'wizard/noise/q1.html',
+    '회원권환불': 'wizard/membership/q1.html',
+    '직접작성':  'wizard/custom/q1.html',
   };
 
   const typeKeyMap = {

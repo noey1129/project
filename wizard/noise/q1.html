@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>층간소음 질문 – Sendit</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../../lease-question.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="page-question">
+
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="../../index.html" class="nav__logo"><img src="../../assets/Lawsign.svg" alt="Lawsign" height="22"></a>
+        <nav class="nav__links">
+          <a href="../../index.html#hero"    class="nav__link nav__link--active">이용 상황</a>
+          <a href="../../index.html#how"     class="nav__link">이용 방법</a>
+          <a href="../../index.html#pricing" class="nav__link">가격</a>
+          <a href="../../index.html#faq"     class="nav__link">자주 묻는 질문</a>
+          <a href="../../index.html#trust"   class="nav__link">인증 및 문서</a>
+          <a href="../../index.html#law"     class="nav__link">법 조항</a>
+        </nav>
+      </div>
+      <div class="nav__right">
+        <a href="../../contact.html" class="nav__contact">서비스문의</a>
+        <button class="btn btn--dark" onclick="window.location.href='../../login.html'">로그인</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="question-main">
+    <div class="question-wrap">
+
+      <div class="question-header">
+        <h1 class="question-title">어떤 종류의 소음인가요?</h1>
+        <p class="question-sub">가장 가까운 소음 유형을 선택해 주세요.</p>
+      </div>
+
+      <div class="question-body">
+
+        <div class="progress-row">
+          <div class="progress-bar">
+            <div class="progress-bar__fill" style="width: calc(1 / 5 * 100%)"></div>
+          </div>
+          <div class="progress-counter">
+            <span class="progress-counter__current">1</span>
+            <span class="progress-counter__sep">/</span>
+            <span class="progress-counter__total">5</span>
+          </div>
+        </div>
+
+        <div class="answer-list">
+          <div class="answer-card" data-value="발소리">
+            <div class="answer-card__info">
+              <strong class="answer-card__name">발소리·뛰는 소리</strong>
+              <span class="answer-card__desc">쿵쿵 울리는 충격 소음이에요.</span>
+            </div>
+          </div>
+          <div class="answer-card" data-value="악기">
+            <div class="answer-card__info">
+              <strong class="answer-card__name">악기·음악 소리</strong>
+              <span class="answer-card__desc">피아노, 드럼, 스피커 소음이에요.</span>
+            </div>
+          </div>
+          <div class="answer-card" data-value="생활소음">
+            <div class="answer-card__info">
+              <strong class="answer-card__name">생활소음(TV·대화 등)</strong>
+              <span class="answer-card__desc">TV 소리, 대화 소리 등이에요.</span>
+            </div>
+          </div>
+          <div class="answer-card" data-value="기타">
+            <div class="answer-card__info">
+              <strong class="answer-card__name">기타</strong>
+              <span class="answer-card__desc">위에 해당하지 않는 소음이에요.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div class="bottom-bar">
+    <div class="bottom-bar__inner">
+      <button class="btn-prev" id="btnPrev">이전</button>
+      <button class="btn-next" id="btnNext" disabled>다음</button>
+    </div>
+  </div>
+
+  <script src="q1.js"></script>
+</body>
+</html>
