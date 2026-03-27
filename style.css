@@ -60,7 +60,8 @@ body {
   height: 100%; display: flex; align-items: center; justify-content: space-between;
 }
 .nav__left   { display: flex; align-items: center; gap: 35px; }
-.nav__logo   { font-size: 22px; font-weight: 700; color: #2B3347; letter-spacing: -.5px; }
+.nav__logo   { font-size: 22px; font-weight: 700; color: #2B3347; letter-spacing: -.5px; text-decoration: none; display: inline-flex; align-items: center; }
+.nav__logo img { display: block; }
 .nav__links  { display: flex; gap: 28px; }
 .nav__link   { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--muted); transition: color .15s; }
 .nav__link--active { color: var(--text); font-weight: 600; }
