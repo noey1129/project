@@ -26,7 +26,7 @@
     '<a href="mypage.html" class="mypage-sidebar__logo">Sendit</a>' +
     '<div class="mypage-sidebar__profile">' +
       '<div class="mypage-sidebar__profile-row">' +
-        '<div class="mypage-sidebar__avatar"></div>' +
+        '<div class="mypage-sidebar__avatar">' + (name ? name.charAt(0) : '?') + '</div>' +
         '<div class="mypage-sidebar__user-info">' +
           '<span class="mypage-sidebar__name">' + name + '님</span>' +
           '<span class="mypage-sidebar__email">' + email + '</span>' +
