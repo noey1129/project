@@ -47,6 +47,50 @@ body.page-admin {
   border-bottom: 1px solid #E0E2E7;
 }
 
+/* ── 사이드바 프로필 ── */
+.admin-sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #E0E2E7;
+}
+
+.admin-sidebar__avatar {
+  width: 36px;
+  height: 36px;
+  background: #EAEFF2;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.admin-sidebar__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1C1E21;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-sidebar__email {
+  font-size: 12px;
+  color: #8C8C8C;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .admin-sidebar__badge {
   display: inline-block;
   background: #172230;

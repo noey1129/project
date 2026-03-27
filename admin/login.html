@@ -66,6 +66,8 @@
     btn.addEventListener('click', function () {
       if (idInput.value.trim() === ADMIN_ID && pwInput.value === ADMIN_PW) {
         sessionStorage.setItem('admin_logged_in', 'true');
+        sessionStorage.setItem('admin_name', '관리자');
+        sessionStorage.setItem('admin_email', 'admin@sendit.kr');
         window.location.href = 'dashboard.html';
       } else {
         alert('관리자 ID 또는 비밀번호가 올바르지 않습니다.');
@@ -74,6 +76,8 @@
 
     function quickAdminLogin() {
       sessionStorage.setItem('admin_logged_in', 'true');
+      sessionStorage.setItem('admin_name', '관리자');
+      sessionStorage.setItem('admin_email', 'admin@sendit.kr');
       window.location.href = 'dashboard.html';
     }
   </script>
