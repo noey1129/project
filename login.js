@@ -34,12 +34,6 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
   }
 });
 
-['btnKakao', 'btnNaver', 'btnGoogle'].forEach(function (id) {
-  document.getElementById(id).addEventListener('click', function () {
-    alert('소셜 로그인은 준비 중입니다.');
-  });
-});
-
 (function initNavShadow() {
   var nav = document.querySelector('.nav');
   if (!nav) return;
