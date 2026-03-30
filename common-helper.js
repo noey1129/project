@@ -78,8 +78,9 @@
       }
     }
 
-    /* 푸터 삽입 (없는 경우만) */
-    if (!document.querySelector('footer.footer')) {
+    /* 푸터 삽입 (없는 경우만, wizard 페이지 제외) */
+    var isWizard = window.location.pathname.includes('/wizard/');
+    if (!isWizard && !document.querySelector('footer.footer')) {
       var main = document.querySelector('main');
       if (main) {
         var footer = document.createElement('footer');
