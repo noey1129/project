@@ -19,7 +19,7 @@
     if (isLoggedIn()) {
       return '<button class="btn btn--dark" id="commonNavLogout">로그아웃</button>';
     }
-    return '<a href="' + base + 'signup.html" class="nav__contact">회원가입</a>' +
+    return '<button class="btn btn--outline" onclick="window.location.href=\'' + base + 'signup.html\'">회원가입</button>' +
       '<button class="btn btn--dark" onclick="window.location.href=\'' + base + 'login.html\'">로그인</button>';
   }
 
