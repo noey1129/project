@@ -198,44 +198,16 @@ body.page-question {
 .btn-prev {
   flex: 1;
   height: 60px;
-  background: #E7E9EB;
-  border: none;
   border-radius: 10px;
-  color: #696B6D;
   font-size: 18px;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.btn-prev:hover {
-  background: #D1D5D9;
-  color: #47494C;
 }
 
 /* ── 다음 버튼 ── */
 .btn-next {
   flex: 1;
   height: 60px;
-  background: #8A9097;
-  border: none;
   border-radius: 10px;
-  color: #fff;
   font-size: 18px;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: not-allowed;
-  transition: background 0.2s ease;
-}
-
-.btn-next:not([disabled]) {
-  background: #172230;
-  cursor: pointer;
-}
-
-.btn-next:not([disabled]):hover {
-  background: #243447;
 }
 
 /* ── 주소 입력 행 ── */

@@ -201,30 +201,10 @@ body.page-auth {
 }
 
 .auth-input {
-  width: 100%;
   height: 52px;
   padding: 0 16px;
-  background: #F8F9FA;
-  border: 1px solid #D7DBDF;
   border-radius: 10px;
   font-size: 15px;
-  color: #1C1E21;
-  transition: border-color 0.2s, background 0.2s;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.auth-input::placeholder {
-  color: #AFAFAF;
-}
-
-.auth-input:focus {
-  border-color: #172230;
-  background: #fff;
-}
-
-.auth-input.error {
-  border-color: #E53E3E;
 }
 
 .auth-input-error {
@@ -307,25 +287,10 @@ body.page-auth {
 .btn-auth-submit {
   width: 100%;
   height: 56px;
-  background: #D7DBDF;
-  color: #fff;
   border-radius: 10px;
   font-size: 16px;
-  font-weight: 700;
-  cursor: not-allowed;
-  transition: background 0.2s;
-  border: none;
   letter-spacing: -0.2px;
   margin-top: 4px;
-}
-
-.btn-auth-submit:not([disabled]) {
-  background: #172230;
-  cursor: pointer;
-}
-
-.btn-auth-submit:not([disabled]):hover {
-  background: #243447;
 }
 
 /* ── 체크박스 그룹 ── */

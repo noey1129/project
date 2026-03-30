@@ -32,6 +32,57 @@ body {
   overflow-x: hidden;
 }
 
+/* ================================================================
+   SHARED COMPONENTS – 인풋 / 버튼 공통
+   ================================================================ */
+
+/* ── 인풋 공통 (auth-input / wizard-input) ── */
+.auth-input,
+.wizard-input {
+  width: 100%;
+  background: #F8F9FA;
+  border: 1px solid #D7DBDF;
+  color: #1C1E21;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background 0.2s;
+}
+.auth-input::placeholder,
+.wizard-input::placeholder { color: #AFAFAF; }
+.auth-input:focus,
+.wizard-input:focus { border-color: #172230; background: #fff; }
+.auth-input.error { border-color: #E53E3E; }
+
+/* ── 제출/다음 버튼 공통 (btn-auth-submit / btn-next) ── */
+.btn-auth-submit,
+.btn-next {
+  border: none;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: not-allowed;
+  background: #D7DBDF;
+  color: #fff;
+  transition: background 0.2s;
+}
+.btn-auth-submit:not([disabled]),
+.btn-next:not([disabled]) { background: #172230; cursor: pointer; }
+.btn-auth-submit:not([disabled]):hover,
+.btn-next:not([disabled]):hover { background: #243447; }
+
+/* ── 이전 버튼 공통 (btn-prev) ── */
+.btn-prev {
+  background: #E7E9EB;
+  border: none;
+  color: #696B6D;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-prev:hover { background: #D1D5D9; color: #47494C; }
+
+
 /* ── Shared ── */
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
