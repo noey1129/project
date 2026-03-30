@@ -370,6 +370,13 @@ body.page-dashboard .db-content {
   justify-content: space-between;
   min-height: 24px;
   gap: 12px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.info-row:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .info-label {
@@ -413,6 +420,13 @@ body.page-dashboard .db-content {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.cert-row:last-of-type {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .cert-name {
