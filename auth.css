@@ -46,6 +46,10 @@ body.page-auth {
   padding-bottom: 4px;
 }
 
+.auth-header--left {
+  align-items: flex-start;
+}
+
 .auth-logo {
   font-size: 28px;
   font-weight: 800;
