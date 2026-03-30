@@ -60,12 +60,6 @@ btnSignup.addEventListener('click', function () {
   alert('회원가입 기능은 준비 중입니다.');
 });
 
-/* ── 소셜 ── */
-['btnKakao', 'btnNaver', 'btnGoogle'].forEach(function (id) {
-  document.getElementById(id).addEventListener('click', function () {
-    alert('소셜 로그인은 준비 중입니다.');
-  });
-});
 
 /* ── NAV 그림자 ── */
 (function initNavShadow() {
