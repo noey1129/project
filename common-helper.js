@@ -17,7 +17,8 @@
   /* ── NAV 우측 버튼 (항상 고정) ── */
   function buildNavRight() {
     if (isLoggedIn()) {
-      return '<button class="btn btn--dark" id="commonNavLogout">로그아웃</button>';
+      return '<button class="btn btn--accent-fill" onclick="window.location.href=\'' + base + 'mypage.html\'">내 문서함</button>' +
+             '<button class="btn btn--dark" id="commonNavLogout">로그아웃</button>';
     }
     return '<button class="btn btn--accent-fill" onclick="window.location.href=\'' + base + 'signup.html\'">회원가입</button>' +
       '<button class="btn btn--dark" onclick="window.location.href=\'' + base + 'login.html\'">로그인</button>';
