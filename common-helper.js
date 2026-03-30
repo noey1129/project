@@ -79,7 +79,10 @@
     }
 
     /* 푸터 삽입 (없는 경우만, wizard 페이지 제외) */
-    var isWizard = window.location.pathname.includes('/wizard/');
+    var body = document.body;
+    var isWizard = body.classList.contains('page-question') ||
+                   body.classList.contains('page-wizard') ||
+                   body.classList.contains('page-preview');
     if (!isWizard && !document.querySelector('footer.footer')) {
       var main = document.querySelector('main');
       if (main) {
