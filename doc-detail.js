@@ -85,7 +85,7 @@ var PAGE_CONTENTS = [
   },
 
   /* 2페이지 */
-  function (doc) {
+  function (_doc) {
     return '<p style="font-weight:700; font-size:14px; margin-bottom:16px;">1. 사실 관계</p>' +
     '<p style="text-indent:2em; margin-bottom:12px;">발신인은 20XX년 X월 X일 귀하와 계약을 체결하였으며, 해당 계약에 따라 제반 의무를 정해진 기한 내에 이행하였습니다.</p>' +
     '<p style="text-indent:2em; margin-bottom:12px;">그러나 귀하께서는 계약서 제3조에서 정한 의무를 불이행함으로써 발신인에게 재산적·정신적 손해를 끼치고 있습니다.</p>' +
@@ -150,22 +150,33 @@ function buildThumbs() {
   if (!list) return;
   list.innerHTML = '';
 
-  var linePatterns = [
-    ['title', 'short', 'long', 'mid', 'long', 'short', 'mid'],
-    ['title', 'long', 'mid', 'short', 'long', 'long', 'mid'],
-    ['title', 'mid', 'short', 'long', 'mid', 'short', 'long']
-  ];
+  var doc = getDoc();
+  /* 썸네일 80px, 뷰어 페이지 640px → scale = 80/640 = 0.125 */
+  var SCALE = 0.125;
+  var PAGE_W = 640;
+  var PAGE_H = 820;
 
   for (var i = 1; i <= totalPages; i++) {
-    var lines = (linePatterns[i - 1] || linePatterns[0]).map(function (type) {
-      return '<div class="thumb-line thumb-line--' + type + '"></div>';
-    }).join('');
+    var idx = Math.min(i - 1, PAGE_CONTENTS.length - 1);
+    var pageHTML = PAGE_CONTENTS[idx](doc);
 
     var item = document.createElement('div');
     item.className = 'thumb-item';
     item.dataset.page = i;
     item.innerHTML =
-      '<div class="thumb-preview' + (i === 1 ? ' active' : '') + '">' + lines + '</div>' +
+      '<div class="thumb-preview' + (i === 1 ? ' active' : '') + '">' +
+        '<div class="thumb-mini-doc" style="' +
+          'width:' + PAGE_W + 'px;' +
+          'height:' + PAGE_H + 'px;' +
+          'transform:scale(' + SCALE + ');' +
+          'transform-origin:top left;' +
+          'position:absolute; top:0; left:0;' +
+          'padding:50px 54px;' +
+          'font-family:\'Nanum Myeongjo\',serif;' +
+          'font-size:13px; line-height:2; color:#1C1E21;' +
+          'background:#fff; pointer-events:none;' +
+        '">' + pageHTML + '</div>' +
+      '</div>' +
       '<div class="thumb-num' + (i === 1 ? ' active' : '') + '">' + i + '</div>';
     list.appendChild(item);
   }

@@ -287,10 +287,7 @@ body.page-dashboard .db-content {
   border-radius: 3px;
   border: 0.8px solid #ECECEC;
   overflow: hidden;
-  padding: 8px 7px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  position: relative;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
