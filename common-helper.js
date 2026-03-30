@@ -14,22 +14,12 @@
     return sessionStorage.getItem('logged_in') === 'true';
   }
 
-  /* ── 현재 페이지가 로그인/회원가입 페이지인지 ── */
-  function isAuthPage() {
-    return document.body && document.body.classList.contains('page-auth');
-  }
-
-  /* ── NAV 우측 버튼 ── */
+  /* ── NAV 우측 버튼 (항상 고정) ── */
   function buildNavRight() {
-    var contact = '<a href="' + base + 'contact.html" class="nav__contact">서비스문의</a>';
     if (isLoggedIn()) {
-      return contact +
-        '<button class="btn btn--dark" id="commonNavLogout">로그아웃</button>';
+      return '<button class="btn btn--dark" id="commonNavLogout">로그아웃</button>';
     }
-    if (isAuthPage()) {
-      return contact;
-    }
-    return contact +
+    return '<a href="' + base + 'signup.html" class="nav__contact">회원가입</a>' +
       '<button class="btn btn--dark" onclick="window.location.href=\'' + base + 'login.html\'">로그인</button>';
   }
 
