@@ -82,7 +82,8 @@
     var body = document.body;
     var isWizard = body.classList.contains('page-question') ||
                    body.classList.contains('page-wizard') ||
-                   body.classList.contains('page-preview');
+                   body.classList.contains('page-preview') ||
+                   body.classList.contains('page-select');
     if (!isWizard && !document.querySelector('footer.footer')) {
       var main = document.querySelector('main');
       if (main) {
