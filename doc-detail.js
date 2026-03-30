@@ -282,11 +282,50 @@ document.addEventListener('DOMContentLoaded', function () {
     if (currentPage < totalPages) { currentPage++; renderPage(); }
   });
 
-  /* 줌 */
-  document.getElementById('zoomSelect').addEventListener('change', function () {
-    currentZoom = parseInt(this.value, 10);
+  /* 줌 공통 함수 */
+  var ZOOM_STEPS = [50, 75, 100, 125, 150, 200];
+
+  function applyZoom(zoom) {
+    currentZoom = Math.min(Math.max(zoom, ZOOM_STEPS[0]), ZOOM_STEPS[ZOOM_STEPS.length - 1]);
     var wrap = document.getElementById('viewerPageWrap');
     if (wrap) wrap.style.transform = 'scale(' + currentZoom / 100 + ')';
+
+    /* select 동기화 */
+    var sel = document.getElementById('zoomSelect');
+    if (sel) {
+      var matched = false;
+      for (var i = 0; i < sel.options.length; i++) {
+        if (parseInt(sel.options[i].value, 10) === currentZoom) {
+          sel.selectedIndex = i;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched) sel.value = '';
+    }
+
+    /* 버튼 비활성 */
+    var btnPlus  = document.querySelector('[title="확대"]');
+    var btnMinus = document.querySelector('[title="축소"]');
+    if (btnPlus)  btnPlus.disabled  = currentZoom >= ZOOM_STEPS[ZOOM_STEPS.length - 1];
+    if (btnMinus) btnMinus.disabled = currentZoom <= ZOOM_STEPS[0];
+  }
+
+  /* select 변경 */
+  document.getElementById('zoomSelect').addEventListener('change', function () {
+    applyZoom(parseInt(this.value, 10));
+  });
+
+  /* 확대 버튼 */
+  document.querySelector('[title="확대"]').addEventListener('click', function () {
+    var next = ZOOM_STEPS.find(function (s) { return s > currentZoom; });
+    if (next) applyZoom(next);
+  });
+
+  /* 축소 버튼 */
+  document.querySelector('[title="축소"]').addEventListener('click', function () {
+    var prev = ZOOM_STEPS.slice().reverse().find(function (s) { return s < currentZoom; });
+    if (prev) applyZoom(prev);
   });
 
   /* PDF 다운로드 (placeholder) */
