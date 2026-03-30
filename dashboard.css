@@ -1,0 +1,231 @@
+/* ================================================================
+   LAWSIGN – DASHBOARD CSS
+   사이드바 / 탑바 / 레이아웃 공통 (모든 대시보드 페이지 공유)
+   ================================================================ */
+
+/* ── 페이지 레이아웃 ── */
+body.page-dashboard {
+  background: #F3F3F3;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.db-layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* ── 사이드바 ── */
+.db-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background: #fff;
+  border-right: 1px solid #E0E2E7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sb-top {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* 로고 */
+.sb-logo-wrap {
+  padding: 0 15px;
+}
+
+.sb-logo-wrap img {
+  display: block;
+  height: 24px;
+}
+
+/* 프로필 */
+.sb-profile {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sb-avatar {
+  width: 44px;
+  height: 44px;
+  background: #EAEFF2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sb-profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sb-profile-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1C1E21;
+  line-height: 1.3;
+}
+
+.sb-profile-email {
+  font-size: 13px;
+  color: #8C8C8C;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CTA 버튼 */
+.sb-cta {
+  margin: 0 15px;
+  display: block;
+  background: #FC9950;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.sb-cta:hover {
+  background: #e8872e;
+}
+
+/* 내비 */
+.sb-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sb-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #7D7D7D;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sb-nav-item:hover {
+  background: #FFF8F3;
+  color: #FC9950;
+}
+
+.sb-nav-item--active {
+  background: #FFF4ED;
+  border-left-color: #FC9950;
+  color: #FC9950;
+  font-weight: 700;
+}
+
+.sb-nav-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* 하단 로그아웃 */
+.sb-bottom {
+  padding: 0 5px;
+}
+
+.sb-logout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #B01212;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.sb-logout:hover {
+  background: #FFF0F0;
+}
+
+/* ── 메인 바디 ── */
+.db-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── 탑바 ── */
+.db-topbar {
+  background: #fff;
+  border-bottom: 1px solid #E0E2E7;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  height: 56px;
+  box-sizing: border-box;
+}
+
+.db-topbar-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #121212;
+}
+
+.db-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.db-topbar-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.db-topbar-icon:hover {
+  background: #F2F3F6;
+}
+
+/* ── 컨텐츠 영역 ── */
+.db-content {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
