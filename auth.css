@@ -302,6 +302,13 @@ body.page-auth {
 }
 
 /* ── 하단 링크 ── */
+.auth-footer-links-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
 .auth-footer-link {
   text-align: center;
   font-size: 14px;
