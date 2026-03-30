@@ -351,7 +351,7 @@ body.page-dashboard .db-content {
 .info-card {
   background: #fff;
   border-radius: 8px;
-  outline: 1px solid #D7DBDF;
+  border: 1px solid #D7DBDF;
   padding: 20px;
   display: flex;
   flex-direction: column;
