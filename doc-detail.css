@@ -3,6 +3,11 @@
    보낸 문서 상세 페이지 전용 스타일
    ================================================================ */
 
+/* db-content가 세로로 꽉 차도록 override */
+body.page-dashboard .db-content {
+  align-items: stretch;
+}
+
 /* ── 카드 ── */
 .detail-card {
   background: #fff;
@@ -13,6 +18,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 /* ── 목록으로 ── */
@@ -36,8 +43,10 @@
 /* ── 2-column wrap ── */
 .detail-wrap {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 25px;
+  flex: 1;
+  min-height: 0;
 }
 
 /* ============================================================
@@ -47,6 +56,7 @@
 .detail-viewer {
   flex: 1;
   min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
@@ -205,7 +215,8 @@
   padding: 30px;
   display: flex;
   justify-content: center;
-  height: 580px;
+  flex: 1;
+  min-height: 400px;
   overflow-y: auto;
 }
 
@@ -337,6 +348,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto;
 }
 
 .info-card {
@@ -461,4 +473,107 @@
   color: #696B6D;
   line-height: 1.65;
   margin: 0;
+}
+
+/* ============================================================
+   반응형
+   ============================================================ */
+
+/* 탭/중형 화면 — 2컬럼 → 세로 스택 */
+@media (max-width: 1100px) {
+  body.page-dashboard .db-content {
+    align-items: flex-start; /* 세로 스택 시 stretch 해제 */
+  }
+
+  .detail-card {
+    height: auto; /* 세로 스택 시 자동 높이 */
+  }
+
+  .detail-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    flex: none;
+  }
+
+  .detail-info {
+    width: 100%;
+    overflow-y: visible;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .cert-notice {
+    grid-column: 1 / -1; /* 안내 카드는 전체 너비 */
+  }
+
+  .viewer-body {
+    min-height: 500px;
+  }
+}
+
+/* 모바일 — 단일 컬럼 */
+@media (max-width: 700px) {
+  .detail-card {
+    padding: 16px;
+    border-radius: 0;
+  }
+
+  .detail-wrap {
+    gap: 16px;
+  }
+
+  .detail-info {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-notice {
+    grid-column: auto;
+  }
+
+  .viewer-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .btn-resend {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .viewer-toolbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .toolbar-right {
+    width: 100%;
+  }
+
+  .btn-pdf-download {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .viewer-body {
+    padding: 16px;
+    min-height: 360px;
+  }
+
+  .viewer-page {
+    padding: 30px 24px;
+    font-size: 12px;
+  }
+
+  .viewer-thumbs {
+    padding: 14px;
+  }
+
+  .thumb-preview {
+    width: 60px;
+    height: 76px;
+  }
 }
