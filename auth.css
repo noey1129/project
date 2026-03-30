@@ -322,6 +322,7 @@ body.page-auth {
 .auth-footer-link a {
   color: #172230;
   font-weight: 700;
+  text-decoration: none;
 }
 
 .auth-footer-link .sep {
