@@ -41,7 +41,7 @@ body {
 .btn--dark    { background: #172230; color: #fff; padding: 10px 24px; font-size: 13px; }
 .btn--outline { background: transparent; color: #172230; border: 1.5px solid #172230; padding: 10px 24px; font-size: 13px; }
 .btn--outline:hover { background: #172230; color: #fff; }
-.btn--accent-fill { background: #FE9D3C; color: #fff; padding: 10px 24px; font-size: 13px; border: none; }
+.btn--accent-fill { background: #FE9D3C; color: #1C1E21; padding: 10px 24px; font-size: 13px; border: none; }
 .btn--accent-fill:hover { background: #e88a2a; }
 .btn--accent  { background: var(--accent); color: var(--text); }
 .btn--lg    { padding: 15px 28px; font-size: 18px; border-radius: 10px; }
