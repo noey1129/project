@@ -429,23 +429,211 @@ body.page-dashboard .db-content {
   color: #696B6D;
 }
 
-.btn-cert-apply {
+/* 증명서 버튼 공통 */
+.btn-cert-action {
   flex-shrink: 0;
-  height: 28px;
-  padding: 0 10px;
-  background: #FC9950;
-  border: 1px solid #EA8E4A;
+  height: 32px;
+  padding: 0 12px;
   border-radius: 6px;
-  color: #fff;
   font-size: 13px;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+/* 무료 발급 신청 */
+.btn-cert-apply {
+  background: #FC9950;
+  color: #fff;
+  border: 1px solid #EA8E4A;
+}
+.btn-cert-apply:hover { background: #ea8940; }
+
+/* 발급중 */
+.btn-cert-issuing {
+  background: #F0F0F0;
+  color: #8C8C8C;
+  border: 1px solid #E0E0E0;
+  cursor: default;
+}
+
+.cert-spinner {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid #C0C0C0;
+  border-top-color: #8C8C8C;
+  border-radius: 50%;
+  animation: certSpin 0.7s linear infinite;
+}
+
+@keyframes certSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* 다운로드 */
+.btn-cert-download {
+  background: #FC9950;
+  color: #fff;
+  border: 1px solid #EA8E4A;
+}
+.btn-cert-download:hover { background: #ea8940; }
+
+/* 재발급 신청 */
+.btn-cert-reapply {
+  background: #fff;
+  color: #1C1E21;
+  border: 1px solid #D7DBDF;
+}
+.btn-cert-reapply:hover { background: #f5f5f5; }
+
+/* 만료 텍스트 */
+.cert-expiry--expired {
+  color: #E53935;
+}
+
+/* ============================================================
+   증명서 발급 모달
+   ============================================================ */
+
+.cert-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.cert-modal {
+  width: 440px;
+  max-width: calc(100vw - 32px);
+  padding: 20px;
+  background: #fff;
+  box-shadow: 2px 2px 20px rgba(28, 30, 33, 0.20);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.cert-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cert-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.cert-modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.cert-modal-close:hover { background: #F2F3F6; }
+
+.cert-modal-desc {
+  font-size: 15px;
+  font-weight: 500;
+  color: #696B6D;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cert-modal-info {
+  background: #F5F6F8;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cert-modal-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 24px;
+}
+
+.cert-modal-info-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #696B6D;
+}
+
+.cert-modal-info-cost {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.cert-modal-info-value {
+  font-size: 15px;
+  color: #1C1E21;
+}
+
+.cert-modal-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: -10px;
+}
+
+.cert-modal-note {
+  font-size: 14px;
+  color: #7F8FA1;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cert-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.cert-modal-btn {
+  height: 38px;
+  padding: 0 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
   transition: background 0.15s;
 }
 
-.btn-cert-apply:hover { background: #ea8940; }
+.cert-modal-btn--cancel {
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  color: #1C1E21;
+}
+.cert-modal-btn--cancel:hover { background: #f5f5f5; }
+
+.cert-modal-btn--confirm {
+  background: #FC9950;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+}
+.cert-modal-btn--confirm:hover { background: #ea8940; }
 
 /* 증명서 안내 */
 .cert-notice {

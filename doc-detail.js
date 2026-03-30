@@ -44,6 +44,43 @@ var currentPage  = 1;
 var totalPages   = 3;
 var currentZoom  = 100;
 
+/* ── 증명서 설정 ── */
+var CERT_CONFIG = {
+  audit: {
+    name: '감사추적증명서',
+    free: true,
+    expiryMonths: null,
+    modalDesc: '감사추적 정보를 확인할 수 있는 증명서입니다.',
+    cost: '무료',
+    modalExpiry: '만료 없음'
+  },
+  dist: {
+    name: '유통증명서',
+    free: false,
+    expiryMonths: 6,
+    modalDesc: '전자문서가 정상적으로 유통(전달)되었음을 증명합니다.',
+    cost: '3,300원',
+    modalExpiry: '발급일로부터 6개월'
+  },
+  edoc: {
+    name: '전자문서증명서',
+    free: false,
+    expiryMonths: 6,
+    modalDesc: '전자문서의 원본 무결성을 증명합니다.',
+    cost: '3,300원',
+    modalExpiry: '발급일로부터 6개월'
+  }
+};
+
+/* 초기 상태 (이미지 기준: 다양한 상태 시연) */
+var certStates = {
+  audit: { status: 'none',    expiryDate: null },
+  dist:  { status: 'expired', expiryDate: '2026. 05. 28' },
+  edoc:  { status: 'issued',  expiryDate: '2026. 08. 28' }
+};
+
+var pendingCertId = null;
+
 /* ── 문서 ID 읽기 (URL 파라미터 우선) ── */
 (function () {
   var params = new URLSearchParams(window.location.search);
@@ -189,6 +226,141 @@ function buildThumbs() {
   });
 }
 
+/* ── 날짜 포맷 ── */
+function formatExpiryDate(date) {
+  var y = date.getFullYear();
+  var m = String(date.getMonth() + 1).padStart(2, '0');
+  var d = String(date.getDate()).padStart(2, '0');
+  return y + '. ' + m + '. ' + d;
+}
+
+/* ── 증명서 행 HTML ── */
+function buildCertRow(certId) {
+  var cfg   = CERT_CONFIG[certId];
+  var state = certStates[certId];
+  var subHTML = '';
+  var btnHTML = '';
+
+  if (state.status === 'none') {
+    subHTML = '<div class="cert-expiry">' + (cfg.expiryMonths ? '유효기간 있음' : '만료 없음') + '</div>';
+    btnHTML = '<button class="btn-cert-action btn-cert-apply" data-cert="' + certId + '">무료 발급 신청</button>';
+
+  } else if (state.status === 'issuing') {
+    subHTML = '<div class="cert-expiry">' + (cfg.expiryMonths ? '유효기간 있음' : '만료 없음') + '</div>';
+    btnHTML = '<button class="btn-cert-action btn-cert-issuing" disabled>' +
+                '<span class="cert-spinner"></span>발급중...' +
+              '</button>';
+
+  } else if (state.status === 'issued') {
+    var expSub = cfg.expiryMonths
+      ? '유효기간 : ' + state.expiryDate + '까지 (' + cfg.expiryMonths + '개월)'
+      : '만료 없음';
+    subHTML = '<div class="cert-expiry">' + expSub + '</div>';
+    btnHTML = '<button class="btn-cert-action btn-cert-download" data-cert="' + certId + '">다운로드</button>';
+
+  } else if (state.status === 'expired') {
+    subHTML = '<div class="cert-expiry cert-expiry--expired">유효기간 만료 (' + state.expiryDate + ')</div>';
+    btnHTML = '<button class="btn-cert-action btn-cert-reapply" data-cert="' + certId + '">재발급 신청</button>';
+  }
+
+  return '<div class="cert-row">' +
+    '<div><div class="cert-name">' + cfg.name + '</div>' + subHTML + '</div>' +
+    btnHTML +
+  '</div>';
+}
+
+/* ── 증명서 카드 갱신 ── */
+function updateCertCard() {
+  var card = document.getElementById('certCard');
+  if (!card) return;
+  card.innerHTML =
+    '<div class="info-card-title">증명서</div>' +
+    buildCertRow('audit') +
+    buildCertRow('dist') +
+    buildCertRow('edoc');
+}
+
+/* ── 발급 시작 ── */
+function startIssuing(certId) {
+  certStates[certId].status = 'issuing';
+  updateCertCard();
+  var delay = CERT_CONFIG[certId].free ? 1200 : 2500;
+  setTimeout(function () {
+    var cfg = CERT_CONFIG[certId];
+    if (cfg.expiryMonths) {
+      var exp = new Date();
+      exp.setMonth(exp.getMonth() + cfg.expiryMonths);
+      certStates[certId].expiryDate = formatExpiryDate(exp);
+    }
+    certStates[certId].status = 'issued';
+    updateCertCard();
+  }, delay);
+}
+
+/* ── 모달 생성 ── */
+function createCertModal() {
+  var overlay = document.createElement('div');
+  overlay.id = 'certModalOverlay';
+  overlay.className = 'cert-modal-overlay';
+  overlay.style.display = 'none';
+  overlay.innerHTML =
+    '<div class="cert-modal" role="dialog">' +
+      '<div class="cert-modal-header">' +
+        '<span class="cert-modal-title" id="certModalTitle"></span>' +
+        '<button class="cert-modal-close" id="certModalClose" aria-label="닫기">' +
+          '<svg width="18" height="18" viewBox="0 0 18 18" fill="none">' +
+            '<path d="M3 3l12 12M15 3L3 15" stroke="#696B6D" stroke-width="1.6" stroke-linecap="round"/>' +
+          '</svg>' +
+        '</button>' +
+      '</div>' +
+      '<p class="cert-modal-desc" id="certModalDesc"></p>' +
+      '<div class="cert-modal-info">' +
+        '<div class="cert-modal-info-row">' +
+          '<span class="cert-modal-info-label">비용</span>' +
+          '<strong class="cert-modal-info-cost" id="certModalCost"></strong>' +
+        '</div>' +
+        '<div class="cert-modal-info-row">' +
+          '<span class="cert-modal-info-label">유효기간</span>' +
+          '<span class="cert-modal-info-value" id="certModalExpiry"></span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="cert-modal-notes">' +
+        '<p class="cert-modal-note">• 유효기간 만료 후에는 재발급이 필요합니다.</p>' +
+        '<p class="cert-modal-note">• 발급���지 최대 30분이 소요될 수 있습니다.</p>' +
+      '</div>' +
+      '<div class="cert-modal-footer">' +
+        '<button class="cert-modal-btn cert-modal-btn--cancel" id="certModalCancel">취소</button>' +
+        '<button class="cert-modal-btn cert-modal-btn--confirm" id="certModalConfirm">결제하기</button>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) hideCertModal();
+  });
+  document.getElementById('certModalClose').addEventListener('click', hideCertModal);
+  document.getElementById('certModalCancel').addEventListener('click', hideCertModal);
+  document.getElementById('certModalConfirm').addEventListener('click', function () {
+    hideCertModal();
+    if (pendingCertId) startIssuing(pendingCertId);
+  });
+}
+
+function showCertModal(certId) {
+  pendingCertId = certId;
+  var cfg = CERT_CONFIG[certId];
+  document.getElementById('certModalTitle').textContent = cfg.name + ' 발급 신청';
+  document.getElementById('certModalDesc').textContent  = cfg.modalDesc;
+  document.getElementById('certModalCost').textContent  = cfg.cost;
+  document.getElementById('certModalExpiry').textContent = cfg.modalExpiry;
+  document.getElementById('certModalOverlay').style.display = 'flex';
+}
+
+function hideCertModal() {
+  document.getElementById('certModalOverlay').style.display = 'none';
+  pendingCertId = null;
+}
+
 /* ── 정보 패널 렌더 ── */
 function renderInfo() {
   var container = document.getElementById('detailInfo');
@@ -217,20 +389,11 @@ function renderInfo() {
     '</div>' +
 
     /* 증명서 */
-    '<div class="info-card">' +
+    '<div class="info-card" id="certCard">' +
       '<div class="info-card-title">증명서</div>' +
-      '<div class="cert-row">' +
-        '<div><div class="cert-name">감사추적증명서</div><div class="cert-expiry">만료 없음</div></div>' +
-        '<button class="btn-cert-apply" onclick="alert(\'발급 신청되었습니다.\')">무료 발급 신청</button>' +
-      '</div>' +
-      '<div class="cert-row">' +
-        '<div><div class="cert-name">유통증명서</div><div class="cert-expiry">유효기간 있음</div></div>' +
-        '<button class="btn-cert-apply" onclick="alert(\'발급 신청되었습니다.\')">무료 발급 신청</button>' +
-      '</div>' +
-      '<div class="cert-row">' +
-        '<div><div class="cert-name">전자문서증명서</div><div class="cert-expiry">유효기간 있음</div></div>' +
-        '<button class="btn-cert-apply" onclick="alert(\'발급 신청되었습니다.\')">무료 발급 신청</button>' +
-      '</div>' +
+      buildCertRow('audit') +
+      buildCertRow('dist') +
+      buildCertRow('edoc') +
     '</div>' +
 
     /* 증명서 안내 */
@@ -263,6 +426,25 @@ document.addEventListener('DOMContentLoaded', function () {
   buildThumbs();
   renderPage();
   renderInfo();
+  createCertModal();
+
+  /* 증명서 버튼 이벤트 위임 */
+  document.getElementById('detailInfo').addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-cert]');
+    if (!btn || btn.disabled) return;
+    var certId = btn.dataset.cert;
+    var cfg = CERT_CONFIG[certId];
+
+    if (btn.classList.contains('btn-cert-apply') || btn.classList.contains('btn-cert-reapply')) {
+      if (cfg.free) {
+        startIssuing(certId);
+      } else {
+        showCertModal(certId);
+      }
+    } else if (btn.classList.contains('btn-cert-download')) {
+      alert('다운로드를 시작합니다.');
+    }
+  });
 
   /* 뒤로가기 */
   document.getElementById('backBtn').addEventListener('click', function () {
