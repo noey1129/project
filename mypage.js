@@ -10,7 +10,7 @@ var DUMMY_SENT = [
 ];
 
 var DUMMY_DRAFT = [
-  { id: 4, status: 'draft', statusLabel: '임시저장', title: '대여금 반환 청구 (작성 중)',   date: '2025. 12. 03', recipient: '-' },
+  { id: 4, status: 'draft', statusLabel: '임시저장', title: '대여금 반환 청구 (작성 중)', date: '2025. 12. 03', recipient: '-', previewUrl: 'wizard/preview.html' },
 ];
 
 var currentTab = 'sent';
@@ -18,7 +18,8 @@ var currentQuery = '';
 
 /* ── 카드 HTML 생성 ── */
 function buildDocItem(doc) {
-  return '<div class="doc-item" onclick="window.location.href=\'doc-detail.html?id=' + doc.id + '\'">' +
+  var href = doc.status === 'draft' ? doc.previewUrl : 'doc-detail.html?id=' + doc.id;
+  return '<div class="doc-item" onclick="window.location.href=\'' + href + '\'">' +
     '<div class="doc-item-left">' +
       '<div class="doc-item-top">' +
         '<span class="doc-status doc-status--' + doc.status + '">' + doc.statusLabel + '</span>' +
