@@ -449,7 +449,7 @@ body.page-dashboard .db-content {
 .cert-notice {
   background: linear-gradient(360deg, #fff 0%, #FDF8F2 100%);
   border-radius: 8px;
-  outline: 1px solid #F6ECE4;
+  border: 1px solid #F6ECE4;
   padding: 20px;
   display: flex;
   flex-direction: column;
