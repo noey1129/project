@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – PREVIEW JS (공통: loan / noise / contract / membership / custom)
+   LAWSIGN – PREVIEW JS (공통: loan / noise / contract / membership / custom)
    ================================================================ */
 
 /* ── 유형별 내용 자동 생성 ── */

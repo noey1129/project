@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – LOGIN JS
+   LAWSIGN – LOGIN JS
    ================================================================ */
 
 const emailInput = document.getElementById('loginEmail');

@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – SIGNUP JS
+   LAWSIGN – SIGNUP JS
    ================================================================ */
 
 var nameInput  = document.getElementById('signupName');

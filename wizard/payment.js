@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – WIZARD PAYMENT JS
+   LAWSIGN – WIZARD PAYMENT JS
    ================================================================ */
 
 var method     = sessionStorage.getItem('send_method') || 'simple';

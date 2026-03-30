@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – LEASE Q6 JS
+   LAWSIGN – LEASE Q6 JS
    ================================================================ */
 
 const inputYear  = document.getElementById('inputYear');

@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – CONTACT JS
+   LAWSIGN – CONTACT JS
    ================================================================ */
 
 var nameInput    = document.getElementById('contactName');

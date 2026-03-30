@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – WIZARD RECEIVER DETAIL JS
+   LAWSIGN – WIZARD RECEIVER DETAIL JS
    ================================================================ */
 
 const method     = sessionStorage.getItem('send_method') || 'simple';

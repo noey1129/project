@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – LEASE Q4 JS
+   LAWSIGN – LEASE Q4 JS
    ================================================================ */
 
 const inputAmount = document.getElementById('inputAmount');

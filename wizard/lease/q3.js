@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – LEASE Q3 JS
+   LAWSIGN – LEASE Q3 JS
    ================================================================ */
 
 const inputAddress       = document.getElementById('inputAddress');

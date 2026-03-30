@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – WIZARD SEND METHOD JS
+   LAWSIGN – WIZARD SEND METHOD JS
    ================================================================ */
 
 const STORE_KEY = 'send_method';

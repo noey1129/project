@@ -1,5 +1,5 @@
 /* ================================================================
-   SENDIT – LEASE Q7 JS
+   LAWSIGN – LEASE Q7 JS
    ================================================================ */
 
 const cards   = document.querySelectorAll('.answer-card');
