@@ -399,7 +399,7 @@ function renderInfo() {
     /* 증명서 안내 */
     '<div class="cert-notice">' +
       '<div class="cert-notice-title">' +
-        '<img src="assets/ideal.svg" alt="" width="18" height="18">' +
+        '<img src="assets/ideal.svg" alt="" width="22" height="22">' +
         '증명서 안내' +
       '</div>' +
       '<p class="cert-notice-text">감사추적증명서는 언제든 무료 재발급이 가능합니다.</p>' +
