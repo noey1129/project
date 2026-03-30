@@ -140,7 +140,52 @@ body.page-auth {
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-field-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.auth-required {
+  color: #E53E3E;
+}
+
+.auth-phone-row {
+  display: flex;
+  gap: 8px;
+}
+
+.auth-phone-row .auth-input {
+  flex: 1;
+}
+
+.btn-verify {
+  flex-shrink: 0;
+  height: 52px;
+  padding: 0 18px;
+  background: #F2F3F6;
+  border: 1px solid #D7DBDF;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #47494C;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-verify:hover {
+  background: #E7E9EB;
+  border-color: #AFAFAF;
 }
 
 .auth-input {

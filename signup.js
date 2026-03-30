@@ -55,6 +55,11 @@ function checkReady() {
   el.addEventListener('change', checkReady);
 });
 
+/* ── 인증요청 ── */
+document.getElementById('btnVerify').addEventListener('click', function () {
+  alert('휴대폰 인증 기능은 준비 중입니다.');
+});
+
 /* ── 제출 ── */
 btnSignup.addEventListener('click', function () {
   alert('회원가입 기능은 준비 중입니다.');

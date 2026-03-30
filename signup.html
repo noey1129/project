@@ -25,50 +25,69 @@
     <div class="auth-card">
 
       <div class="auth-header" style="align-items:flex-start;">
-        <h1 class="auth-title">회원가입</h1>
+        <h1 class="auth-title">계정 기본 정보를 입력해 주세요</h1>
       </div>
 
       <!-- 이메일 가입 폼 -->
       <form class="auth-form" id="signupForm" onsubmit="return false;">
-        <input
-          type="text"
-          id="signupName"
-          class="auth-input"
-          placeholder="이름"
-          autocomplete="name"
-        />
-        <input
-          type="email"
-          id="signupEmail"
-          class="auth-input"
-          placeholder="이메일"
-          autocomplete="email"
-        />
-        <input
-          type="tel"
-          id="signupPhone"
-          class="auth-input"
-          placeholder="전화번호"
-          autocomplete="tel"
-          maxlength="13"
-        />
-        <input
-          type="password"
-          id="signupPassword"
-          class="auth-input"
-          placeholder="비밀번호 (8자 이상)"
-          autocomplete="new-password"
-        />
-        <div>
+
+        <div class="auth-field">
+          <label class="auth-field-label" for="signupEmail">이메일 <span class="auth-required">*</span></label>
+          <input
+            type="email"
+            id="signupEmail"
+            class="auth-input"
+            placeholder="ID로 사용될 이메일을 입력해 주세요"
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="auth-field">
+          <label class="auth-field-label" for="signupPassword">비밀번호 <span class="auth-required">*</span></label>
+          <input
+            type="password"
+            id="signupPassword"
+            class="auth-input"
+            placeholder="영문/특수문자/숫자를 포함하여 8 글자 이상 입력해 주세요"
+            autocomplete="new-password"
+          />
           <input
             type="password"
             id="signupPasswordConfirm"
             class="auth-input"
-            placeholder="비밀번호 확인"
+            placeholder="비밀번호를 한번 더 입력해 주세요"
             autocomplete="new-password"
+            style="margin-top:8px;"
           />
           <p class="auth-input-error" id="pwError" style="display:none;">비밀번호가 일치하지 않습니다.</p>
         </div>
+
+        <div class="auth-field">
+          <label class="auth-field-label" for="signupName">이름 <span class="auth-required">*</span></label>
+          <input
+            type="text"
+            id="signupName"
+            class="auth-input"
+            placeholder="이름을 입력해 주세요"
+            autocomplete="name"
+          />
+        </div>
+
+        <div class="auth-field">
+          <label class="auth-field-label" for="signupPhone">휴대폰 번호 <span class="auth-required">*</span></label>
+          <div class="auth-phone-row">
+            <input
+              type="tel"
+              id="signupPhone"
+              class="auth-input"
+              placeholder="휴대폰 번호를 입력해 주세요"
+              autocomplete="tel"
+              maxlength="13"
+            />
+            <button type="button" class="btn-verify" id="btnVerify">인증요청</button>
+          </div>
+        </div>
+
       </form>
 
       <!-- 약관 동의 -->
