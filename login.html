@@ -21,23 +21,35 @@
 
       <!-- 이메일 로그인 폼 -->
       <form class="auth-form" id="loginForm" onsubmit="return false;">
-        <div class="auth-input-group">
+
+        <div class="auth-field">
+          <label class="auth-field-label" for="loginEmail">이메일</label>
           <input
             type="email"
             id="loginEmail"
-            class="auth-input auth-input--group"
-            placeholder="이메일"
+            class="auth-input"
+            placeholder="이메일 주소"
             autocomplete="email"
           />
-          <div class="auth-input-group__divider"></div>
+        </div>
+
+        <div class="auth-field">
+          <label class="auth-field-label" for="loginPassword">비밀번호</label>
           <input
             type="password"
             id="loginPassword"
-            class="auth-input auth-input--group"
+            class="auth-input"
             placeholder="비밀번호"
             autocomplete="current-password"
           />
         </div>
+
+        <label class="auth-remember">
+          <input type="checkbox" id="chkRemember" />
+          <span>이메일 주소 저장</span>
+        </label>
+        <p class="auth-remember-notice">이메일 주소 유출의 위험성이 있으니 공용 PC에서는 체크하지 마세요.</p>
+
         <button type="submit" class="btn-auth-submit" id="btnLogin" disabled>로그인</button>
       </form>
 
