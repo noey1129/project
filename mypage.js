@@ -18,7 +18,7 @@ var currentQuery = '';
 
 /* ── 카드 HTML 생성 ── */
 function buildDocItem(doc) {
-  return '<div class="doc-item">' +
+  return '<div class="doc-item" onclick="window.location.href=\'doc-detail.html?id=' + doc.id + '\'">' +
     '<div class="doc-item-left">' +
       '<div class="doc-item-top">' +
         '<span class="doc-status doc-status--' + doc.status + '">' + doc.statusLabel + '</span>' +

@@ -31,7 +31,8 @@
   /* ── 사이드바 HTML ── */
   function buildSidebar() {
     var navHTML = navItems.map(function (item) {
-      var active = currentPage === item.page;
+      var activePage = currentPage === 'doc-detail.html' ? 'mypage.html' : currentPage;
+      var active = activePage === item.page;
       return '<a href="' + item.href + '" class="sb-nav-item' + (active ? ' sb-nav-item--active' : '') + '">' +
         '<span class="sb-nav-icon">' + item.icon + '</span>' +
         '<span>' + item.label + '</span>' +
@@ -67,7 +68,7 @@
   }
 
   /* ── 탑바 HTML ── */
-  var titleMap = { 'mypage.html': '내 문서함', 'myinfo.html': '내 정보' };
+  var titleMap = { 'mypage.html': '내 문서함', 'myinfo.html': '내 정보', 'doc-detail.html': '내 문서함' };
 
   function buildTopbar() {
     return (
