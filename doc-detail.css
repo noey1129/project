@@ -362,6 +362,8 @@ body.page-dashboard .db-content {
   font-size: 16px;
   font-weight: 700;
   color: #1C1E21;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #F5F5F5;
 }
 
 .info-row {
@@ -420,13 +422,6 @@ body.page-dashboard .db-content {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #F5F5F5;
-}
-
-.cert-row:last-of-type {
-  padding-bottom: 0;
-  border-bottom: none;
 }
 
 .cert-name {
