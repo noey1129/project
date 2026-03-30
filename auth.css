@@ -206,6 +206,31 @@ body.page-auth {
   font-size: 15px;
 }
 
+/* ── 묶음 인풋 ── */
+.auth-input-group {
+  border: 1px solid #D7DBDF;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #F8F9FA;
+}
+
+.auth-input--group {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.auth-input--group:focus {
+  border: none;
+  background: #fff;
+}
+
+.auth-input-group__divider {
+  height: 1px;
+  background: #D7DBDF;
+  margin: 0 16px;
+}
+
 .auth-input-error {
   font-size: 12px;
   color: #E53E3E;

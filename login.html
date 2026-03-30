@@ -16,26 +16,28 @@
 
       <div class="auth-header">
         <span class="auth-logo"><img src="assets/Lawsign.svg" alt="Lawsign" width="120"></span>
-        <h1 class="auth-title">로그인</h1>
         <p class="auth-section-title">로싸인에 오신 것을 환영합니다</p>
       </div>
 
       <!-- 이메일 로그인 폼 -->
       <form class="auth-form" id="loginForm" onsubmit="return false;">
-        <input
-          type="email"
-          id="loginEmail"
-          class="auth-input"
-          placeholder="이메일"
-          autocomplete="email"
-        />
-        <input
-          type="password"
-          id="loginPassword"
-          class="auth-input"
-          placeholder="비밀번호"
-          autocomplete="current-password"
-        />
+        <div class="auth-input-group">
+          <input
+            type="email"
+            id="loginEmail"
+            class="auth-input auth-input--group"
+            placeholder="이메일"
+            autocomplete="email"
+          />
+          <div class="auth-input-group__divider"></div>
+          <input
+            type="password"
+            id="loginPassword"
+            class="auth-input auth-input--group"
+            placeholder="비밀번호"
+            autocomplete="current-password"
+          />
+        </div>
         <button type="submit" class="btn-auth-submit" id="btnLogin" disabled>로그인</button>
       </form>
 
