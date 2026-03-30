@@ -65,6 +65,12 @@ body.page-auth {
   color: #1C1E21;
 }
 
+.auth-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
 .auth-sub {
   font-size: 15px;
   color: #696B6D;
