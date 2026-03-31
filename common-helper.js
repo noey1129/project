@@ -50,8 +50,8 @@
       '<div class="footer__top">' +
         '<span class="nav__logo"><img src="' + base + 'assets/Lawsign.svg" alt="Lawsign" height="22"></span>' +
         '<div class="footer__links">' +
-          '<a href="#">개인정보 처리방침</a>' +
-          '<a href="#">이용약관</a>' +
+          '<a href="https://spiky-quasar-2cc.notion.site/52b85331797c4d09a09201fde03115c8" target="_blank" rel="noopener">개인정보 처리방침</a>' +
+          '<a href="https://spiky-quasar-2cc.notion.site/63e1da5a1487486c8b8011c69236a8d3" target="_blank" rel="noopener">이용약관</a>' +
         '</div>' +
       '</div>' +
       '<div class="footer__info">' +
