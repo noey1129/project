@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>계정 찾기 – 로싸인</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body class="page-auth page-auth--login">
+
+  <header class="nav"></header>
+
+  <main class="auth-main">
+    <div class="login-wrap">
+
+      <!-- ── 입력 화면 ── -->
+      <div id="viewSearch">
+        <div class="login-header" style="gap: 40px;">
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <span class="login-logo">Lawsign</span>
+            <h1 class="login-title">계정 찾기</h1>
+          </div>
+          <p class="find-account-desc">계정을 찾기 위해 이름과 전화번호를 입력해 주세요.</p>
+        </div>
+
+        <form class="login-form" id="findForm" onsubmit="return false;" style="margin-top:20px;">
+          <div class="auth-field">
+            <label class="auth-field-label" for="findName">이름</label>
+            <input type="text" id="findName" class="auth-input login-input" placeholder="이름을 입력해주세요" />
+          </div>
+          <div class="auth-field">
+            <label class="auth-field-label" for="findPhone">휴대폰 번호</label>
+            <input type="tel" id="findPhone" class="auth-input login-input" placeholder="- 없이 입력해 주세요" maxlength="13" />
+          </div>
+          <div class="login-actions">
+            <button type="submit" class="btn-login-submit" id="btnFindAccount" disabled>계정 찾기</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ── 결과 화면 (계정 찾음) ── -->
+      <div id="viewResult" style="display:none;">
+        <div class="login-header" style="gap: 40px;">
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <span class="login-logo">Lawsign</span>
+            <h1 class="login-title">계정 찾기</h1>
+          </div>
+          <p class="find-account-desc" style="font-size:18px; font-weight:600; color:#1C1E21;">가입된 계정을 찾았어요</p>
+        </div>
+
+        <div style="margin-top:20px; display:flex; flex-direction:column; gap:32px;">
+          <div class="find-account-email-box">
+            <span id="foundEmail"></span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:flex-end; gap:16px;">
+            <button type="button" class="btn-login-submit" onclick="window.location.href='login.html'">로그인 화면으로 가기</button>
+            <a href="#" class="find-account-reset-link">비밀번호 재설정</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── 계정 없음 팝업 ── -->
+  <div class="verify-modal-overlay" id="noAccountModal" style="display:none;">
+    <div class="verify-modal">
+      <div class="verify-modal-head">
+        <div>
+          <p class="verify-modal-title">페이싸인에 가입된 정보가 없어요</p>
+          <p class="find-account-modal-sub">입력한 정보를 다시 확인해 주세요</p>
+        </div>
+      </div>
+      <div class="verify-modal-actions" style="justify-content:center;">
+        <button type="button" class="verify-modal-btn verify-modal-btn--fill" id="btnNoAccountOk">확인</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="find-account.js"></script>
+  <script src="common-helper.js"></script>
+</body>
+</html>

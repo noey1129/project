@@ -692,6 +692,46 @@ body.page-auth--login {
   transform: rotate(45deg);
 }
 
+/* ── 계정 찾기 ── */
+.find-account-desc {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1C1E21;
+  margin: 0;
+  line-height: 24px;
+}
+
+.find-account-email-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  background: #F2F3F6;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.find-account-reset-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #77787A;
+  text-decoration: none;
+}
+
+.find-account-reset-link:hover {
+  text-decoration: underline;
+}
+
+.find-account-modal-sub {
+  font-size: 15px;
+  font-weight: 500;
+  color: #77787A;
+  margin: 6px 0 0;
+  line-height: 20px;
+}
+
 /* ── 인증번호 재발송 힌트 링크 ── */
 .btn-resend-hint {
   margin-top: 8px;
