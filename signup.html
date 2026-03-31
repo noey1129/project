@@ -18,13 +18,14 @@
       <div class="login-header">
         <span class="login-logo">Lawsign</span>
         <h1 class="login-title">회원가입</h1>
+        <p class="signup-sub">계정 기본 정보를 입력해 주세요</p>
       </div>
 
-      <!-- 이메일 가입 폼 -->
+      <!-- 회원가입 폼 -->
       <form class="login-form" id="signupForm" onsubmit="return false;">
 
         <div class="auth-field">
-          <label class="auth-field-label" for="signupEmail">이메일 <span class="auth-required">*</span></label>
+          <label class="auth-field-label" for="signupEmail">이메일</label>
           <input
             type="email"
             id="signupEmail"
@@ -35,12 +36,12 @@
         </div>
 
         <div class="auth-field">
-          <label class="auth-field-label" for="signupPassword">비밀번호 <span class="auth-required">*</span></label>
+          <label class="auth-field-label" for="signupPassword">비밀번호</label>
           <input
             type="password"
             id="signupPassword"
             class="auth-input login-input"
-            placeholder="영문/특수문자/숫자를 포함하여 8 글자 이상 입력해 주세요"
+            placeholder="영문, 숫자, 특수기호가 모두 들어간 8~16글자"
             autocomplete="new-password"
           />
           <input
@@ -49,13 +50,12 @@
             class="auth-input login-input"
             placeholder="비밀번호를 한번 더 입력해 주세요"
             autocomplete="new-password"
-            style="margin-top:8px;"
           />
           <p class="auth-input-error" id="pwError" style="display:none;">비밀번호가 일치하지 않습니다.</p>
         </div>
 
         <div class="auth-field">
-          <label class="auth-field-label" for="signupName">이름 <span class="auth-required">*</span></label>
+          <label class="auth-field-label" for="signupName">이름</label>
           <input
             type="text"
             id="signupName"
@@ -66,34 +66,52 @@
         </div>
 
         <div class="auth-field">
-          <label class="auth-field-label" for="signupPhone">휴대폰 번호 <span class="auth-required">*</span></label>
+          <label class="auth-field-label" for="signupPhone">휴대폰 번호</label>
           <div class="auth-phone-row">
             <input
               type="tel"
               id="signupPhone"
               class="auth-input login-input"
-              placeholder="휴대폰 번호를 입력해 주세요"
+              placeholder="- 없이 입력해 주세요"
               autocomplete="tel"
               maxlength="13"
             />
             <button type="button" class="btn-verify" id="btnVerify">인증요청</button>
           </div>
+          <input
+            type="text"
+            id="signupVerifyCode"
+            class="auth-input login-input"
+            placeholder="인증번호 6자리를 입력해주세요."
+            maxlength="6"
+            style="display:none;"
+          />
         </div>
 
         <!-- 약관 동의 -->
-        <div class="auth-checks">
-          <label class="auth-check">
-            <input type="checkbox" id="chkTerms" />
-            <span><a href="#" onclick="return false;">이용약관</a>에 동의합니다. (필수)</span>
+        <div class="signup-terms">
+          <label class="signup-terms-all">
+            <input type="checkbox" id="chkAll" />
+            <span>필수 약관 모두 동의하기</span>
           </label>
-          <label class="auth-check">
+          <label class="signup-terms-item">
+            <input type="checkbox" id="chkTerms" />
+            <span class="signup-terms-text">
+              <span class="signup-terms-content">이용약관에 동의합니다. (필수)</span>
+              <svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1l5 5-5 5" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </label>
+          <label class="signup-terms-item">
             <input type="checkbox" id="chkPrivacy" />
-            <span><a href="#" onclick="return false;">개인정보 처리방침</a>에 동의합니다. (필수)</span>
+            <span class="signup-terms-text">
+              <span class="signup-terms-content">개인정보 처리방침에 동의합니다. (필수)</span>
+              <svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1l5 5-5 5" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </label>
         </div>
 
         <div class="login-actions">
-          <button type="button" class="btn-login-submit" id="btnSignup" disabled>회원가입</button>
+          <button type="button" class="btn-login-submit" id="btnSignup" disabled>동의하고 회원가입하기</button>
           <div class="login-footer-links">
             <div class="login-footer-left">
               <span>이미 계정이 있으신가요?</span>

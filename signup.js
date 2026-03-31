@@ -8,9 +8,12 @@ var phoneInput = document.getElementById('signupPhone');
 var pwInput    = document.getElementById('signupPassword');
 var pwConfirm  = document.getElementById('signupPasswordConfirm');
 var pwError    = document.getElementById('pwError');
+var chkAll     = document.getElementById('chkAll');
 var chkTerms   = document.getElementById('chkTerms');
 var chkPrivacy = document.getElementById('chkPrivacy');
 var btnSignup  = document.getElementById('btnSignup');
+var btnVerify  = document.getElementById('btnVerify');
+var verifyCodeInput = document.getElementById('signupVerifyCode');
 
 /* ── 전화번호 자동 하이픈 ── */
 function formatPhone(val) {
@@ -29,11 +32,27 @@ phoneInput.addEventListener('input', function () {
 function checkPasswordMatch() {
   var mismatch = pwConfirm.value && pwInput.value !== pwConfirm.value;
   pwError.style.display = mismatch ? 'block' : 'none';
-  pwConfirm.classList.toggle('error', !!mismatch);
 }
 
 pwInput.addEventListener('input', function () { checkPasswordMatch(); checkReady(); });
 pwConfirm.addEventListener('input', function () { checkPasswordMatch(); checkReady(); });
+
+/* ── 전체 동의 ── */
+chkAll.addEventListener('change', function () {
+  chkTerms.checked = this.checked;
+  chkPrivacy.checked = this.checked;
+  checkReady();
+});
+
+chkTerms.addEventListener('change', function () {
+  chkAll.checked = chkTerms.checked && chkPrivacy.checked;
+  checkReady();
+});
+
+chkPrivacy.addEventListener('change', function () {
+  chkAll.checked = chkTerms.checked && chkPrivacy.checked;
+  checkReady();
+});
 
 /* ── 활성화 체크 ── */
 function checkReady() {
@@ -51,12 +70,10 @@ function checkReady() {
   el.addEventListener('input', checkReady);
 });
 
-[chkTerms, chkPrivacy].forEach(function (el) {
-  el.addEventListener('change', checkReady);
-});
-
 /* ── 인증요청 ── */
-document.getElementById('btnVerify').addEventListener('click', function () {
+btnVerify.addEventListener('click', function () {
+  verifyCodeInput.style.display = '';
+  verifyCodeInput.focus();
   alert('휴대폰 인증 기능은 준비 중입니다.');
 });
 
@@ -64,7 +81,6 @@ document.getElementById('btnVerify').addEventListener('click', function () {
 btnSignup.addEventListener('click', function () {
   alert('회원가입 기능은 준비 중입니다.');
 });
-
 
 /* ── NAV 그림자 ── */
 (function initNavShadow() {
