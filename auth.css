@@ -15,6 +15,11 @@ body.page-auth--login {
   background: white;
 }
 
+body.page-auth--top .auth-main {
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
 .auth-main {
   flex: 1;
   display: flex;
