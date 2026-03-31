@@ -396,11 +396,12 @@ body.page-preview {
 .doc-paper.view-mode .doc-input {
   border: none;
   background: transparent;
-  padding: 4px 0;
+  padding: 0;
   pointer-events: none;
   border-radius: 0;
   width: 100%;
   min-width: 0;
+  box-shadow: none;
 }
 
 .doc-paper.view-mode .doc-input::placeholder {
@@ -458,7 +459,6 @@ body.page-preview {
 .doc-paper.view-mode .addr-toggle-wrap { display: none; }
 
 .doc-paper.view-mode .doc-field-cell {
-  padding: 10px;
   vertical-align: middle;
 }
 
