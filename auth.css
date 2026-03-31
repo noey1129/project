@@ -647,11 +647,14 @@ body.page-auth--login {
   color: #1C1E21;
 }
 
-.signup-terms-link {
-  display: flex;
-  align-items: center;
-  padding: 4px;
-  flex-shrink: 0;
+.signup-terms-view {
+  color: #A4A5A6;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.signup-terms-view:hover {
+  text-decoration: underline;
 }
 
 /* 약관 공통 체크박스 */
