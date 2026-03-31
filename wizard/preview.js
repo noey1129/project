@@ -206,12 +206,9 @@ function applyScale() {
     custom:     '내용증명'
   };
   var headingEl = document.getElementById('docHeading');
-  headingEl.textContent = sessionStorage.getItem('doc_title') || TITLE_MAP[type] || '내용증명';
-  headingEl.addEventListener('blur', function () {
-    sessionStorage.setItem('doc_title', headingEl.textContent.trim());
-  });
-  headingEl.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') { e.preventDefault(); headingEl.blur(); }
+  headingEl.value = sessionStorage.getItem('doc_title') || TITLE_MAP[type] || '내용증명';
+  headingEl.addEventListener('input', function () {
+    sessionStorage.setItem('doc_title', headingEl.value);
   });
 
   /* 확대/축소 */

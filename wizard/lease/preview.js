@@ -229,12 +229,9 @@ function applyScale() {
 
   /* 문서 제목 */
   var headingEl = document.getElementById('docHeading');
-  headingEl.textContent = sessionStorage.getItem('doc_title') || subject;
-  headingEl.addEventListener('blur', function () {
-    sessionStorage.setItem('doc_title', headingEl.textContent.trim());
-  });
-  headingEl.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') { e.preventDefault(); headingEl.blur(); }
+  headingEl.value = sessionStorage.getItem('doc_title') || subject;
+  headingEl.addEventListener('input', function () {
+    sessionStorage.setItem('doc_title', headingEl.value);
   });
 
   /* 저장된 발신인 정보 복원 */
