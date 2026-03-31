@@ -11,12 +11,131 @@ body.page-auth {
   flex-direction: column;
 }
 
+body.page-auth--login {
+  background: white;
+}
+
 .auth-main {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 60px 20px 80px;
+}
+
+/* ── 로그인 전용 레이아웃 ── */
+.login-wrap {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.login-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-logo {
+  font-family: 'Arimo', 'Arial', sans-serif;
+  font-size: 37.5px;
+  font-weight: 700;
+  color: #2B3347;
+  line-height: 1.33;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 32px;
+  margin: 0;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.login-input {
+  height: 48px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.login-input:focus {
+  border-color: #172230;
+  outline: none;
+}
+
+.login-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.btn-login-submit {
+  width: 100%;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  background: #8A9097;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.btn-login-submit:not(:disabled) {
+  background: #172230;
+  cursor: pointer;
+}
+
+.btn-login-submit:not(:disabled):hover {
+  background: #243447;
+}
+
+.btn-login-submit:disabled {
+  background: #8A9097;
+  cursor: not-allowed;
+}
+
+.login-footer-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-footer-left,
+.login-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #77787A;
+}
+
+.login-footer-left span {
+  font-weight: 500;
+}
+
+.login-footer-left a {
+  font-weight: 600;
+  color: #77787A;
+  text-decoration: none;
+}
+
+.login-footer-right a {
+  font-weight: 500;
+  color: #77787A;
+  text-decoration: none;
 }
 
 /* ── 카드 ── */

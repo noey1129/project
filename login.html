@@ -7,27 +7,28 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="auth.css" />
 </head>
-<body class="page-auth">
+<body class="page-auth page-auth--login">
 
   <header class="nav"></header>
 
   <main class="auth-main">
-    <div class="auth-card">
+    <div class="login-wrap">
 
-      <div class="auth-header">
-        <span class="auth-logo"><img src="assets/Lawsign.svg" alt="Lawsign" width="120"></span>
-        <p class="auth-section-title">로싸인에 오신 것을 환영합니다</p>
+      <!-- 로고 + 타이틀 -->
+      <div class="login-header">
+        <span class="login-logo">Lawsign</span>
+        <h1 class="login-title">로그인</h1>
       </div>
 
       <!-- 이메일 로그인 폼 -->
-      <form class="auth-form" id="loginForm" onsubmit="return false;">
+      <form class="login-form" id="loginForm" onsubmit="return false;">
 
         <div class="auth-field">
           <label class="auth-field-label" for="loginEmail">이메일</label>
           <input
             type="email"
             id="loginEmail"
-            class="auth-input"
+            class="auth-input login-input"
             placeholder="이메일 주소"
             autocomplete="email"
           />
@@ -38,7 +39,7 @@
           <input
             type="password"
             id="loginPassword"
-            class="auth-input"
+            class="auth-input login-input"
             placeholder="비밀번호"
             autocomplete="current-password"
           />
@@ -48,25 +49,25 @@
           <input type="checkbox" id="chkRemember" />
           <span>이메일 주소 저장</span>
         </label>
-        <p class="auth-remember-notice">이메일 주소 유출의 위험성이 있으니 공용 PC에서는 체크하지 마세요.</p>
 
-        <button type="submit" class="btn-auth-submit" id="btnLogin" disabled>로그인</button>
+        <div class="login-actions">
+          <button type="submit" class="btn-login-submit" id="btnLogin" disabled>로그인</button>
+
+          <div class="login-footer-links">
+            <div class="login-footer-left">
+              <span>아직 계정이 없으신가요?</span>
+              <a href="signup.html">회원가입</a>
+            </div>
+            <div class="login-footer-right">
+              <a href="#">계정 찾기</a>
+              <a href="#">비밀번호 재설정</a>
+            </div>
+          </div>
+        </div>
+
       </form>
 
-      <!-- 하단 링크 -->
-      <div class="auth-footer-links-row">
-        <div class="auth-footer-link">
-          <span>아직 계정이 없으신가요?</span>
-          <a href="signup.html">회원가입</a>
-        </div>
-        <div class="auth-footer-link">
-          <a href="#">계정 찾기</a>
-          <span class="sep">|</span>
-          <a href="#">비밀번호 재설정</a>
-        </div>
-      </div>
-
-<!-- TODO: 테스트용 — 출시 전 제거 -->
+      <!-- TODO: 테스트용 — 출시 전 제거 -->
       <div style="margin-top:20px; padding-top:16px; border-top:1px dashed #E7E9EB;">
         <button onclick="quickLogin()" style="width:100%;padding:12px 16px;background:#F8F9FA;border:1px dashed #D7DBDF;border-radius:8px;font-size:13px;color:#696B6D;cursor:pointer;font-family:inherit;text-align:left;">
           🧪 테스트 유저로 바로 로그인 &nbsp;<span style="color:#AFAFAF;">test@sendit.kr / 1234</span>
