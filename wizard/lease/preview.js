@@ -302,62 +302,71 @@ document.getElementById('btnMinus').addEventListener('click', function () {
 
 /* ── 뷰 모드 문서 HTML 생성 ── */
 function buildViewDoc() {
-  var title   = document.getElementById('docHeading').value || subject;
-  var sName   = document.getElementById('senderName').value;
-  var sPhone  = document.getElementById('senderPhone').value;
-  var sAddr   = document.getElementById('senderAddr').value;
-  var sDetail = document.getElementById('senderAddrDetail').value;
-  var rName   = document.getElementById('recipientName').value;
-  var rPhone  = document.getElementById('recipientPhone').value;
-  var rBirth  = document.getElementById('recipientBirth').value;
-  var content = document.getElementById('docContent').value;
+  var title    = document.getElementById('docHeading').value || subject;
+  var sName    = document.getElementById('senderName').value;
+  var sPhone   = document.getElementById('senderPhone').value;
+  var sAddr    = document.getElementById('senderAddr').value;
+  var sDetail  = document.getElementById('senderAddrDetail').value;
+  var rName    = document.getElementById('recipientName').value;
+  var rPhone   = document.getElementById('recipientPhone').value;
+  var rBirth   = document.getElementById('recipientBirth').value;
+  var content  = document.getElementById('docContent').value;
   var addrText = [sAddr, sDetail].filter(Boolean).join(' ');
-
-  function vCell(label, value) {
-    return '<div class="vd-sublabel">' + label + '</div>' +
-           '<div class="vd-value">' + (value || '') + '</div>';
-  }
-
-  var addrRowHtml = addrText
-    ? '<div class="vd-row">' +
-        '<div class="vd-sublabel">주소</div>' +
-        '<div class="vd-value vd-value--full">' + addrText + '</div>' +
-      '</div>'
-    : '';
-
-  var birthRowHtml = (sendMethod === 'certified' && rBirth)
-    ? '<div class="vd-row">' +
-        '<div class="vd-sublabel">생년월일</div>' +
-        '<div class="vd-value vd-value--full">' + rBirth + '</div>' +
-      '</div>'
-    : '';
+  var showAddr  = !!addrText;
+  var showBirth = sendMethod === 'certified' && !!rBirth;
 
   var contentHtml = content
     .split('\n')
     .map(function (line) { return line ? '<p>' + line + '</p>' : '<p>&nbsp;</p>'; })
     .join('');
 
+  var sRowspan = showAddr  ? ' rowspan="2"' : '';
+  var rRowspan = showBirth ? ' rowspan="2"' : '';
+
+  var addrRowHtml = showAddr
+    ? '<tr>' +
+        '<td class="doc-sublabel">주소</td>' +
+        '<td class="doc-field-cell" colspan="3">' + addrText + '</td>' +
+      '</tr>'
+    : '';
+
+  var birthRowHtml = showBirth
+    ? '<tr>' +
+        '<td class="doc-sublabel">생년월일</td>' +
+        '<td class="doc-field-cell" colspan="3">' + rBirth + '</td>' +
+      '</tr>'
+    : '';
+
   return '<div class="vd-title">' + title + '</div>' +
-    '<div class="vd-table">' +
-      '<div class="vd-section">' +
-        '<div class="vd-role">발신인<span class="vd-role-sub">(보내는 사람)</span></div>' +
-        '<div class="vd-rows">' +
-          '<div class="vd-row">' + vCell('성명', sName) + vCell('전화번호', sPhone) + '</div>' +
-          addrRowHtml +
-        '</div>' +
-      '</div>' +
-      '<div class="vd-section">' +
-        '<div class="vd-role">수신인<span class="vd-role-sub">(받는 사람)</span></div>' +
-        '<div class="vd-rows">' +
-          '<div class="vd-row">' + vCell('성명', rName) + vCell('전화번호', rPhone) + '</div>' +
-          birthRowHtml +
-        '</div>' +
-      '</div>' +
-    '</div>' +
-    '<div class="vd-content-wrap">' +
-      '<div class="vd-content-label">내 용</div>' +
-      '<div class="vd-content-body">' + contentHtml + '</div>' +
-    '</div>';
+    '<table class="doc-table">' +
+      '<colgroup>' +
+        '<col class="col-role" />' +
+        '<col class="col-sublabel" />' +
+        '<col class="col-content" />' +
+        '<col class="col-sublabel" />' +
+        '<col class="col-content" />' +
+      '</colgroup>' +
+      '<tbody>' +
+        '<tr>' +
+          '<td class="doc-role-label"' + sRowspan + '>발신인<span class="doc-role-sub">(보내는 사람)</span></td>' +
+          '<td class="doc-sublabel">성명</td>' +
+          '<td class="doc-field-cell">' + sName + '</td>' +
+          '<td class="doc-sublabel">전화번호</td>' +
+          '<td class="doc-field-cell">' + sPhone + '</td>' +
+        '</tr>' +
+        addrRowHtml +
+        '<tr>' +
+          '<td class="doc-role-label"' + rRowspan + '>수신인<span class="doc-role-sub">(받는 사람)</span></td>' +
+          '<td class="doc-sublabel">성명</td>' +
+          '<td class="doc-field-cell">' + rName + '</td>' +
+          '<td class="doc-sublabel">전화번호</td>' +
+          '<td class="doc-field-cell">' + rPhone + '</td>' +
+        '</tr>' +
+        birthRowHtml +
+        '<tr><td class="doc-content-label" colspan="5">내 용</td></tr>' +
+        '<tr><td class="doc-content-body" colspan="5">' + contentHtml + '</td></tr>' +
+      '</tbody>' +
+    '</table>';
 }
 
 /* ── 수정완료 / 수정하기 버튼 토글 ── */
