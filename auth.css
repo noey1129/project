@@ -821,7 +821,7 @@ body.page-auth--top .auth-main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
   z-index: 1000;
 }
 
