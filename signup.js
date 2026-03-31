@@ -108,7 +108,15 @@ verifyModalOverlay.addEventListener('click', function (e) {
 
 /* ── 제출 ── */
 btnSignup.addEventListener('click', function () {
-  alert('회원가입 기능은 준비 중입니다.');
+  sessionStorage.setItem('logged_in', 'true');
+  sessionStorage.setItem('user_name', '홍길동');
+  var redirect = sessionStorage.getItem('after_auth_redirect');
+  if (redirect) {
+    sessionStorage.removeItem('after_auth_redirect');
+    window.location.href = 'wizard/' + redirect;
+  } else {
+    window.location.href = 'mypage.html';
+  }
 });
 
 /* ── NAV 그림자 ── */

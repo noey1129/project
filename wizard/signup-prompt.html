@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입 후 발송하기 – 로싸인</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../auth.css" />
+  <style>
+    .prompt-wrap {
+      width: 460px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .prompt-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFF3E0;
+      color: #E07000;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+    .prompt-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1C1E21;
+      line-height: 32px;
+      margin: 0;
+    }
+    .prompt-sub {
+      font-size: 15px;
+      color: #696B6D;
+      line-height: 22px;
+      margin: 0;
+    }
+    .prompt-summary {
+      background: #F2F3F6;
+      border-radius: 10px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .prompt-summary-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #AFAFAF;
+    }
+    .prompt-summary-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      color: #1C1E21;
+    }
+    .prompt-summary-item span:first-child {
+      color: #696B6D;
+    }
+    .prompt-summary-item span:last-child {
+      font-weight: 600;
+    }
+    .prompt-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-prompt-signup {
+      width: 100%;
+      height: 50px;
+      background: #FE9D3C;
+      color: #1C1E21;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-prompt-login {
+      width: 100%;
+      height: 50px;
+      background: #172230;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .prompt-notice {
+      text-align: center;
+      font-size: 13px;
+      color: #AFAFAF;
+      line-height: 20px;
+    }
+  </style>
+</head>
+<body class="page-auth page-auth--login page-auth--top">
+
+  <header class="nav"></header>
+
+  <main class="auth-main">
+    <div class="prompt-wrap">
+
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <span class="prompt-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          작성하신 문서가 저장되었어요
+        </span>
+        <h1 class="prompt-title">발송을 위해<br/>로그인 또는 회원가입이 필요해요</h1>
+        <p class="prompt-sub">가입 후 바로 결제 페이지로 돌아와 발송을 완료할 수 있어요.</p>
+      </div>
+
+      <!-- 작성 내용 요약 -->
+      <div class="prompt-summary">
+        <p class="prompt-summary-title">작성하신 문서 정보</p>
+        <div class="prompt-summary-item">
+          <span>문서 유형</span>
+          <span id="summaryType">–</span>
+        </div>
+        <div class="prompt-summary-item">
+          <span>발송 방식</span>
+          <span id="summaryMethod">–</span>
+        </div>
+        <div class="prompt-summary-item">
+          <span>수신인</span>
+          <span id="summaryRecipient">–</span>
+        </div>
+      </div>
+
+      <div class="prompt-actions">
+        <button class="btn-prompt-signup" id="btnGoSignup">회원가입 하고 발송하기</button>
+        <button class="btn-prompt-login" id="btnGoLogin">이미 계정이 있어요 · 로그인</button>
+      </div>
+
+      <p class="prompt-notice">회원가입 또는 로그인 후 결제 페이지로 자동으로 이동합니다.</p>
+
+    </div>
+  </main>
+
+  <script>
+    var TYPE_LABEL = {
+      rent: '임대차 내용증명', loan: '대여금 반환 청구',
+      noise: '층간소음 시정 요구', contract: '계약 해제 통보',
+      membership: '회원권 환불 청구', custom: '내용증명'
+    };
+    var METHOD_LABEL = {
+      certified: '전자문서 + 공전소 (19,800원)',
+      simple: '알림톡 + 공전소 (9,900원)'
+    };
+
+    var type      = sessionStorage.getItem('wizard_type') || '';
+    var method    = sessionStorage.getItem('send_method') || '';
+    var recipient = sessionStorage.getItem('receiver_name') || '';
+
+    document.getElementById('summaryType').textContent      = TYPE_LABEL[type] || type || '–';
+    document.getElementById('summaryMethod').textContent    = METHOD_LABEL[method] || method || '–';
+    document.getElementById('summaryRecipient').textContent = recipient || '–';
+
+    /* 회원가입 후 결제로 돌아오도록 return URL 저장 */
+    sessionStorage.setItem('after_auth_redirect', 'payment.html');
+
+    document.getElementById('btnGoSignup').addEventListener('click', function () {
+      window.location.href = '../signup.html';
+    });
+
+    document.getElementById('btnGoLogin').addEventListener('click', function () {
+      window.location.href = '../login.html';
+    });
+  </script>
+  <script src="../common-helper.js"></script>
+</body>
+</html>

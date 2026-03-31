@@ -379,9 +379,13 @@ function applyScale() {
     window.location.href = 'send-method.html';
   });
 
-  /* 발송 버튼: 결제 페이지로 바로 이동 */
+  /* 발송 버튼: 로그인 여부 확인 후 이동 */
   document.getElementById('btnSend').addEventListener('click', function () {
-    window.location.href = 'payment.html';
+    if (sessionStorage.getItem('logged_in') === 'true') {
+      window.location.href = 'payment.html';
+    } else {
+      window.location.href = 'signup-prompt.html';
+    }
   });
 })();
 

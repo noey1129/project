@@ -28,7 +28,13 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     sessionStorage.setItem('logged_in', 'true');
     sessionStorage.setItem('user_name', '홍길동');
     sessionStorage.setItem('user_email', email);
-    window.location.href = 'mypage.html';
+    var redirect = sessionStorage.getItem('after_auth_redirect');
+    if (redirect) {
+      sessionStorage.removeItem('after_auth_redirect');
+      window.location.href = 'wizard/' + redirect;
+    } else {
+      window.location.href = 'mypage.html';
+    }
   } else {
     alert('이메일 또는 비밀번호가 올바르지 않습니다.');
   }
