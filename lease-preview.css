@@ -158,6 +158,16 @@ body.page-preview {
   cursor: not-allowed;
 }
 
+.doc-action-btn--edit {
+  background: white;
+  color: #172230;
+  border: 1px solid #D7DBDF;
+}
+
+.doc-action-btn--edit:hover {
+  background: #F2F3F6;
+}
+
 /* ── 문서 뷰어 (회색 스크롤 영역) ── */
 .doc-viewer {
   flex: 1;
@@ -386,13 +396,25 @@ body.page-preview {
 .doc-paper.view-mode .doc-input {
   border: none;
   background: transparent;
-  padding: 0;
+  padding: 4px 0;
   pointer-events: none;
   border-radius: 0;
+  width: 100%;
+  min-width: 0;
 }
 
 .doc-paper.view-mode .doc-input::placeholder {
   color: transparent;
+}
+
+/* 제목 인풋 view-mode */
+.doc-paper.view-mode .doc-heading--input {
+  border: none;
+  background: transparent;
+  pointer-events: none;
+  font-size: 24px;
+  padding: 4px 0;
+  letter-spacing: 4px;
 }
 
 .doc-paper.view-mode .doc-addr-wrap {

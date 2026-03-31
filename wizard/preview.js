@@ -255,10 +255,13 @@ function applyScale() {
     document.getElementById(id).addEventListener('input', checkRequired);
   });
 
-  /* 수정완료 버튼 */
-  document.getElementById('btnSave').addEventListener('click', function () {
+  /* 수정완료 / 수정하기 버튼 토글 */
+  var btnSave = document.getElementById('btnSave');
+  var isViewMode = false;
+
+  function enterViewMode() {
+    isViewMode = true;
     savedOnce = true;
-    /* sessionStorage에 수신인 정보 저장 */
     sessionStorage.setItem('receiver_name',  document.getElementById('recipientName').value.trim());
     sessionStorage.setItem('receiver_phone', document.getElementById('recipientPhone').value.trim());
     if (sendMethod === 'certified') {
@@ -267,15 +270,37 @@ function applyScale() {
       sessionStorage.removeItem('receiver_birth');
     }
     document.querySelector('.doc-paper').classList.add('view-mode');
-    document.querySelectorAll('.doc-input, .doc-textarea').forEach(function (el) {
-      el.readOnly = true;
-    });
-    /* 주소 미입력 시 주소 행 숨기기 */
+    document.querySelectorAll('.doc-input, .doc-textarea').forEach(function (el) { el.readOnly = true; });
+    document.getElementById('docHeading').readOnly = true;
     if (!document.getElementById('senderAddr').value.trim()) {
       document.getElementById('senderAddrRow').style.display = 'none';
     }
-    document.getElementById('btnSave').disabled = true;
+    btnSave.textContent = '수정하기';
+    btnSave.disabled = false;
+    btnSave.classList.remove('doc-action-btn--save');
+    btnSave.classList.add('doc-action-btn--edit');
     document.getElementById('btnSend').disabled = false;
+  }
+
+  function enterEditMode() {
+    isViewMode = false;
+    document.querySelector('.doc-paper').classList.remove('view-mode');
+    document.querySelectorAll('.doc-input, .doc-textarea').forEach(function (el) { el.readOnly = false; });
+    document.getElementById('docHeading').readOnly = false;
+    document.getElementById('senderAddrRow').style.display = '';
+    btnSave.textContent = '수정완료';
+    btnSave.classList.remove('doc-action-btn--edit');
+    btnSave.classList.add('doc-action-btn--save');
+    document.getElementById('btnSend').disabled = true;
+    checkRequired();
+  }
+
+  btnSave.addEventListener('click', function () {
+    if (isViewMode) {
+      enterEditMode();
+    } else {
+      enterViewMode();
+    }
   });
 
   /* PDF 다운로드 (미구현 안내) */
