@@ -194,32 +194,27 @@ body.page-preview {
 
 .doc-heading--input {
   width: 100%;
-  border: 1.5px solid #D7DBDF;
-  border-radius: 8px;
-  background: #F8F9FA;
+  padding: 10px 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #D7DBDF;
   text-align: center;
   font-size: 25px;
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 600;
   color: #1C1E21;
-  line-height: 1.4;
-  padding: 10px 16px;
-  box-sizing: border-box;
   outline: none;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
 }
 
 .doc-heading--input::placeholder {
-  color: #BBBFC4;
-}
-
-.doc-heading--input:hover {
-  border-color: #B0B5BC;
+  color: #8C8C8C;
+  font-weight: 400;
 }
 
 .doc-heading--input:focus {
-  border-color: #FC9950;
-  background: #fff;
+  border-color: #172230;
 }
 
 /* ── 발신인/수신인 테이블 ── */
