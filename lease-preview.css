@@ -400,8 +400,12 @@ body.page-preview {
   pointer-events: none;
   border-radius: 0;
   width: 100%;
+  max-width: 100%;
   min-width: 0;
   box-shadow: none;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .doc-paper.view-mode .doc-input::placeholder {
@@ -457,6 +461,10 @@ body.page-preview {
   font-style: italic;
 }
 .doc-paper.view-mode .addr-toggle-wrap { display: none; }
+
+.doc-paper.view-mode .doc-table {
+  table-layout: auto;
+}
 
 .doc-paper.view-mode .doc-field-cell {
   vertical-align: middle;
