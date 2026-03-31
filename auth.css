@@ -138,6 +138,11 @@ body.page-auth--login {
   text-decoration: none;
 }
 
+.footer-sep {
+  color: #D7DBDF;
+  font-size: 13px;
+}
+
 /* ── 카드 ── */
 .auth-card {
   background: #fff;
