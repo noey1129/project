@@ -255,6 +255,76 @@ function applyScale() {
     document.getElementById(id).addEventListener('input', checkRequired);
   });
 
+  /* ── 뷰 모드 문서 HTML 생성 ── */
+  function buildViewDoc() {
+    var title     = document.getElementById('docHeading').value || '내용증명';
+    var sName     = document.getElementById('senderName').value;
+    var sPhone    = document.getElementById('senderPhone').value;
+    var sAddr     = document.getElementById('senderAddr').value;
+    var sDetail   = document.getElementById('senderAddrDetail').value;
+    var rName     = document.getElementById('recipientName').value;
+    var rPhone    = document.getElementById('recipientPhone').value;
+    var rBirth    = document.getElementById('recipientBirth').value;
+    var content   = document.getElementById('docContent').value;
+    var addrText  = [sAddr, sDetail].filter(Boolean).join(' ');
+    var birthRow  = (sendMethod === 'certified' && rBirth)
+      ? vRow('생년월일', rBirth, true) : '';
+
+    function vCell(label, value) {
+      return '<div class="vd-sublabel">' + label + '</div>' +
+             '<div class="vd-value">' + (value || '') + '</div>';
+    }
+    function vRow(label, value, full) {
+      if (full) {
+        return '<div class="vd-row">' +
+          '<div class="vd-sublabel">' + label + '</div>' +
+          '<div class="vd-value vd-value--full">' + (value || '') + '</div>' +
+        '</div>';
+      }
+      return '';
+    }
+
+    var addrRowHtml = addrText
+      ? '<div class="vd-row">' +
+          '<div class="vd-sublabel">주소</div>' +
+          '<div class="vd-value vd-value--full">' + addrText + '</div>' +
+        '</div>'
+      : '';
+
+    var contentHtml = content
+      .split('\n')
+      .map(function (line) { return line ? '<p>' + line + '</p>' : '<p>&nbsp;</p>'; })
+      .join('');
+
+    return '<div class="vd-title">' + title + '</div>' +
+      '<div class="vd-table">' +
+        '<div class="vd-section">' +
+          '<div class="vd-role">발신인<span class="vd-role-sub">(보내는 사람)</span></div>' +
+          '<div class="vd-rows">' +
+            '<div class="vd-row">' +
+              vCell('성명', sName) +
+              vCell('전화번호', sPhone) +
+            '</div>' +
+            addrRowHtml +
+          '</div>' +
+        '</div>' +
+        '<div class="vd-section">' +
+          '<div class="vd-role">수신인<span class="vd-role-sub">(받는 사람)</span></div>' +
+          '<div class="vd-rows">' +
+            '<div class="vd-row">' +
+              vCell('성명', rName) +
+              vCell('전화번호', rPhone) +
+            '</div>' +
+            birthRow +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="vd-content-wrap">' +
+        '<div class="vd-content-label">내 용</div>' +
+        '<div class="vd-content-body">' + contentHtml + '</div>' +
+      '</div>';
+  }
+
   /* 수정완료 / 수정하기 버튼 토글 */
   var btnSave = document.getElementById('btnSave');
   var isViewMode = false;
@@ -269,12 +339,11 @@ function applyScale() {
     } else {
       sessionStorage.removeItem('receiver_birth');
     }
-    document.querySelector('.doc-paper').classList.add('view-mode');
-    document.querySelectorAll('.doc-input, .doc-textarea').forEach(function (el) { el.readOnly = true; });
-    document.getElementById('docHeading').readOnly = true;
-    if (!document.getElementById('senderAddr').value.trim()) {
-      document.getElementById('senderAddrRow').style.display = 'none';
-    }
+    var viewEl = document.getElementById('docPaperView');
+    var editEl = document.getElementById('docPaperEdit');
+    viewEl.innerHTML = buildViewDoc();
+    viewEl.style.display = '';
+    editEl.style.display = 'none';
     btnSave.textContent = '수정하기';
     btnSave.disabled = false;
     btnSave.classList.remove('doc-action-btn--save');
@@ -284,10 +353,8 @@ function applyScale() {
 
   function enterEditMode() {
     isViewMode = false;
-    document.querySelector('.doc-paper').classList.remove('view-mode');
-    document.querySelectorAll('.doc-input, .doc-textarea').forEach(function (el) { el.readOnly = false; });
-    document.getElementById('docHeading').readOnly = false;
-    document.getElementById('senderAddrRow').style.display = '';
+    document.getElementById('docPaperView').style.display = 'none';
+    document.getElementById('docPaperEdit').style.display = '';
     btnSave.textContent = '수정완료';
     btnSave.classList.remove('doc-action-btn--edit');
     btnSave.classList.add('doc-action-btn--save');

@@ -478,6 +478,145 @@ body.page-preview {
   resize: none;
 }
 
+/* ============================================================
+   뷰 모드 문서 (수정완료 후 div 기반 레이아웃)
+   ============================================================ */
+
+.doc-paper--view {
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 29px;
+  font-family: 'Nanum Myeongjo', serif;
+}
+
+.vd-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: #1C1E21;
+  line-height: 44px;
+  letter-spacing: 6px;
+}
+
+/* 표 전체 */
+.vd-table {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #D4D4D4;
+  border-left: 1px solid #D4D4D4;
+}
+
+/* 발신인 / 수신인 섹션 행 */
+.vd-section {
+  display: flex;
+  border-bottom: 1px solid #D4D4D4;
+}
+
+.vd-role {
+  width: 101px;
+  flex-shrink: 0;
+  background: #F9F9F9;
+  border-right: 1px solid #D4D4D4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1C1E21;
+  text-align: center;
+  gap: 4px;
+}
+
+.vd-role-sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* 우측 행들 묶음 */
+.vd-rows {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 각 데이터 행 */
+.vd-row {
+  display: flex;
+  border-bottom: 1px solid #D4D4D4;
+  min-height: 40px;
+}
+
+.vd-row:last-child {
+  border-bottom: none;
+}
+
+.vd-sublabel {
+  width: 100px;
+  flex-shrink: 0;
+  background: #F9F9F9;
+  border-right: 1px solid #D4D4D4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.vd-value {
+  width: 224px;
+  background: white;
+  border-right: 1px solid #D4D4D4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  font-size: 13px;
+  color: #1C1E21;
+}
+
+.vd-value--full {
+  flex: 1;
+  width: auto;
+  justify-content: flex-start;
+  border-right: 1px solid #D4D4D4;
+}
+
+/* 내용 영역 */
+.vd-content-wrap {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #D4D4D4;
+}
+
+.vd-content-label {
+  background: #F9F9F9;
+  border-bottom: 1px solid #D4D4D4;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1C1E21;
+  letter-spacing: 4px;
+}
+
+.vd-content-body {
+  padding: 15px 10px;
+  font-size: 14px;
+  color: #1C1E21;
+  line-height: 1.9;
+  min-height: 200px;
+}
+
+.vd-content-body p {
+  margin: 0 0 2px;
+}
+
 /* ── bottom-bar 오버라이드: 프리뷰 페이지 ── */
 body.page-preview .bottom-bar {
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
