@@ -192,6 +192,24 @@ body.page-preview {
   line-height: 44px;
 }
 
+.doc-heading--editable {
+  cursor: text;
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s;
+  min-width: 80px;
+  display: inline-block;
+}
+
+.doc-heading--editable:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.doc-heading--editable:focus {
+  background: #FFFBF5;
+  box-shadow: 0 0 0 2px #FC9950;
+}
+
 /* ── 발신인/수신인 테이블 ── */
 .doc-table {
   width: 100%;

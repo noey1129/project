@@ -227,6 +227,16 @@ function applyScale() {
   docContent.value = saved || generateContent();
   autoResize(docContent);
 
+  /* 문서 제목 */
+  var headingEl = document.getElementById('docHeading');
+  headingEl.textContent = sessionStorage.getItem('doc_title') || subject;
+  headingEl.addEventListener('blur', function () {
+    sessionStorage.setItem('doc_title', headingEl.textContent.trim());
+  });
+  headingEl.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); headingEl.blur(); }
+  });
+
   /* 저장된 발신인 정보 복원 */
   ['senderName', 'senderPhone', 'senderAddr', 'senderAddrDetail'].forEach(function (id) {
     var val = sessionStorage.getItem('sendit_preview_' + id);

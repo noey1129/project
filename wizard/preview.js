@@ -151,7 +151,7 @@ function checkRequired() {
   if (savedOnce) return;
   var name     = document.getElementById('senderName').value.trim();
   var phone    = document.getElementById('senderPhone').value.trim();
-  var addr     = document.getElementById('senderAddr').value.trim();
+
   var recName  = document.getElementById('recipientName').value.trim();
   var recPhone = document.getElementById('recipientPhone').value.trim();
   var recBirth = document.getElementById('recipientBirth').value.trim();
@@ -196,6 +196,23 @@ function applyScale() {
 
   /* 내용 자동 생성 */
   document.getElementById('docContent').value = generateContent(type);
+
+  /* 문서 제목 */
+  var TITLE_MAP = {
+    loan:       '대여금 반환 청구',
+    noise:      '층간소음 시정 요구',
+    contract:   '계약 해제 통보',
+    membership: '회원권 환불 청구',
+    custom:     '내용증명'
+  };
+  var headingEl = document.getElementById('docHeading');
+  headingEl.textContent = sessionStorage.getItem('doc_title') || TITLE_MAP[type] || '내용증명';
+  headingEl.addEventListener('blur', function () {
+    sessionStorage.setItem('doc_title', headingEl.textContent.trim());
+  });
+  headingEl.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); headingEl.blur(); }
+  });
 
   /* 확대/축소 */
   document.getElementById('btnPlus').addEventListener('click', function () {
