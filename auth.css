@@ -59,6 +59,10 @@ body.page-auth--login {
   gap: 28px;
 }
 
+.login-form .auth-remember {
+  margin-top: calc(8px - 28px);
+}
+
 .login-input {
   border-color: rgba(0, 0, 0, 0.10);
 }
