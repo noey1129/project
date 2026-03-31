@@ -80,11 +80,12 @@ document.getElementById('btnPay').addEventListener('click', function () {
   document.getElementById('completeScreen').style.display = 'flex';
   document.getElementById('completeScreen').classList.add('visible');
 
-  /* 완료 버튼: 로그인 유저는 마이페이지, 비로그인은 홈 */
+  /* 완료 버튼: 로그인 유저는 문서 상세, 비로그인은 홈 */
   var homeBtn = document.getElementById('completeHomeBtn');
   if (homeBtn) {
     if (sessionStorage.getItem('logged_in') === 'true') {
-      homeBtn.href = '../index.html';
+      /* 가장 최근 발송 문서(id=1)로 이동 */
+      homeBtn.href = '../doc-detail.html?id=1';
       homeBtn.textContent = '발송 내역 확인하기';
     } else {
       homeBtn.href = '../index.html';
