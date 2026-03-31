@@ -195,11 +195,13 @@ body.page-preview {
 .doc-heading--input {
   width: 100%;
   padding: 6px 12px;
+  margin: 0;
   background: white;
   border-radius: 6px;
   border: 1px solid #D7DBDF;
   text-align: center;
   font-size: 20px;
+  line-height: 1.4;
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 600;
   color: #1C1E21;
