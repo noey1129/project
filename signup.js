@@ -12,8 +12,11 @@ var chkAll     = document.getElementById('chkAll');
 var chkTerms   = document.getElementById('chkTerms');
 var chkPrivacy = document.getElementById('chkPrivacy');
 var btnSignup  = document.getElementById('btnSignup');
-var btnVerify  = document.getElementById('btnVerify');
+var btnVerify       = document.getElementById('btnVerify');
+var verifyCodeWrap  = document.getElementById('verifyCodeWrap');
 var verifyCodeInput = document.getElementById('signupVerifyCode');
+var btnResendHint   = document.getElementById('btnResendHint');
+var verifyModalOverlay = document.getElementById('verifyModalOverlay');
 
 /* ── 전화번호 자동 하이픈 ── */
 function formatPhone(val) {
@@ -72,9 +75,35 @@ function checkReady() {
 
 /* ── 인증요청 ── */
 btnVerify.addEventListener('click', function () {
-  verifyCodeInput.style.display = '';
+  verifyCodeWrap.style.display = '';
   verifyCodeInput.focus();
-  alert('휴대폰 인증 기능은 준비 중입니다.');
+});
+
+/* ── 인증번호 못 받음 팝업 ── */
+btnResendHint.addEventListener('click', function () {
+  verifyModalOverlay.style.display = 'flex';
+});
+
+document.getElementById('btnVerifyModalClose').addEventListener('click', function () {
+  verifyModalOverlay.style.display = 'none';
+});
+
+document.getElementById('btnReEnterPhone').addEventListener('click', function () {
+  verifyModalOverlay.style.display = 'none';
+  verifyCodeWrap.style.display = 'none';
+  verifyCodeInput.value = '';
+  phoneInput.value = '';
+  phoneInput.focus();
+});
+
+document.getElementById('btnResendCode').addEventListener('click', function () {
+  verifyModalOverlay.style.display = 'none';
+  verifyCodeInput.value = '';
+  verifyCodeInput.focus();
+});
+
+verifyModalOverlay.addEventListener('click', function (e) {
+  if (e.target === verifyModalOverlay) verifyModalOverlay.style.display = 'none';
 });
 
 /* ── 제출 ── */

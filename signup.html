@@ -78,14 +78,16 @@
             />
             <button type="button" class="btn-verify" id="btnVerify">인증요청</button>
           </div>
-          <input
-            type="text"
-            id="signupVerifyCode"
-            class="auth-input login-input"
-            placeholder="인증번호 6자리를 입력해주세요."
-            maxlength="6"
-            style="display:none;"
-          />
+          <div id="verifyCodeWrap" style="display:none;">
+            <input
+              type="text"
+              id="signupVerifyCode"
+              class="auth-input login-input"
+              placeholder="인증번호 6자리를 입력해주세요."
+              maxlength="6"
+            />
+            <button type="button" class="btn-resend-hint" id="btnResendHint">인증번호를 받지 못하셨나요?</button>
+          </div>
         </div>
 
         <!-- 약관 동의 -->
@@ -124,6 +126,24 @@
 
     </div>
   </main>
+
+  <!-- 인증번호 못 받음 팝업 -->
+  <div class="verify-modal-overlay" id="verifyModalOverlay" style="display:none;">
+    <div class="verify-modal">
+      <div class="verify-modal-head">
+        <p class="verify-modal-title">인증번호를 받지 못하셨다면<br/>아래 방법으로 다시 시도해주세요</p>
+        <button type="button" class="verify-modal-close" id="btnVerifyModalClose">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M5 5l10 10M15 5L5 15" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="verify-modal-actions">
+        <button type="button" class="verify-modal-btn verify-modal-btn--outline" id="btnReEnterPhone">휴대폰번호 다시 입력</button>
+        <button type="button" class="verify-modal-btn verify-modal-btn--fill" id="btnResendCode">인증번호 다시 받기</button>
+      </div>
+    </div>
+  </div>
 
   <script src="signup.js"></script>
   <script src="common-helper.js"></script>
