@@ -7,28 +7,28 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="auth.css" />
 </head>
-<body class="page-auth">
+<body class="page-auth page-auth--login">
 
   <header class="nav"></header>
 
   <main class="auth-main">
-    <div class="auth-card">
+    <div class="login-wrap">
 
-      <div class="auth-header">
-        <span class="auth-logo"><img src="assets/Lawsign.svg" alt="Lawsign" width="120"></span>
-        <h1 class="auth-title">회원가입</h1>
-        <p class="auth-section-title">계정 기본 정보를 입력해 주세요</p>
+      <!-- 로고 + 타이틀 -->
+      <div class="login-header">
+        <span class="login-logo">Lawsign</span>
+        <h1 class="login-title">회원가입</h1>
       </div>
 
       <!-- 이메일 가입 폼 -->
-      <form class="auth-form" id="signupForm" onsubmit="return false;">
+      <form class="login-form" id="signupForm" onsubmit="return false;">
 
         <div class="auth-field">
           <label class="auth-field-label" for="signupEmail">이메일 <span class="auth-required">*</span></label>
           <input
             type="email"
             id="signupEmail"
-            class="auth-input"
+            class="auth-input login-input"
             placeholder="ID로 사용될 이메일을 입력해 주세요"
             autocomplete="email"
           />
@@ -39,14 +39,14 @@
           <input
             type="password"
             id="signupPassword"
-            class="auth-input"
+            class="auth-input login-input"
             placeholder="영문/특수문자/숫자를 포함하여 8 글자 이상 입력해 주세요"
             autocomplete="new-password"
           />
           <input
             type="password"
             id="signupPasswordConfirm"
-            class="auth-input"
+            class="auth-input login-input"
             placeholder="비밀번호를 한번 더 입력해 주세요"
             autocomplete="new-password"
             style="margin-top:8px;"
@@ -59,7 +59,7 @@
           <input
             type="text"
             id="signupName"
-            class="auth-input"
+            class="auth-input login-input"
             placeholder="이름을 입력해 주세요"
             autocomplete="name"
           />
@@ -71,7 +71,7 @@
             <input
               type="tel"
               id="signupPhone"
-              class="auth-input"
+              class="auth-input login-input"
               placeholder="휴대폰 번호를 입력해 주세요"
               autocomplete="tel"
               maxlength="13"
@@ -80,27 +80,29 @@
           </div>
         </div>
 
+        <!-- 약관 동의 -->
+        <div class="auth-checks">
+          <label class="auth-check">
+            <input type="checkbox" id="chkTerms" />
+            <span><a href="#" onclick="return false;">이용약관</a>에 동의합니다. (필수)</span>
+          </label>
+          <label class="auth-check">
+            <input type="checkbox" id="chkPrivacy" />
+            <span><a href="#" onclick="return false;">개인정보 처리방침</a>에 동의합니다. (필수)</span>
+          </label>
+        </div>
+
+        <div class="login-actions">
+          <button type="button" class="btn-login-submit" id="btnSignup" disabled>회원가입</button>
+          <div class="login-footer-links">
+            <div class="login-footer-left">
+              <span>이미 계정이 있으신가요?</span>
+              <a href="login.html">로그인</a>
+            </div>
+          </div>
+        </div>
+
       </form>
-
-      <!-- 약관 동의 -->
-      <div class="auth-checks">
-        <label class="auth-check">
-          <input type="checkbox" id="chkTerms" />
-          <span><a href="#" onclick="return false;">이용약관</a>에 동의합니다. (필수)</span>
-        </label>
-        <label class="auth-check">
-          <input type="checkbox" id="chkPrivacy" />
-          <span><a href="#" onclick="return false;">개인정보 처리방침</a>에 동의합니다. (필수)</span>
-        </label>
-      </div>
-
-      <button type="button" class="btn-auth-submit" id="btnSignup" disabled>회원가입</button>
-
-      <!-- 하단 링크 -->
-      <div class="auth-footer-link">
-        <span>이미 계정이 있으신가요?</span>
-        <a href="login.html">로그인</a>
-      </div>
 
     </div>
   </main>
