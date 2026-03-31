@@ -697,6 +697,63 @@ body.page-auth--login {
   transform: rotate(45deg);
 }
 
+/* ── 비밀번호 재설정 공통 ── */
+.reset-icon-circle {
+  width: 80px;
+  height: 80px;
+  background: #E7EFFA;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.reset-sent-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 32px;
+  text-align: center;
+  margin: 0;
+}
+
+.reset-sent-sub {
+  font-size: 18px;
+  font-weight: 500;
+  color: #77787A;
+  line-height: 24px;
+  text-align: center;
+  margin: 0;
+}
+
+.reset-divider {
+  border: none;
+  border-top: 1px solid #E7E9EB;
+  margin: 0;
+}
+
+.reset-resend-hint {
+  font-size: 13px;
+  font-weight: 600;
+  color: #77787A;
+  text-align: center;
+  margin: 0;
+}
+
+.btn-resend-mail {
+  width: 100%;
+  padding: 12px 24px;
+  background: #E7E9EB;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #696B6D;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 /* ── 계정 찾기 ── */
 .find-account-desc {
   font-size: 18px;
