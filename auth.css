@@ -300,23 +300,21 @@ body.page-auth--login {
 
 .btn-verify {
   flex-shrink: 0;
-  height: 52px;
-  padding: 0 18px;
-  background: #F2F3F6;
-  border: 1px solid #D7DBDF;
-  border-radius: 10px;
-  font-size: 14px;
+  width: 120px;
+  height: 48px;
+  padding: 10px 24px;
+  background: #E7E9EB;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
   font-weight: 600;
-  color: #47494C;
+  color: #696B6D;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.2s, border-color 0.2s;
+  font-family: inherit;
+  box-sizing: border-box;
 }
 
-.btn-verify:hover {
-  background: #E7E9EB;
-  border-color: #AFAFAF;
-}
 
 .auth-input {
   width: 100%;
