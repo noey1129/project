@@ -276,7 +276,7 @@ body.page-auth--login {
 }
 
 .auth-field-label {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: #1C1E21;
 }
@@ -321,7 +321,7 @@ body.page-auth--login {
   background: white;
   border: 1px solid #D7DBDF;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 15px;
   color: #1C1E21;
   outline: none;
   box-sizing: border-box;
@@ -342,18 +342,42 @@ body.page-auth--login {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
-  color: #1C1E21;
+  font-size: 15px;
+  color: #333333;
   cursor: pointer;
   user-select: none;
 }
 
 .auth-remember input[type=checkbox] {
-  width: 16px;
-  height: 16px;
-  accent-color: #172230;
-  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
+  background: white;
+  border: 1px solid #D7DBDF;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.auth-remember input[type=checkbox]:checked {
+  background: #172230;
+  border-color: #172230;
+}
+
+.auth-remember input[type=checkbox]:checked::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  width: 5px;
+  height: 8px;
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
 }
 
 .auth-remember-notice {
