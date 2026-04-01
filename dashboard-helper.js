@@ -19,25 +19,27 @@
   var currentPage = window.location.pathname.split('/').pop() || 'mypage.html';
 
   /* ── 아이콘 ── */
-  var ICON_DOC = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3.5" y="2.5" width="13" height="15" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7 7.5h6M7 11h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
-  var ICON_PERSON = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.25" stroke="currentColor" stroke-width="1.4"/><path d="M3.5 17.5c0-3.59 2.91-6.5 6.5-6.5s6.5 2.91 6.5 6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>';
   var ICON_LOGOUT = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4h4v12h-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 13.5l4-3.5-4-3.5M12 10H3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   var navItems = [
-    { page: 'mypage.html',  href: base + 'mypage.html',  label: '내 문서함', icon: ICON_DOC },
-    { page: 'myinfo.html',  href: base + 'myinfo.html',  label: '내 정보',   icon: ICON_PERSON },
+    { page: 'mypage.html', href: base + 'mypage.html', label: '내 문서함', icon: base + 'assets/side_document.svg',      iconActive: base + 'assets/side_document_fill.svg' },
+    { page: 'myinfo.html', href: base + 'myinfo.html', label: '내 정보',   icon: base + 'assets/side_profile.svg',       iconActive: base + 'assets/side_profile_fill.svg'  },
   ];
 
   /* ── 사이드바 HTML ── */
   function buildSidebar() {
+    var activePage = currentPage === 'doc-detail.html' ? 'mypage.html' : currentPage;
     var navHTML = navItems.map(function (item) {
-      var activePage = currentPage === 'doc-detail.html' ? 'mypage.html' : currentPage;
       var active = activePage === item.page;
+      var iconSrc = active ? item.iconActive : item.icon;
       return '<a href="' + item.href + '" class="sb-nav-item' + (active ? ' sb-nav-item--active' : '') + '">' +
-        '<span class="sb-nav-icon">' + item.icon + '</span>' +
+        '<span class="sb-nav-icon"><img src="' + iconSrc + '" width="20" height="20" alt=""></span>' +
         '<span>' + item.label + '</span>' +
       '</a>';
     }).join('');
+
+    /* 성(lastName): 이름 첫 글자 */
+    var lastName = userName ? userName.charAt(0) : '?';
 
     return (
       '<div class="sb-top">' +
@@ -45,9 +47,7 @@
           '<a href="' + base + 'index.html" class="sb-logo-text">Lawsign</a>' +
         '</div>' +
         '<div class="sb-profile">' +
-          '<div class="sb-avatar"></div>' +
-          '<div class="sb-avatar"></div>' +
-          '<div class="sb-profile-divider"></div>' +
+          '<div class="sb-avatar">' + lastName + '</div>' +
           '<div class="sb-profile-info">' +
             '<span class="sb-profile-name">' + userName + '님</span>' +
             '<span class="sb-profile-email">' + (userEmail || 'Lawsign@Lawsign.com') + '</span>' +
