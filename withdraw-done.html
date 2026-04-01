@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원탈퇴 완료 – 로싸인</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+  <style>
+    .wd-done-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .wd-done-icon {
+      width: 72px;
+      height: 72px;
+      background: #FFF4ED;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wd-done-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1C1E21;
+      line-height: 1.4;
+    }
+    .wd-done-sub {
+      font-size: 15px;
+      font-weight: 400;
+      color: #696B6D;
+      line-height: 26px;
+    }
+    .wd-done-btn {
+      width: 280px;
+      height: 52px;
+      background: #FC9950;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .wd-done-btn:hover {
+      background: #e8872e;
+    }
+  </style>
+</head>
+<body class="page-auth page-auth--login">
+
+  <header class="nav"></header>
+
+  <main class="auth-main">
+    <div class="wd-done-wrap">
+
+      <div class="wd-done-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M10 18l6 6 10-12" stroke="#FC9950" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="wd-done-title">그간 로싸인을<br>이용해주셔서 감사합니다.</div>
+
+      <p class="wd-done-sub">
+        회원탈퇴가 정상적으로 처리되었습니다.<br>
+        탈퇴일로부터 30일 이내에는 개인정보와 데이터가 보존되며,<br>
+        이후 계정 정보가 순차적으로 삭제됩니다.
+      </p>
+
+      <a href="index.html" class="wd-done-btn">홈으로 돌아가기</a>
+
+    </div>
+  </main>
+
+  <script src="common-helper.js"></script>
+</body>
+</html>

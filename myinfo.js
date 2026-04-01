@@ -162,9 +162,31 @@ if (withdrawAgree) {
   });
 }
 
+var withdrawModal   = document.getElementById('miWithdrawModal');
+var modalCancel     = document.getElementById('miModalCancel');
+var modalConfirm    = document.getElementById('miModalConfirm');
+
 if (withdrawConfirm) {
   withdrawConfirm.addEventListener('click', function () {
+    if (withdrawModal) withdrawModal.classList.add('visible');
+  });
+}
+
+if (modalCancel) {
+  modalCancel.addEventListener('click', function () {
+    withdrawModal.classList.remove('visible');
+  });
+}
+
+if (withdrawModal) {
+  withdrawModal.addEventListener('click', function (e) {
+    if (e.target === withdrawModal) withdrawModal.classList.remove('visible');
+  });
+}
+
+if (modalConfirm) {
+  modalConfirm.addEventListener('click', function () {
     sessionStorage.clear();
-    window.location.href = 'index.html';
+    window.location.href = 'withdraw-done.html';
   });
 }
