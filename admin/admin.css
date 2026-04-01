@@ -208,7 +208,7 @@ body.page-admin {
 /* ── 컨텐츠 영역 ── */
 .adm-content {
   flex: 1;
-  padding: 25px;
+  padding: 25px 40px;
   overflow-y: auto;
 }
 
@@ -547,3 +547,115 @@ body.page-admin {
 .adm-type--noise    { background: #FDEDEF; border: 1px solid #FFB6BC; color: #E62639; }
 .adm-type--refund   { background: #FFECD6; border: 1px solid #FFC888; color: #CD6C00; }
 .adm-type--done     { background: #E8EAEE; border: 1px solid #D1D1D1; color: #5F6875; }
+
+/* 테이블 행 클릭 */
+.adm-table tbody tr {
+  cursor: pointer;
+  transition: background 0.13s;
+}
+
+.adm-table tbody tr:hover td {
+  background: #F6F8FB;
+}
+
+/* ── 자세히 보기 모달 ── */
+.adm-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+}
+
+.adm-modal-overlay--open {
+  display: flex;
+}
+
+.adm-modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 520px;
+  max-width: 90vw;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.adm-modal-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.adm-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+.adm-modal-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #8C8C8C;
+  font-size: 20px;
+  line-height: 1;
+  border-radius: 4px;
+  transition: background 0.13s;
+}
+
+.adm-modal-close:hover {
+  background: #F2F3F6;
+  color: #333;
+}
+
+.adm-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.adm-modal-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.adm-modal-key {
+  width: 110px;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8C8C8C;
+  padding-top: 2px;
+}
+
+.adm-modal-val {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 400;
+  color: #1C1E21;
+  word-break: break-all;
+}
+
+.adm-modal-val--certified {
+  font-weight: 600;
+  color: #2B3347;
+}
+
+.adm-modal-val--simple {
+  font-weight: 600;
+  color: #E77928;
+}
+
+.adm-modal-divider {
+  height: 1px;
+  background: #E0E2E7;
+  margin: 0;
+}
