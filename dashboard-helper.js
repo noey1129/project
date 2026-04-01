@@ -42,17 +42,15 @@
     return (
       '<div class="sb-top">' +
         '<div class="sb-logo-wrap">' +
-          '<a href="' + base + 'index.html">' +
-            '<img src="' + base + 'assets/Lawsign.svg" alt="Lawsign" height="24">' +
-          '</a>' +
+          '<a href="' + base + 'index.html" class="sb-logo-text">Lawsign</a>' +
         '</div>' +
         '<div class="sb-profile">' +
-          '<div class="sb-avatar">' +
-            '<svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="9" r="4.5" stroke="#7D8B9A" stroke-width="1.5"/><path d="M4 23c0-4.97 4.03-9 9-9s9 4.03 9 9" stroke="#7D8B9A" stroke-width="1.5" stroke-linecap="round"/></svg>' +
-          '</div>' +
+          '<div class="sb-avatar"></div>' +
+          '<div class="sb-avatar"></div>' +
+          '<div class="sb-profile-divider"></div>' +
           '<div class="sb-profile-info">' +
             '<span class="sb-profile-name">' + userName + '님</span>' +
-            (userEmail ? '<span class="sb-profile-email">' + userEmail + '</span>' : '') +
+            '<span class="sb-profile-email">' + (userEmail || 'Lawsign@Lawsign.com') + '</span>' +
           '</div>' +
         '</div>' +
         '<a href="' + base + 'select-situation.html" class="sb-cta">새 내용증명 작성하기</a>' +

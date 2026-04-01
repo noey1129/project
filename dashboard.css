@@ -40,9 +40,14 @@ body.page-dashboard {
   padding: 0 15px;
 }
 
-.sb-logo-wrap img {
+.sb-logo-text {
   display: block;
-  height: 24px;
+  font-family: 'Arimo', 'Arimo Hebrew Subset', sans-serif;
+  font-size: 26.25px;
+  font-weight: 700;
+  color: #2B3347;
+  text-decoration: none;
+  line-height: 35px;
 }
 
 /* 프로필 */
@@ -50,24 +55,29 @@ body.page-dashboard {
   padding: 0 15px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
 .sb-avatar {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   background: #EAEFF2;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sb-profile-divider {
+  width: 1px;
+  height: 35px;
+  background: #C6CAD3;
   flex-shrink: 0;
 }
 
 .sb-profile-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   min-width: 0;
 }
 
@@ -75,13 +85,14 @@ body.page-dashboard {
   font-size: 15px;
   font-weight: 600;
   color: #1C1E21;
-  line-height: 1.3;
+  line-height: 20px;
 }
 
 .sb-profile-email {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 400;
   color: #8C8C8C;
-  line-height: 1.3;
+  line-height: 16px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -90,17 +101,21 @@ body.page-dashboard {
 /* CTA 버튼 */
 .sb-cta {
   margin: 0 15px;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
   background: #FC9950;
   color: #fff;
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-  line-height: 1;
-  padding: 10px;
+  line-height: 16px;
+  padding: 5px 10px;
   border-radius: 5px;
   text-decoration: none;
   transition: background 0.2s;
+  box-sizing: border-box;
 }
 
 .sb-cta:hover {
@@ -117,7 +132,7 @@ body.page-dashboard {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 25px;
+  padding: 8px 25px;
   font-size: 16px;
   font-weight: 400;
   color: #7D7D7D;
@@ -154,8 +169,9 @@ body.page-dashboard {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 25px;
-  font-size: 15px;
+  height: 40px;
+  padding: 0 25px;
+  font-size: 16px;
   font-weight: 400;
   color: #B01212;
   background: transparent;
@@ -163,6 +179,7 @@ body.page-dashboard {
   cursor: pointer;
   font-family: inherit;
   border-radius: 8px;
+  box-sizing: border-box;
   transition: background 0.15s;
 }
 
