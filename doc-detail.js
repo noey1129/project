@@ -450,7 +450,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* 재발송 */
   document.getElementById('resendBtn').addEventListener('click', function () {
-    window.location.href = 'select-situation.html';
+    var doc = getDoc();
+
+    /* 발신인: 로그인 유저 정보 */
+    var userName  = sessionStorage.getItem('user_name')  || '';
+    var userPhone = sessionStorage.getItem('user_phone') || '';
+    sessionStorage.setItem('sendit_preview_senderName',        userName);
+    sessionStorage.setItem('sendit_preview_senderPhone',       userPhone);
+    sessionStorage.setItem('sendit_preview_senderAddr',        '');
+    sessionStorage.setItem('sendit_preview_senderAddrDetail',  '');
+
+    /* 수신인: 해당 문서의 수신인 */
+    sessionStorage.setItem('resend_recipient_name',  doc.recipient.name  || '');
+    sessionStorage.setItem('resend_recipient_phone', doc.recipient.phone || '');
+    sessionStorage.setItem('resend_recipient_birth',
+      doc.recipient.birth && doc.recipient.birth !== '-'
+        ? doc.recipient.birth.replace(/\D/g, '')
+        : ''
+    );
+
+    sessionStorage.setItem('wizard_type', 'rent');
+
+    window.location.href = 'wizard/lease/preview.html';
   });
 
   /* 페이지 네비게이션 */

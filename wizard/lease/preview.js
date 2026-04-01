@@ -263,6 +263,21 @@ function applyScale() {
     checkRequired();
   });
 
+  /* 재발송: 수신인 정보 자동 입력 */
+  var resendName  = sessionStorage.getItem('resend_recipient_name');
+  var resendPhone = sessionStorage.getItem('resend_recipient_phone');
+  var resendBirth = sessionStorage.getItem('resend_recipient_birth');
+  if (resendName) {
+    document.getElementById('recipientName').value  = resendName;
+    if (resendPhone) document.getElementById('recipientPhone').value = resendPhone;
+    if (resendBirth && sendMethod === 'certified') {
+      document.getElementById('recipientBirth').value = resendBirth;
+    }
+    sessionStorage.removeItem('resend_recipient_name');
+    sessionStorage.removeItem('resend_recipient_phone');
+    sessionStorage.removeItem('resend_recipient_birth');
+  }
+
   checkRequired();
 })();
 
