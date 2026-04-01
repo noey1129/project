@@ -363,6 +363,31 @@ body.page-dashboard {
   color: #8C8C8C;
 }
 
+/* ── 알림 빈 상태 ── */
+.notif-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 20px;
+  gap: 10px;
+  text-align: center;
+}
+
+.notif-empty-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1C1E21;
+  margin: 0;
+}
+
+.notif-empty-desc {
+  font-size: 13px;
+  color: #8C8C8C;
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* ── 컨텐츠 영역 ── */
 .db-content {
   flex: 1;

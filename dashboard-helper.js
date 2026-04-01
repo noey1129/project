@@ -143,6 +143,14 @@
           var items = notifPanel.querySelectorAll('.notif-item');
           items.forEach(function (item) { item.remove(); });
           notifBtn.querySelector('.notif-badge').style.display = 'none';
+          clearBtn.style.display = 'none';
+          var emptyEl = document.createElement('div');
+          emptyEl.className = 'notif-empty';
+          emptyEl.innerHTML =
+            '<svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#E9EAED"/><path d="M24 13a9 9 0 019 9v4.5l2.25 3.75H12.75L15 26.5V22a9 9 0 019-9z" stroke="#9EA3AD" stroke-width="2"/><path d="M20.5 37a3.5 3.5 0 007 0" stroke="#9EA3AD" stroke-width="2" stroke-linecap="round"/></svg>' +
+            '<p class="notif-empty-title">새로운 알림이 없습니다.</p>' +
+            '<p class="notif-empty-desc">내용증명 발송 후 열람 현황을<br>이곳에서 모아볼 수 있어요.</p>';
+          notifPanel.appendChild(emptyEl);
         });
       }
 
