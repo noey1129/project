@@ -70,16 +70,38 @@
     );
   }
 
+  /* ── 알림 더미 데이터 ── */
+  var NOTIF_DOCS = [
+    { id: 1, status: 'sent',  statusLabel: '발송완료', title: '부동산 매매 계약 해체 통보', date: '2025. 12. 01', recipient: '김영수' },
+    { id: 2, status: 'read',  statusLabel: '열람완료', title: '임대차 보증금 반환 청구',    date: '2025. 11. 20', recipient: '박철수' },
+    { id: 3, status: 'read',  statusLabel: '열람완료', title: '층간소음 시정 요구',          date: '2025. 11. 10', recipient: '이영희' },
+  ];
+
   /* ── 탑바 HTML ── */
   var titleMap = { 'mypage.html': '내 문서함', 'myinfo.html': '내 정보', 'doc-detail.html': '내 문서함' };
 
   function buildTopbar() {
     return (
       '<span class="db-topbar-title">' + (titleMap[currentPage] || '대시보드') + '</span>' +
-      '<div class="db-topbar-actions">' +
-        '<button class="db-topbar-icon" title="알림">' +
+      '<div class="db-topbar-actions" style="position:relative;">' +
+        '<button class="db-topbar-icon" id="notifBtn" title="알림">' +
           '<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3a6 6 0 016 6v3l1.5 2.5H3.5L5 12V9a6 6 0 016-6z" stroke="#333" stroke-width="1.4"/><path d="M9 18a2 2 0 004 0" stroke="#333" stroke-width="1.4" stroke-linecap="round"/></svg>' +
+          '<span class="notif-badge">' + NOTIF_DOCS.length + '</span>' +
         '</button>' +
+        '<div class="notif-panel" id="notifPanel">' +
+          '<div class="notif-panel-header">알림</div>' +
+          NOTIF_DOCS.map(function (doc) {
+            var colorClass = doc.status === 'read' ? 'notif-status--read' : 'notif-status--sent';
+            return '<div class="notif-item" data-id="' + doc.id + '">' +
+              '<div class="notif-item-top">' +
+                '<span class="notif-status ' + colorClass + '">' + doc.statusLabel + '</span>' +
+                '<span class="notif-date">' + doc.date + '</span>' +
+              '</div>' +
+              '<div class="notif-title">' + doc.title + '</div>' +
+              '<div class="notif-recipient">수신인 : ' + doc.recipient + '</div>' +
+            '</div>';
+          }).join('') +
+        '</div>' +
       '</div>'
     );
   }
@@ -97,6 +119,31 @@
       logoutBtn.addEventListener('click', function () {
         sessionStorage.clear();
         window.location.href = base + 'login.html';
+      });
+    }
+
+    /* 알림 패널 토글 */
+    var notifBtn   = document.getElementById('notifBtn');
+    var notifPanel = document.getElementById('notifPanel');
+
+    if (notifBtn && notifPanel) {
+      notifBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        notifPanel.classList.toggle('notif-panel--open');
+      });
+
+      /* 알림 항목 클릭 → 문서 상세 */
+      notifPanel.addEventListener('click', function (e) {
+        var item = e.target.closest('.notif-item');
+        if (!item) return;
+        var id = item.dataset.id;
+        notifPanel.classList.remove('notif-panel--open');
+        window.location.href = base + 'doc-detail.html?id=' + id;
+      });
+
+      /* 외부 클릭 시 닫기 */
+      document.addEventListener('click', function () {
+        notifPanel.classList.remove('notif-panel--open');
       });
     }
   });
