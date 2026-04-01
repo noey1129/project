@@ -458,6 +458,10 @@ document.addEventListener('DOMContentLoaded', function () {
       sessionStorage.removeItem(k);
     });
 
+    /* 발신인: 로그인 유저 (명시적으로 저장) */
+    sessionStorage.setItem('resend_sender_name',  sessionStorage.getItem('user_name')  || '');
+    sessionStorage.setItem('resend_sender_phone', sessionStorage.getItem('user_phone') || '010-1234-5678');
+
     /* 수신인: 해당 문서의 수신인 */
     sessionStorage.setItem('resend_recipient_name',  doc.recipient.name  || '');
     sessionStorage.setItem('resend_recipient_phone', doc.recipient.phone || '');
@@ -468,6 +472,7 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     sessionStorage.setItem('wizard_type', 'rent');
+    sessionStorage.setItem('send_method', 'simple');
     sessionStorage.setItem('resend_mode', 'true');
 
     window.location.href = 'wizard/lease/preview.html';

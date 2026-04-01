@@ -226,6 +226,7 @@ function applyScale() {
   var saved = sessionStorage.getItem('sendit_preview_content');
   docContent.value = saved || generateContent();
   autoResize(docContent);
+  setTimeout(function () { autoResize(docContent); }, 0);
 
   /* 문서 제목 */
   var headingEl = document.getElementById('docHeading');
@@ -236,11 +237,13 @@ function applyScale() {
 
   /* 재발송 모드: 발신인·수신인 자동 입력 (저장값 복원보다 먼저 처리) */
   if (sessionStorage.getItem('resend_mode') === 'true') {
-    var uName  = sessionStorage.getItem('user_name')  || '';
-    var uPhone = sessionStorage.getItem('user_phone') || '';
+    /* 발신인 */
+    var uName  = sessionStorage.getItem('resend_sender_name')  || sessionStorage.getItem('user_name')  || '';
+    var uPhone = sessionStorage.getItem('resend_sender_phone') || sessionStorage.getItem('user_phone') || '';
     document.getElementById('senderName').value  = uName;
     document.getElementById('senderPhone').value = uPhone;
 
+    /* 수신인 */
     var rName  = sessionStorage.getItem('resend_recipient_name')  || '';
     var rPhone = sessionStorage.getItem('resend_recipient_phone') || '';
     var rBirth = sessionStorage.getItem('resend_recipient_birth') || '';
@@ -251,6 +254,8 @@ function applyScale() {
     }
 
     sessionStorage.removeItem('resend_mode');
+    sessionStorage.removeItem('resend_sender_name');
+    sessionStorage.removeItem('resend_sender_phone');
     sessionStorage.removeItem('resend_recipient_name');
     sessionStorage.removeItem('resend_recipient_phone');
     sessionStorage.removeItem('resend_recipient_birth');
