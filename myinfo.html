@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>내 정보 – 로싸인</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="myinfo.css" />
+</head>
+<body class="page-dashboard">
+
+  <div class="db-layout">
+
+    <!-- 사이드바 -->
+    <aside class="db-sidebar" id="dbSidebar"></aside>
+
+    <!-- 메인 영역 -->
+    <div class="db-body">
+
+      <!-- 탑바 -->
+      <header class="db-topbar" id="dbTopbar"></header>
+
+      <!-- 컨텐츠 -->
+      <main class="db-content">
+        <div class="mi-section">
+
+          <div class="mi-title">내 정보 관리</div>
+
+          <div class="mi-form-card">
+            <div class="mi-fields">
+
+              <!-- 이름 (읽기전용) -->
+              <div class="mi-field">
+                <label class="mi-label">이름</label>
+                <input class="mi-input mi-input--readonly" type="text" id="miName" value="홍길동" readonly />
+              </div>
+
+              <!-- 이메일 (읽기전용) -->
+              <div class="mi-field">
+                <label class="mi-label">이메일</label>
+                <input class="mi-input mi-input--readonly" type="email" id="miEmail" value="lawsign@lawsign.com" readonly />
+              </div>
+
+              <!-- 휴대폰 번호 -->
+              <div class="mi-field">
+                <label class="mi-label">휴대폰 번호</label>
+                <input class="mi-input" type="tel" id="miPhone" value="010-1234-5678" />
+              </div>
+
+              <!-- 마케팅 수신 토글 -->
+              <div class="mi-toggle-row">
+                <span class="mi-label mi-label--inline">마케팅 정보 수신 여부</span>
+                <button class="mi-toggle mi-toggle--on" id="miToggle" type="button" aria-pressed="true">
+                  <span class="mi-toggle-knob"></span>
+                </button>
+              </div>
+
+              <!-- 현재 비밀번호 -->
+              <div class="mi-field">
+                <label class="mi-label">현재 비밀번호</label>
+                <input class="mi-input" type="password" id="miPwCurrent" placeholder="현재 비밀번호를 입력해주세요." />
+              </div>
+
+              <!-- 새 비밀번호 -->
+              <div class="mi-field">
+                <label class="mi-label">새 비밀번호</label>
+                <input class="mi-input" type="password" id="miPwNew" placeholder="새 비밀번호를 입력해주세요." />
+                <p class="mi-hint">- 영문, 숫자, 특수기호를 조합하여 8~16자의 문자를 입력해주세요.<br>&nbsp;&nbsp;&nbsp;(공백 입력 불가)</p>
+              </div>
+
+              <!-- 새 비밀번호 확인 -->
+              <div class="mi-field">
+                <label class="mi-label">새 비밀번호 확인</label>
+                <input class="mi-input" type="password" id="miPwConfirm" placeholder="새 비밀번호를 입력해주세요." />
+              </div>
+
+            </div>
+
+            <!-- 저장 버튼 -->
+            <button class="mi-save-btn" id="miSaveBtn" type="button">변경 사항 저장</button>
+          </div>
+
+          <!-- 회원탈퇴 -->
+          <div class="mi-withdraw-row">
+            <button class="mi-withdraw-btn" type="button">
+              <span>회원탈퇴</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#7C7C7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="myinfo.js"></script>
+  <script src="dashboard-helper.js"></script>
+</body>
+</html>
