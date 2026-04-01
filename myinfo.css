@@ -248,8 +248,8 @@
 }
 
 .mi-agree-check:checked {
-  background: #172230;
-  border-color: #172230;
+  background: #FC9950;
+  border-color: #FC9950;
 }
 
 .mi-agree-check:checked::after {
@@ -302,12 +302,12 @@
 }
 
 .mi-wd-confirm:not(:disabled) {
-  background: #B01212;
+  background: #FC9950;
   color: #fff;
 }
 
 .mi-wd-confirm:not(:disabled):hover {
-  background: #8e0e0e;
+  background: #e8872e;
 }
 
 /* ── 저장 완료 토스트 ── */
