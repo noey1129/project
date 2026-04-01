@@ -2,29 +2,55 @@
    LAWSIGN – MYINFO JS
    ================================================================ */
 
-var toggle    = document.getElementById('miToggle');
+var toggle     = document.getElementById('miToggle');
 var phoneInput = document.getElementById('miPhone');
 var pwCurrent  = document.getElementById('miPwCurrent');
 var pwNew      = document.getElementById('miPwNew');
 var pwConfirm  = document.getElementById('miPwConfirm');
 var saveBtn    = document.getElementById('miSaveBtn');
+var nameInput  = document.getElementById('miName');
+var emailInput = document.getElementById('miEmail');
 
-/* ── 초기값 저장 ── */
-var origPhone  = phoneInput ? phoneInput.value : '';
-var origToggle = toggle ? toggle.classList.contains('mi-toggle--on') : true;
+/* ── sessionStorage에서 저장값 불러오기 ── */
+if (phoneInput && sessionStorage.getItem('user_phone')) {
+  phoneInput.value = sessionStorage.getItem('user_phone');
+}
+if (nameInput && sessionStorage.getItem('user_name')) {
+  nameInput.value = sessionStorage.getItem('user_name');
+}
+if (emailInput && sessionStorage.getItem('user_email')) {
+  emailInput.value = sessionStorage.getItem('user_email');
+}
+var savedMarketing = sessionStorage.getItem('user_marketing');
+if (toggle && savedMarketing !== null) {
+  var isOn = savedMarketing === 'true';
+  toggle.classList.toggle('mi-toggle--on', isOn);
+  toggle.classList.toggle('mi-toggle--off', !isOn);
+  toggle.setAttribute('aria-pressed', String(isOn));
+}
+
+/* ── 초기값 스냅샷 ── */
+function getSnapshot() {
+  return {
+    phone:     phoneInput  ? phoneInput.value : '',
+    marketing: toggle      ? toggle.classList.contains('mi-toggle--on') : true,
+    pwCurrent: pwCurrent   ? pwCurrent.value  : '',
+    pwNew:     pwNew       ? pwNew.value      : '',
+    pwConfirm: pwConfirm   ? pwConfirm.value  : '',
+  };
+}
+
+var orig = getSnapshot();
 
 /* ── 변경 여부 체크 → 버튼 활성화 ── */
 function checkDirty() {
-  var phoneChanged  = phoneInput && phoneInput.value !== origPhone;
-  var toggleChanged = toggle && toggle.classList.contains('mi-toggle--on') !== origToggle;
-  var pwFilled      = (pwCurrent && pwCurrent.value) ||
-                      (pwNew     && pwNew.value)      ||
-                      (pwConfirm && pwConfirm.value);
-
-  var isDirty = phoneChanged || toggleChanged || pwFilled;
-  if (saveBtn) {
-    saveBtn.disabled = !isDirty;
-  }
+  var cur = getSnapshot();
+  var isDirty = cur.phone     !== orig.phone     ||
+                cur.marketing !== orig.marketing  ||
+                cur.pwCurrent !== ''              ||
+                cur.pwNew     !== ''              ||
+                cur.pwConfirm !== '';
+  if (saveBtn) saveBtn.disabled = !isDirty;
 }
 
 /* ── 토글 ── */
@@ -57,8 +83,47 @@ if (phoneInput) {
 /* ── 저장 버튼 ── */
 if (saveBtn) {
   saveBtn.addEventListener('click', function () {
-    alert('변경 사항이 저장되었습니다.');
+    /* sessionStorage에 저장 */
+    if (phoneInput) sessionStorage.setItem('user_phone', phoneInput.value);
+    if (toggle)     sessionStorage.setItem('user_marketing', String(toggle.classList.contains('mi-toggle--on')));
+
+    /* 비밀번호 필드 초기화 */
+    if (pwCurrent) pwCurrent.value = '';
+    if (pwNew)     pwNew.value     = '';
+    if (pwConfirm) pwConfirm.value = '';
+
+    /* 사이드바 이메일 표시 업데이트 */
+    var sbEmail = document.querySelector('.sb-profile-email');
+    if (sbEmail && emailInput) sbEmail.textContent = emailInput.value;
+
+    /* 원본값 갱신 → 버튼 비활성화 */
+    orig = getSnapshot();
+    saveBtn.disabled = true;
+
+    /* 저장 완료 토스트 */
+    showToast('변경 사항이 저장되었습니다.');
   });
+}
+
+/* ── 토스트 메시지 ── */
+function showToast(msg) {
+  var existing = document.getElementById('miToast');
+  if (existing) existing.remove();
+
+  var toast = document.createElement('div');
+  toast.id = 'miToast';
+  toast.className = 'mi-toast';
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+
+  requestAnimationFrame(function () {
+    toast.classList.add('mi-toast--show');
+  });
+
+  setTimeout(function () {
+    toast.classList.remove('mi-toast--show');
+    setTimeout(function () { toast.remove(); }, 300);
+  }, 2500);
 }
 
 /* ── 초기 상태: 버튼 비활성화 ── */

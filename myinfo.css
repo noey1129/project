@@ -192,3 +192,26 @@
 .mi-withdraw-btn:hover {
   color: #333;
 }
+
+/* ── 저장 완료 토스트 ── */
+.mi-toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #1C1E21;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 999;
+  white-space: nowrap;
+}
+
+.mi-toast--show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
