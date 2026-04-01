@@ -452,13 +452,11 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('resendBtn').addEventListener('click', function () {
     var doc = getDoc();
 
-    /* 발신인: 로그인 유저 정보 */
-    var userName  = sessionStorage.getItem('user_name')  || '';
-    var userPhone = sessionStorage.getItem('user_phone') || '';
-    sessionStorage.setItem('sendit_preview_senderName',        userName);
-    sessionStorage.setItem('sendit_preview_senderPhone',       userPhone);
-    sessionStorage.setItem('sendit_preview_senderAddr',        '');
-    sessionStorage.setItem('sendit_preview_senderAddrDetail',  '');
+    /* 재발송 전: 이전 미리보기 캐시 초기화 */
+    ['sendit_preview_content', 'sendit_preview_senderName', 'sendit_preview_senderPhone',
+     'sendit_preview_senderAddr', 'sendit_preview_senderAddrDetail', 'doc_title'].forEach(function (k) {
+      sessionStorage.removeItem(k);
+    });
 
     /* 수신인: 해당 문서의 수신인 */
     sessionStorage.setItem('resend_recipient_name',  doc.recipient.name  || '');

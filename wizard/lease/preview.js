@@ -234,18 +234,39 @@ function applyScale() {
     sessionStorage.setItem('doc_title', headingEl.value);
   });
 
-  /* 저장된 발신인 정보 복원 */
-  ['senderName', 'senderPhone', 'senderAddr', 'senderAddrDetail'].forEach(function (id) {
-    var val = sessionStorage.getItem('sendit_preview_' + id);
-    if (val) document.getElementById(id).value = val;
-  });
+  /* 재발송 모드: 발신인·수신인 자동 입력 (저장값 복원보다 먼저 처리) */
+  if (sessionStorage.getItem('resend_mode') === 'true') {
+    var uName  = sessionStorage.getItem('user_name')  || '';
+    var uPhone = sessionStorage.getItem('user_phone') || '';
+    document.getElementById('senderName').value  = uName;
+    document.getElementById('senderPhone').value = uPhone;
+
+    var rName  = sessionStorage.getItem('resend_recipient_name')  || '';
+    var rPhone = sessionStorage.getItem('resend_recipient_phone') || '';
+    var rBirth = sessionStorage.getItem('resend_recipient_birth') || '';
+    document.getElementById('recipientName').value  = rName;
+    document.getElementById('recipientPhone').value = rPhone;
+    if (sendMethod === 'certified' && rBirth) {
+      document.getElementById('recipientBirth').value = rBirth;
+    }
+
+    sessionStorage.removeItem('resend_mode');
+    sessionStorage.removeItem('resend_recipient_name');
+    sessionStorage.removeItem('resend_recipient_phone');
+    sessionStorage.removeItem('resend_recipient_birth');
+  } else {
+    /* 일반 진입: 저장된 발신인 정보 복원 */
+    ['senderName', 'senderPhone', 'senderAddr', 'senderAddrDetail'].forEach(function (id) {
+      var val = sessionStorage.getItem('sendit_preview_' + id);
+      if (val) document.getElementById(id).value = val;
+    });
+  }
 
   /* 주소 토글 */
   var addrToggle     = document.getElementById('addrToggle');
   var senderAddrWrap = document.getElementById('senderAddrWrap');
   var addrNoneHint   = document.getElementById('addrNoneHint');
 
-  /* 저장된 주소 있으면 토글 ON */
   if (document.getElementById('senderAddr').value) {
     addrToggle.checked           = true;
     senderAddrWrap.style.display = '';
@@ -262,30 +283,6 @@ function applyScale() {
     }
     checkRequired();
   });
-
-  /* 재발송 모드: 발신인·수신인 자동 입력 */
-  if (sessionStorage.getItem('resend_mode') === 'true') {
-    /* 발신인: 현재 로그인 유저 */
-    var uName  = sessionStorage.getItem('user_name')  || '';
-    var uPhone = sessionStorage.getItem('user_phone') || '';
-    document.getElementById('senderName').value  = uName;
-    document.getElementById('senderPhone').value = uPhone;
-
-    /* 수신인: 해당 문서 정보 */
-    var rName  = sessionStorage.getItem('resend_recipient_name')  || '';
-    var rPhone = sessionStorage.getItem('resend_recipient_phone') || '';
-    var rBirth = sessionStorage.getItem('resend_recipient_birth') || '';
-    document.getElementById('recipientName').value  = rName;
-    document.getElementById('recipientPhone').value = rPhone;
-    if (sendMethod === 'certified' && rBirth) {
-      document.getElementById('recipientBirth').value = rBirth;
-    }
-
-    sessionStorage.removeItem('resend_mode');
-    sessionStorage.removeItem('resend_recipient_name');
-    sessionStorage.removeItem('resend_recipient_phone');
-    sessionStorage.removeItem('resend_recipient_birth');
-  }
 
   checkRequired();
 })();
