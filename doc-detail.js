@@ -470,6 +470,7 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
     sessionStorage.setItem('wizard_type', 'rent');
+    sessionStorage.setItem('resend_mode', 'true');
 
     window.location.href = 'wizard/lease/preview.html';
   });

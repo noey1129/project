@@ -12,8 +12,14 @@ var nameInput  = document.getElementById('miName');
 var emailInput = document.getElementById('miEmail');
 
 /* ── sessionStorage에서 저장값 불러오기 ── */
-if (phoneInput && sessionStorage.getItem('user_phone')) {
-  phoneInput.value = sessionStorage.getItem('user_phone');
+if (phoneInput) {
+  var savedPhone = sessionStorage.getItem('user_phone');
+  if (savedPhone) {
+    phoneInput.value = savedPhone;
+  } else {
+    /* 초기값을 sessionStorage에 저장해두어 재발송 등에서 바로 사용 가능하게 */
+    sessionStorage.setItem('user_phone', phoneInput.value);
+  }
 }
 if (nameInput && sessionStorage.getItem('user_name')) {
   nameInput.value = sessionStorage.getItem('user_name');
