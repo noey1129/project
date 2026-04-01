@@ -169,7 +169,12 @@
   outline: none;
 }
 
-/* ── 회원탈퇴 ── */
+/* ── 섹션 숨김 ── */
+.mi-section--hidden {
+  display: none;
+}
+
+/* ── 회원탈퇴 링크 행 ── */
 .mi-withdraw-row {
   display: flex;
   justify-content: flex-end;
@@ -191,6 +196,109 @@
 
 .mi-withdraw-btn:hover {
   color: #333;
+}
+
+/* ── 회원탈퇴 안내 문구 ── */
+.mi-withdraw-notice {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333333;
+  line-height: 22px;
+  margin: 0;
+}
+
+/* ── 탈퇴 사유 textarea ── */
+.mi-textarea {
+  height: 150px;
+  padding: 14px 15px;
+  resize: none;
+}
+
+/* ── 동의 체크박스 행 ── */
+.mi-agree-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333333;
+  line-height: 22px;
+}
+
+.mi-agree-check {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #DDDDDD;
+  border-radius: 3px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.mi-agree-check:checked {
+  background: #172230;
+  border-color: #172230;
+}
+
+.mi-agree-check:checked::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+/* ── 탈퇴 버튼 쌍 ── */
+.mi-withdraw-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.mi-wd-cancel,
+.mi-wd-confirm {
+  flex: 1;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mi-wd-cancel {
+  background: #fff;
+  border: none;
+  outline: 1px solid #D7DBDF;
+  color: #1C1E21;
+  font-weight: 500;
+}
+
+.mi-wd-cancel:hover {
+  background: #F2F3F6;
+}
+
+.mi-wd-confirm {
+  background: #EEEEEE;
+  border: none;
+  color: #8C8C8C;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mi-wd-confirm:not(:disabled) {
+  background: #B01212;
+  color: #fff;
+}
+
+.mi-wd-confirm:not(:disabled):hover {
+  background: #8e0e0e;
 }
 
 /* ── 저장 완료 토스트 ── */

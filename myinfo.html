@@ -25,7 +25,9 @@
 
       <!-- 컨텐츠 -->
       <main class="db-content">
-        <div class="mi-section">
+
+        <!-- 내 정보 관리 섹션 -->
+        <div class="mi-section" id="miInfoSection">
 
           <div class="mi-title">내 정보 관리</div>
 
@@ -83,15 +85,52 @@
             <button class="mi-save-btn" id="miSaveBtn" type="button">변경 사항 저장</button>
           </div>
 
-          <!-- 회원탈퇴 -->
+          <!-- 회원탈퇴 링크 -->
           <div class="mi-withdraw-row">
-            <button class="mi-withdraw-btn" type="button">
+            <button class="mi-withdraw-btn" id="miWithdrawLink" type="button">
               <span>회원탈퇴</span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#7C7C7C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
           </div>
 
         </div>
+
+        <!-- 회원탈퇴 섹션 -->
+        <div class="mi-section mi-section--hidden" id="miWithdrawSection">
+
+          <div class="mi-title">회원탈퇴</div>
+
+          <div class="mi-form-card">
+            <p class="mi-withdraw-notice">
+              탈퇴일로부터 30일 이내에는 개인정보와 데이터가 보존되며 복구할 수 있습니다.<br/>
+              탈퇴일로부터 30일 이후에는 개인정보, 발송문서, 증명서를 제외한 모든 데이터가 삭제됩니다. 삭제된 데이터는 복구되지 않으니 필요한 데이터는 미리 백업해주세요.<br/>
+              내용증명에 사용된 개인정보 및 문서의 모든 정보는 법적 분쟁 및 위변조 방지에 대응하기 위해 로싸인 서버에 보존합니다.<br/>
+              개인정보 처리방침 제5조(개인정보의 보유 및 이용기간)에 따른 특별한 경우 한시적으로 개인정보를 보존합니다.<br/>
+              탈퇴일로부터 30일 이후 계정 파기가 완료되면, 해당 계정의 이메일 주소로 새로 가입할 수 있습니다.<br/>
+              단, 기존 정보는 파기되어 복구할 수 없습니다.
+            </p>
+
+            <!-- 탈퇴 사유 -->
+            <div class="mi-field">
+              <label class="mi-label" style="font-size:15px;font-weight:600;">탈퇴사유</label>
+              <textarea class="mi-input mi-textarea" id="miWithdrawReason" placeholder="탈퇴사유를 입력해 주세요."></textarea>
+            </div>
+
+            <!-- 동의 체크박스 -->
+            <label class="mi-agree-row">
+              <input type="checkbox" id="miWithdrawAgree" class="mi-agree-check" />
+              <span>탈퇴 주의사항을 모두 확인했으며, 이에 동의합니다.</span>
+            </label>
+
+            <!-- 버튼 -->
+            <div class="mi-withdraw-btns">
+              <button class="mi-wd-cancel" id="miWithdrawCancel" type="button">취소</button>
+              <button class="mi-wd-confirm" id="miWithdrawConfirm" type="button" disabled>탈퇴하기</button>
+            </div>
+          </div>
+
+        </div>
+
       </main>
 
     </div>

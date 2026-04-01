@@ -128,3 +128,43 @@ function showToast(msg) {
 
 /* ── 초기 상태: 버튼 비활성화 ── */
 checkDirty();
+
+/* ── 회원탈퇴 섹션 전환 ── */
+var infoSection     = document.getElementById('miInfoSection');
+var withdrawSection = document.getElementById('miWithdrawSection');
+var withdrawLink    = document.getElementById('miWithdrawLink');
+var withdrawCancel  = document.getElementById('miWithdrawCancel');
+var withdrawConfirm = document.getElementById('miWithdrawConfirm');
+var withdrawAgree   = document.getElementById('miWithdrawAgree');
+
+if (withdrawLink) {
+  withdrawLink.addEventListener('click', function () {
+    infoSection.classList.add('mi-section--hidden');
+    withdrawSection.classList.remove('mi-section--hidden');
+  });
+}
+
+if (withdrawCancel) {
+  withdrawCancel.addEventListener('click', function () {
+    withdrawSection.classList.add('mi-section--hidden');
+    infoSection.classList.remove('mi-section--hidden');
+    /* 초기화 */
+    if (withdrawAgree) withdrawAgree.checked = false;
+    if (withdrawConfirm) withdrawConfirm.disabled = true;
+    var reason = document.getElementById('miWithdrawReason');
+    if (reason) reason.value = '';
+  });
+}
+
+if (withdrawAgree) {
+  withdrawAgree.addEventListener('change', function () {
+    if (withdrawConfirm) withdrawConfirm.disabled = !this.checked;
+  });
+}
+
+if (withdrawConfirm) {
+  withdrawConfirm.addEventListener('click', function () {
+    sessionStorage.clear();
+    window.location.href = 'index.html';
+  });
+}
