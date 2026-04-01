@@ -86,12 +86,15 @@
                    body.classList.contains('page-preview') ||
                    body.classList.contains('page-select');
     if (!isWizard && !document.querySelector('footer.footer')) {
+      var footer = document.createElement('footer');
+      footer.className = 'footer';
+      footer.innerHTML = buildFooter();
       var main = document.querySelector('main');
       if (main) {
-        var footer = document.createElement('footer');
-        footer.className = 'footer';
-        footer.innerHTML = buildFooter();
         main.insertAdjacentElement('afterend', footer);
+      } else {
+        /* main 없는 페이지(index 등): body 끝에 삽입 */
+        document.body.appendChild(footer);
       }
     }
 
