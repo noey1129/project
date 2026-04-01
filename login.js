@@ -19,10 +19,27 @@ var DUMMY_USERS = [
   { email: 'test@sendit.kr', password: '1234' },
 ];
 
+/* ── 관리자 계정 ── */
+var ADMIN_USERS = [
+  { id: 'admin', password: 'admin1234' },
+];
+
 document.getElementById('loginForm').addEventListener('submit', function (e) {
   e.preventDefault();
   var email = emailInput.value.trim();
   var pw    = pwInput.value;
+
+  /* 관리자 로그인 체크 */
+  var adminMatch = ADMIN_USERS.find(function (u) { return u.id === email && u.password === pw; });
+  if (adminMatch) {
+    sessionStorage.setItem('admin_logged_in', 'true');
+    sessionStorage.setItem('admin_name', '홍길동');
+    sessionStorage.setItem('admin_email', 'Lawsign@Lawsign.com');
+    window.location.href = 'admin/admin-dashboard.html';
+    return;
+  }
+
+  /* 일반 유저 로그인 */
   var match = DUMMY_USERS.find(function (u) { return u.email === email && u.password === pw; });
   if (match) {
     sessionStorage.setItem('logged_in', 'true');

@@ -69,9 +69,12 @@
       </form>
 
       <!-- TODO: 테스트용 — 출시 전 제거 -->
-      <div style="margin-top:20px; padding-top:16px; border-top:1px dashed #E7E9EB;">
+      <div style="margin-top:20px; padding-top:16px; border-top:1px dashed #E7E9EB; display:flex; flex-direction:column; gap:8px;">
         <button onclick="quickLogin()" style="width:100%;padding:12px 16px;background:#F8F9FA;border:1px dashed #D7DBDF;border-radius:8px;font-size:13px;color:#696B6D;cursor:pointer;font-family:inherit;text-align:left;">
           🧪 테스트 유저로 바로 로그인 &nbsp;<span style="color:#AFAFAF;">test@sendit.kr / 1234</span>
+        </button>
+        <button onclick="quickAdminLogin()" style="width:100%;padding:12px 16px;background:#F0F2F5;border:1px dashed #C6CAD3;border-radius:8px;font-size:13px;color:#2B3347;cursor:pointer;font-family:inherit;text-align:left;">
+          🔐 관리자로 바로 로그인 &nbsp;<span style="color:#AFAFAF;">admin / admin1234</span>
         </button>
       </div>
 
@@ -84,6 +87,12 @@
       sessionStorage.setItem('logged_in', 'true');
       sessionStorage.setItem('user_name', '홍길동');
       window.location.href = 'mypage.html';
+    }
+    function quickAdminLogin() {
+      sessionStorage.setItem('admin_logged_in', 'true');
+      sessionStorage.setItem('admin_name', '홍길동');
+      sessionStorage.setItem('admin_email', 'Lawsign@Lawsign.com');
+      window.location.href = 'admin/admin-dashboard.html';
     }
   </script>
   <script src="common-helper.js"></script>

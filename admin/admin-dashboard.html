@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>대시보드 – Lawsign 관리자</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="page-admin">
+
+  <div class="adm-layout">
+    <!-- 사이드바 -->
+    <aside class="adm-sidebar" id="admSidebar"></aside>
+
+    <!-- 메인 -->
+    <div class="adm-body">
+      <!-- 탑바 -->
+      <header class="adm-topbar" id="admTopbar"></header>
+
+      <!-- 컨텐츠 -->
+      <main class="adm-content">
+
+        <!-- 통계 카드 4개 -->
+        <div class="adm-stat-grid">
+          <div class="adm-stat-card">
+            <div class="adm-stat-label">이번 달 매출</div>
+            <div class="adm-stat-value">3,284,200</div>
+            <div class="adm-stat-change">▲ 전월 대비 12.4% 증가</div>
+          </div>
+          <div class="adm-stat-card">
+            <div class="adm-stat-label">이번 달 발송 건수</div>
+            <div class="adm-stat-value">248</div>
+            <div class="adm-stat-change">▲ 전월 대비 8.3% 증가</div>
+          </div>
+          <div class="adm-stat-card">
+            <div class="adm-stat-label">이번 달 신규가입 회원</div>
+            <div class="adm-stat-value">1,042</div>
+            <div class="adm-stat-change">▲ 전월 대비 34명 증가</div>
+          </div>
+          <div class="adm-stat-card">
+            <div class="adm-stat-label">금일 발송 건수</div>
+            <div class="adm-stat-value">32</div>
+            <div class="adm-stat-change adm-stat-change--down">▼ 전일 대비 3건 감소</div>
+          </div>
+        </div>
+
+        <!-- 차트 행 -->
+        <div class="adm-chart-row">
+          <!-- 발송 방식 비율 (도넛) -->
+          <div class="adm-donut-card">
+            <div class="adm-chart-title">발송 방식 비율</div>
+            <div class="adm-donut-wrap">
+              <div class="adm-donut">
+                <div class="adm-donut-inner">
+                  <span class="adm-donut-count">248</span>
+                  <span class="adm-donut-sub">총 발송</span>
+                </div>
+              </div>
+              <div class="adm-legend">
+                <div class="adm-legend-item">
+                  <div class="adm-legend-label">
+                    <span class="adm-legend-dot" style="background:#2B3347;"></span>
+                    카카오 전자문서
+                  </div>
+                  <div>
+                    <span class="adm-legend-count">154건</span>
+                    <span class="adm-legend-pct">(62%)</span>
+                  </div>
+                </div>
+                <div class="adm-legend-item">
+                  <div class="adm-legend-label">
+                    <span class="adm-legend-dot" style="background:#FC9950;"></span>
+                    카카오 알림톡
+                  </div>
+                  <div>
+                    <span class="adm-legend-count">94건</span>
+                    <span class="adm-legend-pct">(38%)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 최근 7일 발송 현황 (막대) -->
+          <div class="adm-bar-card">
+            <div class="adm-chart-title">최근 7일 발송 현황</div>
+            <div class="adm-bar-chart">
+              <div class="adm-bar-yaxis">
+                <span>41</span>
+                <span>31</span>
+                <span>21</span>
+                <span>10</span>
+                <span>0</span>
+              </div>
+              <div class="adm-bar-cols">
+                <!-- 27 / 3/5 -->
+                <div class="adm-bar-col">
+                  <span class="adm-bar-num">27</span>
+                  <div class="adm-bar-rect" style="height:154px;"></div>
+                  <span class="adm-bar-date">3/5</span>
+                </div>
+                <!-- 36 / 3/6 -->
+                <div class="adm-bar-col">
+                  <span class="adm-bar-num">36</span>
+                  <div class="adm-bar-rect" style="height:196px;"></div>
+                  <span class="adm-bar-date">3/6</span>
+                </div>
+                <!-- 18 / 3/7 -->
+                <div class="adm-bar-col">
+                  <span class="adm-bar-num">18</span>
+                  <div class="adm-bar-rect" style="height:89px;"></div>
+                  <span class="adm-bar-date">3/7</span>
+                </div>
+                <!-- 34 / 3/8 -->
+                <div class="adm-bar-col">
+                  <span class="adm-bar-num">34</span>
+                  <div class="adm-bar-rect" style="height:185px;"></div>
+                  <span class="adm-bar-date">3/8</span>
+                </div>
+                <!-- 29 / 3/9 -->
+                <div class="adm-bar-col">
+                  <span class="adm-bar-num">29</span>
+                  <div class="adm-bar-rect" style="height:154px;"></div>
+                  <span class="adm-bar-date">3/9</span>
+                </div>
+                <!-- 23 / 3/10 -->
+                <div class="adm-bar-col">
+                  <span class="adm-bar-num">23</span>
+                  <div class="adm-bar-rect" style="height:120px;"></div>
+                  <span class="adm-bar-date">3/10</span>
+                </div>
+                <!-- 32 / 3/11 (오늘 = 오렌지) -->
+                <div class="adm-bar-col">
+                  <span class="adm-bar-num adm-bar-num--today">32</span>
+                  <div class="adm-bar-rect adm-bar-rect--today" style="height:172px;"></div>
+                  <span class="adm-bar-date">3/11</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 최근 발송 내역 -->
+        <div class="adm-table-card">
+          <div class="adm-table-header">
+            <div class="adm-chart-title">최근 발송 내역</div>
+            <button class="adm-more-btn">더보기</button>
+          </div>
+          <table class="adm-table">
+            <thead>
+              <tr>
+                <th>발송인</th>
+                <th>문서 내용</th>
+                <th>발송 방법</th>
+                <th>상태</th>
+                <th>업데이트</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>홍길동</td>
+                <td><span class="adm-type-badge adm-type--rent">임대차</span>&nbsp; 내용증명을 발송했습니다.</td>
+                <td class="adm-table-method--certified">카카오 전자문서</td>
+                <td>강원Dorm</td>
+                <td>2025-03-03 13:21</td>
+              </tr>
+              <tr>
+                <td>김민준</td>
+                <td><span class="adm-type-badge adm-type--loan">대여금</span>&nbsp; 내용증명을 발송했습니다.</td>
+                <td class="adm-table-method--simple">카카오 알림톡</td>
+                <td>청송보양병원</td>
+                <td>2025-03-03 13:21</td>
+              </tr>
+              <tr>
+                <td>이영희</td>
+                <td><span class="adm-type-badge adm-type--contract">계약관련</span>&nbsp; 내용증명을 발송했습니다.</td>
+                <td class="adm-table-method--certified">카카오 전자문서</td>
+                <td>스타하드리움</td>
+                <td>2025-03-03 13:21</td>
+              </tr>
+              <tr>
+                <td>박지수</td>
+                <td><span class="adm-type-badge adm-type--rent">임대차</span>&nbsp; 내용증명을 발송했습니다.</td>
+                <td class="adm-table-method--simple">카카오 알림톡</td>
+                <td>은가비 다육카페</td>
+                <td>2025-03-03 13:21</td>
+              </tr>
+              <tr>
+                <td>최현우</td>
+                <td><span class="adm-type-badge adm-type--noise">층간소음</span>&nbsp; 내용증명을 발송했습니다.</td>
+                <td class="adm-table-method--certified">카카오 전자문서</td>
+                <td>훈촌닭가</td>
+                <td>2025-03-03 13:21</td>
+              </tr>
+              <tr>
+                <td>최상엽</td>
+                <td><span class="adm-type-badge adm-type--refund">회원권 환불</span>&nbsp; 내용증명을 발송했습니다.</td>
+                <td class="adm-table-method--certified">카카오 전자문서</td>
+                <td>어도99</td>
+                <td>2025-03-03 13:21</td>
+              </tr>
+              <tr>
+                <td>이승협</td>
+                <td><span class="adm-type-badge adm-type--done">발송완료</span>&nbsp; 내용증명을 발송했습니다.</td>
+                <td class="adm-table-method--simple">카카오 알림톡</td>
+                <td>스트릿진 위지옥집</td>
+                <td>2025-03-03 13:21</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="admin-helper.js"></script>
+</body>
+</html>
