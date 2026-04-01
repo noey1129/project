@@ -209,16 +209,23 @@ function applyScale() {
   var methodNotice = document.getElementById('methodNotice');
   var birthRow     = document.getElementById('recipientBirthRow');
 
+  /* 수신인 역할 셀 rowspan: certified=2, simple=1 */
+  var recipientRoleTd = document.getElementById('recipientBirthRow')
+    .previousElementSibling
+    .querySelector('.doc-role-label');
+
   if (sendMethod === 'certified') {
     methodBadge.textContent  = '전자문서 + 공전소';
     methodBadge.className    = 'doc-method-badge doc-method-badge--certified';
     methodNotice.textContent = '수신인 생년월일이 있어야 본인 인증 후 발송됩니다.';
     birthRow.style.display   = '';
+    if (recipientRoleTd) recipientRoleTd.rowSpan = 2;
   } else {
     methodBadge.textContent  = '알림톡 + 공전소';
     methodBadge.className    = 'doc-method-badge doc-method-badge--simple';
     methodNotice.textContent = '카카오 알림톡으로 발송됩니다.';
     birthRow.style.display   = 'none';
+    if (recipientRoleTd) recipientRoleTd.rowSpan = 1;
   }
 
   /* 내용 자동 생성 */
