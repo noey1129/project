@@ -158,8 +158,15 @@
   box-sizing: border-box;
 }
 
-.mi-save-btn:hover {
+.mi-save-btn:hover:not(:disabled) {
   background: #e8872e;
+}
+
+.mi-save-btn:disabled {
+  background: #E7E9EB;
+  color: #8A9097;
+  cursor: default;
+  outline: none;
 }
 
 /* ── 회원탈퇴 ── */
