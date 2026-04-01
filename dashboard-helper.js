@@ -89,7 +89,10 @@
           '<span class="notif-badge">' + NOTIF_DOCS.length + '</span>' +
         '</button>' +
         '<div class="notif-panel" id="notifPanel">' +
-          '<div class="notif-panel-header">알림</div>' +
+          '<div class="notif-panel-header">' +
+          '<span>알림</span>' +
+          '<button class="notif-clear-btn" id="notifClearBtn">전체 삭제</button>' +
+        '</div>' +
           NOTIF_DOCS.map(function (doc) {
             var colorClass = doc.status === 'read' ? 'notif-status--read' : 'notif-status--sent';
             return '<div class="notif-item" data-id="' + doc.id + '">' +
@@ -131,6 +134,17 @@
         e.stopPropagation();
         notifPanel.classList.toggle('notif-panel--open');
       });
+
+      /* 전체 삭제 */
+      var clearBtn = document.getElementById('notifClearBtn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var items = notifPanel.querySelectorAll('.notif-item');
+          items.forEach(function (item) { item.remove(); });
+          notifBtn.querySelector('.notif-badge').style.display = 'none';
+        });
+      }
 
       /* 알림 항목 클릭 → 문서 상세 */
       notifPanel.addEventListener('click', function (e) {
