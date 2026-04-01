@@ -135,7 +135,7 @@ function toggleFaq(btn) {
 
 /* ── Sit-card & Trust-card hover ── */
 (function initCardHover() {
-  ['.sit-card', '.trust-card', '.pricing-card'].forEach(sel => {
+  ['.trust-card', '.pricing-card'].forEach(sel => {
     document.querySelectorAll(sel).forEach(card => {
       card.style.transition = 'transform .25s, box-shadow .25s';
       card.addEventListener('mouseenter', () => {
