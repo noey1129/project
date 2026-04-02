@@ -61,8 +61,7 @@ function render() {
 
   var tbody = document.getElementById('memTbody');
   tbody.innerHTML = page.map(function (m, idx) {
-    var rowClass = idx % 2 === 1 ? ' class="mem-row--alt"' : '';
-    return '<tr' + rowClass + ' data-id="' + m.id + '">' +
+    return '<tr data-id="' + m.id + '">' +
       '<td style="text-align:center;">' + (start + idx + 1) + '</td>' +
       '<td style="text-align:center;">' + m.name + '</td>' +
       '<td style="text-align:center;">' + methodBadge(m.method) + '</td>' +

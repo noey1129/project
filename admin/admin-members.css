@@ -149,6 +149,7 @@
 .mem-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .mem-table thead tr {
@@ -178,7 +179,11 @@
   border-bottom: none;
 }
 
-.mem-row--alt {
+.mem-table tbody tr {
+  cursor: pointer;
+}
+
+.mem-table tbody tr:hover td {
   background: #EEF1F5;
 }
 
