@@ -117,6 +117,51 @@ function renderPagination(totalPages) {
   document.getElementById('pgLast').addEventListener('click',  function () { currentPage = totalPages; render(); });
 }
 
+/* ── 날짜 범위 피커 상태 ── */
+var calYear    = new Date().getFullYear();
+var calMonth   = new Date().getMonth();
+var rangeStart = null;
+var rangeEnd   = null;
+var calPicking = false;
+
+function pad2(n) { return String(n).padStart(2, '0'); }
+
+function renderCal() {
+  var monthNames = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+  document.getElementById('adhCalMonthLabel').textContent = calYear + '년 ' + monthNames[calMonth];
+
+  var t = new Date();
+  var todayStr = t.getFullYear() + '-' + pad2(t.getMonth()+1) + '-' + pad2(t.getDate());
+  var firstDay    = new Date(calYear, calMonth, 1).getDay();
+  var daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+  var html = '';
+  for (var i = 0; i < firstDay; i++) {
+    html += '<div class="adh-cal-day adh-cal-day--empty"></div>';
+  }
+  for (var d = 1; d <= daysInMonth; d++) {
+    var ds  = calYear + '-' + pad2(calMonth + 1) + '-' + pad2(d);
+    var cls = 'adh-cal-day';
+    if (ds === todayStr) cls += ' adh-cal-day--today';
+    if (rangeStart && ds === rangeStart) cls += ' adh-cal-day--start';
+    if (rangeEnd   && ds === rangeEnd)   cls += ' adh-cal-day--end';
+    if (rangeStart && rangeEnd && ds > rangeStart && ds < rangeEnd) cls += ' adh-cal-day--range';
+    html += '<div class="' + cls + '" data-date="' + ds + '">' + d + '</div>';
+  }
+  document.getElementById('adhCalGrid').innerHTML = html;
+}
+
+function updateDateLabel() {
+  var lbl = document.getElementById('adhDateLabel');
+  if (rangeStart && rangeEnd) {
+    lbl.textContent = rangeStart.replace(/-/g, '.') + ' ~ ' + rangeEnd.replace(/-/g, '.');
+  } else if (rangeStart) {
+    lbl.textContent = rangeStart.replace(/-/g, '.') + ' ~ ...';
+  } else {
+    lbl.textContent = '날짜 선택';
+  }
+}
+
 /* ── 드롭다운 초기화 ── */
 function initDropdown(selId, dropId, onSelect) {
   var sel  = document.getElementById(selId);
@@ -129,6 +174,7 @@ function initDropdown(selId, dropId, onSelect) {
   });
 
   drop.addEventListener('click', function (e) {
+    e.stopPropagation();
     var item = e.target.closest('.adh-dropdown-item');
     if (!item) return;
     drop.querySelectorAll('.adh-dropdown-item').forEach(function (el) {
@@ -158,18 +204,74 @@ document.addEventListener('DOMContentLoaded', function () {
     applyFilter();
   });
 
-  /* 드롭다운 외부 클릭 닫기 */
+  /* ── 날짜 범위 피커 ── */
+  var datePopup   = document.getElementById('adhDatePopup');
+  var dateTrigger = document.getElementById('adhDateTrigger');
+
+  dateTrigger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isOpen = datePopup.classList.contains('adh-daterange-popup--open');
+    datePopup.classList.toggle('adh-daterange-popup--open', !isOpen);
+    if (!isOpen) renderCal();
+  });
+
+  datePopup.addEventListener('click', function (e) { e.stopPropagation(); });
+
+  document.getElementById('adhCalPrev').addEventListener('click', function () {
+    calMonth--;
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    renderCal();
+  });
+
+  document.getElementById('adhCalNext').addEventListener('click', function () {
+    calMonth++;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    renderCal();
+  });
+
+  document.getElementById('adhCalGrid').addEventListener('click', function (e) {
+    var day = e.target.closest('.adh-cal-day');
+    if (!day || day.classList.contains('adh-cal-day--empty') || !day.dataset.date) return;
+    var ds = day.dataset.date;
+    if (!calPicking) {
+      rangeStart = ds;
+      rangeEnd   = null;
+      calPicking = true;
+    } else {
+      if (ds < rangeStart) { rangeEnd = rangeStart; rangeStart = ds; }
+      else                 { rangeEnd = ds; }
+      calPicking = false;
+    }
+    updateDateLabel();
+    renderCal();
+  });
+
+  document.getElementById('adhDateReset').addEventListener('click', function () {
+    rangeStart = null; rangeEnd = null; calPicking = false;
+    fDateFrom = ''; fDateTo = '';
+    updateDateLabel();
+    renderCal();
+    applyFilter();
+  });
+
+  document.getElementById('adhDateApply').addEventListener('click', function () {
+    fDateFrom = rangeStart || '';
+    fDateTo   = rangeEnd   || rangeStart || '';
+    datePopup.classList.remove('adh-daterange-popup--open');
+    applyFilter();
+  });
+
+  /* 드롭다운 + 피커 외부 클릭 닫기 */
   document.addEventListener('click', function () {
     document.querySelectorAll('.adh-dropdown--open').forEach(function (el) {
       el.classList.remove('adh-dropdown--open');
     });
+    datePopup.classList.remove('adh-daterange-popup--open');
   });
 
   /* 검색 버튼 */
   function doSearch() {
-    fQuery    = document.getElementById('adhSearchInput').value.trim();
-    fDateFrom = document.getElementById('adhDateFrom').value;
-    fDateTo   = document.getElementById('adhDateTo').value;
+    fQuery = document.getElementById('adhSearchInput').value.trim();
     applyFilter();
   }
 

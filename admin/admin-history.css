@@ -123,34 +123,164 @@
   background: #EEF1F5;
 }
 
-/* 날짜 검색 */
-.adh-date-wrap {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+/* 날짜 범위 피커 */
+.adh-daterange-wrap {
+  position: relative;
 }
 
-.adh-date-input {
-  height: 40px;
-  padding: 0 10px;
+.adh-daterange-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #fff;
   border: 1px solid #D7DBDF;
   border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
   font-size: 14px;
   font-family: inherit;
   color: #1C1E21;
-  outline: none;
+  font-weight: 500;
+  transition: background 0.12s;
+}
+
+.adh-daterange-trigger:hover { background: #F2F3F6; }
+
+.adh-daterange-popup {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 272px;
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  z-index: 200;
+  padding: 16px;
   box-sizing: border-box;
+}
+
+.adh-daterange-popup--open { display: block; }
+
+.adh-cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.adh-cal-nav {
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1C1E21;
+  transition: background 0.12s;
 }
 
-.adh-date-input:focus {
-  border-color: #2B3347;
-}
+.adh-cal-nav:hover { background: #EEF1F5; }
 
-.adh-date-sep {
+.adh-cal-month {
   font-size: 14px;
-  color: #8C8C8C;
+  font-weight: 700;
+  color: #1C1E21;
 }
+
+.adh-cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 4px;
+}
+
+.adh-cal-weekday {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8C8C8C;
+  padding: 3px 0;
+}
+
+.adh-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+
+.adh-cal-day {
+  text-align: center;
+  padding: 6px 0;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #1C1E21;
+  transition: background 0.1s;
+  user-select: none;
+}
+
+.adh-cal-day:hover:not(.adh-cal-day--empty) { background: #EEF1F5; }
+.adh-cal-day--empty { cursor: default; }
+.adh-cal-day--today { font-weight: 700; color: #172230; }
+
+.adh-cal-day--start,
+.adh-cal-day--end {
+  background: #172230 !important;
+  color: #fff !important;
+  border-radius: 4px;
+}
+
+.adh-cal-day--range {
+  background: #EEF1F5;
+  border-radius: 0;
+  color: #1C1E21;
+}
+
+.adh-cal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #F0F2F5;
+}
+
+.adh-cal-reset {
+  height: 30px;
+  padding: 0 12px;
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-radius: 5px;
+  font-size: 13px;
+  color: #696B6D;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s;
+}
+
+.adh-cal-reset:hover { background: #F2F3F6; }
+
+.adh-cal-apply {
+  height: 30px;
+  padding: 0 16px;
+  background: #172230;
+  border: none;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.12s;
+}
+
+.adh-cal-apply:hover { opacity: 0.85; }
 
 /* 검색 input */
 .adh-search-input-wrap {
