@@ -260,8 +260,8 @@ body.page-admin {
 
 /* 도넛 차트 카드 */
 .adm-donut-card {
-  width: 310px;
-  flex-shrink: 0;
+  flex: 0 0 calc(25% - 15px);
+  min-width: 0;
   background: #fff;
   border-radius: 10px;
   padding: 20px;
