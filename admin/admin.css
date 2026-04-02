@@ -406,52 +406,57 @@ body.page-admin {
 
 .adm-bar-chart {
   display: flex;
-  align-items: stretch;
-  height: 240px;
-  position: relative;
+  gap: 0;
+  height: 220px;
 }
 
-/* 그리드 */
-.adm-bar-grid {
+/* Y축 */
+.adm-bar-yaxis {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: space-between;
-  position: absolute;
-  inset: 0 0 24px 0;
-  pointer-events: none;
-}
-
-.adm-bar-grid-row {
-  display: flex;
   align-items: flex-end;
-  gap: 8px;
-  flex: 1;
+  padding-bottom: 22px;
+  width: 28px;
+  flex-shrink: 0;
 }
 
-.adm-bar-grid-row:last-child { flex: 0; }
-
-.adm-bar-grid-label {
+.adm-bar-yaxis span {
   font-size: 11px;
   color: #AFAFAF;
-  width: 22px;
-  text-align: right;
-  flex-shrink: 0;
   line-height: 1;
 }
 
-.adm-bar-grid-line {
+/* 플롯 영역 */
+.adm-bar-plot {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.adm-bar-plot-inner {
+  flex: 1;
+  position: relative;
+  border-left: 1px solid #EFEFEF;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+/* 수평 그리드 라인 */
+.adm-bar-hline {
+  position: absolute;
+  left: 0; right: 0;
   height: 1px;
-  background: #F0F2F5;
+  background: #F3F4F6;
 }
 
 /* 컬럼 */
 .adm-bar-cols {
-  flex: 1;
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  padding: 0 0 0 34px;
+  padding: 8px 8px 0;
   box-sizing: border-box;
 }
 
@@ -459,9 +464,23 @@ body.page-admin {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  justify-content: flex-end;
-  height: calc(100% - 24px);
+  gap: 0;
+}
+
+/* 날짜 레이블 행 */
+.adm-bar-dates {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 8px;
+  margin-top: 4px;
+}
+
+.adm-bar-date {
+  font-size: 11px;
+  color: #AFAFAF;
+  white-space: nowrap;
+  text-align: center;
+  flex: 1;
 }
 
 .adm-bar-group {

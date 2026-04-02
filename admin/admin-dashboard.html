@@ -179,19 +179,21 @@
         else day.simple++;
       });
 
-      var MAX_H  = 200;
+      var MAX_H  = 160;
       var maxVal = Math.max.apply(null, days.map(function (d) { return Math.max(d.certified, d.simple); }));
       var yMax   = maxVal < 5 ? 5 : (Math.ceil(maxVal / 5) * 5);
       var yStep  = yMax / 4;
 
-      /* Y축 + 그리드 라인 */
-      var gridHTML = '';
+      /* Y축 레이블 (위→아래: yMax → 0) */
+      var yHTML = '';
       for (var g = 4; g >= 0; g--) {
-        var val = Math.round(g * yStep);
-        gridHTML += '<div class="adm-bar-grid-row">' +
-          '<span class="adm-bar-grid-label">' + val + '</span>' +
-          '<div class="adm-bar-grid-line"></div>' +
-        '</div>';
+        yHTML += '<span>' + Math.round(g * yStep) + '</span>';
+      }
+
+      /* 수평 그리드 라인 (0% 제외, 25% 50% 75% 위치) */
+      var hlineHTML = '';
+      for (var g = 1; g <= 3; g++) {
+        hlineHTML += '<div class="adm-bar-hline" style="bottom:' + Math.round(g / 4 * 100) + '%;"></div>';
       }
 
       /* 컬럼 */
@@ -209,13 +211,22 @@
               '<div class="adm-bar-rect adm-bar-rect--simple" style="height:' + (hS || 2) + 'px;"></div>' +
             '</div>' +
           '</div>' +
-          '<span class="adm-bar-date">' + day.label + '</span>' +
         '</div>';
       }).join('');
 
+      var datesHTML = days.map(function (day) {
+        return '<span class="adm-bar-date">' + day.label + '</span>';
+      }).join('');
+
       document.getElementById('admBarChart').innerHTML =
-        '<div class="adm-bar-grid">' + gridHTML + '</div>' +
-        '<div class="adm-bar-cols">' + colsHTML + '</div>';
+        '<div class="adm-bar-yaxis">' + yHTML + '</div>' +
+        '<div class="adm-bar-plot">' +
+          '<div class="adm-bar-plot-inner">' +
+            hlineHTML +
+            '<div class="adm-bar-cols">' + colsHTML + '</div>' +
+          '</div>' +
+          '<div class="adm-bar-dates">' + datesHTML + '</div>' +
+        '</div>';
 
       /* ── 최근 발송 내역 테이블 (최신순 7건) ── */
       var recent = ADMIN_DOCS.slice().sort(function (a, b) { return b.sendDate.localeCompare(a.sendDate); }).slice(0, 7);
