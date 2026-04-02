@@ -40,9 +40,9 @@
           <!-- 검색 바 -->
           <div class="adh-search-bar">
             <div class="adh-filters">
-              <!-- 채널 드롭다운 -->
+              <!-- 발송 방법 드롭다운 -->
               <div class="adh-select" id="adhSelChannel">
-                <span class="adh-select-label">채널</span>
+                <span class="adh-select-label">발송 방법</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#A4A5A6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <div class="adh-dropdown" id="adhDropChannel">
                   <div class="adh-dropdown-item adh-dropdown-item--active" data-value="">전체</div>
@@ -58,6 +58,7 @@
                   <div class="adh-dropdown-item adh-dropdown-item--active" data-value="">전체</div>
                   <div class="adh-dropdown-item" data-value="sent">발송됨</div>
                   <div class="adh-dropdown-item" data-value="read">열람됨</div>
+                  <div class="adh-dropdown-item" data-value="failed">발송 실패</div>
                 </div>
               </div>
               <!-- 날짜 검색 -->
@@ -89,7 +90,7 @@
                   <th style="width:10%;">발신인</th>
                   <th style="width:11%;">문서 유형</th>
                   <th style="width:18%;">수신인</th>
-                  <th style="width:17%;">발송 채널</th>
+                  <th style="width:17%;">발송 방법</th>
                   <th style="width:9%;">상태</th>
                   <th style="width:11%;">발송일</th>
                   <th style="width:10%;">관리</th>

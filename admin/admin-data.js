@@ -29,4 +29,10 @@ var ADMIN_DOCS = [
   { id: 22, sender: '이영희', type: '층간소음',  typeCls: 'adm-type--noise',    sendMethod: 'certified', sendDate: '2026-04-02', recipient: '송예린',   status: 'sent' },
   { id: 23, sender: '박지수', type: '임대차',    typeCls: 'adm-type--rent',     sendMethod: 'simple',    sendDate: '2026-04-02', recipient: '고재원',   status: 'sent' },
   { id: 24, sender: '최현우', type: '계약관련',  typeCls: 'adm-type--contract', sendMethod: 'certified', sendDate: '2026-04-02', recipient: '마지혜',   status: 'sent' },
+
+  /* ── 발송 실패 ── */
+  { id: 25, sender: '정다은', type: '임대차',    typeCls: 'adm-type--rent',     sendMethod: 'simple',    sendDate: '2026-04-02', recipient: '김성호',   status: 'failed' },
+  { id: 26, sender: '오민준', type: '대여금',    typeCls: 'adm-type--loan',     sendMethod: 'certified', sendDate: '2026-04-01', recipient: '이채린',   status: 'failed' },
+  { id: 27, sender: '김지훈', type: '층간소음',  typeCls: 'adm-type--noise',    sendMethod: 'simple',    sendDate: '2026-03-31', recipient: '박수현',   status: 'failed' },
+  { id: 28, sender: '이서진', type: '계약관련',  typeCls: 'adm-type--contract', sendMethod: 'certified', sendDate: '2026-03-28', recipient: '최지원',   status: 'failed' },
 ];

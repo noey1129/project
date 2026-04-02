@@ -548,6 +548,21 @@ body.page-admin {
 .adm-type--refund   { background: #FFECD6; border: 1px solid #FFC888; color: #CD6C00; }
 .adm-type--done     { background: #E8EAEE; border: 1px solid #D1D1D1; color: #5F6875; }
 
+/* 상태 뱃지 */
+.adm-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.adm-status--sent   { background: #EEF1F5; border: 1px solid #D7DBDF; color: #2B3347; }
+.adm-status--read   { background: #E4FFEF; border: 1px solid #AFE7C6; color: #1F9948; }
+.adm-status--failed { background: #FDEDEF; border: 1px solid #FFB6BC; color: #E62639; }
+
 /* 테이블 행 클릭 */
 .adm-table tbody tr {
   cursor: pointer;

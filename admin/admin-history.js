@@ -54,9 +54,8 @@ function applyFilter() {
 
 /* ── 뱃지 HTML ── */
 var methodLabel = { certified: '카카오 전자문서', simple: '카카오 알림톡' };
-var methodCls   = { certified: 'adh-badge--certified', simple: 'adh-badge--simple' };
-var statusLabel = { sent: '발송됨', read: '열람됨' };
-var statusCls   = { sent: 'adh-status--sent', read: 'adh-status--read' };
+var statusLabel = { sent: '발송됨', read: '열람됨', failed: '발송 실패' };
+var statusCls   = { sent: 'adh-status--sent', read: 'adh-status--read', failed: 'adh-status--failed' };
 
 /* ── 렌더 ── */
 function render() {
@@ -79,7 +78,7 @@ function render() {
         '<td>' + d.sender + '</td>' +
         '<td><span class="adm-type-badge ' + d.typeCls + '">' + d.type + '</span></td>' +
         '<td>' + d.recipient + '</td>' +
-        '<td><span class="adh-badge ' + (methodCls[d.sendMethod] || '') + '">' + (methodLabel[d.sendMethod] || d.sendMethod) + '</span></td>' +
+        '<td>' + (methodLabel[d.sendMethod] || d.sendMethod) + '</td>' +
         '<td><span class="adh-status ' + (statusCls[d.status] || '') + '">' + (statusLabel[d.status] || d.status) + '</span></td>' +
         '<td>' + d.sendDate.replace(/-/g, '. ') + '</td>' +
         '<td><button class="adh-btn-detail" data-id="' + d.id + '">상세보기</button></td>' +

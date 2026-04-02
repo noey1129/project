@@ -155,7 +155,7 @@ function renderInfo() {
       '<div class="add-card-title">발송 정보</div>' +
       '<div class="add-row"><span class="add-label">발송일</span><span class="add-value">' + doc.sendDate.replace(/-/g, '. ') + '</span></div>' +
       '<div class="add-row"><span class="add-label">문서 유형</span><span class="adm-type-badge ' + doc.typeCls + '">' + doc.type + '</span></div>' +
-      '<div class="add-row"><span class="add-label">발송 채널</span><span class="add-value">' + methodStr + '</span></div>' +
+      '<div class="add-row"><span class="add-label">발송 방법</span><span class="add-value">' + methodStr + '</span></div>' +
       '<div class="add-row"><span class="add-label">상태</span>' + statusHTML + '</div>' +
     '</div>' +
 

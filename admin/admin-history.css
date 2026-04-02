@@ -299,8 +299,9 @@
   white-space: nowrap;
 }
 
-.adh-status--sent { background: #EEF1F5; border: 1px solid #D7DBDF; color: #2B3347; }
-.adh-status--read { background: #E4FFEF; border: 1px solid #AFE7C6; color: #1F9948; }
+.adh-status--sent   { background: #EEF1F5; border: 1px solid #D7DBDF; color: #2B3347; }
+.adh-status--read   { background: #E4FFEF; border: 1px solid #AFE7C6; color: #1F9948; }
+.adh-status--failed { background: #FDEDEF; border: 1px solid #FFB6BC; color: #E62639; }
 
 /* 관리 버튼 */
 .adh-btn-detail {

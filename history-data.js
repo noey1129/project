@@ -137,5 +137,32 @@ var HISTORY_DATA = [
     sendDateTime: '2025. 09. 15  13:45',
     receiveDateTime: null,
     readDateTime: null
+  },
+  /* ── 발송 실패 추가 ── */
+  {
+    id: 11,
+    title: '회원권 환불 청구',
+    channel: 'kakao_edoc',
+    channelLabel: '카카오톡 전자문서',
+    status: 'failed',
+    statusLabel: '실패',
+    recipient: '정민호',
+    sendDate: '2026-03-31',
+    sendDateTime: '2026. 03. 31  09:30',
+    receiveDateTime: null,
+    readDateTime: null
+  },
+  {
+    id: 12,
+    title: '임대차 계약 해지 통보',
+    channel: 'kakao_alim',
+    channelLabel: '카카오 알림',
+    status: 'failed',
+    statusLabel: '실패',
+    recipient: '한지현',
+    sendDate: '2026-03-27',
+    sendDateTime: '2026. 03. 27  15:10',
+    receiveDateTime: null,
+    readDateTime: null
   }
 ];

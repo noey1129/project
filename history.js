@@ -46,10 +46,9 @@ function applyFilter() {
   render();
 }
 
-/* ── 채널 뱃지 ── */
-function channelBadge(d) {
-  var cls = d.channel === 'kakao_edoc' ? 'sh-badge--edoc' : 'sh-badge--alim';
-  return '<span class="sh-badge ' + cls + '">' + d.channelLabel + '</span>';
+/* ── 채널 텍스트 ── */
+function channelText(d) {
+  return d.channelLabel;
 }
 
 /* ── 상태 뱃지 ── */
@@ -79,7 +78,7 @@ function render() {
         '<td class="sh-td-center">' + (start + idx + 1) + '</td>' +
         '<td class="sh-td-center">' + d.recipient + '</td>' +
         '<td class="sh-td-title">' + d.title + '</td>' +
-        '<td class="sh-td-center">' + channelBadge(d) + '</td>' +
+        '<td class="sh-td-center">' + channelText(d) + '</td>' +
         '<td class="sh-td-center">' + statusBadge(d) + '</td>' +
         '<td class="sh-td-center">' + d.sendDate.replace(/-/g, '. ') + '</td>' +
       '</tr>';
