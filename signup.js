@@ -110,6 +110,7 @@ verifyModalOverlay.addEventListener('click', function (e) {
 btnSignup.addEventListener('click', function () {
   sessionStorage.setItem('logged_in', 'true');
   sessionStorage.setItem('user_name', '홍길동');
+  sessionStorage.setItem('user_email', emailInput.value.trim());
   sessionStorage.setItem('user_phone', '010-1234-5678');
   var redirect = sessionStorage.getItem('after_auth_redirect');
   if (redirect) {
