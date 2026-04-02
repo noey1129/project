@@ -23,12 +23,15 @@
 
   var ICON_DOC      = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#sdi1)"><path d="M6 10H17" stroke="#7D7D7D" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16L16.9277 10.4596C17.3317 10.2864 17.3317 9.71359 16.9277 9.54043L4 4L5.69207 10L4 16Z" stroke="#7D7D7D" stroke-linejoin="round"/></g><defs><clipPath id="sdi1"><rect width="14" height="16" fill="white" transform="translate(18 3) rotate(90)"/></clipPath></defs></svg>';
   var ICON_DOC_FILL = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#sdi2)"><path d="M4 16L16.9277 10.4596C17.3317 10.2864 17.3317 9.71359 16.9277 9.54043L4 4L5.69207 10L4 16Z" fill="#FC9950"/><path d="M6 10H17" stroke="#FFF4ED" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16L16.9277 10.4596C17.3317 10.2864 17.3317 9.71359 16.9277 9.54043L4 4L5.69207 10L4 16Z" stroke="#FC9950" stroke-linejoin="round"/></g><defs><clipPath id="sdi2"><rect width="14" height="16" fill="white" transform="translate(18 3) rotate(90)"/></clipPath></defs></svg>';
+  var ICON_HISTORY      = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#7D7D7D" stroke-width="1.3"/><path d="M10 6.5V10.5L12.5 13" stroke="#7D7D7D" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var ICON_HISTORY_FILL = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" fill="#FC9950" stroke="#FC9950" stroke-width="1.3"/><path d="M10 6.5V10.5L12.5 13" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var ICON_PERSON      = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="10" cy="6.51786" rx="4.01786" ry="4.01786" stroke="#7D7D7D" stroke-width="1.25"/><path d="M16.25 16.7856C16.25 15.128 15.5915 13.5383 14.4194 12.3662C13.2473 11.1941 11.6576 10.5356 10 10.5356C8.3424 10.5356 6.75269 11.1941 5.58058 12.3662C4.40848 13.5383 3.75 15.128 3.75 16.7856" stroke="#7D7D7D" stroke-width="1.25" stroke-linecap="round"/></svg>';
   var ICON_PERSON_FILL = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="10" cy="6.51786" rx="4.01786" ry="4.01786" fill="#FC9950" stroke="#FC9950" stroke-width="1.25"/><path d="M14.4194 12.3662C15.5915 13.5383 16.25 15.128 16.25 16.7856L3.75 16.7856C3.75 15.128 4.40848 13.5383 5.58058 12.3662C6.75269 11.1941 8.3424 10.5356 10 10.5356C11.6576 10.5356 13.2473 11.1941 14.4194 12.3662Z" fill="#FC9950" stroke="#FC9950" stroke-width="1.25" stroke-linecap="round"/></svg>';
 
   var navItems = [
-    { page: 'mypage.html', href: base + 'mypage.html', label: '내 문서함', icon: ICON_DOC,    iconActive: ICON_DOC_FILL    },
-    { page: 'myinfo.html', href: base + 'myinfo.html', label: '내 정보',   icon: ICON_PERSON, iconActive: ICON_PERSON_FILL },
+    { page: 'mypage.html',       href: base + 'mypage.html',       label: '내 문서함', icon: ICON_DOC,     iconActive: ICON_DOC_FILL     },
+    { page: 'send-history.html', href: base + 'send-history.html', label: '발송 현황', icon: ICON_HISTORY, iconActive: ICON_HISTORY_FILL },
+    { page: 'myinfo.html',       href: base + 'myinfo.html',       label: '내 정보',   icon: ICON_PERSON,  iconActive: ICON_PERSON_FILL  },
   ];
 
   /* ── 사이드바 HTML ── */
@@ -78,7 +81,7 @@
   ];
 
   /* ── 탑바 HTML ── */
-  var titleMap = { 'mypage.html': '내 문서함', 'myinfo.html': '내 정보', 'doc-detail.html': '내 문서함' };
+  var titleMap = { 'mypage.html': '내 문서함', 'send-history.html': '발송 현황', 'myinfo.html': '내 정보', 'doc-detail.html': '내 문서함' };
 
   function buildTopbar() {
     return (

@@ -409,6 +409,114 @@ body.page-dashboard .db-content {
   color: #2B794A;
 }
 
+/* ── 발송 히스토리 ── */
+.hist-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 10px;
+}
+
+.hist-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.hist-step:last-child {
+  padding-bottom: 0;
+}
+
+.hist-step::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 14px;
+  bottom: -2px;
+  width: 1.5px;
+  background: #E7E9EB;
+}
+
+.hist-step:last-child::before {
+  display: none;
+}
+
+.hist-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.hist-dot--done    { background: #FC9950; border: 2px solid #FC9950; }
+.hist-dot--pending { background: #fff; border: 2px solid #D7DBDF; }
+
+.hist-step-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.hist-step-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.hist-step-time {
+  font-size: 13px;
+  color: #696B6D;
+}
+
+.hist-step-time--na {
+  color: #AFAFAF;
+  font-style: italic;
+}
+
+.hist-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  padding-top: 16px;
+  border-top: 1px solid #F5F5F5;
+}
+
+.hist-btn {
+  flex: 1;
+  height: 36px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.13s, opacity 0.13s;
+}
+
+.hist-btn--dl {
+  background: #172230;
+  border: none;
+  color: #fff;
+}
+
+.hist-btn--dl:hover { opacity: 0.85; }
+
+.hist-btn--reissue {
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  color: #333;
+}
+
+.hist-btn--reissue:hover { background: #F6F6F6; }
+
 /* 증명서 */
 .cert-row {
   display: flex;

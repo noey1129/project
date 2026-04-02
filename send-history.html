@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>발송 현황 – 로싸인</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="send-history.css" />
+</head>
+<body class="page-dashboard">
+
+  <div class="db-layout">
+    <aside class="db-sidebar" id="dbSidebar"></aside>
+    <div class="db-body">
+      <header class="db-topbar" id="dbTopbar"></header>
+      <main class="db-content">
+
+        <!-- 통계 카드 -->
+        <div class="sh-stat-row">
+          <div class="sh-stat-card">
+            <div class="sh-stat-label">오늘 발송</div>
+            <div class="sh-stat-value"><span id="statToday">0</span><span class="sh-stat-unit">건</span></div>
+          </div>
+          <div class="sh-stat-card">
+            <div class="sh-stat-label">이번 주 발송</div>
+            <div class="sh-stat-value"><span id="statWeek">0</span><span class="sh-stat-unit">건</span></div>
+          </div>
+          <div class="sh-stat-card">
+            <div class="sh-stat-label">이번 달 발송</div>
+            <div class="sh-stat-value"><span id="statMonth">0</span><span class="sh-stat-unit">건</span></div>
+          </div>
+        </div>
+
+        <!-- 내역 카드 -->
+        <div class="db-card sh-main-card">
+
+          <!-- 필터 탭 -->
+          <div class="sh-filter-bar">
+            <div class="sh-filter-group">
+              <span class="sh-filter-group-label">채널</span>
+              <div class="sh-tabs" id="channelTabs">
+                <button class="sh-tab sh-tab--active" data-channel="">전체</button>
+                <button class="sh-tab" data-channel="kakao_alim">카카오 알림</button>
+                <button class="sh-tab" data-channel="kakao_edoc">카카오톡 전자문서</button>
+              </div>
+            </div>
+            <div class="sh-filter-group">
+              <span class="sh-filter-group-label">상태</span>
+              <div class="sh-tabs" id="statusTabs">
+                <button class="sh-tab sh-tab--active" data-status="">전체</button>
+                <button class="sh-tab" data-status="sent">발송됨</button>
+                <button class="sh-tab" data-status="received">수신됨</button>
+                <button class="sh-tab" data-status="read">읽음</button>
+                <button class="sh-tab" data-status="failed">실패</button>
+              </div>
+            </div>
+            <div class="sh-search-wrap">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="#A4A5A6" stroke-width="1.4"/><path d="M11 11l2.5 2.5" stroke="#A4A5A6" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <input type="text" class="sh-search-input" id="shSearch" placeholder="문서명, 수신인 검색" />
+            </div>
+          </div>
+
+          <!-- 테이블 -->
+          <div class="sh-table-header">
+            <span class="sh-table-count">발송 내역 <strong id="shCount">0</strong>건</span>
+          </div>
+          <div class="sh-table-wrap">
+            <table class="sh-table">
+              <thead>
+                <tr>
+                  <th style="width:6%;">No.</th>
+                  <th style="width:14%;">수신인</th>
+                  <th style="width:34%;">문서명</th>
+                  <th style="width:16%;">발송 채널</th>
+                  <th style="width:12%;">상태</th>
+                  <th style="width:18%;">발송일</th>
+                </tr>
+              </thead>
+              <tbody id="shTbody"></tbody>
+            </table>
+          </div>
+
+          <!-- 페이지네이션 -->
+          <div class="sh-pagination">
+            <div class="sh-page-info" id="shPageInfo"></div>
+            <div class="sh-page-nav" id="shPageNav"></div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="send-history-data.js"></script>
+  <script src="send-history.js"></script>
+  <script src="dashboard-helper.js"></script>
+</body>
+</html>

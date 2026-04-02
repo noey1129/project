@@ -12,6 +12,7 @@ var DUMMY_DOCS = [
     status: 'sent',
     statusLabel: '발송완료',
     readDate: '-',
+    history: { sendDateTime: '2025. 12. 01  14:30', receiveDateTime: null, readDateTime: null },
     recipient: { name: '김영수', phone: '010-1234-5678', birth: '1990. 01. 01', address: '-' },
     pageCount: 3
   },
@@ -23,6 +24,7 @@ var DUMMY_DOCS = [
     status: 'read',
     statusLabel: '열람완료',
     readDate: '2025. 11. 21 (금) 09:00',
+    history: { sendDateTime: '2025. 11. 20  10:15', receiveDateTime: '2025. 11. 20  11:00', readDateTime: '2025. 11. 21  09:00' },
     recipient: { name: '박철수', phone: '010-9876-5432', birth: '1985. 05. 15', address: '서울특별시 강남구' },
     pageCount: 3
   },
@@ -34,7 +36,92 @@ var DUMMY_DOCS = [
     status: 'read',
     statusLabel: '열람완료',
     readDate: '2025. 11. 11 (화) 10:30',
+    history: { sendDateTime: '2025. 11. 10  11:00', receiveDateTime: '2025. 11. 10  11:30', readDateTime: '2025. 11. 11  10:30' },
     recipient: { name: '이영희', phone: '010-5555-6666', birth: '1992. 03. 20', address: '경기도 수원시' },
+    pageCount: 2
+  },
+  {
+    id: 4,
+    title: '임대차 계약 해지 통보',
+    sendDate: '2026. 04. 02 (목) 09:15',
+    sendMethod: '카카오 전자문서',
+    status: 'read',
+    statusLabel: '열람완료',
+    readDate: '2026. 04. 02 (목) 10:05',
+    history: { sendDateTime: '2026. 04. 02  09:15', receiveDateTime: '2026. 04. 02  09:20', readDateTime: '2026. 04. 02  10:05' },
+    recipient: { name: '최민준', phone: '010-2222-3333', birth: '1988. 07. 12', address: '서울특별시 송파구' },
+    pageCount: 3
+  },
+  {
+    id: 5,
+    title: '보증금 반환 촉구',
+    sendDate: '2026. 04. 02 (목) 11:40',
+    sendMethod: '카카오 알림',
+    status: 'sent',
+    statusLabel: '발송완료',
+    readDate: '-',
+    history: { sendDateTime: '2026. 04. 02  11:40', receiveDateTime: null, readDateTime: null },
+    recipient: { name: '정수빈', phone: '010-4444-5555', birth: '1993. 02. 28', address: '-' },
+    pageCount: 2
+  },
+  {
+    id: 6,
+    title: '관리비 미납 시정 요구',
+    sendDate: '2026. 04. 01 (수) 14:20',
+    sendMethod: '카카오 알림',
+    status: 'received',
+    statusLabel: '수신완료',
+    readDate: '-',
+    history: { sendDateTime: '2026. 04. 01  14:20', receiveDateTime: '2026. 04. 01  14:25', readDateTime: null },
+    recipient: { name: '한지수', phone: '010-6666-7777', birth: '1991. 11. 05', address: '경기도 성남시' },
+    pageCount: 2
+  },
+  {
+    id: 7,
+    title: '층간소음 경고 통보',
+    sendDate: '2026. 03. 30 (월) 16:00',
+    sendMethod: '카카오 전자문서',
+    status: 'read',
+    statusLabel: '열람완료',
+    readDate: '2026. 03. 31 (화) 08:30',
+    history: { sendDateTime: '2026. 03. 30  16:00', receiveDateTime: '2026. 03. 30  16:10', readDateTime: '2026. 03. 31  08:30' },
+    recipient: { name: '오세훈', phone: '010-8888-9999', birth: '1985. 09. 17', address: '서울특별시 마포구' },
+    pageCount: 2
+  },
+  {
+    id: 8,
+    title: '대여금 반환 청구',
+    sendDate: '2026. 03. 28 (토) 10:55',
+    sendMethod: '카카오 알림',
+    status: 'failed',
+    statusLabel: '발송실패',
+    readDate: '-',
+    history: { sendDateTime: '2026. 03. 28  10:55', receiveDateTime: null, readDateTime: null },
+    recipient: { name: '임채원', phone: '010-1111-2222', birth: '1997. 04. 30', address: '-' },
+    pageCount: 2
+  },
+  {
+    id: 9,
+    title: '계약 불이행 손해배상 청구',
+    sendDate: '2025. 10. 22 (수) 09:00',
+    sendMethod: '카카오 전자문서',
+    status: 'received',
+    statusLabel: '수신완료',
+    readDate: '-',
+    history: { sendDateTime: '2025. 10. 22  09:00', receiveDateTime: '2025. 10. 22  09:15', readDateTime: null },
+    recipient: { name: '강민서', phone: '010-3333-4444', birth: '1990. 06. 21', address: '인천광역시 남동구' },
+    pageCount: 3
+  },
+  {
+    id: 10,
+    title: '월세 연체 독촉장',
+    sendDate: '2025. 09. 15 (월) 13:45',
+    sendMethod: '카카오 알림',
+    status: 'failed',
+    statusLabel: '발송실패',
+    readDate: '-',
+    history: { sendDateTime: '2025. 09. 15  13:45', receiveDateTime: null, readDateTime: null },
+    recipient: { name: '윤서준', phone: '010-5555-1234', birth: '1994. 12. 10', address: '-' },
     pageCount: 2
   }
 ];
@@ -369,6 +456,19 @@ function renderInfo() {
 
   var statusBadge = '<span class="status-badge status-badge--' + doc.status + '">' + doc.statusLabel + '</span>';
 
+  var hist = doc.history || {};
+  function histStep(label, time, done) {
+    var dotCls = done ? 'hist-dot--done' : 'hist-dot--pending';
+    var timeTxt = time ? time : (done === false ? '미확인' : '-');
+    return '<div class="hist-step">' +
+      '<div class="hist-dot ' + dotCls + '"></div>' +
+      '<div class="hist-step-body">' +
+        '<span class="hist-step-label">' + label + '</span>' +
+        '<span class="hist-step-time' + (!time ? ' hist-step-time--na' : '') + '">' + timeTxt + '</span>' +
+      '</div>' +
+    '</div>';
+  }
+
   container.innerHTML =
     /* 발송 정보 */
     '<div class="info-card">' +
@@ -377,6 +477,26 @@ function renderInfo() {
       '<div class="info-row"><span class="info-label">발송방식</span><span class="info-value">' + doc.sendMethod + '</span></div>' +
       '<div class="info-row"><span class="info-label">상태</span>' + statusBadge + '</div>' +
       '<div class="info-row"><span class="info-label">열람일</span><span class="info-value">' + doc.readDate + '</span></div>' +
+    '</div>' +
+
+    /* 발송 히스토리 */
+    '<div class="info-card">' +
+      '<div class="info-card-title">발송 히스토리</div>' +
+      '<div class="hist-timeline">' +
+        histStep('발송', hist.sendDateTime, !!hist.sendDateTime) +
+        histStep('수신', hist.receiveDateTime, !!hist.receiveDateTime) +
+        histStep('열람', hist.readDateTime, !!hist.readDateTime) +
+      '</div>' +
+      '<div class="hist-actions">' +
+        '<button class="hist-btn hist-btn--dl" id="histDownload">' +
+          '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>' +
+          '문서 다운로드' +
+        '</button>' +
+        '<button class="hist-btn hist-btn--reissue" id="histReissue">' +
+          '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8A5 5 0 013.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 3.5V6h2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '재발급 신청' +
+        '</button>' +
+      '</div>' +
     '</div>' +
 
     /* 수신인 정보 */
@@ -424,6 +544,18 @@ document.addEventListener('DOMContentLoaded', function () {
   renderPage();
   renderInfo();
   createCertModal();
+
+  /* 히스토리 버튼 */
+  document.getElementById('detailInfo').addEventListener('click', function (e) {
+    if (e.target.closest('#histDownload')) {
+      alert('문서 다운로드 기능은 준비 중입니다.');
+      return;
+    }
+    if (e.target.closest('#histReissue')) {
+      alert('재발급 신청 기능은 준비 중입니다.');
+      return;
+    }
+  });
 
   /* 증명서 버튼 이벤트 위임 */
   document.getElementById('detailInfo').addEventListener('click', function (e) {

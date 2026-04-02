@@ -1,0 +1,300 @@
+/* ================================================================
+   LAWSIGN – SEND HISTORY CSS
+   ================================================================ */
+
+/* ── 통계 카드 ── */
+.sh-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.sh-stat-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sh-stat-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #8C8C8C;
+}
+
+.sh-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1C1E21;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.sh-stat-unit {
+  font-size: 16px;
+  font-weight: 500;
+  color: #8C8C8C;
+}
+
+/* ── 메인 카드 ── */
+.sh-main-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── 필터 바 ── */
+.sh-filter-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.sh-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sh-filter-group-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8C8C8C;
+  white-space: nowrap;
+}
+
+.sh-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sh-tab {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 20px;
+  border: 1px solid #E7E9EB;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: #696B6D;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.13s, border-color 0.13s, color 0.13s;
+}
+
+.sh-tab:hover {
+  background: #F2F3F6;
+  color: #1C1E21;
+}
+
+.sh-tab--active {
+  background: #172230;
+  border-color: #172230;
+  color: #fff;
+  font-weight: 600;
+}
+
+.sh-tab--active:hover {
+  background: #2B3347;
+}
+
+/* 검색 */
+.sh-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 36px;
+  border: 1px solid #E7E9EB;
+  border-radius: 6px;
+  background: #fff;
+  margin-left: auto;
+}
+
+.sh-search-input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1C1E21;
+  width: 200px;
+  background: transparent;
+}
+
+.sh-search-input::placeholder {
+  color: #A4A5A6;
+}
+
+/* ── 테이블 헤더 카운트 ── */
+.sh-table-header {
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.sh-table-count {
+  font-size: 14px;
+  color: #8C8C8C;
+}
+
+.sh-table-count strong {
+  color: #1C1E21;
+}
+
+/* ── 테이블 ── */
+.sh-table-wrap {
+  overflow-x: auto;
+}
+
+.sh-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.sh-table thead tr {
+  background: #F8F8F8;
+  border-bottom: 1px solid #E7E9EB;
+}
+
+.sh-table th {
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #696B6D;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.sh-table td {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #1C1E21;
+  border-bottom: 1px solid #F0F2F5;
+  vertical-align: middle;
+}
+
+.sh-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.sh-row {
+  cursor: pointer;
+  transition: background 0.13s;
+}
+
+.sh-row:hover td {
+  background: #EEF1F5;
+}
+
+.sh-td-center {
+  text-align: center;
+}
+
+.sh-td-title {
+  text-align: left;
+  font-weight: 500;
+}
+
+.sh-empty {
+  text-align: center;
+  padding: 48px 0;
+  color: #8C8C8C;
+  font-size: 14px;
+}
+
+/* ── 채널 뱃지 ── */
+.sh-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sh-badge--edoc {
+  background: #EEF1FF;
+  border: 1px solid #D0D8FF;
+  color: #4060E0;
+}
+
+.sh-badge--alim {
+  background: #FFF4E0;
+  border: 1px solid #FFD98C;
+  color: #B07000;
+}
+
+/* ── 상태 뱃지 ── */
+.sh-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sh-status--sent     { background: #EBF2FF; border: 1px solid #D1E1FF; color: #3073F5; }
+.sh-status--received { background: #E6F7FF; border: 1px solid #BAE3FF; color: #0077CC; }
+.sh-status--read     { background: #E4FFEF; border: 1px solid #AFE7C6; color: #1F9948; }
+.sh-status--failed   { background: #FFE7E7; border: 1px solid #FFC0C0; color: #BE2020; }
+
+/* ── 페이지네이션 ── */
+.sh-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.sh-page-info {
+  font-size: 13px;
+  color: #8C8C8C;
+}
+
+.sh-page-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sh-pg-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid #E7E9EB;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s;
+}
+
+.sh-pg-btn:hover {
+  background: #EEF1F5;
+}
+
+.sh-pg-btn--active {
+  background: #172230;
+  border-color: #172230;
+  color: #fff;
+  font-weight: 700;
+}
+
+.sh-pg-arr {
+  color: #696B6D;
+}
