@@ -30,13 +30,15 @@
 
   var navItems = [
     { page: 'mypage.html',       href: base + 'mypage.html',       label: '내 문서함', icon: ICON_DOC,     iconActive: ICON_DOC_FILL     },
-    { page: 'send-history.html', href: base + 'send-history.html', label: '발송 현황', icon: ICON_HISTORY, iconActive: ICON_HISTORY_FILL },
+    { page: 'history.html', href: base + 'history.html', label: '발송 현황', icon: ICON_HISTORY, iconActive: ICON_HISTORY_FILL },
     { page: 'myinfo.html',       href: base + 'myinfo.html',       label: '내 정보',   icon: ICON_PERSON,  iconActive: ICON_PERSON_FILL  },
   ];
 
   /* ── 사이드바 HTML ── */
   function buildSidebar() {
-    var activePage = currentPage === 'doc-detail.html' ? 'mypage.html' : currentPage;
+    var activePage = currentPage === 'doc-detail.html'
+      ? (document.referrer && document.referrer.indexOf('history.html') !== -1 ? 'history.html' : 'mypage.html')
+      : currentPage;
     var navHTML = navItems.map(function (item) {
       var active = activePage === item.page;
       var iconSrc = active ? item.iconActive : item.icon;
@@ -81,7 +83,7 @@
   ];
 
   /* ── 탑바 HTML ── */
-  var titleMap = { 'mypage.html': '내 문서함', 'send-history.html': '발송 현황', 'myinfo.html': '내 정보', 'doc-detail.html': '내 문서함' };
+  var titleMap = { 'mypage.html': '내 문서함', 'history.html': '발송 현황', 'myinfo.html': '내 정보', 'doc-detail.html': '내 문서함' };
 
   function buildTopbar() {
     return (

@@ -577,7 +577,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* 뒤로가기 */
   document.getElementById('backBtn').addEventListener('click', function () {
-    window.location.href = 'mypage.html';
+    if (document.referrer && document.referrer.indexOf('history.html') !== -1) {
+      window.location.href = 'history.html';
+    } else {
+      window.location.href = 'mypage.html';
+    }
   });
 
   /* 재발송 */
