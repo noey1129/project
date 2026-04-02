@@ -58,7 +58,13 @@
 
           <!-- 최근 7일 발송 현황 (막대) -->
           <div class="adm-bar-card">
-            <div class="adm-chart-title">최근 7일 발송 현황</div>
+            <div class="adm-bar-card-header">
+              <div class="adm-chart-title">최근 7일 발송 현황</div>
+              <div class="adm-bar-legend">
+                <span class="adm-bar-legend-item"><span class="adm-bar-legend-dot" style="background:#2B3347;"></span>카카오톡 전자문서</span>
+                <span class="adm-bar-legend-item"><span class="adm-bar-legend-dot" style="background:#FC9950;"></span>카카오 알림톡</span>
+              </div>
+            </div>
             <div class="adm-bar-chart" id="admBarChart"></div>
           </div>
         </div>
@@ -154,7 +160,7 @@
           '</div>' +
         '</div>';
 
-      /* ── 최근 7일 발송 현황 (막대) ── */
+      /* ── 최근 7일 발송 현황 (그룹 막대) ── */
       var today = new Date();
       today.setHours(0, 0, 0, 0);
       var days = [];
@@ -164,33 +170,51 @@
         var yyyy = d.getFullYear();
         var mm   = String(d.getMonth() + 1).padStart(2, '0');
         var dd   = String(d.getDate()).padStart(2, '0');
-        days.push({ key: yyyy + '-' + mm + '-' + dd, label: (d.getMonth() + 1) + '/' + d.getDate(), count: 0, isToday: i === 0 });
+        days.push({ key: yyyy + '-' + mm + '-' + dd, label: (d.getMonth() + 1) + '/' + d.getDate(), certified: 0, simple: 0 });
       }
       ADMIN_DOCS.forEach(function (doc) {
         var day = days.find(function (d) { return d.key === doc.sendDate; });
-        if (day) day.count++;
+        if (!day) return;
+        if (doc.sendMethod === 'certified') day.certified++;
+        else day.simple++;
       });
 
-      var maxCount = Math.max.apply(null, days.map(function (d) { return d.count; }));
-      var MAX_H    = 200;
-      var yMax     = maxCount < 5 ? 5 : (Math.ceil(maxCount / 5) * 5);
-      var yStep    = Math.round(yMax / 4);
-      var yLabels  = [yMax, yMax - yStep, yMax - yStep * 2, yMax - yStep * 3, 0];
+      var MAX_H  = 200;
+      var maxVal = Math.max.apply(null, days.map(function (d) { return Math.max(d.certified, d.simple); }));
+      var yMax   = maxVal < 5 ? 5 : (Math.ceil(maxVal / 5) * 5);
+      var yStep  = yMax / 4;
 
-      var yAxisHTML = yLabels.map(function (v) { return '<span>' + v + '</span>'; }).join('');
-      var colsHTML  = days.map(function (day) {
-        var h      = maxCount > 0 ? Math.round((day.count / maxCount) * MAX_H) : 0;
-        var cls    = day.isToday ? ' adm-bar-rect--today' : '';
-        var numCls = day.isToday ? ' adm-bar-num--today' : '';
+      /* Y축 + 그리드 라인 */
+      var gridHTML = '';
+      for (var g = 4; g >= 0; g--) {
+        var val = Math.round(g * yStep);
+        gridHTML += '<div class="adm-bar-grid-row">' +
+          '<span class="adm-bar-grid-label">' + val + '</span>' +
+          '<div class="adm-bar-grid-line"></div>' +
+        '</div>';
+      }
+
+      /* 컬럼 */
+      var colsHTML = days.map(function (day) {
+        var hC = maxVal > 0 ? Math.round((day.certified / maxVal) * MAX_H) : 0;
+        var hS = maxVal > 0 ? Math.round((day.simple    / maxVal) * MAX_H) : 0;
         return '<div class="adm-bar-col">' +
-          '<span class="adm-bar-num' + numCls + '">' + day.count + '</span>' +
-          '<div class="adm-bar-rect' + cls + '" style="height:' + (h || 2) + 'px;"></div>' +
+          '<div class="adm-bar-group">' +
+            '<div class="adm-bar-stick">' +
+              '<span class="adm-bar-num">' + (day.certified || '') + '</span>' +
+              '<div class="adm-bar-rect adm-bar-rect--cert" style="height:' + (hC || 2) + 'px;"></div>' +
+            '</div>' +
+            '<div class="adm-bar-stick">' +
+              '<span class="adm-bar-num adm-bar-num--simple">' + (day.simple || '') + '</span>' +
+              '<div class="adm-bar-rect adm-bar-rect--simple" style="height:' + (hS || 2) + 'px;"></div>' +
+            '</div>' +
+          '</div>' +
           '<span class="adm-bar-date">' + day.label + '</span>' +
         '</div>';
       }).join('');
 
       document.getElementById('admBarChart').innerHTML =
-        '<div class="adm-bar-yaxis">' + yAxisHTML + '</div>' +
+        '<div class="adm-bar-grid">' + gridHTML + '</div>' +
         '<div class="adm-bar-cols">' + colsHTML + '</div>';
 
       /* ── 최근 발송 내역 테이블 (최신순 7건) ── */

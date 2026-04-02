@@ -373,43 +373,85 @@ body.page-admin {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+}
+
+.adm-bar-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.adm-bar-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.adm-bar-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+}
+
+.adm-bar-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .adm-bar-chart {
   display: flex;
-  align-items: flex-end;
-  gap: 0;
-  height: 280px;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-.adm-bar-yaxis {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
+  align-items: stretch;
   height: 240px;
-  margin-bottom: 28px;
-  margin-right: 12px;
+  position: relative;
+}
+
+/* 그리드 */
+.adm-bar-grid {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  position: absolute;
+  inset: 0 0 24px 0;
+  pointer-events: none;
+}
+
+.adm-bar-grid-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  flex: 1;
+}
+
+.adm-bar-grid-row:last-child { flex: 0; }
+
+.adm-bar-grid-label {
+  font-size: 11px;
+  color: #AFAFAF;
+  width: 22px;
+  text-align: right;
   flex-shrink: 0;
+  line-height: 1;
 }
 
-.adm-bar-yaxis span {
-  font-size: 13px;
-  color: #8D9092;
+.adm-bar-grid-line {
+  flex: 1;
+  height: 1px;
+  background: #F0F2F5;
 }
 
+/* 컬럼 */
 .adm-bar-cols {
   flex: 1;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  height: 100%;
-  border-left: 1px solid rgba(201,203,205,0.3);
-  border-bottom: 1px solid rgba(201,203,205,0.3);
-  padding: 10px 10px 0;
+  justify-content: space-around;
+  padding: 0 0 0 34px;
   box-sizing: border-box;
 }
 
@@ -419,32 +461,49 @@ body.page-admin {
   align-items: center;
   gap: 6px;
   justify-content: flex-end;
+  height: calc(100% - 24px);
+}
+
+.adm-bar-group {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  flex: 1;
+  align-self: flex-end;
+}
+
+.adm-bar-stick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  justify-content: flex-end;
 }
 
 .adm-bar-num {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: #2B3347;
+  min-height: 14px;
+  line-height: 1;
 }
 
-.adm-bar-num--today {
+.adm-bar-num--simple {
   color: #FC9950;
 }
 
 .adm-bar-rect {
-  width: 44px;
-  background: #2B3347;
-  border-radius: 6px 6px 0 0;
+  width: 18px;
+  border-radius: 3px 3px 0 0;
 }
 
-.adm-bar-rect--today {
-  background: #FC9950;
-}
+.adm-bar-rect--cert   { background: #2B3347; }
+.adm-bar-rect--simple { background: #FC9950; }
 
 .adm-bar-date {
-  font-size: 12px;
-  color: #8D9092;
-  margin-top: 6px;
+  font-size: 11px;
+  color: #AFAFAF;
+  white-space: nowrap;
 }
 
 /* ── 최근 발송 내역 ── */
