@@ -57,10 +57,10 @@
 
     return (
       '<div class="adm-sb-top">' +
-        '<div class="adm-logo-wrap">' +
+        '<a href="' + base + 'admin-dashboard.html" class="adm-logo-wrap" style="text-decoration:none;">' +
           '<span class="adm-logo-text">Lawsign</span>' +
           '<span class="adm-badge">Admin</span>' +
-        '</div>' +
+        '</a>' +
         '<div class="adm-profile">' +
           '<div class="adm-avatar">' + lastName + '</div>' +
           '<div class="adm-profile-info">' +
