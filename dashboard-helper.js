@@ -55,7 +55,7 @@
           '<div class="sb-avatar">' + lastName + '</div>' +
           '<div class="sb-profile-info">' +
             '<span class="sb-profile-name">' + userName + '님</span>' +
-            '<span class="sb-profile-email">' + (userEmail || 'Lawsign@Lawsign.com') + '</span>' +
+            '<span class="sb-profile-email">' + (userEmail || '') + '</span>' +
           '</div>' +
         '</div>' +
         '<a href="' + base + 'select-situation.html" class="sb-cta">새 내용증명 작성하기</a>' +

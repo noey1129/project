@@ -34,7 +34,7 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
   if (adminMatch) {
     sessionStorage.setItem('admin_logged_in', 'true');
     sessionStorage.setItem('admin_name', '홍길동');
-    sessionStorage.setItem('admin_email', 'Lawsign@Lawsign.com');
+    sessionStorage.setItem('admin_email', email);
     window.location.href = 'admin/admin-dashboard.html';
     return;
   }

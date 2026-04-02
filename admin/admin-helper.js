@@ -15,7 +15,7 @@
   }
 
   var adminName  = sessionStorage.getItem('admin_name')  || '관리자';
-  var adminEmail = sessionStorage.getItem('admin_email') || 'admin@lawsign.com';
+  var adminEmail = sessionStorage.getItem('admin_email') || '';
   var currentPage = window.location.pathname.split('/').pop() || 'admin-dashboard.html';
 
   /* ── 인라인 SVG 아이콘 ── */
