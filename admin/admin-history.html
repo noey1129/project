@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="admin-history.css" />
 </head>
 <body class="page-admin">
 
@@ -16,13 +17,90 @@
     <div class="adm-body">
       <header class="adm-topbar" id="admTopbar"></header>
       <main class="adm-content">
-        <div style="display:flex;align-items:center;justify-content:center;height:200px;color:#8C8C8C;font-size:16px;">
-          발송 내역 페이지 준비 중입니다.
+
+        <!-- 통계 카드 -->
+        <div class="adh-stat-row">
+          <div class="adh-stat-card">
+            <div class="adh-stat-label">오늘 발송</div>
+            <div class="adh-stat-value"><span id="adhStatToday">0</span><span class="adh-stat-unit">건</span></div>
+          </div>
+          <div class="adh-stat-card">
+            <div class="adh-stat-label">이번 주 발송</div>
+            <div class="adh-stat-value"><span id="adhStatWeek">0</span><span class="adh-stat-unit">건</span></div>
+          </div>
+          <div class="adh-stat-card">
+            <div class="adh-stat-label">이번 달 발송</div>
+            <div class="adh-stat-value"><span id="adhStatMonth">0</span><span class="adh-stat-unit">건</span></div>
+          </div>
         </div>
+
+        <!-- 메인 카드 -->
+        <div class="adh-card">
+
+          <!-- 필터 바 -->
+          <div class="adh-filter-bar">
+            <!-- 채널 필터 -->
+            <div class="adh-filter-group">
+              <span class="adh-filter-label">채널</span>
+              <div class="adh-tabs" id="adhChannelTabs">
+                <button class="adh-tab adh-tab--active" data-channel="">전체</button>
+                <button class="adh-tab" data-channel="simple">카카오 알림톡</button>
+                <button class="adh-tab" data-channel="certified">카카오 전자문서</button>
+              </div>
+            </div>
+            <!-- 상태 필터 -->
+            <div class="adh-filter-group">
+              <span class="adh-filter-label">상태</span>
+              <div class="adh-tabs" id="adhStatusTabs">
+                <button class="adh-tab adh-tab--active" data-status="">전체</button>
+                <button class="adh-tab" data-status="sent">발송됨</button>
+                <button class="adh-tab" data-status="read">열람됨</button>
+              </div>
+            </div>
+            <!-- 검색 -->
+            <div class="adh-search-wrap">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="#A4A5A6" stroke-width="1.4"/><path d="M11 11l2.5 2.5" stroke="#A4A5A6" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <input type="text" class="adh-search-input" id="adhSearch" placeholder="발신인, 수신인, 유형 검색" />
+            </div>
+          </div>
+
+          <!-- 테이블 카운트 -->
+          <div class="adh-table-meta">
+            <span class="adh-table-count">전체 <strong id="adhCount">0</strong>건</span>
+          </div>
+
+          <!-- 테이블 -->
+          <div class="adh-table-wrap">
+            <table class="adh-table">
+              <thead>
+                <tr>
+                  <th style="width:5%;">No.</th>
+                  <th style="width:10%;">발신인</th>
+                  <th style="width:11%;">문서 유형</th>
+                  <th style="width:18%;">수신인</th>
+                  <th style="width:17%;">발송 채널</th>
+                  <th style="width:9%;">상태</th>
+                  <th style="width:11%;">발송일</th>
+                  <th style="width:10%;">관리</th>
+                </tr>
+              </thead>
+              <tbody id="adhTbody"></tbody>
+            </table>
+          </div>
+
+          <!-- 페이지네이션 -->
+          <div class="adh-pagination">
+            <div class="adh-page-info" id="adhPageInfo"></div>
+            <div class="adh-page-nav" id="adhPageNav"></div>
+          </div>
+        </div>
+
       </main>
     </div>
   </div>
 
+  <script src="admin-data.js"></script>
   <script src="admin-helper.js"></script>
+  <script src="admin-history.js"></script>
 </body>
 </html>

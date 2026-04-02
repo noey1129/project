@@ -1,0 +1,293 @@
+/* ================================================================
+   LAWSIGN – ADMIN HISTORY CSS
+   ================================================================ */
+
+/* ── 통계 카드 ── */
+.adh-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.adh-stat-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.adh-stat-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #8C8C8C;
+}
+
+.adh-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1C1E21;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.adh-stat-unit {
+  font-size: 16px;
+  font-weight: 500;
+  color: #8C8C8C;
+}
+
+/* ── 메인 카드 ── */
+.adh-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── 필터 바 ── */
+.adh-filter-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.adh-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.adh-filter-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8C8C8C;
+  white-space: nowrap;
+}
+
+.adh-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.adh-tab {
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 20px;
+  border: 1px solid #E7E9EB;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: #696B6D;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.13s, border-color 0.13s, color 0.13s;
+}
+
+.adh-tab:hover {
+  background: #EEF1F5;
+  color: #2B3347;
+}
+
+.adh-tab--active {
+  background: #172230;
+  border-color: #172230;
+  color: #fff;
+  font-weight: 600;
+}
+
+.adh-tab--active:hover {
+  background: #2B3347;
+}
+
+.adh-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 34px;
+  border: 1px solid #D7DBDF;
+  border-radius: 6px;
+  background: #fff;
+  margin-left: auto;
+}
+
+.adh-search-input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1C1E21;
+  width: 200px;
+  background: transparent;
+}
+
+.adh-search-input::placeholder { color: #A4A5A6; }
+
+/* ── 테이블 메타 ── */
+.adh-table-meta {
+  display: flex;
+  align-items: center;
+}
+
+.adh-table-count {
+  font-size: 13px;
+  color: #8C8C8C;
+}
+
+.adh-table-count strong {
+  color: #1C1E21;
+}
+
+/* ── 테이블 ── */
+.adh-table-wrap { overflow-x: auto; }
+
+.adh-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.adh-table thead tr {
+  background: #F8F8F8;
+  border-bottom: 1px solid #E7E9EB;
+}
+
+.adh-table th {
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #696B6D;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.adh-table td {
+  padding: 9px 12px;
+  font-size: 14px;
+  color: #1C1E21;
+  border-bottom: 1px solid #F0F2F5;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.adh-table tbody tr:last-child td { border-bottom: none; }
+
+.adh-table tbody tr {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.adh-table tbody tr:hover td { background: #EEF1F5; }
+
+.adh-empty {
+  text-align: center !important;
+  padding: 48px 0 !important;
+  color: #8C8C8C;
+  font-size: 14px;
+}
+
+/* ── 채널 뱃지 ── */
+.adh-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.adh-badge--certified {
+  background: #EBF2FF;
+  border: 1px solid #D1E1FF;
+  color: #3073F5;
+}
+
+.adh-badge--simple {
+  background: #FFF4E0;
+  border: 1px solid #FFD98C;
+  color: #B07000;
+}
+
+/* ── 상태 뱃지 ── */
+.adh-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.adh-status--sent { background: #EEF1F5; border: 1px solid #D7DBDF; color: #2B3347; }
+.adh-status--read { background: #E4FFEF; border: 1px solid #AFE7C6; color: #1F9948; }
+
+/* 관리 버튼 */
+.adh-btn-detail {
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #DDDDDD;
+  color: #333;
+  transition: background 0.13s;
+  white-space: nowrap;
+}
+
+.adh-btn-detail:hover { background: #F6F6F6; }
+
+/* ── 페이지네이션 ── */
+.adh-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.adh-page-info { font-size: 13px; color: #8C8C8C; }
+
+.adh-page-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.adh-pg-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid #E7E9EB;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s;
+}
+
+.adh-pg-btn:hover { background: #EEF1F5; }
+
+.adh-pg-btn--active {
+  background: #172230;
+  border-color: #172230;
+  color: #fff;
+  font-weight: 700;
+}
+
+.adh-pg-arr { color: #696B6D; }

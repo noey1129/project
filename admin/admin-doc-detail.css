@@ -1,0 +1,449 @@
+/* ================================================================
+   LAWSIGN – ADMIN DOC DETAIL CSS
+   ================================================================ */
+
+.add-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  height: calc(100vh - 56px);
+}
+
+/* ── 뒤로가기 ── */
+.add-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1C1E21;
+  text-decoration: none;
+  padding: 4px 8px 4px 4px;
+  border-radius: 6px;
+  transition: background 0.13s;
+  flex-shrink: 0;
+}
+
+.add-back:hover { background: #EEF1F5; }
+
+/* ── 2컬럼 래퍼 ── */
+.add-wrap {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ============================================================
+   뷰어 (좌)
+   ============================================================ */
+.add-viewer {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.add-viewer-header {
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.add-viewer-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1C1E21;
+  flex: 1;
+  min-width: 0;
+}
+
+.add-viewer-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* 툴바 */
+.add-toolbar {
+  padding: 8px 20px;
+  background: #F5F6F8;
+  border: 1px solid #D7DBDF;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 52px;
+  box-sizing: border-box;
+}
+
+.add-toolbar-left,
+.add-toolbar-center,
+.add-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.add-zoom-select {
+  height: 34px;
+  padding: 0 28px 0 10px;
+  min-width: 100px;
+  background: #fff url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23A4A5A6' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 8px center;
+  border: 1px solid #D7DBDF;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.add-toolbar-btn {
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.13s;
+}
+
+.add-toolbar-btn:hover { background: #E7E9EB; }
+
+.add-page-btn {
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.13s;
+}
+
+.add-page-btn:hover:not(:disabled) { background: #f0f0f0; }
+.add-page-btn:disabled { opacity: 0.35; cursor: default; }
+
+.add-page-box {
+  height: 34px;
+  padding: 0 12px;
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  color: #1C1E21;
+}
+
+.add-pdf-btn {
+  height: 34px;
+  padding: 0 12px;
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #1C1E21;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: background 0.13s;
+  white-space: nowrap;
+}
+
+.add-pdf-btn:hover { background: #f0f0f0; }
+
+/* 본문 */
+.add-viewer-body {
+  background: #EBECEF;
+  border-left: 1px solid #D7DBDF;
+  border-right: 1px solid #D7DBDF;
+  padding: 28px;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.add-page-wrap {
+  width: 100%;
+  max-width: 600px;
+  transform-origin: top center;
+  transition: transform 0.2s;
+}
+
+.add-page {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.10);
+  border-radius: 4px;
+  padding: 48px 52px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 13px;
+  color: #1C1E21;
+  line-height: 2;
+  min-height: 780px;
+}
+
+/* 썸네일 */
+.add-thumbs {
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.add-thumb-nav {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.add-thumb-list {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.add-thumb-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.add-thumb-preview {
+  width: 72px;
+  height: 90px;
+  background: #fff;
+  box-shadow: 0 0 3px rgba(0,0,0,0.12);
+  border-radius: 3px;
+  border: 0.8px solid #ECECEC;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.15s;
+}
+
+.add-thumb-preview.active {
+  border-color: #172230;
+  box-shadow: 0 0 0 1px #172230;
+}
+
+.add-thumb-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  background: transparent;
+  border: none;
+}
+
+.add-thumb-num.active {
+  background: #172230;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ============================================================
+   우측 정보 패널
+   ============================================================ */
+.add-info {
+  width: 320px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.add-card {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #E0E2E7;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.add-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1C1E21;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #F0F2F5;
+}
+
+.add-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.add-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8C8C8C;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.add-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1C1E21;
+  text-align: right;
+  word-break: break-all;
+}
+
+/* 상태 뱃지 */
+.add-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.add-status--sent { background: #EEF1F5; border: 1px solid #D7DBDF; color: #2B3347; }
+.add-status--read { background: #E4FFEF; border: 1px solid #AFE7C6; color: #1F9948; }
+
+/* ── 발송 히스토리 타임라인 ── */
+.add-timeline {
+  display: flex;
+  flex-direction: column;
+  padding-left: 8px;
+}
+
+.add-tl-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  position: relative;
+  padding-bottom: 14px;
+}
+
+.add-tl-step:last-child { padding-bottom: 0; }
+
+.add-tl-step::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 13px;
+  bottom: -2px;
+  width: 1.5px;
+  background: #E7E9EB;
+}
+
+.add-tl-step:last-child::before { display: none; }
+
+.add-tl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.add-tl-dot--done    { background: #172230; border: 2px solid #172230; }
+.add-tl-dot--pending { background: #fff; border: 2px solid #D7DBDF; }
+
+.add-tl-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.add-tl-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.add-tl-time {
+  font-size: 12px;
+  color: #696B6D;
+}
+
+.add-tl-time--na {
+  color: #AFAFAF;
+  font-style: italic;
+}
+
+/* ── 히스토리 액션 버튼 ── */
+.add-hist-actions {
+  display: flex;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid #F0F2F5;
+}
+
+.add-hist-btn {
+  flex: 1;
+  height: 34px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: opacity 0.13s, background 0.13s;
+}
+
+.add-hist-btn--dl {
+  background: #172230;
+  border: none;
+  color: #fff;
+}
+
+.add-hist-btn--dl:hover { opacity: 0.85; }
+
+.add-hist-btn--reissue {
+  background: #fff;
+  border: 1px solid #D7DBDF;
+  color: #333;
+}
+
+.add-hist-btn--reissue:hover { background: #F6F6F6; }

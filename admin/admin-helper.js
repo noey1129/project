@@ -38,8 +38,14 @@
 
   /* ── 사이드바 HTML ── */
   function buildSidebar() {
+    var activePageMap = {
+      'admin-doc-detail.html':    'admin-history.html',
+      'admin-member-detail.html': 'admin-members.html'
+    };
+    var activePage = activePageMap[currentPage] || currentPage;
+
     var navHTML = navItems.map(function (item) {
-      var active = currentPage === item.page;
+      var active  = activePage === item.page;
       var iconSrc = active ? item.iconActive : item.icon;
       return '<a href="' + item.href + '" class="adm-nav-item' + (active ? ' adm-nav-item--active' : '') + '">' +
         '<span class="adm-nav-icon">' + iconSrc + '</span>' +
@@ -75,9 +81,11 @@
 
   /* ── 탑바 HTML ── */
   var titleMap = {
-    'admin-dashboard.html': '대시보드',
-    'admin-members.html':   '회원 관리',
-    'admin-history.html':   '발송 내역',
+    'admin-dashboard.html':    '대시보드',
+    'admin-members.html':      '회원 관리',
+    'admin-history.html':      '발송 내역',
+    'admin-doc-detail.html':   '발송 내역',
+    'admin-member-detail.html':'회원 관리',
   };
 
   function buildTopbar() {

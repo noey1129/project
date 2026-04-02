@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>발송 상세 – Lawsign 관리자</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="admin-doc-detail.css" />
+</head>
+<body class="page-admin">
+
+  <div class="adm-layout">
+    <aside class="adm-sidebar" id="admSidebar"></aside>
+    <div class="adm-body">
+      <header class="adm-topbar" id="admTopbar"></header>
+      <main class="adm-content add-content">
+
+        <!-- 뒤로가기 -->
+        <a href="admin-history.html" class="add-back">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="#1C1E21" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          발송 내역
+        </a>
+
+        <!-- 2컬럼 래퍼 -->
+        <div class="add-wrap">
+
+          <!-- 좌: 문서 뷰어 -->
+          <div class="add-viewer">
+            <!-- 헤더 -->
+            <div class="add-viewer-header">
+              <span class="add-viewer-title" id="addTitle"></span>
+              <div class="add-viewer-badges" id="addBadges"></div>
+            </div>
+            <!-- 툴바 -->
+            <div class="add-toolbar">
+              <div class="add-toolbar-left">
+                <select class="add-zoom-select" id="addZoomSelect">
+                  <option value="50">50%</option>
+                  <option value="75">75%</option>
+                  <option value="100" selected>100%</option>
+                  <option value="125">125%</option>
+                  <option value="150">150%</option>
+                </select>
+                <button class="add-toolbar-btn" title="확대">
+                  <img src="../assets/page_add.svg" alt="확대">
+                </button>
+                <button class="add-toolbar-btn" title="축소">
+                  <img src="../assets/page_minus.svg" alt="축소">
+                </button>
+              </div>
+              <div class="add-toolbar-center">
+                <button class="add-page-btn" id="addPrevPage">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M9 2L4 6.5 9 11" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="add-page-box">
+                  <span id="addCurPage">1</span><span>/</span><span id="addTotalPage">3</span>
+                </div>
+                <button class="add-page-btn" id="addNextPage">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M4 2l5 4.5L4 11" stroke="#333" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+              <div class="add-toolbar-right">
+                <button class="add-pdf-btn" id="addPdfBtn">
+                  <img src="../assets/PDF.svg" alt="PDF">
+                  PDF 다운로드
+                </button>
+              </div>
+            </div>
+            <!-- 본문 -->
+            <div class="add-viewer-body">
+              <div class="add-page-wrap" id="addPageWrap">
+                <div class="add-page" id="addPage"></div>
+              </div>
+            </div>
+            <!-- 썸네일 -->
+            <div class="add-thumbs">
+              <button class="add-thumb-nav" id="addThumbPrev">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10l6 6" stroke="#888EA0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="add-thumb-list" id="addThumbList"></div>
+              <button class="add-thumb-nav" id="addThumbNext">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="#333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- 우: 정보 패널 -->
+          <div class="add-info" id="addInfo"></div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="admin-data.js"></script>
+  <script src="admin-helper.js"></script>
+  <script src="admin-doc-detail.js"></script>
+</body>
+</html>
