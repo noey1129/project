@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="admin.css" />
+  <link rel="stylesheet" href="admin-members.css" />
 </head>
 <body class="page-admin">
 
@@ -16,13 +17,109 @@
     <div class="adm-body">
       <header class="adm-topbar" id="admTopbar"></header>
       <main class="adm-content">
-        <div style="display:flex;align-items:center;justify-content:center;height:200px;color:#8C8C8C;font-size:16px;">
-          회원 관리 페이지 준비 중입니다.
+
+        <div class="mem-card">
+          <!-- 검색 바 -->
+          <div class="mem-search-bar">
+            <div class="mem-filters">
+              <div class="mem-select" id="filterMethod">
+                <span class="mem-select-label">가입방법</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#A4A5A6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="mem-dropdown" id="dropMethod">
+                  <div class="mem-dropdown-item mem-dropdown-item--active" data-value="">전체</div>
+                  <div class="mem-dropdown-item" data-value="이메일">이메일</div>
+                  <div class="mem-dropdown-item" data-value="카카오">카카오</div>
+                  <div class="mem-dropdown-item" data-value="네이버">네이버</div>
+                </div>
+              </div>
+              <div class="mem-select" id="filterStatus">
+                <span class="mem-select-label">상태</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#A4A5A6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="mem-dropdown" id="dropStatus">
+                  <div class="mem-dropdown-item mem-dropdown-item--active" data-value="">전체</div>
+                  <div class="mem-dropdown-item" data-value="활성">활성</div>
+                  <div class="mem-dropdown-item" data-value="정지">정지</div>
+                  <div class="mem-dropdown-item" data-value="탈퇴">탈퇴</div>
+                </div>
+              </div>
+              <div class="mem-select mem-select--range" id="filterRange">
+                <span class="mem-select-label">전체</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#A4A5A6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="mem-dropdown" id="dropRange">
+                  <div class="mem-dropdown-item mem-dropdown-item--active" data-value="">전체</div>
+                  <div class="mem-dropdown-item" data-value="7">최근 7일</div>
+                  <div class="mem-dropdown-item" data-value="30">최근 30일</div>
+                  <div class="mem-dropdown-item" data-value="90">최근 90일</div>
+                </div>
+              </div>
+              <div class="mem-search-input-wrap">
+                <input type="text" class="mem-search-input" id="searchInput" placeholder="검색어를 입력해주세요." />
+                <svg class="mem-search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5" stroke="#1C1E21" stroke-width="1.5" opacity="0.7"/><path d="M13 13l3.5 3.5" stroke="#1C1E21" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/></svg>
+              </div>
+            </div>
+            <button class="mem-search-btn" id="searchBtn">검색</button>
+          </div>
+
+          <!-- 테이블 -->
+          <div class="mem-table-wrap">
+            <table class="mem-table">
+              <thead>
+                <tr>
+                  <th style="width:60px;">No.</th>
+                  <th style="width:120px;">이름</th>
+                  <th style="width:100px;">가입방법</th>
+                  <th style="width:220px;">이메일</th>
+                  <th style="width:130px;">가입일</th>
+                  <th style="width:110px;">상태</th>
+                  <th style="width:90px;">발송건수</th>
+                  <th>관리</th>
+                </tr>
+              </thead>
+              <tbody id="memTbody"></tbody>
+            </table>
+          </div>
+
+          <!-- 페이지네이션 -->
+          <div class="mem-pagination">
+            <div class="mem-page-info" id="memPageInfo"></div>
+            <div class="mem-page-nav" id="memPageNav"></div>
+          </div>
         </div>
+
       </main>
     </div>
   </div>
 
+  <!-- 메모 모달 -->
+  <div class="mem-modal-overlay" id="memoOverlay">
+    <div class="mem-modal">
+      <div class="mem-modal-top">
+        <span class="mem-modal-title" id="memoTitle">메모</span>
+        <button class="mem-modal-close" id="memoClose">✕</button>
+      </div>
+      <hr class="mem-modal-divider" />
+      <textarea class="mem-memo-textarea" id="memoText" placeholder="관리자 메모를 입력하세요."></textarea>
+      <div class="mem-modal-footer">
+        <button class="mem-memo-cancel" id="memoCancel">취소</button>
+        <button class="mem-memo-save" id="memoSave">저장</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 상세 모달 -->
+  <div class="mem-modal-overlay" id="detailOverlay">
+    <div class="mem-modal">
+      <div class="mem-modal-top">
+        <span class="mem-modal-title">회원 상세</span>
+        <button class="mem-modal-close" id="detailClose">✕</button>
+      </div>
+      <hr class="mem-modal-divider" />
+      <div class="mem-detail-body" id="detailBody"></div>
+    </div>
+  </div>
+
+  <script src="admin-members-data.js"></script>
   <script src="admin-helper.js"></script>
+  <script src="admin-members.js"></script>
 </body>
 </html>
