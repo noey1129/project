@@ -76,7 +76,7 @@
                 <th>문서 내용</th>
                 <th>발송 방법</th>
                 <th>상태</th>
-                <th>업데이트</th>
+                <th>발송일자</th>
               </tr>
             </thead>
             <tbody id="admRecentTbody"></tbody>
@@ -113,11 +113,11 @@
           <span class="adm-modal-val" id="mdMethod"></span>
         </div>
         <div class="adm-modal-row">
-          <span class="adm-modal-key">수신 상태</span>
+          <span class="adm-modal-key">상태</span>
           <span class="adm-modal-val" id="mdStatus"></span>
         </div>
         <div class="adm-modal-row">
-          <span class="adm-modal-key">업데이트</span>
+          <span class="adm-modal-key">발송일자</span>
           <span class="adm-modal-val" id="mdDate"></span>
         </div>
       </div>
@@ -199,27 +199,28 @@
       var methodCls      = { certified: 'adm-table-method--certified', simple: 'adm-table-method--simple' };
       var modalMethodCls = { certified: 'adm-modal-val--certified', simple: 'adm-modal-val--simple' };
 
-      var statusLabel = { sent: '발송됨', read: '열람됨', failed: '발송 실패' };
-      var statusCls   = { sent: 'adm-status--sent', read: 'adm-status--read', failed: 'adm-status--failed' };
+      var statusLabel = { read: '열람됨', failed: '발송 실패' };
+      var statusCls   = { read: 'adm-status--read', failed: 'adm-status--failed' };
 
       var tbody = document.getElementById('admRecentTbody');
       tbody.innerHTML = recent.map(function (doc) {
-        var stLabel = statusLabel[doc.status] || doc.status;
-        var stCls   = statusCls[doc.status]   || '';
+        var stLabel  = statusLabel[doc.status] || '';
+        var stCls    = statusCls[doc.status]   || '';
+        var stHTML   = stLabel ? '<span class="adm-status ' + stCls + '">' + stLabel + '</span>' : '–';
+        var dateStr  = doc.sendDate.replace(/-/g, '. ');
         return '<tr' +
-          ' data-sender="'     + doc.sender                  + '"' +
-          ' data-type="'       + doc.type                    + '"' +
-          ' data-type-cls="'   + doc.typeCls                 + '"' +
-          ' data-method="'     + methodLabel[doc.sendMethod]  + '"' +
-          ' data-method-cls="' + methodCls[doc.sendMethod]    + '"' +
-          ' data-status="'     + stLabel                     + '"' +
-          ' data-status-cls="' + stCls                       + '"' +
-          ' data-date="'       + doc.sendDate                + '">' +
+          ' data-sender="'     + doc.sender                 + '"' +
+          ' data-type="'       + doc.type                   + '"' +
+          ' data-type-cls="'   + doc.typeCls                + '"' +
+          ' data-method="'     + methodLabel[doc.sendMethod] + '"' +
+          ' data-method-cls="' + methodCls[doc.sendMethod]   + '"' +
+          ' data-status-html="' + (stLabel ? stCls + '|' + stLabel : '') + '"' +
+          ' data-date="'       + dateStr                    + '">' +
           '<td>' + doc.sender + '</td>' +
           '<td><span class="adm-type-badge ' + doc.typeCls + '">' + doc.type + '</span>&nbsp; 내용증명을 발송했습니다.</td>' +
           '<td class="' + methodCls[doc.sendMethod] + '">' + methodLabel[doc.sendMethod] + '</td>' +
-          '<td><span class="adm-status ' + stCls + '">' + stLabel + '</span></td>' +
-          '<td>' + doc.sendDate + '</td>' +
+          '<td>' + stHTML + '</td>' +
+          '<td>' + dateStr + '</td>' +
         '</tr>';
       }).join('');
 
@@ -238,8 +239,14 @@
         var methodEl = document.getElementById('mdMethod');
         methodEl.className = 'adm-modal-val ' + (row.dataset.methodCls === 'adm-table-method--certified' ? 'adm-modal-val--certified' : 'adm-modal-val--simple');
         methodEl.textContent = row.dataset.method;
-        var statusEl = document.getElementById('mdStatus');
-        statusEl.innerHTML = '<span class="adm-status ' + row.dataset.statusCls + '">' + row.dataset.status + '</span>';
+        var statusEl   = document.getElementById('mdStatus');
+        var stRaw      = row.dataset.statusHtml || '';
+        if (stRaw) {
+          var parts = stRaw.split('|');
+          statusEl.innerHTML = '<span class="adm-status ' + parts[0] + '">' + parts[1] + '</span>';
+        } else {
+          statusEl.textContent = '–';
+        }
         document.getElementById('mdDate').textContent   = row.dataset.date;
         overlay.classList.add('adm-modal-overlay--open');
       });
