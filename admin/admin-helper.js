@@ -58,7 +58,7 @@
     return (
       '<div class="adm-sb-top">' +
         '<a href="' + base + 'admin-dashboard.html" class="adm-logo-wrap" style="text-decoration:none;">' +
-          '<span class="adm-logo-text">Lawsign</span>' +
+          '<img src="' + base + '../assets/Lawsign.svg" alt="Lawsign" style="height:35px;display:block;" />' +
           '<span class="adm-badge">Admin</span>' +
         '</a>' +
         '<div class="adm-profile">' +

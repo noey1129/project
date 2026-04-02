@@ -52,7 +52,9 @@
     return (
       '<div class="sb-top">' +
         '<div class="sb-logo-wrap">' +
-          '<a href="' + base + 'index.html" class="sb-logo-text">Lawsign</a>' +
+          '<a href="' + base + 'index.html" class="sb-logo-text">' +
+            '<img src="' + base + 'assets/Lawsign.svg" alt="Lawsign" style="height:35px;display:block;" />' +
+          '</a>' +
         '</div>' +
         '<div class="sb-profile">' +
           '<div class="sb-avatar">' + lastName + '</div>' +
