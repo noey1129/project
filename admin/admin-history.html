@@ -37,31 +37,42 @@
         <!-- 메인 카드 -->
         <div class="adh-card">
 
-          <!-- 필터 바 -->
-          <div class="adh-filter-bar">
-            <!-- 채널 필터 -->
-            <div class="adh-filter-group">
-              <span class="adh-filter-label">채널</span>
-              <div class="adh-tabs" id="adhChannelTabs">
-                <button class="adh-tab adh-tab--active" data-channel="">전체</button>
-                <button class="adh-tab" data-channel="simple">카카오 알림톡</button>
-                <button class="adh-tab" data-channel="certified">카카오 전자문서</button>
+          <!-- 검색 바 -->
+          <div class="adh-search-bar">
+            <div class="adh-filters">
+              <!-- 채널 드롭다운 -->
+              <div class="adh-select" id="adhSelChannel">
+                <span class="adh-select-label">채널</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#A4A5A6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="adh-dropdown" id="adhDropChannel">
+                  <div class="adh-dropdown-item adh-dropdown-item--active" data-value="">전체</div>
+                  <div class="adh-dropdown-item" data-value="simple">카카오 알림톡</div>
+                  <div class="adh-dropdown-item" data-value="certified">카카오 전자문서</div>
+                </div>
+              </div>
+              <!-- 상태 드롭다운 -->
+              <div class="adh-select" id="adhSelStatus">
+                <span class="adh-select-label">상태</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#A4A5A6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="adh-dropdown" id="adhDropStatus">
+                  <div class="adh-dropdown-item adh-dropdown-item--active" data-value="">전체</div>
+                  <div class="adh-dropdown-item" data-value="sent">발송됨</div>
+                  <div class="adh-dropdown-item" data-value="read">열람됨</div>
+                </div>
+              </div>
+              <!-- 날짜 검색 -->
+              <div class="adh-date-wrap">
+                <input type="date" class="adh-date-input" id="adhDateFrom" />
+                <span class="adh-date-sep">~</span>
+                <input type="date" class="adh-date-input" id="adhDateTo" />
+              </div>
+              <!-- 검색 인풋 -->
+              <div class="adh-search-input-wrap">
+                <input type="text" class="adh-search-input" id="adhSearchInput" placeholder="검색어를 입력해주세요." />
+                <svg class="adh-search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8.5" cy="8.5" r="5" stroke="#1C1E21" stroke-width="1.5" opacity="0.7"/><path d="M13 13l3.5 3.5" stroke="#1C1E21" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/></svg>
               </div>
             </div>
-            <!-- 상태 필터 -->
-            <div class="adh-filter-group">
-              <span class="adh-filter-label">상태</span>
-              <div class="adh-tabs" id="adhStatusTabs">
-                <button class="adh-tab adh-tab--active" data-status="">전체</button>
-                <button class="adh-tab" data-status="sent">발송됨</button>
-                <button class="adh-tab" data-status="read">열람됨</button>
-              </div>
-            </div>
-            <!-- 검색 -->
-            <div class="adh-search-wrap">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="#A4A5A6" stroke-width="1.4"/><path d="M11 11l2.5 2.5" stroke="#A4A5A6" stroke-width="1.4" stroke-linecap="round"/></svg>
-              <input type="text" class="adh-search-input" id="adhSearch" placeholder="발신인, 수신인, 유형 검색" />
-            </div>
+            <button class="adh-search-btn" id="adhSearchBtn">검색</button>
           </div>
 
           <!-- 테이블 카운트 -->

@@ -9,6 +9,8 @@ var filtered   = ADMIN_DOCS.slice();
 var fChannel   = '';
 var fStatus    = '';
 var fQuery     = '';
+var fDateFrom  = '';
+var fDateTo    = '';
 
 /* ── 날짜 기준 ── */
 var _now   = new Date();
@@ -36,9 +38,11 @@ function applyFilter() {
   filtered = ADMIN_DOCS.filter(function (d) {
     if (fChannel && d.sendMethod !== fChannel) return false;
     if (fStatus  && d.status    !== fStatus)  return false;
+    if (fDateFrom && d.sendDate < fDateFrom)  return false;
+    if (fDateTo   && d.sendDate > fDateTo)    return false;
     if (fQuery) {
       var q = fQuery.toLowerCase();
-      if (!d.sender.includes(fQuery) &&
+      if (!d.sender.toLowerCase().includes(q) &&
           !d.recipient.toLowerCase().includes(q) &&
           !d.type.includes(fQuery)) return false;
     }
@@ -114,34 +118,65 @@ function renderPagination(totalPages) {
   document.getElementById('pgLast').addEventListener('click',  function () { currentPage = totalPages; render(); });
 }
 
+/* ── 드롭다운 초기화 ── */
+function initDropdown(selId, dropId, onSelect) {
+  var sel  = document.getElementById(selId);
+  var drop = document.getElementById(dropId);
+  if (!sel || !drop) return;
+
+  sel.addEventListener('click', function (e) {
+    e.stopPropagation();
+    drop.classList.toggle('adh-dropdown--open');
+  });
+
+  drop.addEventListener('click', function (e) {
+    var item = e.target.closest('.adh-dropdown-item');
+    if (!item) return;
+    drop.querySelectorAll('.adh-dropdown-item').forEach(function (el) {
+      el.classList.remove('adh-dropdown-item--active');
+    });
+    item.classList.add('adh-dropdown-item--active');
+    var label = sel.querySelector('.adh-select-label');
+    if (label) label.textContent = item.textContent;
+    drop.classList.remove('adh-dropdown--open');
+    onSelect(item.dataset.value);
+  });
+}
+
 /* ── DOMContentLoaded ── */
 document.addEventListener('DOMContentLoaded', function () {
   calcStats();
 
-  /* 채널 탭 */
-  document.getElementById('adhChannelTabs').addEventListener('click', function (e) {
-    var btn = e.target.closest('.adh-tab');
-    if (!btn) return;
-    this.querySelectorAll('.adh-tab').forEach(function (b) { b.classList.remove('adh-tab--active'); });
-    btn.classList.add('adh-tab--active');
-    fChannel = btn.dataset.channel;
+  /* 채널 드롭다운 */
+  initDropdown('adhSelChannel', 'adhDropChannel', function (val) {
+    fChannel = val;
     applyFilter();
   });
 
-  /* 상태 탭 */
-  document.getElementById('adhStatusTabs').addEventListener('click', function (e) {
-    var btn = e.target.closest('.adh-tab');
-    if (!btn) return;
-    this.querySelectorAll('.adh-tab').forEach(function (b) { b.classList.remove('adh-tab--active'); });
-    btn.classList.add('adh-tab--active');
-    fStatus = btn.dataset.status;
+  /* 상태 드롭다운 */
+  initDropdown('adhSelStatus', 'adhDropStatus', function (val) {
+    fStatus = val;
     applyFilter();
   });
 
-  /* 검색 */
-  document.getElementById('adhSearch').addEventListener('input', function () {
-    fQuery = this.value.trim();
+  /* 드롭다운 외부 클릭 닫기 */
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.adh-dropdown--open').forEach(function (el) {
+      el.classList.remove('adh-dropdown--open');
+    });
+  });
+
+  /* 검색 버튼 */
+  function doSearch() {
+    fQuery    = document.getElementById('adhSearchInput').value.trim();
+    fDateFrom = document.getElementById('adhDateFrom').value;
+    fDateTo   = document.getElementById('adhDateTo').value;
     applyFilter();
+  }
+
+  document.getElementById('adhSearchBtn').addEventListener('click', doSearch);
+  document.getElementById('adhSearchInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') doSearch();
   });
 
   /* 행/버튼 클릭 → 상세 */
