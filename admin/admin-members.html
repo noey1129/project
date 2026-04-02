@@ -94,11 +94,21 @@
   <div class="mem-modal-overlay" id="memoOverlay">
     <div class="mem-modal">
       <div class="mem-modal-top">
-        <span class="mem-modal-title" id="memoTitle">메모</span>
+        <span class="mem-modal-title">메모 작성</span>
         <button class="mem-modal-close" id="memoClose">✕</button>
       </div>
       <hr class="mem-modal-divider" />
-      <textarea class="mem-memo-textarea" id="memoText" placeholder="관리자 메모를 입력하세요."></textarea>
+      <!-- 대상 회원 정보 -->
+      <div class="mem-memo-member">
+        <div class="mem-memo-avatar" id="memoAvatar"></div>
+        <div>
+          <div class="mem-memo-member-name" id="memoMemberName"></div>
+          <div class="mem-memo-member-email" id="memoMemberEmail"></div>
+        </div>
+      </div>
+      <div class="mem-memo-label">메모 내용</div>
+      <textarea class="mem-memo-textarea" id="memoText" placeholder="관리자 메모를 입력하세요." maxlength="300"></textarea>
+      <div class="mem-memo-char-count"><span id="memoCharCount">0</span> / 300</div>
       <div class="mem-modal-footer">
         <button class="mem-memo-cancel" id="memoCancel">취소</button>
         <button class="mem-memo-save" id="memoSave">저장</button>

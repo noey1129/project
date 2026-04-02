@@ -144,9 +144,17 @@ function openMemo(id) {
   var member = MEMBERS_DATA.find(function (m) { return m.id === id; });
   if (!member) return;
   currentMemoId = id;
-  document.getElementById('memoTitle').textContent = member.name + ' 메모';
-  document.getElementById('memoText').value = member.memo || '';
+
+  document.getElementById('memoAvatar').textContent      = member.name.charAt(0);
+  document.getElementById('memoMemberName').textContent  = member.name;
+  document.getElementById('memoMemberEmail').textContent = member.email;
+
+  var textarea = document.getElementById('memoText');
+  textarea.value = member.memo || '';
+  document.getElementById('memoCharCount').textContent = textarea.value.length;
+
   document.getElementById('memoOverlay').classList.add('mem-modal-overlay--open');
+  setTimeout(function () { textarea.focus(); }, 50);
 }
 
 function closeMemo() {
@@ -195,6 +203,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var memoBtn   = e.target.closest('.mem-btn-memo');
     if (detailBtn) openDetail(parseInt(detailBtn.dataset.id));
     if (memoBtn)   openMemo(parseInt(memoBtn.dataset.id));
+  });
+
+  /* 글자 수 카운터 */
+  document.getElementById('memoText').addEventListener('input', function () {
+    document.getElementById('memoCharCount').textContent = this.value.length;
   });
 
   /* 메모 저장 */
