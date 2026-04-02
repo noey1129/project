@@ -170,7 +170,7 @@ function renderInfo() {
     /* 수신인 정보 */
     '<div class="add-card">' +
       '<div class="add-card-title">수신인 정보</div>' +
-      '<div class="add-row"><span class="add-label">상호/이름</span><span class="add-value">' + doc.recipient + '</span></div>' +
+      '<div class="add-row"><span class="add-label">이름</span><span class="add-value">' + doc.recipient + '</span></div>' +
       '<div class="add-row"><span class="add-label">연락처</span><span class="add-value">' + recipientPhone + '</span></div>' +
     '</div>' +
 
@@ -181,16 +181,6 @@ function renderInfo() {
         tlStep('발송', sendDT) +
         tlStep('수신', receiveDT) +
         tlStep('열람', readDT) +
-      '</div>' +
-      '<div class="add-hist-actions">' +
-        '<button class="add-hist-btn add-hist-btn--dl" id="addHistDownload">' +
-          '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>' +
-          '문서 다운로드' +
-        '</button>' +
-        '<button class="add-hist-btn add-hist-btn--reissue" id="addHistReissue">' +
-          '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M13 8A5 5 0 013.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 3.5V6h2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-          '재발급 신청' +
-        '</button>' +
       '</div>' +
     '</div>';
 }
