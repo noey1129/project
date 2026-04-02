@@ -162,25 +162,9 @@ function closeMemo() {
   currentMemoId = null;
 }
 
-/* ── 상세 모달 ── */
+/* ── 상세 → 페이지 이동 ── */
 function openDetail(id) {
-  var member = MEMBERS_DATA.find(function (m) { return m.id === id; });
-  if (!member) return;
-  var sl = statusLabel[member.status] || member.status;
-  var sc = statusCls[member.status]   || '';
-  document.getElementById('detailBody').innerHTML =
-    '<div class="mem-detail-row"><span class="mem-detail-key">이름</span><span class="mem-detail-val">' + member.name + '</span></div>' +
-    '<div class="mem-detail-row"><span class="mem-detail-key">가입방법</span><span class="mem-detail-val">' + methodBadge(member.method) + '</span></div>' +
-    '<div class="mem-detail-row"><span class="mem-detail-key">이메일</span><span class="mem-detail-val">' + member.email + '</span></div>' +
-    '<div class="mem-detail-row"><span class="mem-detail-key">가입일</span><span class="mem-detail-val">' + member.joinDate + '</span></div>' +
-    '<div class="mem-detail-row"><span class="mem-detail-key">상태</span><span class="mem-detail-val"><span class="mem-status-badge ' + sc + '">' + sl + '</span></span></div>' +
-    '<div class="mem-detail-row"><span class="mem-detail-key">발송건수</span><span class="mem-detail-val">' + member.sendCount + '건</span></div>' +
-    '<div class="mem-detail-row"><span class="mem-detail-key">메모</span><span class="mem-detail-val">' + (member.memo || '없음') + '</span></div>';
-  document.getElementById('detailOverlay').classList.add('mem-modal-overlay--open');
-}
-
-function closeDetail() {
-  document.getElementById('detailOverlay').classList.remove('mem-modal-overlay--open');
+  window.location.href = 'admin-member-detail.html?id=' + id;
 }
 
 /* ── DOMContentLoaded ── */
@@ -219,13 +203,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   document.getElementById('memoCancel').addEventListener('click', closeMemo);
   document.getElementById('memoClose').addEventListener('click', closeMemo);
-  document.getElementById('detailClose').addEventListener('click', closeDetail);
 
   document.getElementById('memoOverlay').addEventListener('click', function (e) {
     if (e.target === this) closeMemo();
-  });
-  document.getElementById('detailOverlay').addEventListener('click', function (e) {
-    if (e.target === this) closeDetail();
   });
 
   /* 드롭다운 외부 클릭 닫기 */

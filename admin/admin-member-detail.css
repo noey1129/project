@@ -1,0 +1,353 @@
+/* ================================================================
+   LAWSIGN – ADMIN MEMBER DETAIL CSS
+   ================================================================ */
+
+/* ── 상단 네비 ── */
+.mdt-topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.mdt-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1C1E21;
+  text-decoration: none;
+  padding: 6px 10px 6px 6px;
+  border-radius: 6px;
+  transition: background 0.13s;
+}
+
+.mdt-back-btn:hover {
+  background: #EEF1F5;
+}
+
+/* ── 헤더 카드 ── */
+.mdt-header-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.mdt-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mdt-avatar {
+  width: 56px;
+  height: 56px;
+  background: #2B3347;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.mdt-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mdt-member-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1C1E21;
+  line-height: 1.3;
+}
+
+.mdt-member-email {
+  font-size: 14px;
+  color: #8C8C8C;
+}
+
+/* 상태 뱃지 (admin-members.css에서 공유) */
+.mem-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.mem-status--active    { background: #E4FFEF; border: 1px solid #AFE7C6; color: #1F9948; }
+.mem-status--suspended { background: #FFE7E7; border: 1px solid #FFC0C0; color: #BE2020; }
+.mem-status--withdrawn { background: #E8E8E8; border: 1px solid rgba(25,25,25,0.07); color: #8C8C8C; }
+
+/* ── 2컬럼 그리드 ── */
+.mdt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.mdt-col-left,
+.mdt-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── 카드 공통 ── */
+.mdt-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 28px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.mdt-card-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1C1E21;
+  margin-bottom: 18px;
+}
+
+/* ── 기본 정보 테이블 ── */
+.mdt-info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mdt-info-table tr {
+  border-bottom: 1px solid #F0F2F5;
+}
+
+.mdt-info-table tr:last-child {
+  border-bottom: none;
+}
+
+.mdt-info-key {
+  padding: 11px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8C8C8C;
+  width: 90px;
+  vertical-align: middle;
+}
+
+.mdt-info-val {
+  padding: 11px 0;
+  font-size: 15px;
+  color: #1C1E21;
+  vertical-align: middle;
+}
+
+/* 가입방법 뱃지 */
+.mem-method-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #E8EAEE;
+  border: 1px solid rgba(25,25,25,0.07);
+  color: #191919;
+  white-space: nowrap;
+}
+
+/* ── 사용 통계 ── */
+.mdt-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.mdt-stat-box {
+  background: #F6F8FB;
+  border-radius: 10px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mdt-stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #8C8C8C;
+}
+
+.mdt-stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1C1E21;
+}
+
+/* ── 관리 액션 ── */
+.mdt-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #F0F2F5;
+}
+
+.mdt-action-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.mdt-action-row:first-of-type {
+  padding-top: 0;
+}
+
+.mdt-action-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mdt-action-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1C1E21;
+}
+
+.mdt-action-sub {
+  font-size: 13px;
+  color: #8C8C8C;
+}
+
+.mdt-action-btn {
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: opacity 0.13s, background 0.13s;
+  white-space: nowrap;
+}
+
+.mdt-action-btn--suspend {
+  background: #FFE7E7;
+  border: 1px solid #FFC0C0;
+  color: #BE2020;
+}
+
+.mdt-action-btn--suspend:hover {
+  opacity: 0.8;
+}
+
+.mdt-action-btn--activate {
+  background: #E4FFEF;
+  border: 1px solid #AFE7C6;
+  color: #1F9948;
+}
+
+.mdt-action-btn--activate:hover {
+  opacity: 0.8;
+}
+
+.mdt-action-btn--danger {
+  background: #fff;
+  border: 1px solid #DDDDDD;
+  color: #8C8C8C;
+}
+
+.mdt-action-btn--danger:hover {
+  background: #F6F6F6;
+}
+
+.mdt-action-row--danger .mdt-action-label {
+  color: #BE2020;
+}
+
+/* ── 관리자 메모 ── */
+.mdt-memo-textarea {
+  width: 100%;
+  height: 140px;
+  border: 1px solid #D7DBDF;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #1C1E21;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  line-height: 1.6;
+  transition: border-color 0.15s;
+}
+
+.mdt-memo-textarea:focus {
+  border-color: #172230;
+}
+
+.mdt-memo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.mdt-memo-char {
+  font-size: 12px;
+  color: #AFAFAF;
+}
+
+.mdt-memo-save-btn {
+  height: 36px;
+  padding: 0 20px;
+  background: #172230;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.13s;
+}
+
+.mdt-memo-save-btn:hover {
+  opacity: 0.85;
+}
+
+/* ── 토스트 ── */
+.mdt-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #172230;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.mdt-toast--show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
