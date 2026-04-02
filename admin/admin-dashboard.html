@@ -52,94 +52,14 @@
           <!-- 발송 방식 비율 (도넛) -->
           <div class="adm-donut-card">
             <div class="adm-chart-title">발송 방식 비율</div>
-            <div class="adm-donut-wrap">
-              <div class="adm-donut">
-                <div class="adm-donut-inner">
-                  <span class="adm-donut-count">248</span>
-                  <span class="adm-donut-sub">총 발송</span>
-                </div>
-              </div>
-              <div class="adm-legend">
-                <div class="adm-legend-item">
-                  <div class="adm-legend-label">
-                    <span class="adm-legend-dot" style="background:#2B3347;"></span>
-                    카카오 전자문서
-                  </div>
-                  <div>
-                    <span class="adm-legend-count">154건</span>
-                    <span class="adm-legend-pct">(62%)</span>
-                  </div>
-                </div>
-                <div class="adm-legend-item">
-                  <div class="adm-legend-label">
-                    <span class="adm-legend-dot" style="background:#FC9950;"></span>
-                    카카오 알림톡
-                  </div>
-                  <div>
-                    <span class="adm-legend-count">94건</span>
-                    <span class="adm-legend-pct">(38%)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- JS로 렌더링 -->
+            <div class="adm-donut-wrap" id="admDonutWrap"></div>
           </div>
 
           <!-- 최근 7일 발송 현황 (막대) -->
           <div class="adm-bar-card">
             <div class="adm-chart-title">최근 7일 발송 현황</div>
-            <div class="adm-bar-chart">
-              <div class="adm-bar-yaxis">
-                <span>41</span>
-                <span>31</span>
-                <span>21</span>
-                <span>10</span>
-                <span>0</span>
-              </div>
-              <div class="adm-bar-cols">
-                <!-- 27 / 3/5 -->
-                <div class="adm-bar-col">
-                  <span class="adm-bar-num">27</span>
-                  <div class="adm-bar-rect" style="height:154px;"></div>
-                  <span class="adm-bar-date">3/5</span>
-                </div>
-                <!-- 36 / 3/6 -->
-                <div class="adm-bar-col">
-                  <span class="adm-bar-num">36</span>
-                  <div class="adm-bar-rect" style="height:196px;"></div>
-                  <span class="adm-bar-date">3/6</span>
-                </div>
-                <!-- 18 / 3/7 -->
-                <div class="adm-bar-col">
-                  <span class="adm-bar-num">18</span>
-                  <div class="adm-bar-rect" style="height:89px;"></div>
-                  <span class="adm-bar-date">3/7</span>
-                </div>
-                <!-- 34 / 3/8 -->
-                <div class="adm-bar-col">
-                  <span class="adm-bar-num">34</span>
-                  <div class="adm-bar-rect" style="height:185px;"></div>
-                  <span class="adm-bar-date">3/8</span>
-                </div>
-                <!-- 29 / 3/9 -->
-                <div class="adm-bar-col">
-                  <span class="adm-bar-num">29</span>
-                  <div class="adm-bar-rect" style="height:154px;"></div>
-                  <span class="adm-bar-date">3/9</span>
-                </div>
-                <!-- 23 / 3/10 -->
-                <div class="adm-bar-col">
-                  <span class="adm-bar-num">23</span>
-                  <div class="adm-bar-rect" style="height:120px;"></div>
-                  <span class="adm-bar-date">3/10</span>
-                </div>
-                <!-- 32 / 3/11 (오늘 = 오렌지) -->
-                <div class="adm-bar-col">
-                  <span class="adm-bar-num adm-bar-num--today">32</span>
-                  <div class="adm-bar-rect adm-bar-rect--today" style="height:172px;"></div>
-                  <span class="adm-bar-date">3/11</span>
-                </div>
-              </div>
-            </div>
+            <div class="adm-bar-chart" id="admBarChart"></div>
           </div>
         </div>
 
@@ -159,57 +79,7 @@
                 <th>업데이트</th>
               </tr>
             </thead>
-            <tbody>
-              <tr data-sender="홍길동" data-type="임대차" data-type-cls="adm-type--rent" data-method="카카오 전자문서" data-method-cls="adm-table-method--certified" data-status="강원Dorm" data-date="2025-03-03 13:21">
-                <td>홍길동</td>
-                <td><span class="adm-type-badge adm-type--rent">임대차</span>&nbsp; 내용증명을 발송했습니다.</td>
-                <td class="adm-table-method--certified">카카오 전자문서</td>
-                <td>강원Dorm</td>
-                <td>2025-03-03 13:21</td>
-              </tr>
-              <tr data-sender="김민준" data-type="대여금" data-type-cls="adm-type--loan" data-method="카카오 알림톡" data-method-cls="adm-table-method--simple" data-status="청송보양병원" data-date="2025-03-03 13:21">
-                <td>김민준</td>
-                <td><span class="adm-type-badge adm-type--loan">대여금</span>&nbsp; 내용증명을 발송했습니다.</td>
-                <td class="adm-table-method--simple">카카오 알림톡</td>
-                <td>청송보양병원</td>
-                <td>2025-03-03 13:21</td>
-              </tr>
-              <tr data-sender="이영희" data-type="계약관련" data-type-cls="adm-type--contract" data-method="카카오 전자문서" data-method-cls="adm-table-method--certified" data-status="스타하드리움" data-date="2025-03-03 13:21">
-                <td>이영희</td>
-                <td><span class="adm-type-badge adm-type--contract">계약관련</span>&nbsp; 내용증명을 발송했습니다.</td>
-                <td class="adm-table-method--certified">카카오 전자문서</td>
-                <td>스타하드리움</td>
-                <td>2025-03-03 13:21</td>
-              </tr>
-              <tr data-sender="박지수" data-type="임대차" data-type-cls="adm-type--rent" data-method="카카오 알림톡" data-method-cls="adm-table-method--simple" data-status="은가비 다육카페" data-date="2025-03-03 13:21">
-                <td>박지수</td>
-                <td><span class="adm-type-badge adm-type--rent">임대차</span>&nbsp; 내용증명을 발송했습니다.</td>
-                <td class="adm-table-method--simple">카카오 알림톡</td>
-                <td>은가비 다육카페</td>
-                <td>2025-03-03 13:21</td>
-              </tr>
-              <tr data-sender="최현우" data-type="층간소음" data-type-cls="adm-type--noise" data-method="카카오 전자문서" data-method-cls="adm-table-method--certified" data-status="훈촌닭가" data-date="2025-03-03 13:21">
-                <td>최현우</td>
-                <td><span class="adm-type-badge adm-type--noise">층간소음</span>&nbsp; 내용증명을 발송했습니다.</td>
-                <td class="adm-table-method--certified">카카오 전자문서</td>
-                <td>훈촌닭가</td>
-                <td>2025-03-03 13:21</td>
-              </tr>
-              <tr data-sender="최상엽" data-type="회원권 환불" data-type-cls="adm-type--refund" data-method="카카오 전자문서" data-method-cls="adm-table-method--certified" data-status="어도99" data-date="2025-03-03 13:21">
-                <td>최상엽</td>
-                <td><span class="adm-type-badge adm-type--refund">회원권 환불</span>&nbsp; 내용증명을 발송했습니다.</td>
-                <td class="adm-table-method--certified">카카오 전자문서</td>
-                <td>어도99</td>
-                <td>2025-03-03 13:21</td>
-              </tr>
-              <tr data-sender="이승협" data-type="발송완료" data-type-cls="adm-type--done" data-method="카카오 알림톡" data-method-cls="adm-table-method--simple" data-status="스트릿진 위지옥집" data-date="2025-03-03 13:21">
-                <td>이승협</td>
-                <td><span class="adm-type-badge adm-type--done">발송완료</span>&nbsp; 내용증명을 발송했습니다.</td>
-                <td class="adm-table-method--simple">카카오 알림톡</td>
-                <td>스트릿진 위지옥집</td>
-                <td>2025-03-03 13:21</td>
-              </tr>
-            </tbody>
+            <tbody id="admRecentTbody"></tbody>
           </table>
         </div>
 
@@ -254,40 +124,123 @@
     </div>
   </div>
 
+  <script src="admin-data.js"></script>
   <script src="admin-helper.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      /* 더보기 → 발송 내역 페이지 이동 */
+
+      /* ── 발송 방식 비율 (도넛) ── */
+      var certifiedCount = ADMIN_DOCS.filter(function (d) { return d.sendMethod === 'certified'; }).length;
+      var simpleCount    = ADMIN_DOCS.length - certifiedCount;
+      var total          = ADMIN_DOCS.length;
+      var certPct        = total ? Math.round(certifiedCount / total * 100) : 0;
+      var simplePct      = 100 - certPct;
+
+      document.getElementById('admDonutWrap').innerHTML =
+        '<div class="adm-donut" style="background:conic-gradient(#FC9950 0% ' + simplePct + '%, #2B3347 ' + simplePct + '% 100%);">' +
+          '<div class="adm-donut-inner">' +
+            '<span class="adm-donut-count">' + total + '</span>' +
+            '<span class="adm-donut-sub">총 발송</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="adm-legend">' +
+          '<div class="adm-legend-item">' +
+            '<div class="adm-legend-label"><span class="adm-legend-dot" style="background:#2B3347;"></span>카카오 전자문서</div>' +
+            '<div><span class="adm-legend-count">' + certifiedCount + '건</span><span class="adm-legend-pct">(' + certPct + '%)</span></div>' +
+          '</div>' +
+          '<div class="adm-legend-item">' +
+            '<div class="adm-legend-label"><span class="adm-legend-dot" style="background:#FC9950;"></span>카카오 알림톡</div>' +
+            '<div><span class="adm-legend-count">' + simpleCount + '건</span><span class="adm-legend-pct">(' + simplePct + '%)</span></div>' +
+          '</div>' +
+        '</div>';
+
+      /* ── 최근 7일 발송 현황 (막대) ── */
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var days = [];
+      for (var i = 6; i >= 0; i--) {
+        var d = new Date(today);
+        d.setDate(d.getDate() - i);
+        var yyyy = d.getFullYear();
+        var mm   = String(d.getMonth() + 1).padStart(2, '0');
+        var dd   = String(d.getDate()).padStart(2, '0');
+        days.push({ key: yyyy + '-' + mm + '-' + dd, label: (d.getMonth() + 1) + '/' + d.getDate(), count: 0, isToday: i === 0 });
+      }
+      ADMIN_DOCS.forEach(function (doc) {
+        var day = days.find(function (d) { return d.key === doc.sendDate; });
+        if (day) day.count++;
+      });
+
+      var maxCount = Math.max.apply(null, days.map(function (d) { return d.count; }));
+      var MAX_H    = 200;
+      var yMax     = maxCount < 5 ? 5 : (Math.ceil(maxCount / 5) * 5);
+      var yStep    = Math.round(yMax / 4);
+      var yLabels  = [yMax, yMax - yStep, yMax - yStep * 2, yMax - yStep * 3, 0];
+
+      var yAxisHTML = yLabels.map(function (v) { return '<span>' + v + '</span>'; }).join('');
+      var colsHTML  = days.map(function (day) {
+        var h      = maxCount > 0 ? Math.round((day.count / maxCount) * MAX_H) : 0;
+        var cls    = day.isToday ? ' adm-bar-rect--today' : '';
+        var numCls = day.isToday ? ' adm-bar-num--today' : '';
+        return '<div class="adm-bar-col">' +
+          '<span class="adm-bar-num' + numCls + '">' + day.count + '</span>' +
+          '<div class="adm-bar-rect' + cls + '" style="height:' + (h || 2) + 'px;"></div>' +
+          '<span class="adm-bar-date">' + day.label + '</span>' +
+        '</div>';
+      }).join('');
+
+      document.getElementById('admBarChart').innerHTML =
+        '<div class="adm-bar-yaxis">' + yAxisHTML + '</div>' +
+        '<div class="adm-bar-cols">' + colsHTML + '</div>';
+
+      /* ── 최근 발송 내역 테이블 (최신순 7건) ── */
+      var recent = ADMIN_DOCS.slice().sort(function (a, b) { return b.sendDate.localeCompare(a.sendDate); }).slice(0, 7);
+      var methodLabel    = { certified: '카카오 전자문서', simple: '카카오 알림톡' };
+      var methodCls      = { certified: 'adm-table-method--certified', simple: 'adm-table-method--simple' };
+      var modalMethodCls = { certified: 'adm-modal-val--certified', simple: 'adm-modal-val--simple' };
+
+      var tbody = document.getElementById('admRecentTbody');
+      tbody.innerHTML = recent.map(function (doc) {
+        return '<tr' +
+          ' data-sender="'     + doc.sender                  + '"' +
+          ' data-type="'       + doc.type                    + '"' +
+          ' data-type-cls="'   + doc.typeCls                 + '"' +
+          ' data-method="'     + methodLabel[doc.sendMethod]  + '"' +
+          ' data-method-cls="' + methodCls[doc.sendMethod]    + '"' +
+          ' data-status="'     + doc.recipient               + '"' +
+          ' data-date="'       + doc.sendDate                + '">' +
+          '<td>' + doc.sender + '</td>' +
+          '<td><span class="adm-type-badge ' + doc.typeCls + '">' + doc.type + '</span>&nbsp; 내용증명을 발송했습니다.</td>' +
+          '<td class="' + methodCls[doc.sendMethod] + '">' + methodLabel[doc.sendMethod] + '</td>' +
+          '<td>' + doc.recipient + '</td>' +
+          '<td>' + doc.sendDate + '</td>' +
+        '</tr>';
+      }).join('');
+
+      /* ── 더보기 ── */
       document.querySelector('.adm-more-btn').addEventListener('click', function () {
         window.location.href = 'admin-history.html';
       });
 
-      /* 행 클릭 → 모달 */
+      /* ── 행 클릭 → 모달 ── */
       var overlay = document.getElementById('admDetailOverlay');
-      document.getElementById('admRecentTable').querySelectorAll('tbody tr').forEach(function (row) {
-        row.addEventListener('click', function () {
-          document.getElementById('mdSender').textContent  = row.dataset.sender;
-          document.getElementById('mdMethod').textContent  = row.dataset.method;
-          document.getElementById('mdStatus').textContent  = row.dataset.status;
-          document.getElementById('mdDate').textContent    = row.dataset.date;
-
-          var typeEl = document.getElementById('mdType');
-          typeEl.innerHTML = '<span class="adm-type-badge ' + row.dataset.typeCls + '">' + row.dataset.type + '</span>';
-
-          var methodEl = document.getElementById('mdMethod');
-          methodEl.className = 'adm-modal-val ' + (row.dataset.methodCls === 'adm-table-method--certified' ? 'adm-modal-val--certified' : 'adm-modal-val--simple');
-          methodEl.textContent = row.dataset.method;
-
-          overlay.classList.add('adm-modal-overlay--open');
-        });
+      tbody.addEventListener('click', function (e) {
+        var row = e.target.closest('tr');
+        if (!row) return;
+        document.getElementById('mdSender').textContent = row.dataset.sender;
+        document.getElementById('mdType').innerHTML = '<span class="adm-type-badge ' + row.dataset.typeCls + '">' + row.dataset.type + '</span>';
+        var methodEl = document.getElementById('mdMethod');
+        methodEl.className = 'adm-modal-val ' + (row.dataset.methodCls === 'adm-table-method--certified' ? 'adm-modal-val--certified' : 'adm-modal-val--simple');
+        methodEl.textContent = row.dataset.method;
+        document.getElementById('mdStatus').textContent = row.dataset.status;
+        document.getElementById('mdDate').textContent   = row.dataset.date;
+        overlay.classList.add('adm-modal-overlay--open');
       });
 
-      /* 모달 닫기 */
+      /* ── 모달 닫기 ── */
       function closeModal() { overlay.classList.remove('adm-modal-overlay--open'); }
       document.getElementById('admModalClose').addEventListener('click', closeModal);
-      overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) closeModal();
-      });
+      overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
     });
   </script>
 </body>
