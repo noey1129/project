@@ -208,7 +208,7 @@ body.page-admin {
 /* ── 컨텐츠 영역 ── */
 .adm-content {
   flex: 1;
-  padding: 25px 40px;
+  padding: 25px 100px;
   overflow-y: auto;
 }
 
